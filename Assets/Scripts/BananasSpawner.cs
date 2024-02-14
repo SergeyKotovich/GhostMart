@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class BananasSpawner : MonoBehaviour , IObjectsSpawner
+public class BananasSpawner : MonoBehaviour , ISpawner
 {
     public float _currentTime { get; set; }
     public float _delayBetweenSpawnObjects { get; set; } = 3f;
@@ -19,7 +19,7 @@ public class BananasSpawner : MonoBehaviour , IObjectsSpawner
         ObjectsSpawn();
     }
 
-    public void ObjectsSpawn()
+    private void ObjectsSpawn()
     {
         if (_currentTime<_delayBetweenSpawnObjects)
         {

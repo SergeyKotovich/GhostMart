@@ -1,26 +1,33 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class CollectingProducts : MonoBehaviour
 {
     public UnityEvent ProductCollected;
-    [SerializeField] private Transform _rootProduct;
-    // private List<Transform> _listEmptyPositions = new();
-    [SerializeField] private List<Transform> _listAllPositions = new();
+    [SerializeField] private Transform [] _allPositions;
+    private List<Transform> _listAllProducts = new();
+    private int _maxProductsInHand = 3;
     
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.gameObject.CompareTag(GlobalConstants.CORN_TAG) /*&& other.gameObject.CompareTag(GlobalConstants.BANANA_TAG*/)
+        if (other.gameObject.CompareTag(GlobalConstants.CORN_TAG))
         {
             Debug.Log("Corn");
-            other.transform.SetParent(_rootProduct , false);
-             other.transform.localPosition = Vector3.zero;
-             other.transform.localRotation = Quaternion.Euler(0,270,0);
-             other.transform.localScale = new Vector3(0.002f, 0.002f, 0.002f);
+            if (_listAllProducts.Count>=_maxProductsInHand)
+            {
+                return;
+            }
+            var currentParent = _listAllProducts.Count; 
+            other.transform.SetParent(_allPositions[currentParent]);
+            other.transform.DOLocalMove(new Vector3(0,0,0), 0.3f);
+            other.transform.DOLocalRotate(new Vector3(0,270,0),0.3f);
+            other.transform.DOScale(new Vector3(0.002f, 0.002f, 0.002f),0.3f) ;
+            _listAllProducts.Add(other.transform);
             
             ProductCollected?.Invoke();
         }
@@ -28,11 +35,18 @@ public class CollectingProducts : MonoBehaviour
         if (other.gameObject.CompareTag(GlobalConstants.BANANA_TAG))
         {
             Debug.Log("banana");
-            other.transform.SetParent(_rootProduct , false);
-            other.transform.localPosition = new Vector3(-0.0021f, 0, 0);
-            other.transform.localRotation = Quaternion.Euler(0, 0, 90);
-            other.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
+            if (_listAllProducts.Count>=_maxProductsInHand)
+            {
+                return;
+            }
+            var currentParent = _listAllProducts.Count; 
+            other.transform.SetParent(_allPositions[currentParent]);
+            other.transform.DOLocalMove(new Vector3(0.002f,0,0), 0.3f);
+            other.transform.DOLocalRotate(new Vector3(0,0,90),0.3f);
+            other.transform.DOScale(new Vector3(0.013f, 0.013f, 0.013f),0.3f) ;
+            _listAllProducts.Add(other.transform);
+            ProductCollected?.Invoke();
         }
-        ProductCollected?.Invoke();
+        
     }
 }

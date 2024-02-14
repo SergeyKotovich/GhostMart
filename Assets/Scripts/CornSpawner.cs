@@ -3,7 +3,7 @@ using System.Collections;
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class CornSpawner : MonoBehaviour, IObjectsSpawner
+public class CornSpawner : MonoBehaviour, ISpawner
 {
     [SerializeField] private GameObject _cornPrefab;
     [SerializeField] private Transform _rootProduct;
@@ -17,7 +17,7 @@ public class CornSpawner : MonoBehaviour, IObjectsSpawner
         ObjectsSpawn();
     }
 
-    public void ObjectsSpawn()
+    private void ObjectsSpawn()
     {
         if (_currentTime<_delayBetweenSpawnObjects)
         {
