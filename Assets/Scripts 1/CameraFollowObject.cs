@@ -1,22 +1,22 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FollowObject : MonoBehaviour
 {
-    public Transform target; // Объект, за которым следует камера
-    public float heightAboveTarget = 5f; // Высота камеры над объектом
+    [SerializeField] private Transform _target; // Объект, за которым следует камера
+    [SerializeField] private Vector3 _cameraPositions; //позиция камеры
 
     void LateUpdate()
     {
-        if (target != null)
+        if (_target != null)
         {
-            // Получаем позицию объекта по осям X и Z с учетом высоты над ним
-            Vector3 desiredPosition = new Vector3(target.position.x, heightAboveTarget, target.position.z);
+            Vector3 desiredPosition = _target.position + _cameraPositions;
             
             // Устанавливаем позицию камеры
             transform.position = desiredPosition;
             
             // Направляем камеру на объект
-            transform.LookAt(target);
+            transform.LookAt(_target);
         }
     }
 }
