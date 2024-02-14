@@ -2644,8 +2644,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _rootProduct: {fileID: 1476735395}
-  _listAllPositions:
+  _allPositions:
   - {fileID: 1476735395}
   - {fileID: 832555846}
   - {fileID: 2064456948}
@@ -3333,7 +3332,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 29.5
+  field of view: 22
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
