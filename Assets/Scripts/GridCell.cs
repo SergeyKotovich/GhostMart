@@ -8,7 +8,7 @@ namespace DefaultNamespace
     public class GridCell
     {
         [field:SerializeField]
-        public Vector3 CellCoordinatesInWorld { get; private set; }
+        public Transform CellCoordinatesInWorld { get; private set; }
         public bool IsAvailable { get; private set; }
 
         public GridCell()

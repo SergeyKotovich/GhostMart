@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using DG.Tweening;
-//using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,8 +10,9 @@ public class CollectingProducts : MonoBehaviour
 {
     public UnityEvent ProductCollected;
     [SerializeField] private Transform [] _allPositions;
-    private List<Transform> _listAllProducts = new();
+    private List<GameObject> _listAllProducts = new();
     private int _maxProductsInHand = 3;
+    [SerializeField] private ProductsStander _productsStander;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -28,7 +29,7 @@ public class CollectingProducts : MonoBehaviour
             other.transform.DOLocalMove(new Vector3(0,0,0), 0.3f);
             other.transform.DOLocalRotate(new Vector3(0,270,0),0.3f);
             other.transform.DOScale(new Vector3(0.002f, 0.002f, 0.002f),0.3f) ;
-            _listAllProducts.Add(other.transform);
+            _listAllProducts.Add(other.gameObject);
             
             ProductCollected?.Invoke();
         }
@@ -45,9 +46,21 @@ public class CollectingProducts : MonoBehaviour
             other.transform.DOLocalMove(new Vector3(0.002f,0,0), 0.3f);
             other.transform.DOLocalRotate(new Vector3(0,0,90),0.3f);
             other.transform.DOScale(new Vector3(0.013f, 0.013f, 0.013f),0.3f) ;
-            _listAllProducts.Add(other.transform);
+            _listAllProducts.Add(other.gameObject);
             ProductCollected?.Invoke();
         }
         
+    }
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (!other.gameObject.CompareTag("BananasStand"))
+        {
+            return;
+        }
+        
+        _productsStander.TrySetProducts(_listAllProducts);
+        _listAllProducts.Clear();
     }
 }

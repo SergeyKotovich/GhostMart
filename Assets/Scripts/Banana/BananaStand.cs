@@ -7,29 +7,42 @@ namespace DefaultNamespace.Banana
     public class BananaStand : MonoBehaviour, IStand
     {
         [SerializeField] private GridCell[] _standCells;
+        
+        [SerializeField] private Transform[] _positions;
+        [SerializeField] private bool[] _isPositionAvalable;
+        
         public bool IsAvailable { get; private set; }
 
-        private List<IProduct> _products;
+        private List<GameObject> _products = new List<GameObject>();
 
 
-        private void SetProductOnStand(IProduct product)
+        public void SetProductOnStand(GameObject product)
         {
-            for (int i = 0; i < _standCells.Length; i++)
+            for (int i = 0; i < _positions.Length; i++)
             {
-                if (_standCells[i].IsAvailable)
+                if (_isPositionAvalable[i])
                 {
-                    product.transform.position = _standCells[i].CellCoordinatesInWorld;
+                    product.transform.position = _positions[i].position;
+                    product.transform.SetParent(null);
+
+                    Vector3 rotationEuler = new Vector3(0f, -80f, -90f);
+                    Quaternion rotationQuaternion = Quaternion.Euler(rotationEuler);
+            
+                    product.transform.rotation = rotationQuaternion;
+                    
                     _products.Add(product);
-                    _standCells[i].ChangeAvailability();
+                    _isPositionAvalable[i] = false;
+                    return;
                 }
             }
         }
 
-        private IProduct GetAvailableProduct()
+        public GameObject GetAvailableProduct()
         {
             /* TODO: dictionary where the key is a product and the value is a cell's coordinates in the world
                 and when a customer gets a product just to find the cell in _standCells and make IsAvailable = true
              */ 
+            
             var product = _products.First();
             _products.RemoveAt(0);
             return product;
