@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17911622, g: 0.22428174, b: 0.30606025, a: 1}
+  m_IndirectSpecularColor: {r: 0.17911555, g: 0.22428076, b: 0.3060586, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2714,7 +2714,7 @@ MonoBehaviour:
   - {fileID: 1476735395}
   - {fileID: 832555846}
   - {fileID: 2064456948}
-  _productsStander: {fileID: 0}
+  _productsStander: {fileID: 1142880113}
 --- !u!136 &725233017
 CapsuleCollider:
   m_ObjectHideFlags: 0
