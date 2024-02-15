@@ -13,6 +13,7 @@ public class DrawGizmos : MonoBehaviour
         var cellSize = _grid.cellSize;
         var cellGap = _grid.cellGap;
         var origin = _grid.transform.position;
+        var rotation = _grid.transform.rotation;
 
         Gizmos.color = Color.red;
 
@@ -20,12 +21,12 @@ public class DrawGizmos : MonoBehaviour
         {
             for (int z = 0; z < _height; z++)
             {
-                var pos = origin + new Vector3(x * (cellSize.x + cellGap.x), 0, z * (cellSize.z + cellGap.z));
+                var pos = origin + rotation * new Vector3(x * (cellSize.x + cellGap.x), 0, z * (cellSize.z + cellGap.z));
 
-                Gizmos.DrawLine(pos, pos + new Vector3(cellSize.x, 0, 0));
-                Gizmos.DrawLine(pos, pos + new Vector3(0, 0, cellSize.z));
-                Gizmos.DrawLine(pos + new Vector3(cellSize.x, 0, 0), pos + new Vector3(cellSize.x, 0, cellSize.z));
-                Gizmos.DrawLine(pos+new Vector3(0,0,cellSize.z),pos+new Vector3(cellSize.x,0,cellSize.z));
+                Gizmos.DrawLine(pos, pos + rotation * new Vector3(cellSize.x, 0, 0)); 
+                Gizmos.DrawLine(pos, pos + rotation * new Vector3(0, 0, cellSize.z)); 
+                Gizmos.DrawLine(pos + rotation * new Vector3(cellSize.x, 0, 0), pos + rotation * new Vector3(cellSize.x, 0, cellSize.z));
+                Gizmos.DrawLine(pos + rotation * new Vector3(0, 0, cellSize.z), pos + rotation * new Vector3(cellSize.x, 0, cellSize.z));
                 
             }
         }

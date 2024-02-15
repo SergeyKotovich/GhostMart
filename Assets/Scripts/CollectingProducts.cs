@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
+using DefaultNamespace.Banana;
 using DG.Tweening;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -56,10 +57,19 @@ public class CollectingProducts : MonoBehaviour
             
         }
         
-        if (other.gameObject.CompareTag("BananasStand"))
+        if (other.gameObject.CompareTag("Stand"))
         {
-            _productsStander.TrySetProducts(_listAllProducts);
-            _listAllProducts.Clear();
+            //_productsStander.TrySetProducts(_listAllProducts);
+            var stand = other.gameObject.GetComponentInParent<Stand>();
+
+
+            for (int i = 0; i < _listAllProducts.Count; i++)
+            {
+                if (stand.SetProductOnStand(_listAllProducts[i]))
+                {
+                    _listAllProducts.RemoveAt(i);
+                }
+            }
         }
     }
     [UsedImplicitly]
