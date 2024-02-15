@@ -7,6 +7,7 @@ TagManager:
   - Corn
   - Banana
   - BananasStand
+  - BananaPlants
   layers:
   - Default
   - TransparentFX
