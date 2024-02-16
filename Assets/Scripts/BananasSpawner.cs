@@ -35,9 +35,9 @@ public class BananasSpawner : MonoBehaviour , ISpawner
         {
             var currentParent = _allBananas.Count;
             var banana = Instantiate(_bananaPrefab, _allPositionsForBananas[currentParent]);
-            banana.transform.DOScale(new Vector3(20, 4, 4), 0.5f);
+            banana.transform.DOScale(new Vector3(20, 4, 4), 0.5f).OnComplete (() => _allBananas.Push(banana));
             _currentTime = 0f;
-            _allBananas.Push(banana);
+            
             CountBananasСhanged?.Invoke(_allBananas);
         }
     }

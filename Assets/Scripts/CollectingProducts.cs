@@ -12,7 +12,7 @@ public class CollectingProducts : MonoBehaviour
 {
     [SerializeField] private Transform [] _allPositionsInHands;
     private List<GameObject> _listAllProductsInHands = new();
-    private int _maxProductsInHand = 3;
+    private int _maxProductsInHands = 3;
     [SerializeField] private ProductsStander _productsStander;
     private Stack<GameObject> _allAvailableBananas = new();
     private Stack<GameObject> _allAvailableCorn = new();
@@ -23,11 +23,11 @@ public class CollectingProducts : MonoBehaviour
         {
             if (_allAvailableBananas.Count!=0)
             {
-                var banana = _allAvailableBananas.Pop();
-                if (_listAllProductsInHands.Count>=_maxProductsInHand)
+                if (_listAllProductsInHands.Count>=_maxProductsInHands)
                 {
                     return;
                 }
+                var banana = _allAvailableBananas.Pop();
                 var currentParent = _listAllProductsInHands.Count; 
                 banana.transform.SetParent(_allPositionsInHands[currentParent]);
                 banana.transform.DOLocalMove(new Vector3(0.002f,0,0), 0.3f);
@@ -37,15 +37,15 @@ public class CollectingProducts : MonoBehaviour
             }
         }
         
-        if (other.gameObject.CompareTag(GlobalConstants.CORN_TAG))
+        if (other.gameObject.CompareTag(GlobalConstants.CORN_PLANT_TAG))
         {
             if (_allAvailableCorn.Count!=0)
             {
-                var corn = _allAvailableCorn.Pop();
-                if (_listAllProductsInHands.Count>=_maxProductsInHand)
+                if (_listAllProductsInHands.Count>=_maxProductsInHands)
                 {
                     return;
                 }
+                var corn = _allAvailableCorn.Pop();
                 var currentParent = _listAllProductsInHands.Count; 
                 corn.transform.SetParent(_allPositionsInHands[currentParent]);
                 corn.transform.DOLocalMove(new Vector3(0,0,0), 0.3f);

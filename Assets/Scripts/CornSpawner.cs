@@ -37,14 +37,10 @@ public class CornSpawner : MonoBehaviour, ISpawner
         {
             var currentParent = _allCorn.Count;
             var corn = Instantiate(_cornPrefab, _allPositionsForCorn[currentParent]);
-            corn.transform.DOScale(new Vector3(0.33f, 0.3f, 0.5f), 0.5f);
-            _allCorn.Push(corn);
-            CountCornСhanged?.Invoke(_allCorn);
-        }
-
-        if (_currentTime>=_delayBetweenSpawnObjects)
-        {
+            corn.transform.DOScale(new Vector3(0.33f, 0.3f, 0.5f), 0.5f).OnComplete (() => _allCorn.Push(corn));
             _currentTime = 0f;
+            
+            CountCornСhanged?.Invoke(_allCorn);
         }
     }
 }
