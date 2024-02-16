@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,10 +13,9 @@ public class BananasSpawner : MonoBehaviour , ISpawner
     
     [SerializeField] private GameObject _bananaPrefab;
     [SerializeField] private Transform[] _allPositionsForBananas;
-    public Stack<GameObject> _allBananas = new();
-    private GameObject _banana;
-
-
+    private Stack<GameObject> _allBananas = new();
+    
+    
     private void Update()
     {
         ObjectsSpawn();
@@ -34,9 +34,10 @@ public class BananasSpawner : MonoBehaviour , ISpawner
         if (_currentTime>=_delayBetweenSpawnObjects && _allBananas.Count<=3)
         {
             var currentParent = _allBananas.Count;
-            _banana = Instantiate(_bananaPrefab, _allPositionsForBananas[currentParent]);
+            var banana = Instantiate(_bananaPrefab, _allPositionsForBananas[currentParent]);
+            banana.transform.DOScale(new Vector3(20, 4, 4), 0.5f);
             _currentTime = 0f;
-            _allBananas.Push(_banana);
+            _allBananas.Push(banana);
             CountBananasСhanged?.Invoke(_allBananas);
         }
     }

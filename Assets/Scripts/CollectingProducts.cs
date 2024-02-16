@@ -10,51 +10,49 @@ using UnityEngine.Events;
 
 public class CollectingProducts : MonoBehaviour
 {
-    [SerializeField] private Transform [] _allPositions;
-    private List<GameObject> _listAllProducts = new();
+    [SerializeField] private Transform [] _allPositionsInHands;
+    private List<GameObject> _listAllProductsInHands = new();
     private int _maxProductsInHand = 3;
     [SerializeField] private ProductsStander _productsStander;
     private Stack<GameObject> _allAvailableBananas = new();
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-        if (other.gameObject.CompareTag(GlobalConstants.CORN_TAG))
-        {
-           
-            if (_listAllProducts.Count>=_maxProductsInHand)
-            {
-                return;
-            }
-            var currentParent = _listAllProducts.Count; 
-            other.transform.SetParent(_allPositions[currentParent]);
-            other.transform.DOLocalMove(new Vector3(0,0,0), 0.3f);
-            other.transform.DOLocalRotate(new Vector3(0,270,0),0.3f);
-            other.transform.DOScale(new Vector3(0.002f, 0.002f, 0.002f),0.3f) ;
-            _listAllProducts.Add(other.gameObject);
-        }
-    }
-
-
+    private Stack<GameObject> _allAvailableCorn = new();
+    
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag(GlobalConstants.BANANA_PLANTS_TAG))
+        if (other.gameObject.CompareTag(GlobalConstants.BANANA_PLANT_TAG))
         {
             if (_allAvailableBananas.Count!=0)
             {
                 var banana = _allAvailableBananas.Pop();
-                if (_listAllProducts.Count>=_maxProductsInHand)
+                if (_listAllProductsInHands.Count>=_maxProductsInHand)
                 {
                     return;
                 }
-                var currentParent = _listAllProducts.Count; 
-                banana.transform.SetParent(_allPositions[currentParent]);
+                var currentParent = _listAllProductsInHands.Count; 
+                banana.transform.SetParent(_allPositionsInHands[currentParent]);
                 banana.transform.DOLocalMove(new Vector3(0.002f,0,0), 0.3f);
                 banana.transform.DOLocalRotate(new Vector3(0,0,90),0.3f);
                 banana.transform.DOScale(new Vector3(0.013f, 0.013f, 0.013f),0.3f) ;
-                _listAllProducts.Add(banana.gameObject);
+                _listAllProductsInHands.Add(banana.gameObject);
             }
-            
+        }
+        
+        if (other.gameObject.CompareTag(GlobalConstants.CORN_TAG))
+        {
+            if (_allAvailableCorn.Count!=0)
+            {
+                var corn = _allAvailableCorn.Pop();
+                if (_listAllProductsInHands.Count>=_maxProductsInHand)
+                {
+                    return;
+                }
+                var currentParent = _listAllProductsInHands.Count; 
+                corn.transform.SetParent(_allPositionsInHands[currentParent]);
+                corn.transform.DOLocalMove(new Vector3(0,0,0), 0.3f);
+                corn.transform.DOLocalRotate(new Vector3(0,270,0),0.3f);
+                corn.transform.DOScale(new Vector3(0.002f, 0.002f, 0.002f),0.3f) ;
+                _listAllProductsInHands.Add(corn.gameObject);
+            }
         }
         
         if (other.gameObject.CompareTag("Stand"))
@@ -63,18 +61,23 @@ public class CollectingProducts : MonoBehaviour
             var stand = other.gameObject.GetComponentInParent<Stand>();
 
 
-            for (int i = 0; i < _listAllProducts.Count; i++)
+            for (int i = 0; i < _listAllProductsInHands.Count; i++)
             {
-                if (stand.SetProductOnStand(_listAllProducts[i]))
+                if (stand.SetProductOnStand(_listAllProductsInHands[i]))
                 {
-                    _listAllProducts.RemoveAt(i);
+                    _listAllProductsInHands.RemoveAt(i);
                 }
             }
         }
     }
     [UsedImplicitly]
-    public void UpdateCountBananas(Stack<GameObject> allAvailableBananas)
+    public void UpdateAvailableBananas(Stack<GameObject> allAvailableBananas)
     {
         _allAvailableBananas = allAvailableBananas;
+    }
+    [UsedImplicitly]
+    public void UpdateAvailableCorn(Stack<GameObject> allAvailableCorn)
+    {
+        _allAvailableCorn = allAvailableCorn;
     }
 }

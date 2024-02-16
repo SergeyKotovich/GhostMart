@@ -1,17 +1,23 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using DG.Tweening;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class CornSpawner : MonoBehaviour, ISpawner
 {
-    [SerializeField] private GameObject _cornPrefab;
-    [SerializeField] private Transform _rootProduct;
+    public UnityEvent<Stack<GameObject>> CountCornСhanged;
     public float _currentTime { get; set; }
-    public float _delayBetweenSpawnObjects { get; set; } = 3f;
-    private GameObject _corn;
+    public float _delayBetweenSpawnObjects { get; set; } = 2f;
     
-
+    [SerializeField] private GameObject _cornPrefab;
+    [SerializeField] private Transform[] _allPositionsForCorn;
+    private Stack<GameObject> _allCorn = new();
+    
+    
     private void Update()
     {
         ObjectsSpawn();
@@ -19,21 +25,26 @@ public class CornSpawner : MonoBehaviour, ISpawner
 
     private void ObjectsSpawn()
     {
+        if (_allCorn.Count>=3)
+        {
+            return;
+        }
         if (_currentTime<_delayBetweenSpawnObjects)
         {
             _currentTime += Time.deltaTime;
         }
-        if (_currentTime>=_delayBetweenSpawnObjects && _corn == null)
+        if (_currentTime>=_delayBetweenSpawnObjects && _allCorn.Count<=3)
         {
-            _corn = Instantiate(_cornPrefab, _rootProduct );
+            var currentParent = _allCorn.Count;
+            var corn = Instantiate(_cornPrefab, _allPositionsForCorn[currentParent]);
+            corn.transform.DOScale(new Vector3(0.33f, 0.3f, 0.5f), 0.5f);
+            _allCorn.Push(corn);
+            CountCornСhanged?.Invoke(_allCorn);
+        }
+
+        if (_currentTime>=_delayBetweenSpawnObjects)
+        {
+            _currentTime = 0f;
         }
     }
-    [UsedImplicitly]
-    public void ResetProduct()
-    {
-        _corn = null;
-        _currentTime = 0f;
-    }
-
-    
 }
