@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b197ce44df130499d51d980181a1c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "CountCorn\u0421hanged":
+  "CountProduct\u0421hanged":
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 725233016}
@@ -488,8 +488,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _cornPrefab: {fileID: 6040058970557498503, guid: 6a55b236d3d04b3409e0c290867009c7, type: 3}
-  _allPositionsForCorn:
+  _delayBetweenSpawnObjects: 2
+  _spawnerConfig: {fileID: 11400000, guid: 2298488506a5a714cb7e04d24e9d6440, type: 2}
+  _allPositionsForProduct:
   - {fileID: 2010708363}
   - {fileID: 979943199}
   - {fileID: 937552052}
@@ -1008,7 +1009,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.32, y: -1.08, z: 2.05}
+  m_Size: {x: 0.32, y: 1.08, z: 2.05}
   m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!4 &303812437 stripped
 Transform:
@@ -1914,48 +1915,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 188006, guid: c6b7fb383a3534b039692b5485b6e739, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 498588918}
+      addedObject: {fileID: 498588924}
     - targetCorrespondingSourceObject: {fileID: 188006, guid: c6b7fb383a3534b039692b5485b6e739, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 498588924}
+      addedObject: {fileID: 498588927}
   m_SourcePrefab: {fileID: 100100000, guid: c6b7fb383a3534b039692b5485b6e739, type: 3}
 --- !u!1 &498588917 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 188006, guid: c6b7fb383a3534b039692b5485b6e739, type: 3}
   m_PrefabInstance: {fileID: 498588916}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &498588918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 498588917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2975ce976f40ff44a8faa070c47c6651, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  "CountBananas\u0421hanged":
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 725233016}
-        m_TargetAssemblyTypeName: CollectingProducts, Assembly-CSharp
-        m_MethodName: UpdateAvailableBananas
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _bananaPrefab: {fileID: 5457542743987022803, guid: b629c5aeacc04a640a440ec3dfdf3696, type: 3}
-  _allPositionsForBananas:
-  - {fileID: 126153684}
-  - {fileID: 95049909}
-  - {fileID: 1499638306}
 --- !u!4 &498588921 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 481554, guid: c6b7fb383a3534b039692b5485b6e739, type: 3}
@@ -1982,6 +1951,39 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.2414904, y: 5.3958144, z: 3.2386603}
   m_Center: {x: -0.34729344, y: 2.7100756, z: -0.45656818}
+--- !u!114 &498588927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498588917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b197ce44df130499d51d980181a1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "CountProduct\u0421hanged":
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 725233016}
+        m_TargetAssemblyTypeName: CollectingProducts, Assembly-CSharp
+        m_MethodName: UpdateAvailableBananas
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _delayBetweenSpawnObjects: 2
+  _spawnerConfig: {fileID: 11400000, guid: c5a75f418e60f3345afbfe7f8cadba61, type: 2}
+  _allPositionsForProduct:
+  - {fileID: 126153684}
+  - {fileID: 95049909}
+  - {fileID: 1499638306}
 --- !u!4 &524782826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2914486802874379001, guid: 5a9667695bf000243b1cc3a22006ecaa, type: 3}
@@ -3010,7 +3012,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.32, y: -1.08, z: 2.05}
+  m_Size: {x: 0.32, y: 1.08, z: 2.05}
   m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!1 &832555845
 GameObject:
