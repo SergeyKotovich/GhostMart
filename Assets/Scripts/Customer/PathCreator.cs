@@ -8,6 +8,7 @@ namespace Customer
     public class PathCreator : MonoBehaviour
     {
         [SerializeField] private Stand[] _stands;
+        [SerializeField] private Transform _exitTransform;
        
         
         public  Vector3[] GetRandomPath()
@@ -22,7 +23,7 @@ namespace Customer
                 }
             }
             
-            var randomTargetsCount = Random.Range(2, availableStands.Count);
+            var randomTargetsCount = Random.Range(1, availableStands.Count + 1);
             List<Vector3> path = new List<Vector3>();
 
             for (int i = 0; i < randomTargetsCount; i++)
@@ -39,7 +40,8 @@ namespace Customer
                 }
             }
 
-            // TODO: temp code, replace by using arrays, not collections
+            path.Add(_exitTransform.position);
+            // TODO: temp code, replace by using an array, not collections
             Vector3[] pathArray = new Vector3[path.Count];
             for (int i = 0; i < pathArray.Length; i++)
             {
