@@ -11,6 +11,9 @@ namespace DefaultNamespace.Banana
     {
         public bool IsAvailable { get; private set; }
 
+        [field:SerializeField]
+        public Transform Position { get; private set; }
+
         [SerializeField] private bool[] _isPositionAvalable;
         [SerializeField] private Grid _grid;
         [field:SerializeField] public StandsTypes Type { get; private set; }
@@ -20,11 +23,13 @@ namespace DefaultNamespace.Banana
 
         private int _width = 4;
         private int _height = 5;
-
-
+        
         private void Awake()
         {
             SpawnPoints();
+            
+            // temp
+            IsAvailable = true;
         }
 
         public bool SetProductOnStand(GameObject product)
