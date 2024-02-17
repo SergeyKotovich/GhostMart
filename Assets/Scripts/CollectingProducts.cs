@@ -11,9 +11,10 @@ using UnityEngine.Events;
 public class CollectingProducts : MonoBehaviour
 {
     [SerializeField] private Transform [] _allPositionsInHands;
+    [SerializeField] private ProductsStander _productsStander;
+    
     private List<GameObject> _listAllProductsInHands = new();
     private int _maxProductsInHands = 3;
-    [SerializeField] private ProductsStander _productsStander;
     private Stack<GameObject> _allAvailableBananas = new();
     private Stack<GameObject> _allAvailableCorn = new();
     
