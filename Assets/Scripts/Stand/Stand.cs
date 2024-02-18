@@ -1,40 +1,33 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using DefaultNamespace;
 using DG.Tweening;
+using Interfaces;
+using JetBrains.Annotations;
+using Stand;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace DefaultNamespace.Banana
+namespace Banana
 {
     public class Stand : MonoBehaviour, IStand
     {
-        public bool IsAvailable { get; private set; }
-
-        [field:SerializeField]
-        public Transform Position { get; private set; }
-
-        [SerializeField] private bool[] _isPositionAvalable;
         [SerializeField] private Grid _grid;
+        [field:SerializeField] public Transform Position { get; private set; }
         [field:SerializeField] public StandsTypes Type { get; private set; }
-        
-        private List<Vector3> _gridPoints = new List<Vector3>();
-        private List<GameObject> _products = new List<GameObject>();
+        public bool IsAvailable { get; private set; }
+        private List<StandCell> StandCells { get; } = new();
 
         private int _width = 4;
         private int _height = 5;
         
         private void Awake()
         {
-            SpawnPoints();
-            
-            // temp
+            FillAvailablePositions();
             IsAvailable = true;
         }
 
         public bool SetProductOnStand(GameObject product)
         {
-
             if (Enum.TryParse<StandsTypes>(product.tag, out var productType))
 
             if (productType != Type)
@@ -42,11 +35,11 @@ namespace DefaultNamespace.Banana
                 return false;
             }    
             
-            for (int i = 0; i < _gridPoints.Count; i++)
+            for (int i = 0; i < StandCells.Count; i++)
             {
-                if (_isPositionAvalable[i])
+                if (StandCells[i].IsAvailable)
                 {
-                    product.transform.position = _gridPoints[i];
+                    product.transform.position = StandCells[i].CellPositionInWorld;
                     product.transform.SetParent(null);
                     product.transform.DOPunchScale(new Vector3(4, 4, 2), 0.2f);
 
@@ -55,8 +48,7 @@ namespace DefaultNamespace.Banana
             
                     product.transform.rotation = rotationQuaternion;
                     
-                    _products.Add(product);
-                    _isPositionAvalable[i] = false;
+                    StandCells[i].SetProductInCell(product);
                     return true;
                 }
             }
@@ -64,27 +56,33 @@ namespace DefaultNamespace.Banana
             return false;
         }
 
+        [CanBeNull]
         public GameObject GetAvailableProduct()
         {
-            var product = _products.First();
-            _products.RemoveAt(0);
-            return product;
+            for (int i = StandCells.Count - 1; i >= 0; i++)
+            {
+                if (!StandCells[i].IsAvailable)
+                {
+                    return StandCells[i].GetProductFromCell();
+                }
+            }
+            return null;
         }
         
-        private void SpawnPoints()
+        private void FillAvailablePositions()
         {
-            int index = 0;
-
+            var index = 0;
+            
             for (int x = 0; x < _width; x++)
             {
                 for (int y = 0; y < _height; y++)
                 {
                     Vector3Int gridPosition = new Vector3Int(x, 0, y);
                     Vector3 worldCenterPosition = _grid.GetCellCenterWorld(gridPosition);
-                    _gridPoints.Add(worldCenterPosition);
-
-                    //Debug.Log(_gridPoints[index]);
-                
+                    
+                    StandCell newCell = new StandCell(worldCenterPosition);
+                    StandCells.Add(newCell);
+                    
                     index++;
                 }
             }

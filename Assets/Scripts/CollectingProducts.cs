@@ -1,17 +1,12 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using DefaultNamespace;
-using DefaultNamespace.Banana;
+using Banana;
 using DG.Tweening;
 using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class CollectingProducts : MonoBehaviour
 {
     [SerializeField] private Transform[] _allPositionsInHands;
-    [SerializeField] private ProductsStander _productsStander;
     [SerializeField] private Recycle _recycle;
     [SerializeField] private GameObject _spawnerBonus;
 
@@ -62,10 +57,8 @@ public class CollectingProducts : MonoBehaviour
 
         if (other.gameObject.CompareTag("Stand"))
         {
-            //_productsStander.TrySetProducts(_listAllProducts);
-            var stand = other.gameObject.GetComponentInParent<Stand>();
-
-
+            var stand = other.gameObject.GetComponentInParent<Banana.Stand>();
+            
             for (int i = 0; i < _listAllProductsInHands.Count; i++)
             {
                 if (stand.SetProductOnStand(_listAllProductsInHands[i]))

@@ -11,9 +11,8 @@ public class MovementController : MonoBehaviour
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
 
-        float rotationY = 180; // всегда смотрим в камеру
+        float rotationY = 180;
 
-        // Проверяем направления движения
         if (horizontal != 0)
         {
             rotationY = horizontal > 0 ? 90f : -90f;
@@ -23,7 +22,6 @@ public class MovementController : MonoBehaviour
             rotationY = vertical > 0 ? 0f : 180f;
         }
 
-        // Применяем поворот в зависимости от направления
         var newRotation = Quaternion.Euler(0f, rotationY, 0f);
 
         var direction = new Vector3(horizontal, 0f, vertical).normalized;

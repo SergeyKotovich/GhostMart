@@ -1,19 +1,17 @@
 using System.Collections.Generic;
-using DefaultNamespace.Banana;
-using DG.Tweening;
+using Banana;
 using UnityEngine;
 
 namespace Customer
 {
     public class PathCreator : MonoBehaviour
     {
-        [SerializeField] private Stand[] _stands;
+        [SerializeField] private Banana.Stand[] _stands;
         [SerializeField] private Transform _exitTransform;
-       
         
         public  Vector3[] GetRandomPath()
         {
-            List<Stand> availableStands = new List<Stand>();
+            List<Banana.Stand> availableStands = new List<Banana.Stand>();
 
             for (int i = 0; i < _stands.Length; i++)
             {

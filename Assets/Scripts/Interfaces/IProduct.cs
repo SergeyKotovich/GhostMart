@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Interfaces
 {
     public abstract class IProduct : MonoBehaviour
     {

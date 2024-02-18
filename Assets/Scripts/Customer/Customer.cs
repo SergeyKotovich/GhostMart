@@ -1,10 +1,7 @@
+
 using System;
-using System.Collections.Generic;
-using DefaultNamespace.Banana;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
-using Random = UnityEngine.Random;
 
 namespace Customer
 {
@@ -12,14 +9,14 @@ namespace Customer
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private Animator _animator;
+        [SerializeField] private PathCreator _pathCreator;
         
         private int _currentPathIndex;
         private Vector3[] _path;
 
         private void Start()
         {
-            // TODO: replace by using tire
-
+            // TODO: need to get rid of FindAnyObjectByType
             var pathCreator = FindAnyObjectByType<PathCreator>();
             _path = pathCreator.GetRandomPath();
             MoveToNextPoint();

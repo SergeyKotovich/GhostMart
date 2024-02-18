@@ -1,6 +1,7 @@
+using Interfaces;
 using UnityEngine;
 
-namespace DefaultNamespace.Corn
+namespace Corn
 {
     public class CornStand : MonoBehaviour, IStand
     {

@@ -1,6 +1,6 @@
-using UnityEngine;
+using Interfaces;
 
-namespace DefaultNamespace.Banana
+namespace Banana
 {
     public class Banana : IProduct
     {
