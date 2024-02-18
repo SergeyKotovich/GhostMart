@@ -567,6 +567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjectPrefab: {fileID: 5410974633553944853, guid: 518eb4318b5a8dd42a9f3cee4632df40, type: 3}
+  _maxMoney: 3
 --- !u!136 &6788538757290762320
 CapsuleCollider:
   m_ObjectHideFlags: 0

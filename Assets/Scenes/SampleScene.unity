@@ -6519,6 +6519,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Waste Can (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2538208172927381571, guid: 5a9667695bf000243b1cc3a22006ecaa, type: 3}
+      propertyPath: m_TagString
+      value: Recycle
+      objectReference: {fileID: 0}
     - target: {fileID: 2914486802874379001, guid: 5a9667695bf000243b1cc3a22006ecaa, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.5
@@ -8465,3 +8469,7 @@ SceneRoots:
   - {fileID: 161536506}
   - {fileID: 1142880114}
   - {fileID: 1036693580}
+  - {fileID: 449614538}
+  - {fileID: 716647741}
+  - {fileID: 958715336}
+  - {fileID: 1959648317}
