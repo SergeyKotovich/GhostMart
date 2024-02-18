@@ -9,31 +9,37 @@ public class CollectingProducts : MonoBehaviour
     [SerializeField] private Transform[] _allPositionsInHands;
     [SerializeField] private Recycle _recycle;
     [SerializeField] private GameObject _spawnerBonus;
+    [SerializeField] private ProductConfig _productConfig;
 
     private List<GameObject> _listAllProductsInHands = new();
     private int _maxProductsInHands = 3;
     private Stack<GameObject> _allAvailableBananas = new();
     private Stack<GameObject> _allAvailableCorn = new();
-    
+
+    public void TryPickUpProduct(GameObject product1)
+    {
+        if (_allAvailableBananas.Count != 0)
+        {
+            if (_listAllProductsInHands.Count >= _maxProductsInHands)
+            {
+                return;
+            }
+
+            var product = _allAvailableBananas.Pop();
+            var currentParent = _listAllProductsInHands.Count;
+            product.transform.SetParent(_allPositionsInHands[currentParent]);
+            product.transform.DOLocalMove(_productConfig.PositionProductInBasket, _productConfig.SizeChangeTime);
+            product.transform.DOLocalRotate(_productConfig.RotationProductInBasket, _productConfig.SizeChangeTime);
+            product.transform.DOScale(_productConfig.ScaleProductInbasket, _productConfig.SizeChangeTime);
+            _listAllProductsInHands.Add(product.gameObject);
+        }
+    }
     private void OnTriggerStay(Collider other)
     {
+        
         if (other.gameObject.CompareTag(GlobalConstants.BANANA_PLANT_TAG))
         {
-            if (_allAvailableBananas.Count != 0)
-            {
-                if (_listAllProductsInHands.Count >= _maxProductsInHands)
-                {
-                    return;
-                }
-
-                var banana = _allAvailableBananas.Pop();
-                var currentParent = _listAllProductsInHands.Count;
-                banana.transform.SetParent(_allPositionsInHands[currentParent]);
-                banana.transform.DOLocalMove(new Vector3(0.002f, 0, 0), 0.3f);
-                banana.transform.DOLocalRotate(new Vector3(0, 0, 90), 0.3f);
-                banana.transform.DOScale(new Vector3(0.013f, 0.013f, 0.013f), 0.3f);
-                _listAllProductsInHands.Add(banana.gameObject);
-            }
+            
         }
 
         if (other.gameObject.CompareTag(GlobalConstants.CORN_PLANT_TAG))
