@@ -10,6 +10,8 @@ TagManager:
   - Banana
   - Corn
   - Stand
+  - Bonus
+  - Recycle
   layers:
   - Default
   - TransparentFX
