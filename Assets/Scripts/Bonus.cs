@@ -8,7 +8,7 @@ using DG.Tweening;
 public class Bonus : MonoBehaviour
 {
     [SerializeField] private GameObject _gameObjectPrefab;
-    [SerializeField]private int _maxMoney=3;
+    [SerializeField] private int _maxMoney=3;
     
     private List<GameObject> _listAllProductsInHands;
     private int _productCounter;
