@@ -9,7 +9,6 @@ namespace Customer
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private Animator _animator;
-        [SerializeField] private PathCreator _pathCreator;
         
         private int _currentPathIndex;
         private Vector3[] _path;
@@ -18,6 +17,7 @@ namespace Customer
         {
             // TODO: need to get rid of FindAnyObjectByType
             var pathCreator = FindAnyObjectByType<PathCreator>();
+            
             _path = pathCreator.GetRandomPath();
             MoveToNextPoint();
         }
