@@ -83,7 +83,7 @@ namespace DefaultNamespace.Banana
                     Vector3 worldCenterPosition = _grid.GetCellCenterWorld(gridPosition);
                     _gridPoints.Add(worldCenterPosition);
 
-                    Debug.Log(_gridPoints[index]);
+                    //Debug.Log(_gridPoints[index]);
                 
                     index++;
                 }

@@ -72,7 +72,7 @@ public class MoneySpawner : MonoBehaviour
                 // Добавляем мировые координаты центра ячейки в список точек сетки
                 _gridPoints.Add(worldCenterPosition);
 
-                Debug.Log(_gridPoints[index]);
+               // Debug.Log(_gridPoints[index]);
                 
                 index++;
                 _maxObject++;
