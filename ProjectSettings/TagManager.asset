@@ -12,6 +12,7 @@ TagManager:
   - Stand
   - Bonus
   - Recycle
+  - ProductFactory
   layers:
   - Default
   - TransparentFX

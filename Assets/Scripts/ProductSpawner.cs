@@ -6,17 +6,16 @@ using UnityEngine.Serialization;
 
 public class ProductSpawner : MonoBehaviour
 {
-    public UnityEvent<Stack<GameObject>> CountProductСhanged;
-    
     [SerializeField] private float _delayBetweenSpawnObjects ;
-    [FormerlySerializedAs("_spawnerConfig")] [SerializeField] private ProductConfig productConfig;
+    [SerializeField] private ProductConfig productConfig;
     [SerializeField] private Transform[] _allPositionsForProduct;
+    [SerializeField] private ProductFactory _productFactory;
     
     private Stack<GameObject> _allSpawnedProduct = new();
     private int _maxCountSpawnedProduct = 3;
     private float _currentTime;
-    
-    
+
+
     private void Update()
     {
         ProductSpawn();
@@ -24,7 +23,7 @@ public class ProductSpawner : MonoBehaviour
 
     private void ProductSpawn()
     {
-        if (_allSpawnedProduct.Count>=_maxCountSpawnedProduct)
+        if (_productFactory.ProductCounter>=_maxCountSpawnedProduct)
         {
             return;
         }
@@ -34,13 +33,13 @@ public class ProductSpawner : MonoBehaviour
         }
         if (_currentTime>=_delayBetweenSpawnObjects && _allSpawnedProduct.Count<=_maxCountSpawnedProduct)
         {
-            var currentParent = _allSpawnedProduct.Count;
-            var product = Instantiate(productConfig.Prefab, _allPositionsForProduct[currentParent]);
-            product.transform.DOScale(productConfig.ScaleProductAfterSpawn, productConfig.SizeChangeTime).OnComplete (() => _allSpawnedProduct.Push(product));
+            var currentIndexPoint = _productFactory.ProductCounter;
+            var product = Instantiate(productConfig.Prefab, _allPositionsForProduct[currentIndexPoint]);
+            product.transform.DOScale(productConfig.ScaleProductAfterSpawn, productConfig.SizeChangeTime).
+                OnComplete (() => _productFactory.OnAvailableProductsUpdated(product));
+            //_productCounter--;
             
             _currentTime = default;
-            
-            CountProductСhanged?.Invoke(_allSpawnedProduct);
         }
     }
 }

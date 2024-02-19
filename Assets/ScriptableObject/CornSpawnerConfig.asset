@@ -15,3 +15,6 @@ MonoBehaviour:
   <Prefab>k__BackingField: {fileID: 6040058970557498503, guid: 6a55b236d3d04b3409e0c290867009c7, type: 3}
   <ScaleProductAfterSpawn>k__BackingField: {x: 0.33, y: 0.3, z: 0.5}
   <SizeChangeTime>k__BackingField: 0.5
+  PositionProductInBasket: {x: 0, y: 0, z: 0}
+  RotationProductInBasket: {x: 0, y: 270, z: 0}
+  ScaleProductInbasket: {x: 0.002, y: 0.002, z: 0.002}
