@@ -7,7 +7,6 @@ namespace Customer
     {
         private void Start()
         {
-            Debug.Log("CustomerController");
             var stateMachine = new StateMachine
             (
                 GetComponent<MovingToTargetState>(),

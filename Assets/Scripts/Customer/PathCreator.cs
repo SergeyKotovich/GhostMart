@@ -21,7 +21,6 @@ namespace Customer
                     availableStands.Add(_stands[i]);
                 }
             }
-            Debug.Log("PathCreator");
 
             var randomTargetsCount = Random.Range(1, availableStands.Count + 1);
             List<Vector3> path = new List<Vector3>();

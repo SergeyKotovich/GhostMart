@@ -15,7 +15,6 @@ namespace Customer
         public void OnEnter()
         {
             StartCoroutine(WaitCoroutine());
-            Debug.Log("WaitingState");
         }
         
         public void OnExit()

@@ -17,8 +17,6 @@ namespace Customer
         {
             _customer.CameToTarget += EnterWaitingState;
             _customer.MoveToNextPoint();
-            
-            Debug.Log("MovingState");
         }
 
         private void EnterWaitingState()
