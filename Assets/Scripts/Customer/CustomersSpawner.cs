@@ -11,6 +11,7 @@ namespace Customer
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private float _dellayBetweenSpawn;
         [SerializeField] private int _maxCustomersCount;
+        [SerializeField] private PathCreator _pathCreator;
         
         private int _currentCustomersCount;
         private List<Customer> _currentCustomers = new List<Customer>();
@@ -26,7 +27,8 @@ namespace Customer
             {
                 var randomIndex = Random.Range(0, _customersPrefabs.Length);
                 var customer = Instantiate(_customersPrefabs[randomIndex]);
-
+                Debug.Log("CustomersSpawner");
+                customer.Initialize(_pathCreator.GetRandomPath());
                 customer.transform.position = _spawnPoint.position;
                 _currentCustomers.Add(customer);
 

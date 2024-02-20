@@ -57,7 +57,7 @@ public class CollectingProducts : MonoBehaviour
 
         if (other.gameObject.CompareTag("Stand"))
         {
-            var stand = other.gameObject.GetComponentInParent<Banana.Stand>();
+            var stand = other.gameObject.GetComponent<Stand>();
             
             for (int i = 0; i < _listAllProductsInHands.Count; i++)
             {

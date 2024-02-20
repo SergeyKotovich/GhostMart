@@ -4,12 +4,9 @@ using DefaultNamespace;
 using DG.Tweening;
 using Interfaces;
 using JetBrains.Annotations;
-using Stand;
 using UnityEngine;
 
-namespace Banana
-{
-    public class Stand : MonoBehaviour, IStand
+ public class Stand : MonoBehaviour, IStand
     {
         [SerializeField] private Grid _grid;
         [field:SerializeField] public Transform Position { get; private set; }
@@ -88,4 +85,3 @@ namespace Banana
             }
         }
     }
-}

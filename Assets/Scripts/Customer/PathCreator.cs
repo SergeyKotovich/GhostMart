@@ -6,12 +6,13 @@ namespace Customer
 {
     public class PathCreator : MonoBehaviour
     {
-        [SerializeField] private Banana.Stand[] _stands;
+        [SerializeField] private Stand[] _stands;
         [SerializeField] private Transform _exitTransform;
         
         public  Vector3[] GetRandomPath()
         {
-            List<Banana.Stand> availableStands = new List<Banana.Stand>();
+
+            List<Stand> availableStands = new List<Stand>();
 
             for (int i = 0; i < _stands.Length; i++)
             {
@@ -20,7 +21,8 @@ namespace Customer
                     availableStands.Add(_stands[i]);
                 }
             }
-            
+            Debug.Log("PathCreator");
+
             var randomTargetsCount = Random.Range(1, availableStands.Count + 1);
             List<Vector3> path = new List<Vector3>();
 
@@ -39,6 +41,7 @@ namespace Customer
             }
 
             path.Add(_exitTransform.position);
+            
             // TODO: temp code, replace by using an array, not collections
             Vector3[] pathArray = new Vector3[path.Count];
             for (int i = 0; i < pathArray.Length; i++)

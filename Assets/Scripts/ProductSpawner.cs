@@ -14,8 +14,7 @@ public class ProductSpawner : MonoBehaviour
     private Stack<GameObject> _allSpawnedProduct = new();
     private int _maxCountSpawnedProduct = 3;
     private float _currentTime;
-    
-    
+
     private void Update()
     {
         ProductSpawn();
