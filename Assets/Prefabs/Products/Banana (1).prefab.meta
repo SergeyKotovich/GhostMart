@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Products/Banana (1).prefab.meta
 guid: f169d2d462bebb64884ef7f9fc18b877
 PrefabImporter:
+========
+guid: 1b8d251f9af63b746bf2f7ffe00ebb9b
+DefaultImporter:
+>>>>>>>> f2e0237 (add test UI and money):Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
