@@ -22,10 +22,17 @@ public class TriggerDetector : MonoBehaviour
                     _collectingProducts.PickUpProduct(product);
                 }
                 
-            }       
+            }
+        }
+        
+        if (other.gameObject.CompareTag("Stand"))
+        {
+            var product = _collectingProducts.TryGetProduct();
+            if (product == null) return;
+            
+            var stand = other.gameObject.GetComponentInParent<Stand>();
 
-                    
-            // _collectingProducts.TryPickUpProduct();
+            stand.SetProductOnStand(product);
         }
               
     }

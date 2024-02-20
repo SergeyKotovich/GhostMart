@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17911622, g: 0.22428174, b: 0.30606025, a: 1}
+  m_IndirectSpecularColor: {r: 0.17911555, g: 0.22428076, b: 0.3060586, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -813,7 +813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 38335279662140195, guid: 34d3f526198dae440bb2ce6005d86055, type: 3}
       propertyPath: m_TagString
-      value: CornPlant
+      value: ProductFactory
       objectReference: {fileID: 0}
     - target: {fileID: 38335279662569219, guid: 34d3f526198dae440bb2ce6005d86055, type: 3}
       propertyPath: m_LocalScale.x
@@ -1923,7 +1923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 188006, guid: c6b7fb383a3534b039692b5485b6e739, type: 3}
       propertyPath: m_TagString
-      value: BananaPlant
+      value: ProductFactory
       objectReference: {fileID: 0}
     - target: {fileID: 188006, guid: c6b7fb383a3534b039692b5485b6e739, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2813,7 +2813,8 @@ MonoBehaviour:
   - {fileID: 2064456948}
   _recycle: {fileID: 732463007}
   _spawnerBonus: {fileID: 52967031}
-  _productConfig: {fileID: 11400000, guid: c5a75f418e60f3345afbfe7f8cadba61, type: 2}
+  _productConfigCorn: {fileID: 11400000, guid: 2298488506a5a714cb7e04d24e9d6440, type: 2}
+  _productConfigBanana: {fileID: 11400000, guid: c5a75f418e60f3345afbfe7f8cadba61, type: 2}
 --- !u!136 &725233017
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2837,6 +2838,19 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: -0.05, y: 0.56, z: 0}
+--- !u!114 &725233018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725233006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c20667ce3148feac17f2654c16634e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collectingProducts: {fileID: 725233016}
 --- !u!4 &731922224 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e5c7ae3fce8c6bc4a98e6aa39ad2fd1d, type: 3}
@@ -4198,6 +4212,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7252557991237821940, guid: 62d2a7f5da1084f6994dcbca19a2ddb2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 725233017}
+    - targetCorrespondingSourceObject: {fileID: 7252557991237821940, guid: 62d2a7f5da1084f6994dcbca19a2ddb2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 725233018}
   m_SourcePrefab: {fileID: 100100000, guid: 62d2a7f5da1084f6994dcbca19a2ddb2, type: 3}
 --- !u!1001 &1010936886
 PrefabInstance:

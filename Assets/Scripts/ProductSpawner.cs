@@ -11,11 +11,9 @@ public class ProductSpawner : MonoBehaviour
     [SerializeField] private Transform[] _allPositionsForProduct;
     [SerializeField] private ProductFactory _productFactory;
     
-    private Stack<GameObject> _allSpawnedProduct = new();
     private int _maxCountSpawnedProduct = 3;
     private float _currentTime;
-
-
+    
     private void Update()
     {
         ProductSpawn();
@@ -31,13 +29,12 @@ public class ProductSpawner : MonoBehaviour
         {
             _currentTime += Time.deltaTime;
         }
-        if (_currentTime>=_delayBetweenSpawnObjects && _allSpawnedProduct.Count<=_maxCountSpawnedProduct)
+        if (_currentTime>=_delayBetweenSpawnObjects)
         {
             var currentIndexPoint = _productFactory.ProductCounter;
             var product = Instantiate(productConfig.Prefab, _allPositionsForProduct[currentIndexPoint]);
             product.transform.DOScale(productConfig.ScaleProductAfterSpawn, productConfig.SizeChangeTime).
                 OnComplete (() => _productFactory.OnAvailableProductsUpdated(product));
-            //_productCounter--;
             
             _currentTime = default;
         }

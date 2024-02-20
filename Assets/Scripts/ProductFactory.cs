@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class ProductFactory : MonoBehaviour
 {
-    [SerializeField] private TypeProduct _typeProduct;
    public Stack<GameObject> _allAvailableProducts = new();
    public int ProductCounter { get; private set; }
-  // private Stack<GameObject> _allAvailableCorn = new();
 
-    
-    public void OnAvailableProductsUpdated(GameObject availableProduct)
+   public void OnAvailableProductsUpdated(GameObject availableProduct)
     {
         _allAvailableProducts.Push(availableProduct);
         ProductCounter++;
@@ -26,11 +23,5 @@ public class ProductFactory : MonoBehaviour
 
         return null;
     }
-    
 
-   // [UsedImplicitly]
-   // public void UpdateAvailableCorn(Stack<GameObject> allAvailableCorn)
-   // {
-   //     _allAvailableCorn = allAvailableCorn;
-   // }
 }

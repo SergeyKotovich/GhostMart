@@ -30,8 +30,17 @@ public class CollectingProducts : MonoBehaviour
                 break;
         }
         
-        
         _listAllProductsInHands.Add(product.gameObject);
+    }
+
+    public GameObject TryGetProduct()
+    {
+        if (_listAllProductsInHands.Count == 0) return null;
+
+        var product = _listAllProductsInHands[^1];
+        _listAllProductsInHands.Remove(product);
+        
+        return product;
     }
 
     private void SetBananaConfig(GameObject product)
@@ -56,18 +65,6 @@ public class CollectingProducts : MonoBehaviour
           //  corn.transform.DOScale(new Vector3(0.002f, 0.002f, 0.002f), 0.3f);
           //  _listAllProductsInHands.Add(corn.gameObject);
           
-        if (other.gameObject.CompareTag("Stand"))
-        {
-            var stand = other.gameObject.GetComponentInParent<Banana.Stand>();
-
-            for (int i = 0; i < _listAllProductsInHands.Count; i++)
-            {
-                if (stand.SetProductOnStand(_listAllProductsInHands[i]))
-                {
-                    _listAllProductsInHands.RemoveAt(i);
-                }
-            }
-        }
 
         if (other.gameObject.CompareTag("Recycle"))
         {
