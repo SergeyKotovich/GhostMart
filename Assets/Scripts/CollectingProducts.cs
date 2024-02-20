@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using Banana;
 using DG.Tweening;
-using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class CollectingProducts : MonoBehaviour
 {
