@@ -30,9 +30,12 @@ public class TriggerDetector : MonoBehaviour
             var product = _collectingProducts.TryGetProduct();
             if (product == null) return;
             
-            var stand = other.gameObject.GetComponentInParent<Stand>();
+            var stand = other.gameObject.GetComponent<Stand>();
 
-            stand.SetProductOnStand(product);
+            if (!stand.SetProductOnStand(product))
+            {
+                _collectingProducts.PickUpProduct(product);
+            }
         }
               
     }

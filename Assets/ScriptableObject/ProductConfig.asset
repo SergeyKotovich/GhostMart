@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 279a6adafa62d5446a3a69d22523ad2e, type: 3}
-  m_Name: CornSpawnerConfig
+  m_Name: ProductConfig
   m_EditorClassIdentifier: 
-  <Prefab>k__BackingField: {fileID: 6040058970557498503, guid: 6a55b236d3d04b3409e0c290867009c7, type: 3}
-  <ScaleProductAfterSpawn>k__BackingField: {x: 0.33, y: 0.3, z: 0.5}
+  <Prefab>k__BackingField: {fileID: 6399473418530015986, guid: c43556234c3b8564ba8bd61d7e5829aa, type: 3}
+  <ScaleProductAfterSpawn>k__BackingField: {x: 5, y: 5, z: 5}
   <SizeChangeTime>k__BackingField: 0.5
   PositionProductInBasket: {x: 0, y: 0, z: 0}
-  RotationProductInBasket: {x: 0, y: 270, z: 0}
-  ScaleProductInbasket: {x: 0.002, y: 0.002, z: 0.002}
+  RotationProductInBasket: {x: 0, y: 90, z: 0}
+  ScaleProductInbasket: {x: 0.02, y: 0.02, z: 0.02}
