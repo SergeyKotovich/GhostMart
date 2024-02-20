@@ -27,10 +27,10 @@ using UnityEngine;
         {
             if (Enum.TryParse<StandsTypes>(product.tag, out var productType))
 
-            if (productType != Type)
-            {
-                return false;
-            }    
+                if (productType != Type)
+                {
+                    return false;
+                }    
             
             for (int i = 0; i < StandCells.Count; i++)
             {

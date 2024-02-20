@@ -6,59 +6,60 @@ using UnityEngine;
 
 public class CollectingProducts : MonoBehaviour
 {
+    public int CountAvailablePlaces => _maxProductsInHands - _listAllProductsInHands.Count;
     [SerializeField] private Transform[] _allPositionsInHands;
     [SerializeField] private Recycle _recycle;
     [SerializeField] private GameObject _spawnerBonus;
+    [SerializeField] private ProductConfig  _productConfigCorn;
+    [SerializeField] private ProductConfig  _productConfigBanana;
 
     private List<GameObject> _listAllProductsInHands = new();
     private int _maxProductsInHands = 3;
-    private Stack<GameObject> _allAvailableBananas = new();
-    private Stack<GameObject> _allAvailableCorn = new();
-    
+
+    public void PickUpProduct(GameObject product)
+    {
+        var currentIndexPoint = _listAllProductsInHands.Count;
+        product.transform.SetParent(_allPositionsInHands[currentIndexPoint]);
+        switch (product.tag)
+        {
+            case "Banana":
+                SetBananaConfig(product);
+                break;
+            case "Corn": 
+                SetCornConfig(product);
+                break;
+        }
+        
+        
+        _listAllProductsInHands.Add(product.gameObject);
+    }
+
+    private void SetBananaConfig(GameObject product)
+    {
+        product.transform.DOLocalMove(_productConfigBanana.PositionProductInBasket, _productConfigBanana.SizeChangeTime);
+        product.transform.DOLocalRotate(_productConfigBanana.RotationProductInBasket, _productConfigBanana.SizeChangeTime);
+        product.transform.DOScale(_productConfigBanana.ScaleProductInbasket, _productConfigBanana.SizeChangeTime);
+    }
+    private void SetCornConfig(GameObject product)
+    {
+        product.transform.DOLocalMove(_productConfigCorn.PositionProductInBasket, _productConfigCorn.SizeChangeTime);
+        product.transform.DOLocalRotate(_productConfigCorn.RotationProductInBasket, _productConfigCorn.SizeChangeTime);
+        product.transform.DOScale(_productConfigCorn.ScaleProductInbasket, _productConfigCorn.SizeChangeTime);
+    }
+
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag(GlobalConstants.BANANA_PLANT_TAG))
-        {
-            if (_allAvailableBananas.Count != 0)
-            {
-                if (_listAllProductsInHands.Count >= _maxProductsInHands)
-                {
-                    return;
-                }
-
-                var banana = _allAvailableBananas.Pop();
-                var currentParent = _listAllProductsInHands.Count;
-                banana.transform.SetParent(_allPositionsInHands[currentParent]);
-                banana.transform.DOLocalMove(new Vector3(0.002f, 0, 0), 0.3f);
-                banana.transform.DOLocalRotate(new Vector3(0, 0, 90), 0.3f);
-                banana.transform.DOScale(new Vector3(0.013f, 0.013f, 0.013f), 0.3f);
-                _listAllProductsInHands.Add(banana.gameObject);
-            }
-        }
-
-        if (other.gameObject.CompareTag(GlobalConstants.CORN_PLANT_TAG))
-        {
-            if (_allAvailableCorn.Count != 0)
-            {
-                if (_listAllProductsInHands.Count >= _maxProductsInHands)
-                {
-                    return;
-                }
-
-                var corn = _allAvailableCorn.Pop();
-                var currentParent = _listAllProductsInHands.Count;
-                corn.transform.SetParent(_allPositionsInHands[currentParent]);
-                corn.transform.DOLocalMove(new Vector3(0, 0, 0), 0.3f);
-                corn.transform.DOLocalRotate(new Vector3(0, 270, 0), 0.3f);
-                corn.transform.DOScale(new Vector3(0.002f, 0.002f, 0.002f), 0.3f);
-                _listAllProductsInHands.Add(corn.gameObject);
-            }
-        }
-
+        //  var currentParent = _listAllProductsInHands.Count;
+          //  corn.transform.SetParent(_allPositionsInHands[currentParent]);
+          //  corn.transform.DOLocalMove(new Vector3(0, 0, 0), 0.3f);
+          //  corn.transform.DOLocalRotate(new Vector3(0, 270, 0), 0.3f);
+          //  corn.transform.DOScale(new Vector3(0.002f, 0.002f, 0.002f), 0.3f);
+          //  _listAllProductsInHands.Add(corn.gameObject);
+          
         if (other.gameObject.CompareTag("Stand"))
         {
-            var stand = other.gameObject.GetComponent<Stand>();
-            
+            var stand = other.gameObject.GetComponentInParent<Banana.Stand>();
+
             for (int i = 0; i < _listAllProductsInHands.Count; i++)
             {
                 if (stand.SetProductOnStand(_listAllProductsInHands[i]))
@@ -81,21 +82,6 @@ public class CollectingProducts : MonoBehaviour
             var getBonus = bonus.GetComponent<Bonus>();
             getBonus.GetProductList(_listAllProductsInHands);
             getBonus.GetBonus();
-
-
         }
     }
-
-    [UsedImplicitly]
-    public void UpdateAvailableBananas(Stack<GameObject> allAvailableBananas)
-    {
-        _allAvailableBananas = allAvailableBananas;
-    }
-
-    [UsedImplicitly]
-    public void UpdateAvailableCorn(Stack<GameObject> allAvailableCorn)
-    {
-        _allAvailableCorn = allAvailableCorn;
-    }
-   
 }

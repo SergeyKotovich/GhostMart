@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17911555, g: 0.22428076, b: 0.3060586, a: 1}
+  m_IndirectSpecularColor: {r: 0.17911622, g: 0.22428174, b: 0.30606025, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -411,27 +411,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b197ce44df130499d51d980181a1c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "CountProduct\u0421hanged":
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 725233016}
-        m_TargetAssemblyTypeName: CollectingProducts, Assembly-CSharp
-        m_MethodName: UpdateAvailableCorn
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   _delayBetweenSpawnObjects: 2
-  _spawnerConfig: {fileID: 11400000, guid: 2298488506a5a714cb7e04d24e9d6440, type: 2}
+  productConfig: {fileID: 11400000, guid: 2298488506a5a714cb7e04d24e9d6440, type: 2}
   _allPositionsForProduct:
   - {fileID: 2010708363}
   - {fileID: 979943199}
   - {fileID: 937552052}
+  _productFactory: {fileID: 118633956}
 --- !u!4 &118633953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 38335279662569219, guid: 34d3f526198dae440bb2ce6005d86055, type: 3}
@@ -458,6 +444,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.44, y: 1, z: 1.43}
   m_Center: {x: -0.06, y: 0, z: -0.11}
+--- !u!114 &118633956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118633950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc8b8deffe22fe4eb9343d4faea11c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &126153683
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,6 +886,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 38335279662140195, guid: 34d3f526198dae440bb2ce6005d86055, type: 3}
       insertIndex: -1
       addedObject: {fileID: 118633955}
+    - targetCorrespondingSourceObject: {fileID: 38335279662140195, guid: 34d3f526198dae440bb2ce6005d86055, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 118633956}
   m_SourcePrefab: {fileID: 100100000, guid: 34d3f526198dae440bb2ce6005d86055, type: 3}
 --- !u!1 &278823067 stripped
 GameObject:
@@ -1999,6 +2000,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 188006, guid: c6b7fb383a3534b039692b5485b6e739, type: 3}
       insertIndex: -1
       addedObject: {fileID: 498588927}
+    - targetCorrespondingSourceObject: {fileID: 188006, guid: c6b7fb383a3534b039692b5485b6e739, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 498588928}
   m_SourcePrefab: {fileID: 100100000, guid: c6b7fb383a3534b039692b5485b6e739, type: 3}
 --- !u!1 &498588917 stripped
 GameObject:
@@ -2043,27 +2047,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b197ce44df130499d51d980181a1c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "CountProduct\u0421hanged":
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 725233016}
-        m_TargetAssemblyTypeName: CollectingProducts, Assembly-CSharp
-        m_MethodName: UpdateAvailableBananas
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   _delayBetweenSpawnObjects: 2
-  _spawnerConfig: {fileID: 11400000, guid: c5a75f418e60f3345afbfe7f8cadba61, type: 2}
+  productConfig: {fileID: 11400000, guid: c5a75f418e60f3345afbfe7f8cadba61, type: 2}
   _allPositionsForProduct:
   - {fileID: 126153684}
   - {fileID: 95049909}
   - {fileID: 1499638306}
+  _productFactory: {fileID: 498588928}
+--- !u!114 &498588928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498588917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc8b8deffe22fe4eb9343d4faea11c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &524782826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2914486802874379001, guid: 5a9667695bf000243b1cc3a22006ecaa, type: 3}
@@ -2811,6 +2813,7 @@ MonoBehaviour:
   - {fileID: 2064456948}
   _recycle: {fileID: 732463007}
   _spawnerBonus: {fileID: 52967031}
+  _productConfig: {fileID: 11400000, guid: c5a75f418e60f3345afbfe7f8cadba61, type: 2}
 --- !u!136 &725233017
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6815,7 +6818,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959648314}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 917d1288e8f84918abfe678ba47d7dc1, type: 3}
   m_Name: 
