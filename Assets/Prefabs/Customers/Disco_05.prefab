@@ -885,6 +885,7 @@ GameObject:
   - component: {fileID: -5025921608345089020}
   - component: {fileID: 8485709685799200679}
   - component: {fileID: -2138297789826425161}
+  - component: {fileID: 8257679825530999520}
   m_Layer: 0
   m_Name: Disco_05
   m_TagString: Untagged
@@ -1043,6 +1044,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0abe6cc1229d4035861197c6ceeaa8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8257679825530999520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2298881187950845935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d3a717a4d84396827668e31789ed78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _customer: {fileID: -9008177542093064789}
 --- !u!1 &2298881187950845937
 GameObject:
   m_ObjectHideFlags: 0

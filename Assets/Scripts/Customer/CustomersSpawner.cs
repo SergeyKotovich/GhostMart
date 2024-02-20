@@ -28,7 +28,9 @@ namespace Customer
                 var randomIndex = Random.Range(0, _customersPrefabs.Length);
                 var customer = Instantiate(_customersPrefabs[randomIndex]);
 
-                customer.Initialize(_pathCreator.GetRandomPath());
+                var path = _pathCreator.GetRandomPath();
+                customer.Initialize(path);
+                
                 customer.transform.position = _spawnPoint.position;
                 _currentCustomers.Add(customer);
 

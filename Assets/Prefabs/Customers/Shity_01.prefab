@@ -321,6 +321,7 @@ GameObject:
   - component: {fileID: -4380453647660900665}
   - component: {fileID: 7719436845011608285}
   - component: {fileID: 8785995636837287783}
+  - component: {fileID: 4295984086726699533}
   m_Layer: 0
   m_Name: Shity_01
   m_TagString: Untagged
@@ -479,6 +480,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0abe6cc1229d4035861197c6ceeaa8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4295984086726699533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107108863402732460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d3a717a4d84396827668e31789ed78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _customer: {fileID: -6584710501671357861}
 --- !u!1 &7107108863402732462
 GameObject:
   m_ObjectHideFlags: 0

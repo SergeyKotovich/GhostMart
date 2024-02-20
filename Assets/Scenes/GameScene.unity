@@ -783,7 +783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _grid: {fileID: 0}
-  <Position>k__BackingField: {fileID: 0}
+  <PointForCustomers>k__BackingField: {fileID: 0}
   <Type>k__BackingField: 0
 --- !u!4 &161536506
 Transform:
@@ -2695,7 +2695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _grid: {fileID: 838981199}
-  <Position>k__BackingField: {fileID: 1905349333}
+  <PointForCustomers>k__BackingField: {fileID: 1905349333}
   <Type>k__BackingField: 1
 --- !u!65 &661071624
 BoxCollider:
@@ -7142,7 +7142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _grid: {fileID: 1457058251}
-  <Position>k__BackingField: {fileID: 1526526784}
+  <PointForCustomers>k__BackingField: {fileID: 1526526784}
   <Type>k__BackingField: 0
 --- !u!1001 &1953205999
 PrefabInstance:
@@ -7316,7 +7316,7 @@ MonoBehaviour:
   - {fileID: -6136985691133890919, guid: 480cb945727f51a4ab750f14d2b7e015, type: 3}
   _spawnPoint: {fileID: 110739545}
   _dellayBetweenSpawn: 2
-  _maxCustomersCount: 5
+  _maxCustomersCount: 1
   _pathCreator: {fileID: 716647740}
 --- !u!4 &1964831552 stripped
 Transform:
