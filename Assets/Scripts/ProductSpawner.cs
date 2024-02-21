@@ -32,7 +32,7 @@ public class ProductSpawner : MonoBehaviour
             var currentIndexPoint = _productFactory.ProductCounter;
             var product = Instantiate(_productPrefab, _allPositionsForProduct[currentIndexPoint]);
             product.transform.DOScale(productConfig.ScaleProductAfterSpawn, productConfig.SizeChangeTime).
-                OnComplete (() => _productFactory.OnAvailableProductsUpdated(product));
+                OnComplete (() => _productFactory.AddProduct(product));
             
             _currentTime = default;
         }

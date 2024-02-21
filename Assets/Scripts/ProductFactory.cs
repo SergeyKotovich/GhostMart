@@ -1,27 +1,19 @@
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class ProductFactory : MonoBehaviour
 {
-   public Stack<GameObject> _allAvailableProducts = new();
-   public int ProductCounter { get; private set; }
+    private Queue<GameObject> _allAvailableProducts = new();
 
-   public void OnAvailableProductsUpdated(GameObject availableProduct)
+    public int ProductCounter => _allAvailableProducts.Count;
+
+    public void AddProduct(GameObject product)
     {
-        _allAvailableProducts.Push(availableProduct);
-        ProductCounter++;
+        _allAvailableProducts.Enqueue(product);
     }
 
     public GameObject GetProduct()
     {
-        if (_allAvailableProducts.Count!=0)
-        {
-            ProductCounter--;
-            return _allAvailableProducts.Pop();
-        }
-
-        return null;
+        return _allAvailableProducts.Count > 0 ? _allAvailableProducts.Dequeue() : null;
     }
-
 }

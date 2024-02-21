@@ -12,5 +12,5 @@ AssetOrigin:
   productId: 97945
   packageName: Farm Animals Set
   packageVersion: 1.0
-  assetPath: Assets/VertexColorFarmAnimals/Shaders/VertexColorUnlit.shader
+  assetPath: Assets/Resources/FarmingPack/VertexColorFarmAnimals/Shaders/VertexColorUnlit.shader
   uploadId: 195698
