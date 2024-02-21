@@ -9,7 +9,7 @@ using UnityEngine;
  public class Stand : MonoBehaviour, IStand
     {
         [SerializeField] private Grid _grid;
-        [field:SerializeField] public Transform Position { get; private set; }
+        [field:SerializeField] public Transform PointForCustomers { get; private set; }
         [field:SerializeField] public StandsTypes Type { get; private set; }
         public bool IsAvailable { get; private set; }
         private List<StandCell> StandCells { get; } = new();
@@ -56,7 +56,7 @@ using UnityEngine;
         [CanBeNull]
         public GameObject GetAvailableProduct()
         {
-            for (int i = StandCells.Count - 1; i >= 0; i++)
+            for (int i = 0; i < StandCells.Count; i++)
             {
                 if (!StandCells[i].IsAvailable)
                 {
@@ -64,6 +64,21 @@ using UnityEngine;
                 }
             }
             return null;
+        }
+        
+        public int GetProductsCount()
+        {
+            var counter = 0;
+            if (StandCells.Count == 0) return 0;
+
+            for (int i = 0; i < StandCells.Count; i++)
+            {
+                if (!StandCells[i].IsAvailable)
+                {
+                    counter++;
+                }
+            }
+            return counter;
         }
         
         private void FillAvailablePositions()

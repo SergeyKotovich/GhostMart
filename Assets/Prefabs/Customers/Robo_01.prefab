@@ -901,6 +901,7 @@ GameObject:
   - component: {fileID: -4100547911045858829}
   - component: {fileID: 1010782121337914278}
   - component: {fileID: -1134454187177451}
+  - component: {fileID: 5283249087516349666}
   m_Layer: 0
   m_Name: Robo_01
   m_TagString: Untagged
@@ -1059,6 +1060,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0abe6cc1229d4035861197c6ceeaa8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5283249087516349666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5132362382685208311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d3a717a4d84396827668e31789ed78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _customer: {fileID: -4997709752185072578}
 --- !u!1 &5132362382685208313
 GameObject:
   m_ObjectHideFlags: 0

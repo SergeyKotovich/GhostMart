@@ -397,6 +397,7 @@ GameObject:
   - component: {fileID: -391505649710015961}
   - component: {fileID: 6669607103980926429}
   - component: {fileID: -2031318964580258735}
+  - component: {fileID: -1621229458107140312}
   m_Layer: 0
   m_Name: Angry_01
   m_TagString: Untagged
@@ -555,6 +556,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0abe6cc1229d4035861197c6ceeaa8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1621229458107140312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3051554750943624728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d3a717a4d84396827668e31789ed78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _customer: {fileID: 2173527572470328652}
 --- !u!1 &3051554750943624732
 GameObject:
   m_ObjectHideFlags: 0
