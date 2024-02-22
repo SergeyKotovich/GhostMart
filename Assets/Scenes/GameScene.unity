@@ -7508,11 +7508,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _customersPrefabs:
   - {fileID: 2173527572470328652, guid: 0d1931a0660da0a4893289bc43d5fc22, type: 3}
-  - {fileID: 2173527572470328652, guid: 0d1931a0660da0a4893289bc43d5fc22, type: 3}
-  - {fileID: 2173527572470328652, guid: 0d1931a0660da0a4893289bc43d5fc22, type: 3}
+  - {fileID: 604547671846976869, guid: 0e3415a9e7b2fd845baafd2ea10fe929, type: 3}
+  - {fileID: -9008177542093064789, guid: 73b5dfe91ed34734f92b262ef0ae126e, type: 3}
+  - {fileID: -2092824328025386786, guid: e26cd331b4c6f8748b9438e0dd200aca, type: 3}
+  - {fileID: 2596603848259160641, guid: 3047d2a2862aacb40b7e0de36cb02cd0, type: 3}
+  - {fileID: -4997709752185072578, guid: 4511f76a38c47364fab1f546b5a64fd7, type: 3}
+  - {fileID: 5619117131264446250, guid: 590ca4f32fce49f44915f315ee47d6dd, type: 3}
+  - {fileID: -6584710501671357861, guid: 2800520121859c942847242f9afb845d, type: 3}
+  - {fileID: 3253896743297894205, guid: f8669f1d7afaa3046b1492c2b3936580, type: 3}
+  - {fileID: -6136985691133890919, guid: 480cb945727f51a4ab750f14d2b7e015, type: 3}
   _spawnPoint: {fileID: 110739545}
   _dellayBetweenSpawn: 2
-  _maxCustomersCount: 1
+  _maxCustomersCount: 5
   _pathCreator: {fileID: 716647740}
   _productBarSpawner: {fileID: 380523001}
 --- !u!4 &1964831552 stripped
