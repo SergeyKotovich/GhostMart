@@ -2,8 +2,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Customer
@@ -11,29 +14,27 @@ namespace Customer
     public class Customer : MonoBehaviour
     { 
         public event Action CameToTarget;
-        public event Action GotProducts;
-
+        
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private Animator _animator;
-
-        private CustomerBasket _basket;
-        private int _currentPathIndex;
+        
+        public int CurrentPathIndex;
         private bool _isMoving;
-        private bool _isTakingProducts;
+        
+        public ProductBarView _productBarView;
 
-        public List<ListItem> ShoppingList = new();
+        public List<ListItem> ShoppingList { get; private set; } = new();
 
-        public void Initialize(List<Stand> path)
+        public void Initialize(List<Stand> path, ProductBarView productBarView)
         {
-            _basket = new CustomerBasket();
             foreach (var stand in path)
             {
                 var count = Random.Range(1, 3);
                 var stopPoint = new ListItem(stand.PointForCustomers.position, stand, count);
                 ShoppingList.Add(stopPoint);
-                
-                Debug.Log("stand " + stand.Type + "count " + count);
             }
+
+            _productBarView = productBarView;
         }
 
         void Update()
@@ -42,22 +43,18 @@ namespace Customer
             {
                 CameToTarget?.Invoke();
             }
-
-            if (_isTakingProducts)
-            {
-                TakeProducts();
-            }
         }
 
         public void MoveToNextPoint()
         {
-            if (_currentPathIndex < ShoppingList.Count)
+            if (CurrentPathIndex < ShoppingList.Count)
             {
-                _navMeshAgent.SetDestination(ShoppingList[_currentPathIndex].Position);
+                _navMeshAgent.SetDestination(ShoppingList[CurrentPathIndex].Position);
                 
-                //_currentPathIndex++;
                 _isMoving = true;
                 _animator.SetBool("IsMoving", _isMoving);
+                _productBarView.UpdateProductBar(ShoppingList[CurrentPathIndex]);
+                
             }
             else
             {
@@ -72,30 +69,5 @@ namespace Customer
             _animator.SetBool("IsMoving", _isMoving);
         }
 
-        public void TakeProducts()
-        {
-            _isTakingProducts = true;
-            if (ShoppingList.Count == _currentPathIndex)
-            {
-                return;
-            }
-            var productsOnStandCount = ShoppingList[_currentPathIndex].Stand.GetProductsCount();
-
-            if (productsOnStandCount > 0)
-            {
-                var product = ShoppingList[_currentPathIndex].Stand.GetAvailableProduct();
-                _basket.PutProduct(product);
-                _basket.ProductsCount++;
-                Destroy(product);
-            }
-
-            if (_basket.ProductsCount == ShoppingList[_currentPathIndex].ProductsCount)
-            {
-                _currentPathIndex++;
-                _basket.ProductsCount = 0;
-                GotProducts?.Invoke();
-                _isTakingProducts = false;
-            }
-        }
     }
 }

@@ -3,6 +3,7 @@ namespace DefaultNamespace
     public enum StandsTypes
     {
         Banana,
-        Corn
+        Corn,
+        CashRegister
     }
 }

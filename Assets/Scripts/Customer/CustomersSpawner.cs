@@ -12,7 +12,7 @@ namespace Customer
         [SerializeField] private float _dellayBetweenSpawn;
         [SerializeField] private int _maxCustomersCount;
         [SerializeField] private PathCreator _pathCreator;
-        
+        [SerializeField] private ProductBarSpawner _productBarSpawner;
         private int _currentCustomersCount;
         private List<Customer> _currentCustomers = new List<Customer>();
 
@@ -29,7 +29,9 @@ namespace Customer
                 var customer = Instantiate(_customersPrefabs[randomIndex]);
 
                 var path = _pathCreator.GetRandomPath();
-                customer.Initialize(path);
+                var productBar = _productBarSpawner.GetProductBar(customer.gameObject);
+                
+                customer.Initialize(path, productBar);
                 
                 customer.transform.position = _spawnPoint.position;
                 _currentCustomers.Add(customer);

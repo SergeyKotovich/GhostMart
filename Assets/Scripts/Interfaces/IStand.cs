@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Interfaces
 {
     public interface IStand
     {
-        public bool IsAvailable { get; }
+        public List<StandCell> StandCells { get; }
     }
 }
