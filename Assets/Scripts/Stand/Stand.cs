@@ -6,9 +6,10 @@ using Interfaces;
 using JetBrains.Annotations;
 using UnityEngine;
 
- public class Stand : MonoBehaviour, IStand
+ public class Stand : MonoBehaviour
     {
         [SerializeField] private Grid _grid;
+        [field:SerializeField] public Sprite StandIcon {get; private set; }
         [field:SerializeField] public Transform PointForCustomers { get; private set; }
         [field:SerializeField] public StandsTypes Type { get; private set; }
         public bool IsAvailable { get; private set; }
@@ -84,7 +85,10 @@ using UnityEngine;
         private void FillAvailablePositions()
         {
             var index = 0;
-            
+            if (_grid == null)
+            {
+                return;
+            }
             for (int x = 0; x < _width; x++)
             {
                 for (int y = 0; y < _height; y++)

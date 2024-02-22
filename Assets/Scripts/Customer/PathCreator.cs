@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Banana;
+using Interfaces;
 using UnityEngine;
 
 namespace Customer
@@ -7,6 +8,7 @@ namespace Customer
     public class PathCreator : MonoBehaviour
     {
         [SerializeField] private Stand[] _stands;
+        [SerializeField] private Stand _cashRegister;
         [SerializeField] private Transform _exitTransform;
         
         public  List<Stand> GetRandomPath()
@@ -39,7 +41,7 @@ namespace Customer
                 }
             }
             
-            //path.Add(_exitTransform.position);
+            path.Add(_cashRegister);
             
             return path;
         }

@@ -1,4 +1,5 @@
 using DefaultNamespace;
+using Interfaces;
 using UnityEngine;
 
 namespace Customer
@@ -6,14 +7,15 @@ namespace Customer
     public class ListItem
     {
         public Vector3 Position { get; }
-        public Stand Stand { get; }
-        public int ProductsCount { get; }
+        public Stand StopPoint { get; }
+        public int MaxCount { get; }
+        public int CurrentCount { get; set; }
 
-        public ListItem(Vector3 position, Stand stand, int count)
+        public ListItem(Vector3 position, Stand stopPoint, int count)
         {
             Position = position;
-            Stand = stand;
-            ProductsCount = count;
+            StopPoint = stopPoint;
+            MaxCount = count;
         }
     }
 }

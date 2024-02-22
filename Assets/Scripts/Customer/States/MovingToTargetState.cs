@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 namespace Customer
@@ -15,8 +14,6 @@ namespace Customer
 
         public void OnEnter()
         {
-            Debug.Log("MovingToTargetState");
-
             _customer.CameToTarget += EnterGettingProductsState;
             _customer.MoveToNextPoint();
         }
