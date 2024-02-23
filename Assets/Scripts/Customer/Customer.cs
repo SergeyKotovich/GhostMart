@@ -12,12 +12,7 @@ using Random = UnityEngine.Random;
 namespace Customer
 {
     public class Customer : MonoBehaviour
-    { 
-        public event Action CameToTarget;
-        
-        [SerializeField] private NavMeshAgent _navMeshAgent;
-        [SerializeField] private Animator _animator;
-        
+    {
         public int CurrentPathIndex;
         private bool _isMoving;
         
@@ -36,38 +31,6 @@ namespace Customer
 
             _productBarView = productBarView;
         }
-
-        void Update()
-        {
-            if (_navMeshAgent.remainingDistance < 1f && !_navMeshAgent.pathPending)
-            {
-                CameToTarget?.Invoke();
-            }
-        }
-
-        public void MoveToNextPoint()
-        {
-            if (CurrentPathIndex < ShoppingList.Count)
-            {
-                _navMeshAgent.SetDestination(ShoppingList[CurrentPathIndex].Position);
-                
-                _isMoving = true;
-                _animator.SetBool("IsMoving", _isMoving);
-                _productBarView.UpdateProductBar(ShoppingList[CurrentPathIndex]);
-                
-            }
-            else
-            {
-                _navMeshAgent.isStopped = true;
-                _animator.SetBool("IsMoving", false);
-            }
-        }
-
-        public void StopMoving()
-        {
-            _isMoving = false;
-            _animator.SetBool("IsMoving", _isMoving);
-        }
-
+        
     }
 }

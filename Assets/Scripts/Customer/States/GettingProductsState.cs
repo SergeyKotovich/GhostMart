@@ -33,7 +33,7 @@ namespace Customer
            _isTakingProducts = true;
         }
         
-        public void TakeProducts()
+        private void TakeProducts()
         {
             var shoppingList = _customer.ShoppingList;
             var currentPathIndex = _customer.CurrentPathIndex;
