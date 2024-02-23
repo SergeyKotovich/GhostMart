@@ -521,6 +521,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _customer: {fileID: 2173527572470328652}
+  _navMeshAgent: {fileID: -8470074938218121595}
+  _animator: {fileID: 3051554750936321496}
 --- !u!114 &6669607103980926429
 MonoBehaviour:
   m_ObjectHideFlags: 0
