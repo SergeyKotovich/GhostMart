@@ -57,7 +57,7 @@ using UnityEngine;
         [CanBeNull]
         public Product GetAvailableProduct()
         {
-            for (int i = 0; i < StandCells.Count; i++)
+            for (int i = StandCells.Count - 1; i >= 0; i--)
             {
                 if (!StandCells[i].IsAvailable)
                 {
