@@ -1,55 +1,76 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
 public class CollectingProducts : MonoBehaviour
 {
-    public int CountAvailablePlaces => _maxProductsInHands - _listAllProductsInHands.Count;
-    [SerializeField] private Transform[] _allPositionsInHands;
+    private ICollectable _character;
+    [SerializeField] private Transform[] _allPositionsInBasket;
+
     [SerializeField] private Recycle _recycle;
-    [SerializeField] private GameObject _spawnerBonus;
-    [SerializeField] private ProductConfig  _productConfig;
 
-    private List<GameObject> _listAllProductsInHands = new();
-    private int _maxProductsInHands = 3;
+    //[SerializeField] private GameObject _spawnerBonus;
+    [SerializeField] private ProductConfig _productConfig;
 
-    public void PickUpProduct(GameObject product)
+    private void Awake()
     {
-        var currentIndexPoint = _listAllProductsInHands.Count;
-        product.transform.SetParent(_allPositionsInHands[currentIndexPoint]);
+        _character = GetComponent<ICollectable>();
         
+    }
+
+    private void Start()
+    {
+        _character.Basket.CountProductsChanged += UpdateCountProductsInBasket;
+    }
+
+    private int _currentIndexPositionInBasket;
+
+   
+
+    public void SetPosition(Product product)
+    {
+        product.transform.SetParent(_allPositionsInBasket[_currentIndexPositionInBasket]);
+
         product.transform.DOLocalMove(_productConfig.PositionProductInBasket, _productConfig.SizeChangeTime);
         product.transform.DOLocalRotate(_productConfig.RotationProductInBasket, _productConfig.SizeChangeTime);
         product.transform.DOScale(_productConfig.ScaleProductInbasket, _productConfig.SizeChangeTime);
-
-        _listAllProductsInHands.Add(product.gameObject);
     }
 
-    public GameObject TryGetProduct()
+    private void UpdateCountProductsInBasket(int currentIndexPositionInBasket)
     {
-        if (_listAllProductsInHands.Count == 0) return null;
-
-        var product = _listAllProductsInHands[^1];
-        _listAllProductsInHands.Remove(product);
-        
-        return product;
+        _currentIndexPositionInBasket = currentIndexPositionInBasket;
     }
-    
-    private void OnTriggerStay(Collider other)
+    private void OnDestroy()
     {
-        if (other.gameObject.CompareTag("Recycle"))
-        {
-            _recycle.Recycling(_listAllProductsInHands);
-            _listAllProductsInHands.Clear();
-        }
-
-        if (other.gameObject.CompareTag("Bonus"))
-        {
-            var bonusObject = _spawnerBonus.GetComponent<SpawnerBonus>();
-            var bonus = bonusObject.GetBonusObject();
-            var getBonus = bonus.GetComponent<Bonus>();
-            getBonus.GetProductList(_listAllProductsInHands);
-            getBonus.GetBonus();
-        }
+        _character.Basket.CountProductsChanged -= UpdateCountProductsInBasket;
     }
+    // public GameObject TryGetProduct()
+    // {
+    //     if (_listAllProductsInHands.Count == 0) return null;
+
+    //     var product = _listAllProductsInHands[^1];
+    //     _listAllProductsInHands.Remove(product);
+    //     
+    //     return product;
+    // }
+
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Recycle"))
+    //    {
+    //        _recycle.Recycling(_listAllProductsInHands);
+    //        _listAllProductsInHands.Clear();
+    //    }
+
+    // if (other.gameObject.CompareTag("Bonus"))
+    // {
+    //     var bonusObject = _spawnerBonus.GetComponent<SpawnerBonus>();
+    //     var bonus = bonusObject.GetBonusObject();
+    //     var getBonus = bonus.GetComponent<Bonus>();
+    //     getBonus.GetProductList(_listAllProductsInHands);
+    //     getBonus.GetBonus();
+    // }
 }
+
+
