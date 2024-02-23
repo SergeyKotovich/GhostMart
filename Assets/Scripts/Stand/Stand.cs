@@ -23,7 +23,7 @@ using UnityEngine;
             IsAvailable = true;
         }
 
-        public bool SetProductOnStand(GameObject product)
+        public bool SetProductOnStand(Product product)
         {
             if (Enum.TryParse<StandsTypes>(product.tag, out var productType))
 
@@ -54,7 +54,7 @@ using UnityEngine;
         }
 
         [CanBeNull]
-        public GameObject GetAvailableProduct()
+        public Product GetAvailableProduct()
         {
             for (int i = 0; i < StandCells.Count; i++)
             {

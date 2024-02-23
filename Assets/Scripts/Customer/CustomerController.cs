@@ -5,8 +5,6 @@ namespace Customer
 {
     public class CustomerController : MonoBehaviour
     {
-        
-        
         private void Start()
         {
             var stateMachine = new StateMachine

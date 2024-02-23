@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class ProductFactory : MonoBehaviour
 {
-   public Stack<GameObject> _allAvailableProducts = new();
+   public Stack<Product> _allAvailableProducts = new();
    public int ProductCounter { get; private set; }
 
-   public void OnAvailableProductsUpdated(GameObject availableProduct)
+   public void OnAvailableProductsUpdated(Product availableProduct)
     {
         _allAvailableProducts.Push(availableProduct);
         ProductCounter++;
     }
 
-    public GameObject GetProduct()
+    public Product GetProduct()
     {
         if (_allAvailableProducts.Count!=0)
         {
