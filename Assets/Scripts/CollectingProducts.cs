@@ -30,8 +30,15 @@ public class CollectingProducts : MonoBehaviour
 
     public void SetPosition(Product product)
     {
+        if (_currentIndexPositionInBasket >= _allPositionsInBasket.Length)
+        {
+            return;
+        }
         product.transform.SetParent(_allPositionsInBasket[_currentIndexPositionInBasket]);
 
+        Debug.Log("lenght = " + _allPositionsInBasket.Length);
+        Debug.Log("index = " + _currentIndexPositionInBasket);
+        
         product.transform.DOLocalMove(_productConfig.PositionProductInBasket, _productConfig.SizeChangeTime);
         product.transform.DOLocalRotate(_productConfig.RotationProductInBasket, _productConfig.SizeChangeTime);
         product.transform.DOScale(_productConfig.ScaleProductInbasket, _productConfig.SizeChangeTime);

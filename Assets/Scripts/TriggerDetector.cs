@@ -26,15 +26,15 @@ public class TriggerDetector : MonoBehaviour
         
         if (other.gameObject.CompareTag(GlobalConstants.STAND))
         {
-         //  var product = _collectingProducts.TryGetProduct();
-         //  if (product == null) return;
-         //  
-         //  var stand = other.gameObject.GetComponent<Stand>();
+            var product = _player.Basket.GetProduct();
+           if (product == null) return;
+           
+           var stand = other.gameObject.GetComponent<Stand>();
 
-         //  if (!stand.SetProductOnStand(product))
-         //  {
-         //      _collectingProducts.PickUpProduct(product);
-         //  }
+           if (!stand.SetProductOnStand(product))
+           {
+               _player.Basket.AddProductInBasket(product);
+           }
         }
               
     }

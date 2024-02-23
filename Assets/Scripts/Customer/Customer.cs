@@ -17,7 +17,6 @@ namespace Customer
         private bool _isMoving;
         
         public ProductBarView _productBarView;
-
         public List<ListItem> ShoppingList { get; private set; } = new();
 
         public void Initialize(List<Stand> path, ProductBarView productBarView)

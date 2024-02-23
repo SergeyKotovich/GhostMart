@@ -406,8 +406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952358374e16466ca13437e58e7730fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _navMeshAgent: {fileID: -5188951159229671611}
-  _animator: {fileID: 7107108863412213764}
   CurrentPathIndex: 0
   _productBarView: {fileID: 0}
 --- !u!195 &-5188951159229671611
@@ -445,6 +443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _customer: {fileID: -6584710501671357861}
+  _navMeshAgent: {fileID: -5188951159229671611}
+  _animator: {fileID: 7107108863412213764}
 --- !u!114 &7719436845011608285
 MonoBehaviour:
   m_ObjectHideFlags: 0
