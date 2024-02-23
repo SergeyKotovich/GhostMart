@@ -7,7 +7,7 @@ public class ProductSpawner : MonoBehaviour
     [SerializeField] private ProductConfig productConfig;
     [SerializeField] private Transform[] _allPositionsForProduct;
     [SerializeField] private ProductFactory _productFactory;
-    [SerializeField] private GameObject _productPrefab;
+    [SerializeField] private Product _productPrefab;
     
     private int _maxCountSpawnedProduct = 3;
     private float _currentTime;

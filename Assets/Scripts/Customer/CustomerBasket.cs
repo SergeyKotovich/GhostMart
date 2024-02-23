@@ -6,9 +6,9 @@ namespace Customer
     public class CustomerBasket
     {
         public int ProductsCount;
-        private List<GameObject> _boughtProducts = new();
+        private List<Product> _boughtProducts = new();
 
-        public void PutProduct(GameObject product)
+        public void PutProduct(Product product)
         {
             _boughtProducts.Add(product);
             Debug.Log(product.tag+" В корзине");
