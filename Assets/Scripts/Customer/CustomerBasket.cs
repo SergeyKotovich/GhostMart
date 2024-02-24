@@ -24,6 +24,10 @@ namespace Customer
         {
             return null;
         }
-        
+
+        public bool IsFull()
+        {
+            return false;
+        }
     }
 }

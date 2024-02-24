@@ -1,10 +1,7 @@
 using System;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace Interfaces
-{
-    public interface IBasket
+
+public interface IBasket
     {
         public event Action<int> CountProductsChanged;
         public int MaxCountProduct { get; }
@@ -13,6 +10,7 @@ namespace Interfaces
         public void AddProductInBasket(Product product);
 
         public Product GetProduct();
-        
+        public bool IsFull();
+
     }
-}
+

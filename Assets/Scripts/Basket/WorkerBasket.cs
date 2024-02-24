@@ -8,7 +8,7 @@ using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 
-public class WorkerBasket : MonoBehaviour, IBasket
+public class WorkerBasket : MonoBehaviour, IWorkerBasket
 {
     public event Action<int> CountProductsChanged;
     public int CurrentCountProduct { get; private set; }

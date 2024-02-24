@@ -1,9 +1,13 @@
-using System;
-using System.Collections.Generic;
+using Interfaces;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Assistant : MonoBehaviour, ICollectable
 {
     [field:SerializeField] public WorkerBasket WorkerBasket { get; private set; }
+    public void PickUpProduct(Product product)
+    {
+        
+    }
+
+    IBasket ICollectable.WorkerBasket { get; }
 }

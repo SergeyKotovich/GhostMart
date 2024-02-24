@@ -1,20 +1,20 @@
-
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Interfaces;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Customer
 {
-    public class Customer : MonoBehaviour, ICollectable, ICustomer
+    public class Customer : MonoBehaviour,ICollectable, ICustomer
     {
         public int CurrentPathIndex { get; set; }
-        public WorkerBasket WorkerBasket { get; }
+        public IBasket WorkerBasket { get; }
+
+        public void PickUpProduct(Product product)
+        {
+            
+        }
+
         private bool _isMoving;
         
         public ProductBarView _productBarView { get; private set; }
