@@ -30,10 +30,6 @@ public class CollectingProducts : MonoBehaviour
 
     public void SetPosition(Product product)
     {
-        //if (_currentIndexPositionInBasket >= _allPositionsInBasket.Length)
-        //{
-        //    return;
-        //}
         product.transform.SetParent(_allPositionsInBasket[_currentIndexPositionInBasket]);
 
         product.transform.DOLocalMove(_productConfig.PositionProductInBasket, _productConfig.SizeChangeTime);

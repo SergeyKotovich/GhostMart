@@ -18,4 +18,9 @@ public class BasketController : MonoBehaviour
             _collectingProducts.SetPosition(product);
         }
     }
+
+    public void AddProductInBasket(Product product)
+    {
+        _basket.AddProductInBasket(product);
+    }
 }
