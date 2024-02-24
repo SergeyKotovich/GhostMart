@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Banana;
+using Interfaces;
 using UnityEngine;
 
 namespace Customer
@@ -7,9 +8,10 @@ namespace Customer
     public class PathCreator : MonoBehaviour
     {
         [SerializeField] private Stand[] _stands;
+        [SerializeField] private Stand _cashRegister;
         [SerializeField] private Transform _exitTransform;
         
-        public  Vector3[] GetRandomPath()
+        public  List<Stand> GetRandomPath()
         {
 
             List<Stand> availableStands = new List<Stand>();
@@ -23,32 +25,25 @@ namespace Customer
             }
 
             var randomTargetsCount = Random.Range(1, availableStands.Count + 1);
-            List<Vector3> path = new List<Vector3>();
+            List<Stand> path = new List<Stand>();
 
             for (int i = 0; i < randomTargetsCount; i++)
             {
                 var randomIndex = Random.Range(0, randomTargetsCount);
 
-                if (!path.Contains(availableStands[randomIndex].Position.position))
+                if (!path.Contains(availableStands[randomIndex]))
                 {
-                    path.Add(availableStands[randomIndex].Position.position);
+                    path.Add(availableStands[randomIndex]);
                 }
                 else
                 {
                     i--;
                 }
             }
-
-            path.Add(_exitTransform.position);
             
-            // TODO: temp code, replace by using an array, not collections
-            Vector3[] pathArray = new Vector3[path.Count];
-            for (int i = 0; i < pathArray.Length; i++)
-            {
-                pathArray[i] = path[i];
-            }
+            path.Add(_cashRegister);
             
-            return pathArray;
+            return path;
         }
 
     }

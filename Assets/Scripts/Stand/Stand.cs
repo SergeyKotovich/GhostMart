@@ -6,10 +6,11 @@ using Interfaces;
 using JetBrains.Annotations;
 using UnityEngine;
 
- public class Stand : MonoBehaviour, IStand
+ public class Stand : MonoBehaviour
     {
         [SerializeField] private Grid _grid;
-        [field:SerializeField] public Transform Position { get; private set; }
+        [field:SerializeField] public Sprite StandIcon {get; private set; }
+        [field:SerializeField] public Transform PointForCustomers { get; private set; }
         [field:SerializeField] public StandsTypes Type { get; private set; }
         public bool IsAvailable { get; private set; }
         private List<StandCell> StandCells { get; } = new();
@@ -23,7 +24,7 @@ using UnityEngine;
             IsAvailable = true;
         }
 
-        public bool SetProductOnStand(GameObject product)
+        public bool SetProductOnStand(Product product)
         {
             if (Enum.TryParse<StandsTypes>(product.tag, out var productType))
 
@@ -54,9 +55,9 @@ using UnityEngine;
         }
 
         [CanBeNull]
-        public GameObject GetAvailableProduct()
+        public Product GetAvailableProduct()
         {
-            for (int i = StandCells.Count - 1; i >= 0; i++)
+            for (int i = StandCells.Count - 1; i >= 0; i--)
             {
                 if (!StandCells[i].IsAvailable)
                 {
@@ -66,10 +67,28 @@ using UnityEngine;
             return null;
         }
         
+        public int GetProductsCount()
+        {
+            var counter = 0;
+            if (StandCells.Count == 0) return 0;
+
+            for (int i = 0; i < StandCells.Count; i++)
+            {
+                if (!StandCells[i].IsAvailable)
+                {
+                    counter++;
+                }
+            }
+            return counter;
+        }
+        
         private void FillAvailablePositions()
         {
             var index = 0;
-            
+            if (_grid == null)
+            {
+                return;
+            }
             for (int x = 0; x < _width; x++)
             {
                 for (int y = 0; y < _height; y++)

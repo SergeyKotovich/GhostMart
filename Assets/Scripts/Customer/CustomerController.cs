@@ -10,8 +10,8 @@ namespace Customer
             var stateMachine = new StateMachine
             (
                 GetComponent<MovingToTargetState>(),
-                GetComponent<WaitingState>(),
-                GetComponent<PayingProductsState>()
+                GetComponent<PayingProductsState>(),
+                GetComponent<GettingProductsState>()
             );
             
             stateMachine.Initialize();

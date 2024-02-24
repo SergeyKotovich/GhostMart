@@ -1,56 +1,34 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace Customer
 {
     public class Customer : MonoBehaviour
-    { 
-        public event Action CameToTarget;
-
-        [SerializeField] private NavMeshAgent _navMeshAgent;
-        [SerializeField] private Animator _animator;
-
-        private int _currentPathIndex;
+    {
+        public int CurrentPathIndex;
         private bool _isMoving;
-        public Vector3[] Path { get; private set; }
+        
+        public ProductBarView _productBarView;
+        public List<ListItem> ShoppingList { get; private set; } = new();
 
-        public void Initialize(Vector3[] path)
+        public void Initialize(List<Stand> path, ProductBarView productBarView)
         {
-            Path = path;
-        }
-
-        void Update()
-        {
-            if (_navMeshAgent.remainingDistance < 1f && !_navMeshAgent.pathPending)
+            foreach (var stand in path)
             {
-                CameToTarget?.Invoke();
+                var count = Random.Range(1, 3);
+                var stopPoint = new ListItem(stand.PointForCustomers.position, stand, count);
+                ShoppingList.Add(stopPoint);
             }
-        }
 
-        public void MoveToNextPoint()
-        {
-            
-            if (_currentPathIndex < Path.Length)
-            {
-                _navMeshAgent.SetDestination(Path[_currentPathIndex]);
-                _currentPathIndex++;
-                _isMoving = true;
-                _animator.SetBool("IsMoving", _isMoving);
-            }
-            else
-            {
-                _navMeshAgent.isStopped = true;
-                _animator.SetBool("IsMoving", false);
-            }
-        }
-
-        public void StopMoving()
-        {
-            _isMoving = false;
-            _animator.SetBool("IsMoving", _isMoving);
+            _productBarView = productBarView;
         }
         
     }

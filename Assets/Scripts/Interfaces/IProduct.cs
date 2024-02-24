@@ -2,8 +2,9 @@ using UnityEngine;
 
 namespace Interfaces
 {
-    public abstract class IProduct : MonoBehaviour
+    public interface IProduct 
     {
-        protected abstract int Price { get; set; }
+        public GameObject  Product { get; set; }
+      //  protected abstract int Price { get; set; }
     }
 }

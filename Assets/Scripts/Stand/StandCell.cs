@@ -7,7 +7,7 @@ public class StandCell
 {
     [field:SerializeField]
     public Vector3 CellPositionInWorld { get; private set; }
-    public GameObject Product { get; private set; }
+    public Product Product { get; private set; }
     public bool IsAvailable { get; private set; }
 
     public StandCell(Vector3 cellPosition)
@@ -21,13 +21,13 @@ public class StandCell
         IsAvailable = !IsAvailable;
     }
 
-    public void SetProductInCell(GameObject product)
+    public void SetProductInCell(Product product)
     {
         Product = product;
         IsAvailable = false;
     }
         
-    public GameObject GetProductFromCell()
+    public Product GetProductFromCell()
     {
         IsAvailable = true;
         return Product;
