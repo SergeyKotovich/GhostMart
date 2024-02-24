@@ -4,7 +4,6 @@ using UnityEngine;
 public class TriggerDetector : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    [SerializeField] private CollectingProducts _collectingProducts;
     [SerializeField] private BasketController _basketController;
     private void OnTriggerStay(Collider other)
     {
@@ -23,12 +22,10 @@ public class TriggerDetector : MonoBehaviour
             }
             
             var product = _player.Basket.GetProduct();
+            
            if (product == null) return;
-           
-           if (!stand.SetProductOnStand(product))
-           {
-               _player.Basket.AddProductInBasket(product);
-           }
+           stand.SetProductOnStand(product);
+
         }
               
     }

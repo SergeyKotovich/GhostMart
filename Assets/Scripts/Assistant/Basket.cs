@@ -14,8 +14,7 @@ public class Basket : MonoBehaviour
     public Stack<Product> _allProducts = new();
     public int _maxCountProduct { get; private set; } = 3;
     public int _currentCountProduct { get; private set; }
-
-
+    
     private void Awake()
     {
         Debug.Log(_currentCountProduct);
@@ -24,9 +23,8 @@ public class Basket : MonoBehaviour
     public void AddProductInBasket(Product product)
     {
         _allProducts.Push(product);
+        CountProductsChanged?.Invoke(_currentCountProduct);
         _currentCountProduct++;
-        Debug.Log("AddProductInBasket" + _currentCountProduct);
-        CountProductsChanged?.Invoke(_currentCountProduct - 1);
     }
 
     public Product GetProduct()
@@ -36,9 +34,8 @@ public class Basket : MonoBehaviour
             return null;
         }
         var product = _allProducts.Pop();
+        CountProductsChanged?.Invoke(_currentCountProduct);
         _currentCountProduct--;
-        Debug.Log("GetProduct" + _currentCountProduct);
-        CountProductsChanged?.Invoke(_currentCountProduct - 1);
         return product;
     }
 
