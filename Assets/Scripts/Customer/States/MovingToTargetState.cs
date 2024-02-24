@@ -61,11 +61,6 @@ namespace Customer
             _stateMachine.Enter<GettingProductsState>();
             StopMoving();
         }
-        
-        public void OnExit()
-        {
-           // _customer.CameToTarget -= EnterGettingProductsState;
-        }
-        
+
     }
 }

@@ -29,7 +29,6 @@ namespace Customer
 
         public void OnEnter()
         {
-           // _customer.GotProducts += EnterMovingToTargetState;
            _isTakingProducts = true;
         }
         
@@ -43,7 +42,7 @@ namespace Customer
                 return;
             }
             
-            var stand = (Stand)shoppingList[currentPathIndex].StopPoint;
+            var stand = shoppingList[currentPathIndex].StopPoint;
             var productsOnStandCount = stand.GetProductsCount();
 
             if (productsOnStandCount > 0)
@@ -69,11 +68,6 @@ namespace Customer
         private void EnterMovingToTargetState()
         {
             _stateMachine.Enter<MovingToTargetState>();
-        }
-
-        public void OnExit()
-        {
-            //_customer.GotProducts -= EnterMovingToTargetState;
         }
         
     }

@@ -13,9 +13,5 @@ public class AssistantWaitingState : MonoBehaviour , IState
     {
         
     }
-
-    public void OnExit()
-    {
-        
-    }
+    
 }

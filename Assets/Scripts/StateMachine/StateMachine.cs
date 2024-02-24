@@ -26,8 +26,6 @@ public class StateMachine
     
     public void Enter<TState>() where TState : IState
     {
-        _currentState?.OnExit();
-        
         _currentState = _states[typeof(TState)];
         _currentState.OnEnter();
     }

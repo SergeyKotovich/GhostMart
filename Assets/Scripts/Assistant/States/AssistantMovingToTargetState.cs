@@ -1,22 +1,57 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AssistantMovingToTargetState : MonoBehaviour, IState
 {
+    
     [SerializeField] private Assistant _assistant;
+    [SerializeField] private NavMeshAgent _navMeshAgent;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private List<Transform> _pointPath;
+
+    private static readonly int _isMoving = Animator.StringToHash("IsMoving");
     private StateMachine _stateMachine;
     private bool _isProductFactory;
     private bool _isStand;
+    private int _currentIndex;
 
     public void Initialize(StateMachine stateMachine)
     {
         _stateMachine = stateMachine;
     }
 
+    private void Update()
+    {
+        if (_navMeshAgent.remainingDistance <0.1f)
+        {
+            EnterNextState();
+            StopMoving();
+            _isStand = false;
+            _isProductFactory = false;
+        }
+    }
+
+    private void MoveToPoint()
+    {
+        _animator.SetBool(_isMoving, true);
+        _navMeshAgent.SetDestination(_pointPath[_currentIndex].position);
+
+        SetNextPoint();
+    }
+    private void StopMoving()
+    {
+        _animator.SetBool(_isMoving, false);
+    }
+
+    private void SetNextPoint()
+    {
+        _currentIndex = (_currentIndex + 1) % _pointPath.Count;
+    }
     public void OnEnter()
     {
-        _assistant.CameToTarget += EnterNextState;
-        _assistant.MoveToPoint();
+        MoveToPoint();
     }
 
     private void EnterNextState()
@@ -32,13 +67,6 @@ public class AssistantMovingToTargetState : MonoBehaviour, IState
         }
         
         
-    }
-
-    public void OnExit()
-    {
-        _assistant.CameToTarget -= EnterNextState;
-        _isStand = false;
-        _isProductFactory = false;
     }
 
     private void OnTriggerEnter(Collider other)

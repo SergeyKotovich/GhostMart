@@ -40,9 +40,5 @@ public class ProductStandState : MonoBehaviour, IState
         }
         
     }
-
-    public void OnExit()
-    {
-        
-    }
+    
 }
