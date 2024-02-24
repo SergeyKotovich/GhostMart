@@ -1,18 +1,24 @@
 
 using System;
 using System.Collections.Generic;
+using Interfaces;
 using UnityEngine;
 
 namespace Customer
 {
     public class GettingProductsState : MonoBehaviour, IState
     {
-        [SerializeField] private Customer _customer;
+        private ICustomer _customer;
         
         private StateMachine _stateMachine;
         private CustomerBasket _basket;
         private bool _isTakingProducts;
-        
+
+        private void Awake()
+        {
+            _customer = GetComponent<ICustomer>();
+        }
+
         private void Update()
         {
             if (_isTakingProducts)
@@ -48,7 +54,7 @@ namespace Customer
             if (productsOnStandCount > 0)
             {
                 var product = stand.GetAvailableProduct();
-                _basket.PutProduct(product);
+                _basket.AddProductInBasket(product);
                 shoppingList[currentPathIndex].CurrentCount++;
                 _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex]);
                 _basket.ProductsCount++;
@@ -60,7 +66,7 @@ namespace Customer
                 _customer.CurrentPathIndex++;
                 _basket.ProductsCount = 0;
                 _isTakingProducts = false;
-                Debug.Log("TakeProducts");
+
                 EnterMovingToTargetState();
             }
         }

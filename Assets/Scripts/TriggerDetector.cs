@@ -1,3 +1,4 @@
+using Interfaces;
 using UnityEngine;
 
 public class TriggerDetector : MonoBehaviour
@@ -8,7 +9,7 @@ public class TriggerDetector : MonoBehaviour
     {
         if (other.gameObject.CompareTag(GlobalConstants.PRODUCT_FACTORY_TAG))
         {
-            var productFactory = other.GetComponent<ProductFactory>();
+            var productFactory = other.GetComponent<IFactory>();
             _basketController.GetProducts(productFactory);
         }
         
@@ -20,7 +21,7 @@ public class TriggerDetector : MonoBehaviour
                 return;
             }
             
-            var product = _player.Basket.GetProduct();
+            var product = _player.WorkerBasket.GetProduct();
             
            if (product == null) return;
            stand.SetProductOnStand(product);

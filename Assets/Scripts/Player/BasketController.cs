@@ -1,12 +1,14 @@
+using Interfaces;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BasketController : MonoBehaviour
 {
-    [SerializeField] private Basket _basket;
+    [FormerlySerializedAs("_basket")] [SerializeField] private WorkerBasket workerBasket;
     [SerializeField] private CollectingProducts _collectingProducts;
-    public void GetProducts( ProductFactory productFactory)
+    public void GetProducts( IFactory productFactory)
     {
-        if (_basket.IsFull())
+        if (workerBasket.IsFull() || !productFactory.HasSpawnedProduct())
         {
             return;
         }
@@ -14,13 +16,13 @@ public class BasketController : MonoBehaviour
         
         if (product!=null)
         {
-            _basket.AddProductInBasket(product);
+            workerBasket.AddProductInBasket(product);
             _collectingProducts.SetPosition(product);
         }
     }
 
     public void AddProductInBasket(Product product)
     {
-        _basket.AddProductInBasket(product);
+        workerBasket.AddProductInBasket(product);
     }
 }

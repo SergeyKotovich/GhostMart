@@ -429,7 +429,6 @@ MonoBehaviour:
   - {fileID: 2010708363}
   - {fileID: 979943199}
   - {fileID: 937552052}
-  _productFactory: {fileID: 118633957}
   _productPrefab: {fileID: 995919879585562179, guid: 1c18528cadbc7594f896ef44e821a141, type: 3}
 --- !u!4 &118633953 stripped
 Transform:
@@ -2305,7 +2304,6 @@ MonoBehaviour:
   - {fileID: 126153684}
   - {fileID: 95049909}
   - {fileID: 1499638306}
-  _productFactory: {fileID: 498588928}
   _productPrefab: {fileID: 2242805857122917418, guid: c43556234c3b8564ba8bd61d7e5829aa, type: 3}
 --- !u!114 &498588928
 MonoBehaviour:
@@ -3119,7 +3117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e752482cde4b07bf5585695aece753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Basket>k__BackingField: {fileID: 725233020}
+  <WorkerBasket>k__BackingField: {fileID: 725233020}
 --- !u!114 &725233020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3132,6 +3130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18966d9839644832a6a9febb3074fd68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <MaxCountProduct>k__BackingField: 3
 --- !u!114 &725233021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3167,7 +3166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e949c0f9c1104a9bad41323ddc21072d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _basket: {fileID: 725233020}
+  workerBasket: {fileID: 725233020}
   _collectingProducts: {fileID: 725233021}
 --- !u!4 &731922224 stripped
 Transform:
@@ -4059,7 +4058,6 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
-  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4148,28 +4146,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 465a265471cf47378cc894f6d401c889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 725233022}
   _cameraPositions: {x: 0, y: 16, z: -24}
---- !u!114 &963194230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cef28bc5a271bb4d90b17d2c2796034, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _target: {fileID: 725233022}
-  _offset: {x: 20, y: 20, z: -25}
-  _smoothSpeed: 0.125
 --- !u!1001 &964951262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4689,6 +4672,10 @@ PrefabInstance:
       propertyPath: '_pointPath.Array.data[1]'
       value: 
       objectReference: {fileID: 1526526784}
+    - target: {fileID: 2722246250854043853, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
+      propertyPath: <WorkerBasket>k__BackingField
+      value: 
+      objectReference: {fileID: 1641982769}
     - target: {fileID: 3051554750943322680, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.160238
@@ -4774,6 +4761,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4561771836852230907, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
+      propertyPath: _collectingProductsState
+      value: 
+      objectReference: {fileID: 2018856630}
+    - target: {fileID: 4561771836852230907, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
       propertyPath: '_pointPath.Array.data[0]'
       value: 
       objectReference: {fileID: 498588921}
@@ -4781,6 +4772,14 @@ PrefabInstance:
       propertyPath: '_pointPath.Array.data[1]'
       value: 
       objectReference: {fileID: 1526526784}
+    - target: {fileID: 5489957494966595356, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
+      propertyPath: _maxCountProduct
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5489957494966595356, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
+      propertyPath: <MaxCountProduct>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5585290376734282277, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
       propertyPath: _productFactory
       value: 
@@ -7966,6 +7965,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 118633953}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2018856630 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5585290376734282277, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
+  m_PrefabInstance: {fileID: 1007945420}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f189e1fd66523874a87f45fe32be25cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2027432325
 PrefabInstance:
   m_ObjectHideFlags: 0

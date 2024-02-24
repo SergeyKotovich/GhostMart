@@ -1,4 +1,4 @@
 public interface ICollectable
 {
-    public Basket Basket { get; }
+    public WorkerBasket WorkerBasket { get; }
 }

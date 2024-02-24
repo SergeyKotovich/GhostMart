@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using Interfaces;
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class ProductFactory : MonoBehaviour
+[RequireComponent(typeof(ProductSpawner))]
+
+public class ProductFactory : MonoBehaviour, IFactory
 {
-   public Stack<Product> _allAvailableProducts = new();
+   private Stack<Product> _allAvailableProducts = new();
    public int ProductCounter { get; private set; }
 
    public void OnAvailableProductsUpdated(Product availableProduct)
@@ -15,13 +18,13 @@ public class ProductFactory : MonoBehaviour
 
     public Product GetProduct()
     {
-        if (_allAvailableProducts.Count!=0)
-        {
-            ProductCounter--;
-            return _allAvailableProducts.Pop();
-        }
+        ProductCounter--;
+        return _allAvailableProducts.Pop();
+    }
 
-        return null;
+    public bool HasSpawnedProduct()
+    {
+        return _allAvailableProducts.Count > 0;
     }
 
 }

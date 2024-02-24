@@ -20,7 +20,7 @@ public class ProductStandState : MonoBehaviour, IState
 
     public void OnEnter()
     {
-        if (!_assistant.Basket.IsEmpty())
+        if (!_assistant.WorkerBasket.IsEmpty())
         {
             SetProductOnStand();
         }
@@ -28,13 +28,13 @@ public class ProductStandState : MonoBehaviour, IState
 
     private void SetProductOnStand()
     {
-        while (!_assistant.Basket.IsEmpty())
+        while (!_assistant.WorkerBasket.IsEmpty())
         {
-            var product = _assistant.Basket.GetProduct();
+            var product = _assistant.WorkerBasket.GetProduct();
             _stand.SetProductOnStand(product);
         }
 
-        if (_assistant.Basket.IsEmpty())
+        if (_assistant.WorkerBasket.IsEmpty())
         {
             _stateMachine.Enter<AssistantMovingToTargetState>();
         }

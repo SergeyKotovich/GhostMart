@@ -1,11 +1,10 @@
 using System.Collections.Generic;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class AssistantMovingToTargetState : MonoBehaviour, IState
 {
-    
-    [SerializeField] private Assistant _assistant;
     [SerializeField] private NavMeshAgent _navMeshAgent;
     [SerializeField] private Animator _animator;
     [SerializeField] private List<Transform> _pointPath;

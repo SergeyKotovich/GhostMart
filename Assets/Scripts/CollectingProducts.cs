@@ -16,18 +16,16 @@ public class CollectingProducts : MonoBehaviour
     private void Awake()
     {
         _character = GetComponent<ICollectable>();
-        
     }
 
     private void Start()
     {
-        _character.Basket.CountProductsChanged += UpdateCountProductsInBasket;
+        _character.WorkerBasket.CountProductsChanged += UpdateCountProductsInBasket;
     }
 
     private int _currentIndexPositionInBasket;
 
-   
-
+    
     public void SetPosition(Product product)
     {
         product.transform.SetParent(_allPositionsInBasket[_currentIndexPositionInBasket]);
@@ -43,7 +41,7 @@ public class CollectingProducts : MonoBehaviour
     }
     private void OnDestroy()
     {
-        _character.Basket.CountProductsChanged -= UpdateCountProductsInBasket;
+        _character.WorkerBasket.CountProductsChanged -= UpdateCountProductsInBasket;
     }
     // public GameObject TryGetProduct()
     // {

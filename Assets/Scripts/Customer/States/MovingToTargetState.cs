@@ -1,3 +1,4 @@
+using Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,12 +6,17 @@ namespace Customer
 {
     public class MovingToTargetState : MonoBehaviour, IState
     {
-        [SerializeField] private Customer _customer;
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private Animator _animator;
         
+        private ICustomer _customer;
         private StateMachine _stateMachine;
         private bool _isMoving;
+
+        private void Awake()
+        {
+            _customer = GetComponent<ICustomer>();
+        }
 
         void Update()
         {

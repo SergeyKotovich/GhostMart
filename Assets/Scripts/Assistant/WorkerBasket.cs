@@ -5,26 +5,21 @@ using DG.Tweening;
 using Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 
-public class Basket : MonoBehaviour
+public class WorkerBasket : MonoBehaviour, IBasket
 {
-    public event Action<int> CountProductsChanged; 
-
-    public Stack<Product> _allProducts = new();
-    public int _maxCountProduct { get; private set; } = 3;
-    public int _currentCountProduct { get; private set; }
+    public event Action<int> CountProductsChanged;
+    public int CurrentCountProduct { get; private set; }
+    [field:SerializeField] public int MaxCountProduct { get; private set; }
     
-    private void Awake()
-    {
-        Debug.Log(_currentCountProduct);
-    }
-
+    private readonly Stack<Product> _allProducts = new();
     public void AddProductInBasket(Product product)
     {
         _allProducts.Push(product);
-        CountProductsChanged?.Invoke(_currentCountProduct);
-        _currentCountProduct++;
+        CountProductsChanged?.Invoke(CurrentCountProduct);
+        CurrentCountProduct++;
     }
 
     public Product GetProduct()
@@ -34,14 +29,14 @@ public class Basket : MonoBehaviour
             return null;
         }
         var product = _allProducts.Pop();
-        CountProductsChanged?.Invoke(_currentCountProduct);
-        _currentCountProduct--;
+        CountProductsChanged?.Invoke(CurrentCountProduct);
+        CurrentCountProduct--;
         return product;
     }
 
     public bool IsFull()
     {
-        return _currentCountProduct == _maxCountProduct;
+        return CurrentCountProduct == MaxCountProduct;
     }
 
     public bool IsEmpty()

@@ -14,7 +14,7 @@ namespace Customer
         [SerializeField] private PathCreator _pathCreator;
         [SerializeField] private ProductBarSpawner _productBarSpawner;
         private int _currentCustomersCount;
-        private List<Customer> _currentCustomers = new List<Customer>();
+        private List<Customer> _currentCustomers = new();
 
         private void Awake()
         {
@@ -40,6 +40,7 @@ namespace Customer
                 yield return new WaitForSeconds(_dellayBetweenSpawn);
             }
 
+            //TODO: нужен ли здесь yield return null; если да то для чего
             yield return null;
         }
     }
