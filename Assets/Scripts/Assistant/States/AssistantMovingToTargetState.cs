@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,11 +10,12 @@ public class AssistantMovingToTargetState : MonoBehaviour, IState
     [SerializeField] private Animator _animator;
     [SerializeField] private List<Transform> _pointPath;
 
-    private static readonly int _isMoving = Animator.StringToHash("IsMoving");
+    private bool _isMoving;
     private StateMachine _stateMachine;
     private bool _isProductFactory;
     private bool _isStand;
     private int _currentIndex;
+    private readonly int IsMoving = Animator.StringToHash("IsMoving");
 
     public void Initialize(StateMachine stateMachine)
     {
@@ -24,25 +24,19 @@ public class AssistantMovingToTargetState : MonoBehaviour, IState
 
     private void Update()
     {
-        if (_navMeshAgent.remainingDistance <0.1f)
-        {
-            EnterNextState();
-            StopMoving();
-            _isStand = false;
-            _isProductFactory = false;
-        }
+        if (!(_navMeshAgent.remainingDistance < 0.1f)) return;
+        EnterNextState();
+        _isStand = false;
+        _isProductFactory = false;
     }
 
     private void MoveToPoint()
     {
-        _animator.SetBool(_isMoving, true);
+        _isMoving = true;
+        _animator.SetBool(IsMoving, _isMoving);
         _navMeshAgent.SetDestination(_pointPath[_currentIndex].position);
 
         SetNextPoint();
-    }
-    private void StopMoving()
-    {
-        _animator.SetBool(_isMoving, false);
     }
 
     private void SetNextPoint()
@@ -58,15 +52,13 @@ public class AssistantMovingToTargetState : MonoBehaviour, IState
     {
         if (_isProductFactory)
         {
+            _animator.SetBool(IsMoving, false);
             _stateMachine.Enter<CollectingProductsState>();
         }
 
-        if (_isStand)
-        {
-            _stateMachine.Enter<ProductStandState>();
-        }
-        
-        
+        if (!_isStand) return;
+        _animator.SetBool(IsMoving, false);
+        _stateMachine.Enter<ProductStandState>();
     }
 
     private void OnTriggerEnter(Collider other)
