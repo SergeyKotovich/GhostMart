@@ -6,6 +6,17 @@ public class CollectingProductsState : MonoBehaviour , IState
 {
     [SerializeField] private ProductFactory _productFactory;
     [SerializeField] private CollectingProducts _collectingProducts;
+    
+    // TODO: можно ли передавать вместо асистента сразу корзину.
+    // либо BasketController который хранит Basket а Player хранит BasketController
+    
+    // В этом стейте нам нужно использовать корзину для выполнения логики укладки продуктов на прилавок и в корзину.
+    // Как правильно обратиться к корзине:
+    
+    // _assistant.Basket.Get/SetProduct();
+    // _basketController.Basket.Get/SetProduct();
+    // _assistant.BasketController.Basket.Get/SetProduct();
+    
     private ICollectable _assistant;
     
     private StateMachine _stateMachine;
@@ -51,34 +62,6 @@ public class CollectingProductsState : MonoBehaviour , IState
         var product=_productFactory.GetProduct();
         _collectingProducts.SetPosition(product);
         _assistant.Basket.AddProductInBasket(product);
-             
-         
-
-        //  var allAvailableProducts = _productFactory._allAvailableProducts;
-        //  if (allAvailableProducts.Count == 0)
-        //  {
-        //      _stateMachine.Enter<AssistantMovingToTargetState>();
-        //      return;
-        //  }
-//
-        //
-        //  while (allAvailableProducts.Count!=0 && _assistantBasket._currentCountProductInHands<=_assistantBasket._maxCountProductInHands )
-        //  {
-        //      var product = allAvailableProducts.Pop();
-        //      _assistantBasket.AddProductInBasket(product);
-        //
-        //  }
-//
-        //  if (allAvailableProducts.Count == 0)
-        //  {
-        //      _stateMachine.Enter<AssistantMovingToTargetState>();
-        //  }
     }
 
-    public void OnExit()
-    {
-        
-    }
-
-   
 }

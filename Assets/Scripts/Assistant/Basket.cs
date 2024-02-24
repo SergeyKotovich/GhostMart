@@ -15,11 +15,18 @@ public class Basket : MonoBehaviour
     public int _maxCountProduct { get; private set; } = 3;
     public int _currentCountProduct { get; private set; }
 
+
+    private void Awake()
+    {
+        Debug.Log(_currentCountProduct);
+    }
+
     public void AddProductInBasket(Product product)
     {
         _allProducts.Push(product);
         _currentCountProduct++;
-        CountProductsChanged?.Invoke(_currentCountProduct);
+        Debug.Log("AddProductInBasket" + _currentCountProduct);
+        CountProductsChanged?.Invoke(_currentCountProduct - 1);
     }
 
     public Product GetProduct()
@@ -30,7 +37,8 @@ public class Basket : MonoBehaviour
         }
         var product = _allProducts.Pop();
         _currentCountProduct--;
-        CountProductsChanged?.Invoke(_currentCountProduct);
+        Debug.Log("GetProduct" + _currentCountProduct);
+        CountProductsChanged?.Invoke(_currentCountProduct - 1);
         return product;
     }
 

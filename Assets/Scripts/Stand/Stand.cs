@@ -66,6 +66,18 @@ using UnityEngine;
             }
             return null;
         }
+
+        public bool IsAnyFreePlace()
+        {
+            for (int i = 0; i < StandCells.Count; i++)
+            {
+                if (StandCells[i].IsAvailable)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         
         public int GetProductsCount()
         {
