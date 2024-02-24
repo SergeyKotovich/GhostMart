@@ -3108,11 +3108,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!4 &725233012 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8065264950435053390, guid: 62d2a7f5da1084f6994dcbca19a2ddb2, type: 3}
-  m_PrefabInstance: {fileID: 992179494}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &725233013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4216,8 +4211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cef28bc5a271bb4d90b17d2c2796034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 725233012}
-  _cameraPositions: {x: 0, y: 15, z: -25}
 --- !u!1001 &964951262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4564,7 +4557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7252557991237821940, guid: 62d2a7f5da1084f6994dcbca19a2ddb2, type: 3}
       propertyPath: m_Name
-      value: Ghost_animation
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7252557991237821940, guid: 62d2a7f5da1084f6994dcbca19a2ddb2, type: 3}
       propertyPath: m_IsActive
