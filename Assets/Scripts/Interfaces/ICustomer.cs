@@ -9,6 +9,7 @@ namespace Interfaces
         public int CurrentPathIndex { get; set; }
         public ProductBarView _productBarView { get; }
         public List<ListItem> ShoppingList { get; }
+        public IBasket Basket { get; }
         
         public void Initialize(List<Stand> path, ProductBarView productBarView);
     }

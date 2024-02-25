@@ -3103,7 +3103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c20667ce3148feac17f2654c16634e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collectingProducts: {fileID: 0}
+  _collectingProducts: {fileID: 725233021}
 --- !u!114 &725233019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3116,7 +3116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e752482cde4b07bf5585695aece753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collectingProducts: {fileID: 0}
 --- !u!114 &725233020
 MonoBehaviour:
   m_ObjectHideFlags: 0

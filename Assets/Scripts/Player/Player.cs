@@ -1,16 +1,20 @@
+using System;
 using Interfaces;
 using UnityEngine;
 
-public class Player : MonoBehaviour, ICollectable
+public class Player : MonoBehaviour, IWorker
 {
-  //  [field: SerializeField] public WorkerBasket WorkerBasket { get; private set; } 
-    [SerializeField] private CollectingProducts _collectingProducts;
- //   public bool CanPickUp => !WorkerBasket.IsFull();
+    public IWorkerBasket Basket { get; private set; }
+    public bool CanPickUp => !Basket.IsFull();
+    
+  private void Awake()
+  {
+      Basket = GetComponent<IWorkerBasket>();
+  }
 
- public IBasket WorkerBasket { get; }
-
- public void PickUpProduct(Product product)
+  
+  public void PickUpProduct(Product product)
     {
- //       WorkerBasket.AddProductInBasket(product);
+        Basket.AddProductInBasket(product);
     }
 }

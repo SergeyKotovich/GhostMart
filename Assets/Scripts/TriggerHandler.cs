@@ -5,11 +5,11 @@ using UnityEngine;
 public class TriggerHandler : MonoBehaviour
 {
     [SerializeField] private CollectingProducts _collectingProducts;
-    private ICollectable _player;
+    private IWorker _player;
 
     private void Awake()
     {
-        _player = GetComponent<ICollectable>();
+        _player = GetComponent<IWorker>();
     }
 
     private void OnTriggerStay(Collider other)
@@ -28,7 +28,7 @@ public class TriggerHandler : MonoBehaviour
                 return;
             }
             
-            var product = _player.WorkerBasket.GetProduct();
+            var product = _player.Basket.GetProduct();
             
             if (product == null) return;
             stand.SetProductOnStand(product);

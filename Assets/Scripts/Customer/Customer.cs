@@ -5,22 +5,16 @@ using Random = UnityEngine.Random;
 
 namespace Customer
 {
-    public class Customer : MonoBehaviour,ICollectable, ICustomer
+    public class Customer : MonoBehaviour, ICustomer
     {
         public int CurrentPathIndex { get; set; }
-        public IBasket WorkerBasket { get; }
-
-        public void PickUpProduct(Product product)
-        {
-            
-        }
-
+        public IBasket Basket { get; }
+        
         private bool _isMoving;
         
         public ProductBarView _productBarView { get; private set; }
         public List<ListItem> ShoppingList { get; } = new();
         
-
         public void Initialize(List<Stand> path, ProductBarView productBarView)
         {
             foreach (var stand in path)

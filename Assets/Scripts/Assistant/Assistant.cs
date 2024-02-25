@@ -1,13 +1,18 @@
+using System;
 using Interfaces;
 using UnityEngine;
 
-public class Assistant : MonoBehaviour, ICollectable
+public class Assistant : MonoBehaviour, IWorker
 {
-    [field:SerializeField] public WorkerBasket WorkerBasket { get; private set; }
-    public void PickUpProduct(Product product)
+    public IWorkerBasket Basket { get; private set; } 
+
+    private void Awake()
     {
-        
+        Basket = GetComponent<IWorkerBasket>();
     }
 
-    IBasket ICollectable.WorkerBasket { get; }
+    public void PickUpProduct(Product product)
+    {
+        Basket.AddProductInBasket(product);
+    }
 }

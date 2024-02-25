@@ -8,13 +8,13 @@ public class CollectingProductsState : MonoBehaviour , IState
     [SerializeField] private CollectingProducts _collectingProducts;
     [SerializeField] private ProductFactory _productFactory;
     
-    private ICollectable _assistant;
+    private IWorker _assistant;
     private StateMachine _stateMachine;
     private bool _canPickUp;
 
     private void Awake()
     {
-        _assistant = GetComponent<ICollectable>();
+        _assistant = GetComponent<IWorker>();
     }
 
     public void Initialize(StateMachine stateMachine)
@@ -42,7 +42,7 @@ public class CollectingProductsState : MonoBehaviour , IState
             return;
         }
         
-        if (_assistant.WorkerBasket.IsFull())
+        if (_assistant.Basket.IsFull())
         {
             _canPickUp = false;
             _stateMachine.Enter<AssistantMovingToTargetState>();
@@ -51,7 +51,7 @@ public class CollectingProductsState : MonoBehaviour , IState
         
         var product = _productFactory.GetProduct();
         _collectingProducts.SetPosition(product);
-        _assistant.WorkerBasket.AddProductInBasket(product);
+        _assistant.PickUpProduct(product);
     }
 
 }
