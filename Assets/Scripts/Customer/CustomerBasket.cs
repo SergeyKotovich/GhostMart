@@ -16,10 +16,8 @@ namespace Customer
         public void AddProductInBasket(Product product)
         {
             _boughtProducts.Add(product);
-            Debug.Log(product.tag+" В корзине");
         }
-
-
+        
         public Product GetProduct()
         {
             return null;

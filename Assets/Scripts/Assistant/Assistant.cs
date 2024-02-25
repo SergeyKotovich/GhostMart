@@ -15,4 +15,9 @@ public class Assistant : MonoBehaviour, IWorker
     {
         Basket.AddProductInBasket(product);
     }
+
+    public Product GetProduct()
+    {
+        return Basket.GetProduct();
+    }
 }

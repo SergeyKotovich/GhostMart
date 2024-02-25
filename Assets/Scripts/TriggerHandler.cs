@@ -23,16 +23,7 @@ public class TriggerHandler : MonoBehaviour
         if (other.gameObject.CompareTag(GlobalConstants.STAND))
         {
             var stand = other.gameObject.GetComponent<Stand>();
-            if (!stand.IsAnyFreePlace())
-            {
-                return;
-            }
-            
-            var product = _player.Basket.GetProduct();
-            
-            if (product == null) return;
-            stand.SetProductOnStand(product);
-
+            HandleStandInteraction(stand);
         }
               
     }
@@ -43,9 +34,23 @@ public class TriggerHandler : MonoBehaviour
         {
             return;
         }
+        
         var product = productFactory.GetProduct();
         _player.PickUpProduct(product);
         _collectingProducts.SetPosition(product);
         
+    }
+
+    private void HandleStandInteraction(Stand stand)
+    {
+        if (!stand.IsAnyFreePlace() || !_player.HasProducts) return;
+        
+        var product = _player.GetProduct();
+        if (stand.Type != product.Type)
+        {
+            _player.PickUpProduct(product);
+            return;
+        }
+        stand.SetProductOnStand(product);
     }
 }
