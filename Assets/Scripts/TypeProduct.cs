@@ -2,5 +2,6 @@ public enum TypeProduct
 {
     Banana,
     Corn,
-    CashRegister
+    CashRegister,
+    Exit
 }

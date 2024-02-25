@@ -1219,6 +1219,7 @@ GameObject:
   - component: {fileID: -3487866229034890910}
   - component: {fileID: -6998099103573984917}
   - component: {fileID: -8665152666566973538}
+  - component: {fileID: -4018873855151525611}
   m_Layer: 0
   m_Name: Fish_04
   m_TagString: Untagged
@@ -1304,8 +1305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952358374e16466ca13437e58e7730fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentPathIndex: 0
-  _productBarView: {fileID: 0}
 --- !u!195 &-2919448635829222576
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1320,7 +1319,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1340,7 +1339,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddd6d6205a7c4ab58be9da809845ef7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _customer: {fileID: -2092824328025386786}
   _navMeshAgent: {fileID: -2919448635829222576}
   _animator: {fileID: 5242057947430571291}
 --- !u!114 &-3487866229034890910
@@ -1379,7 +1377,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d3a717a4d84396827668e31789ed78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _customer: {fileID: -2092824328025386786}
+--- !u!114 &-4018873855151525611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5242057947421195993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd422b2f79dd49ceb8fbcb96c68fee37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _navMeshAgent: {fileID: -2919448635829222576}
+  _animator: {fileID: 5242057947430571291}
 --- !u!1 &5242057947421195995
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,13 +7,13 @@ namespace Customer
     public class PathCreator : MonoBehaviour
     {
         [SerializeField] private Stand[] _stands;
-        [SerializeField] private Stand _cashRegister;
+        [SerializeField] private CashRegister _cashRegister;
         [SerializeField] private Transform _exitTransform;
         
-        public  List<Stand> GetRandomPath()
+        public  List<IInteractable> GetRandomPath()
         {
 
-            List<Stand> availableStands = new List<Stand>();
+            List<IInteractable> availableStands = new List<IInteractable>();
 
             for (int i = 0; i < _stands.Length; i++)
             {
@@ -24,7 +24,7 @@ namespace Customer
             }
 
             var randomTargetsCount = Random.Range(1, availableStands.Count + 1);
-            List<Stand> path = new List<Stand>();
+            List<IInteractable> path = new List<IInteractable>();
 
             for (int i = 0; i < randomTargetsCount; i++)
             {

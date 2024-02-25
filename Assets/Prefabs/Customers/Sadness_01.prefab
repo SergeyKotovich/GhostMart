@@ -1080,6 +1080,7 @@ GameObject:
   - component: {fileID: -5677377103892613486}
   - component: {fileID: 5484168290593927832}
   - component: {fileID: -247576487462915874}
+  - component: {fileID: 2721429357774519475}
   m_Layer: 0
   m_Name: Sadness_01
   m_TagString: Untagged
@@ -1165,8 +1166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952358374e16466ca13437e58e7730fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentPathIndex: 0
-  _productBarView: {fileID: 0}
 --- !u!195 &-8704929061124113632
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1181,7 +1180,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1201,7 +1200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddd6d6205a7c4ab58be9da809845ef7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _customer: {fileID: 5619117131264446250}
   _navMeshAgent: {fileID: -8704929061124113632}
   _animator: {fileID: 3058300351411599583}
 --- !u!114 &-5677377103892613486
@@ -1240,7 +1238,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d3a717a4d84396827668e31789ed78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _customer: {fileID: 5619117131264446250}
+--- !u!114 &2721429357774519475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3058300351418878839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd422b2f79dd49ceb8fbcb96c68fee37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _navMeshAgent: {fileID: -8704929061124113632}
+  _animator: {fileID: 3058300351411599583}
 --- !u!1 &3058300351418878843
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,13 +9,12 @@ namespace Customer
     {
         public int CurrentPathIndex { get; set; }
         public IBasket Basket { get; }
-        
         private bool _isMoving;
         
         public ProductBarView _productBarView { get; private set; }
         public List<ListItem> ShoppingList { get; } = new();
         
-        public void Initialize(List<Stand> path, ProductBarView productBarView)
+        public void Initialize(List<IInteractable> path, ProductBarView productBarView)
         {
             foreach (var stand in path)
             {

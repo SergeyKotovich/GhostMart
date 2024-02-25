@@ -5,14 +5,14 @@ using Interfaces;
 using JetBrains.Annotations;
 using UnityEngine;
 
- public class Stand : MonoBehaviour
+ public class Stand : MonoBehaviour, IInteractable, IStand
     {
         [SerializeField] private Grid _grid;
         [field:SerializeField] public Sprite StandIcon {get; private set; }
         [field:SerializeField] public Transform PointForCustomers { get; private set; }
         [field:SerializeField] public TypeProduct Type { get; private set; }
         public bool IsAvailable { get; private set; }
-        private List<StandCell> StandCells { get; } = new();
+        public List<StandCell> StandCells { get; } = new();
 
         private int _width = 4;
         private int _height = 5;

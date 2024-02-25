@@ -8,5 +8,6 @@ namespace Interfaces
         public TypeProduct Type { get; }
         public Transform PointForCustomers { get; }
         public bool IsAvailable { get; }
+
     }
 }

@@ -11,6 +11,5 @@ namespace Interfaces
         public List<ListItem> ShoppingList { get; }
         public IBasket Basket { get; }
         
-        public void Initialize(List<Stand> path, ProductBarView productBarView);
     }
 }

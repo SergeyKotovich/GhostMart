@@ -1,12 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using Interfaces;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.Serialization;
-
 
 public class WorkerBasket : MonoBehaviour, IWorkerBasket
 {
