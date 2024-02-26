@@ -1,26 +1,28 @@
-using System;
 using TMPro;
 using UnityEngine;
 
 public class Wallet : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _money;
+    [SerializeField] private TextMeshProUGUI _balanceText;
+    private float _balance;
+    
     
     private void Start()
     {
-        MoneyBonus.MoneyAdd += AddMoney;
-    }
-
-    private void AddMoney(int value)
-    {
-        var moneyInWallet = Convert.ToInt32(_money.text);
-        var money = moneyInWallet + value;
-        _money.text = money.ToString();
+        UpdateBalance();
     }
     
-    private void OnDestroy()
+    public void AddMoney(float amount)
     {
-        MoneyBonus.MoneyAdd -= AddMoney;
+        _balance += amount;
+        UpdateBalance();
     }
+
+
+    private void UpdateBalance()
+    {
+        _balanceText.text = _balance.ToString();
+    }
+    
     
 }
