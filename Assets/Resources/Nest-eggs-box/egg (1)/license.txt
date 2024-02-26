@@ -1,0 +1,11 @@
+Model Information:
+* title:	Egg
+* source:	https://sketchfab.com/3d-models/egg-aa0cb237a33541ea838e5f4b022f4233
+* author:	evgeniy_ahmetov (https://sketchfab.com/evgeniy_ahmetov)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Egg" (https://sketchfab.com/3d-models/egg-aa0cb237a33541ea838e5f4b022f4233) by evgeniy_ahmetov (https://sketchfab.com/evgeniy_ahmetov) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Pink Egg Box
+* source:	https://sketchfab.com/3d-models/pink-egg-box-c64b36de61874d6f943550bc973cc9e0
+* author:	envoprint (https://sketchfab.com/keithenvoprint)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Pink Egg Box" (https://sketchfab.com/3d-models/pink-egg-box-c64b36de61874d6f943550bc973cc9e0) by envoprint (https://sketchfab.com/keithenvoprint) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

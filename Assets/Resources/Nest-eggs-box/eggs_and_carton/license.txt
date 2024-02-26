@@ -1,0 +1,11 @@
+Model Information:
+* title:	Eggs and carton
+* source:	https://sketchfab.com/3d-models/eggs-and-carton-0e1ad9e204a1487b8967d6a990b14ea5
+* author:	xaqior (https://sketchfab.com/xaqior)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Eggs and carton" (https://sketchfab.com/3d-models/eggs-and-carton-0e1ad9e204a1487b8967d6a990b14ea5) by xaqior (https://sketchfab.com/xaqior) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
