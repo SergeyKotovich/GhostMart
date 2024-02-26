@@ -670,13 +670,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 132965688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86191fde91ab4368b6ef3b76af7a2dcf, type: 3}
+  m_Script: {fileID: 11500000, guid: d107f70bd4164a9c9f305cecb14e06ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grid: {fileID: 0}
   <StandIcon>k__BackingField: {fileID: 21300000, guid: 7d85e2c4a7be64bbba722a62ba265722, type: 3}
   <PointForCustomers>k__BackingField: {fileID: 1754302663}
   <Type>k__BackingField: 2
+  <ShiftForNextPosition>k__BackingField: {x: 1, y: 0, z: 1}
 --- !u!1001 &150342338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3019,7 +3019,7 @@ MonoBehaviour:
   _stands:
   - {fileID: 661071623}
   - {fileID: 1936917546}
-  _cashRegister: {fileID: 1936917546}
+  _cashRegister: {fileID: 140723384}
   _exitTransform: {fileID: 811757662}
 --- !u!4 &716647741
 Transform:
@@ -3164,8 +3164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c20667ce3148feac17f2654c16634e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 725233019}
-  _basketController: {fileID: 725233023}
+  _collectingProducts: {fileID: 725233021}
 --- !u!114 &725233019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3178,7 +3177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e752482cde4b07bf5585695aece753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <WorkerBasket>k__BackingField: {fileID: 725233020}
 --- !u!114 &725233020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3224,11 +3222,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 725233006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e949c0f9c1104a9bad41323ddc21072d, type: 3}
+  m_Script: {fileID: 11500000, guid: 18966d9839644832a6a9febb3074fd68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workerBasket: {fileID: 725233020}
-  _collectingProducts: {fileID: 725233021}
+  <MaxCountProduct>k__BackingField: 3
 --- !u!4 &731922224 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e5c7ae3fce8c6bc4a98e6aa39ad2fd1d, type: 3}
@@ -4607,15 +4604,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8065264950435053390, guid: 62d2a7f5da1084f6994dcbca19a2ddb2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8065264950435053390, guid: 62d2a7f5da1084f6994dcbca19a2ddb2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8065264950435053390, guid: 62d2a7f5da1084f6994dcbca19a2ddb2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8065264950435053390, guid: 62d2a7f5da1084f6994dcbca19a2ddb2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8639,7 +8636,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b918da6165fc6b24d97987ecd6020cb2, type: 2}
     - target: {fileID: 919132149155446097, guid: 730c1f4bd64978342925860944733ad1, type: 3}
       propertyPath: m_Name
-      value: carpenterWorkbench
+      value: CashRegister
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 730c1f4bd64978342925860944733ad1, type: 3}
       propertyPath: m_StaticEditorFlags

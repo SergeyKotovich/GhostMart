@@ -48,7 +48,7 @@ namespace Customer
                 return;
             }
             
-            var stand = shoppingList[currentPathIndex].StopPoint;
+            var stand = (Stand)shoppingList[currentPathIndex].StopPoint;
             var productsOnStandCount = stand.GetProductsCount();
 
             if (productsOnStandCount > 0)

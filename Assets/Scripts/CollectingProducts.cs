@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CollectingProducts : MonoBehaviour
 {
-    private ICollectable _character;
+    private IWorker _character;
     [SerializeField] private Transform[] _allPositionsInBasket;
 
     [SerializeField] private Recycle _recycle;
@@ -15,12 +15,12 @@ public class CollectingProducts : MonoBehaviour
 
     private void Awake()
     {
-        _character = GetComponent<ICollectable>();
+        _character = GetComponent<IWorker>();
     }
 
     private void Start()
     {
-        _character.WorkerBasket.CountProductsChanged += UpdateCountProductsInBasket;
+        _character.Basket.CountProductsChanged += UpdateCountProductsInBasket;
     }
 
     private int _currentIndexPositionInBasket;
@@ -41,7 +41,7 @@ public class CollectingProducts : MonoBehaviour
     }
     private void OnDestroy()
     {
-        _character.WorkerBasket.CountProductsChanged -= UpdateCountProductsInBasket;
+        _character.Basket.CountProductsChanged -= UpdateCountProductsInBasket;
     }
     // public GameObject TryGetProduct()
     // {

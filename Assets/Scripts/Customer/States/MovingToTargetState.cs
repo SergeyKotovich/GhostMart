@@ -12,6 +12,7 @@ namespace Customer
         private ICustomer _customer;
         private StateMachine _stateMachine;
         private bool _isMoving;
+        private TypeProduct _currentTargetType;
 
         private void Awake()
         {
@@ -22,7 +23,14 @@ namespace Customer
         {
             if (_navMeshAgent.remainingDistance < 1f && !_navMeshAgent.pathPending)
             {
-                EnterGettingProductsState();
+                if (_currentTargetType == TypeProduct.CashRegister)
+                {
+                    EnterAtCashRegisterState();
+                }
+                else
+                {
+                    EnterGettingProductsState();
+                }
             }
         }
         public void Initialize(StateMachine stateMachine)
@@ -38,6 +46,13 @@ namespace Customer
         {
             var shoppingList = _customer.ShoppingList;
             var currentPathIndex = _customer.CurrentPathIndex;
+            _currentTargetType = shoppingList[currentPathIndex].StopPoint.Type;
+
+            if (shoppingList[currentPathIndex].StopPoint.Type == TypeProduct.CashRegister)
+            {
+                MoveToCashRegister();
+                return;
+            }
             
             if (currentPathIndex < shoppingList.Count)
             {
@@ -55,16 +70,34 @@ namespace Customer
             }
         }
 
+        private void MoveToCashRegister()
+        {
+            var currentPathIndex = _customer.CurrentPathIndex;
+            var cashRegister = (CashRegister)_customer.ShoppingList[currentPathIndex].StopPoint;
+
+            var destination = cashRegister.GetFreePosition();
+            _navMeshAgent.SetDestination(destination);
+
+            _isMoving = true;
+            _animator.SetBool("IsMoving", _isMoving);
+            _customer._productBarView.UpdateProductBar(cashRegister.StandIcon);
+        }
+
         private void StopMoving()
         {
             _isMoving = false;
             _animator.SetBool("IsMoving", _isMoving);
         }
         
-
         private void EnterGettingProductsState()
         {
             _stateMachine.Enter<GettingProductsState>();
+            StopMoving();
+        }
+        
+        private void EnterAtCashRegisterState()
+        {
+            _stateMachine.Enter<AtCashRegisterState>();
             StopMoving();
         }
 

@@ -1,19 +1,18 @@
 using System;
 using System.Collections.Generic;
-using DefaultNamespace;
 using DG.Tweening;
 using Interfaces;
 using JetBrains.Annotations;
 using UnityEngine;
 
- public class Stand : MonoBehaviour
+ public class Stand : MonoBehaviour, IInteractable, IStand
     {
         [SerializeField] private Grid _grid;
         [field:SerializeField] public Sprite StandIcon {get; private set; }
         [field:SerializeField] public Transform PointForCustomers { get; private set; }
-        [field:SerializeField] public StandsTypes Type { get; private set; }
+        [field:SerializeField] public TypeProduct Type { get; private set; }
         public bool IsAvailable { get; private set; }
-        private List<StandCell> StandCells { get; } = new();
+        public List<StandCell> StandCells { get; } = new();
 
         private int _width = 4;
         private int _height = 5;
@@ -24,15 +23,8 @@ using UnityEngine;
             IsAvailable = true;
         }
 
-        public bool SetProductOnStand(Product product)
+        public void SetProductOnStand(Product product)
         {
-            if (Enum.TryParse<StandsTypes>(product.tag, out var productType))
-
-                if (productType != Type)
-                {
-                    return false;
-                }    
-            
             for (int i = 0; i < StandCells.Count; i++)
             {
                 if (StandCells[i].IsAvailable)
@@ -47,11 +39,9 @@ using UnityEngine;
                     product.transform.rotation = rotationQuaternion;
                     
                     StandCells[i].SetProductInCell(product);
-                    return true;
+                    return;
                 }
             }
-
-            return false;
         }
 
         [CanBeNull]

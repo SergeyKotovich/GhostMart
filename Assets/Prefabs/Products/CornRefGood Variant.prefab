@@ -85,3 +85,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac390474de047ca84cffd663380c46c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Price>k__BackingField: 0
+  <Type>k__BackingField: 1

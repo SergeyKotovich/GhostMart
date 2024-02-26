@@ -1,13 +1,13 @@
-using DefaultNamespace;
 using UnityEngine;
 
 namespace Interfaces
 {
-    public abstract class IInteractable : MonoBehaviour
+    public interface IInteractable
     {
         public Sprite StandIcon {get; }
-        public StandsTypes Type { get; }
+        public TypeProduct Type { get; }
         public Transform PointForCustomers { get; }
         public bool IsAvailable { get; }
+
     }
 }

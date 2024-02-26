@@ -321,6 +321,7 @@ GameObject:
   - component: {fileID: 7719436845011608285}
   - component: {fileID: 8785995636837287783}
   - component: {fileID: 4295984086726699533}
+  - component: {fileID: 4921596569754025856}
   m_Layer: 0
   m_Name: Shity_01
   m_TagString: Untagged
@@ -406,8 +407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952358374e16466ca13437e58e7730fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentPathIndex: 0
-  _productBarView: {fileID: 0}
 --- !u!195 &-5188951159229671611
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -422,7 +421,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -442,7 +441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddd6d6205a7c4ab58be9da809845ef7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _customer: {fileID: -6584710501671357861}
   _navMeshAgent: {fileID: -5188951159229671611}
   _animator: {fileID: 7107108863412213764}
 --- !u!114 &7719436845011608285
@@ -481,7 +479,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d3a717a4d84396827668e31789ed78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _customer: {fileID: -6584710501671357861}
+--- !u!114 &4921596569754025856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107108863402732460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd422b2f79dd49ceb8fbcb96c68fee37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _navMeshAgent: {fileID: -5188951159229671611}
+  _animator: {fileID: 7107108863412213764}
 --- !u!1 &7107108863402732462
 GameObject:
   m_ObjectHideFlags: 0

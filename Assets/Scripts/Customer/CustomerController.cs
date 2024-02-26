@@ -11,7 +11,8 @@ namespace Customer
             (
                 GetComponent<MovingToTargetState>(),
                 GetComponent<PayingProductsState>(),
-                GetComponent<GettingProductsState>()
+                GetComponent<GettingProductsState>(),
+                GetComponent<AtCashRegisterState>()
             );
             
             stateMachine.Initialize();

@@ -4,13 +4,13 @@ using UnityEngine.Serialization;
 
 public class ProductStandState : MonoBehaviour, IState
 {
-    private ICollectable _assistant;
+    private IWorker _assistant;
     [SerializeField] private Stand _stand;
     private StateMachine _stateMachine;
 
     private void Awake()
     {
-        _assistant = GetComponent<ICollectable>();
+        _assistant = GetComponent<IWorker>();
     }
 
     public void Initialize(StateMachine stateMachine)
@@ -20,7 +20,7 @@ public class ProductStandState : MonoBehaviour, IState
 
     public void OnEnter()
     {
-        if (!_assistant.WorkerBasket.IsEmpty())
+        if (!_assistant.Basket.IsEmpty())
         {
             SetProductOnStand();
         }
@@ -28,13 +28,13 @@ public class ProductStandState : MonoBehaviour, IState
 
     private void SetProductOnStand()
     {
-        while (!_assistant.WorkerBasket.IsEmpty())
+        while (!_assistant.Basket.IsEmpty())
         {
-            var product = _assistant.WorkerBasket.GetProduct();
+            var product = _assistant.Basket.GetProduct();
             _stand.SetProductOnStand(product);
         }
 
-        if (_assistant.WorkerBasket.IsEmpty())
+        if (_assistant.Basket.IsEmpty())
         {
             _stateMachine.Enter<AssistantMovingToTargetState>();
         }
