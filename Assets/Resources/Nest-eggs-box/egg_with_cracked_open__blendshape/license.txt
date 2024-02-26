@@ -1,0 +1,11 @@
+Model Information:
+* title:	Egg with cracked open  Blendshape
+* source:	https://sketchfab.com/3d-models/egg-with-cracked-open-blendshape-108e2769976840738db1515c6346f1a2
+* author:	rbkavin (https://sketchfab.com/rbkavin)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Egg with cracked open  Blendshape" (https://sketchfab.com/3d-models/egg-with-cracked-open-blendshape-108e2769976840738db1515c6346f1a2) by rbkavin (https://sketchfab.com/rbkavin) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

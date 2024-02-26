@@ -1,0 +1,11 @@
+Model Information:
+* title:	farm_big-egg
+* source:	https://sketchfab.com/3d-models/farm-big-egg-0c8907d7e13040f7a8f8421a8c59af4f
+* author:	xenera (https://sketchfab.com/xenera)
+
+Model License:
+* license type:	CC-BY-NC-ND-4.0 (http://creativecommons.org/licenses/by-nc-nd/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions can not be distributed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "farm_big-egg" (https://sketchfab.com/3d-models/farm-big-egg-0c8907d7e13040f7a8f8421a8c59af4f) by xenera (https://sketchfab.com/xenera) licensed under CC-BY-NC-ND-4.0 (http://creativecommons.org/licenses/by-nc-nd/4.0/)

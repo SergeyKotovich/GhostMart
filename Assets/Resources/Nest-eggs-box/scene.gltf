@@ -1,0 +1,223 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 8104,
+      "max": [
+        1.217288613319397,
+        1.2381772994995117,
+        0.5210933089256287
+      ],
+      "min": [
+        -1.1817103624343872,
+        -1.1638094186782837,
+        -0.45408904552459717
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 97248,
+      "componentType": 5126,
+      "count": 8104,
+      "max": [
+        0.9997969269752502,
+        0.9961825013160706,
+        0.9992585778236389
+      ],
+      "min": [
+        -0.9969267249107361,
+        -0.9990591406822205,
+        -0.9996559619903564
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 8104,
+      "max": [
+        0.9747458100318909,
+        0.98648601770401
+      ],
+      "min": [
+        0.013513913378119469,
+        0.013513913378119469
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 8436,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "voonsenyu (https://sketchfab.com/voonsenyu)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/nest-0082394410c749c4b0bf64e5eacfac18",
+      "title": "Nest"
+    },
+    "generator": "Sketchfab-15.37.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 33744,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 64832,
+      "byteOffset": 33744,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 194496,
+      "byteOffset": 98576,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 293072,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Branch_01",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.499989,
+          0.389541,
+          0.337649,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.6
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Nest_Gen__1__Branch_01_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "99dd094d184c4ab29ecd45c0513c3c3b.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        146.59881591796875,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        3.255147616298276e-14,
+        -146.59881591796875,
+        0.0,
+        0.0,
+        146.59881591796875,
+        3.255147616298276e-14,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Nest_Gen__1_"
+    },
+    {
+      "mesh": 0,
+      "name": "Nest_Gen__1__Branch_01_0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

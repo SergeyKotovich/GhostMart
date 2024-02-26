@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dragon Egg
+* source:	https://sketchfab.com/3d-models/dragon-egg-fc981ed47e7e463aa2138e734919c5b6
+* author:	Jurassic Park (https://sketchfab.com/holderacademy)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dragon Egg" (https://sketchfab.com/3d-models/dragon-egg-fc981ed47e7e463aa2138e734919c5b6) by Jurassic Park (https://sketchfab.com/holderacademy) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
