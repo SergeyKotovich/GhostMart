@@ -1847,54 +1847,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &161536503
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 161536506}
-  - component: {fileID: 161536505}
-  m_Layer: 0
-  m_Name: BananaStand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &161536505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 161536503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86191fde91ab4368b6ef3b76af7a2dcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _grid: {fileID: 0}
-  <StandIcon>k__BackingField: {fileID: 0}
-  <PointForCustomers>k__BackingField: {fileID: 0}
-  <Type>k__BackingField: 0
---- !u!4 &161536506
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 161536503}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.706, y: 1.6030892, z: -10.232}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &167553790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17155,20 +17107,19 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 963194228}
   - {fileID: 420015164}
+  - {fileID: 1007945420}
   - {fileID: 992179494}
   - {fileID: 156875372}
   - {fileID: 52967033}
   - {fileID: 178115285}
   - {fileID: 498588916}
   - {fileID: 1956089084}
-  - {fileID: 161536506}
   - {fileID: 1036693580}
   - {fileID: 449614538}
   - {fileID: 716647741}
   - {fileID: 1959648317}
   - {fileID: 314693690}
   - {fileID: 952523695}
-  - {fileID: 1007945420}
   - {fileID: 380523002}
   - {fileID: 1968964310}
   - {fileID: 1092773589}
