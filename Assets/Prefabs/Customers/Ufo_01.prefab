@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 5656183457060657741}
   - component: {fileID: -5940002822993932686}
   - component: {fileID: -5829812922620493958}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ufo_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
