@@ -886,7 +886,7 @@ GameObject:
   - component: {fileID: -2138297789826425161}
   - component: {fileID: 8257679825530999520}
   - component: {fileID: 1443716896498178684}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Disco_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}

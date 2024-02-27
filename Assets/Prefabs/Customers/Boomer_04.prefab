@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: -8974729882842268652}
   - component: {fileID: 8844479977284379099}
   - component: {fileID: 3524403487932835152}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Boomer_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}

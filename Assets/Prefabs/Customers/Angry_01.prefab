@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: -2031318964580258735}
   - component: {fileID: -1621229458107140312}
   - component: {fileID: 9124299589506215590}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Angry_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
