@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using Interfaces;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace Customer
@@ -12,10 +14,13 @@ namespace Customer
         public int CurrentPathIndex { get; set; }
         public IBasket Basket { get; }
         private bool _isMoving;
+        
 
         public ProductBarView _productBarView { get; private set; }
         public List<ListItem> ShoppingList { get; } = new();
         public Vector3 PositionInLine { get; private set; }
+        [SerializeField]
+        private NavMeshAgent _navMeshAgent;
 
         public void Initialize(List<IInteractable> path, ProductBarView productBarView)
         {
@@ -35,6 +40,14 @@ namespace Customer
             PositionInLine = destination;
         }
         
+        private void Update()
+        {
+            if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance && !_navMeshAgent.pathPending)
+            {
+                StopMoving();
+            }
+        }
+
         public void StopMoving()
         {
             MovementController.StopMoving();

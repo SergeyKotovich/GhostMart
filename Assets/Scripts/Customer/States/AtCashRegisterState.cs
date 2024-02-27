@@ -28,7 +28,7 @@ namespace Customer
             {
                 return;
             }
-            if (_cashRegister.IsAvailable)
+            if (_customer.PositionInLine == _cashRegister.PointForCustomers.position && _cashRegister.IsAvailable)
             {
                 EnterPayingProductsState();
             }
@@ -52,13 +52,13 @@ namespace Customer
             Debug.Log("paying position = " + _cashRegister.PointForCustomers.position);
             Debug.Log("transform id = " + transform.GetInstanceID());
             
-            if (_customer.PositionInLine == _cashRegister.PointForCustomers.position)
+            if (_customer.PositionInLine == _cashRegister.PointForCustomers.position && _cashRegister.IsAvailable)
             {
-               // _stateMachine.Enter<PayingProductsState>();
+               _stateMachine.Enter<PayingProductsState>();
                _isActive = false;
 
-                _cashRegister.OnCustomerLeft(_customer);
-                _customer.SetDestination(new Vector3(5,5,5));
+               // _cashRegister.OnCustomerLeft(_customer);
+               // _customer.SetDestination(new Vector3(8,0,60));
             }
         }
     }
