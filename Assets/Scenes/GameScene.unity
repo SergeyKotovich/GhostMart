@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17699346, g: 0.22156177, b: 0.30383733, a: 1}
+  m_IndirectSpecularColor: {r: 0.17699274, g: 0.22156087, b: 0.30383563, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -677,6 +677,27 @@ MonoBehaviour:
   <PointForCustomers>k__BackingField: {fileID: 1754302663}
   <Type>k__BackingField: 2
   <ShiftForNextPosition>k__BackingField: {x: 1, y: 0, z: 1}
+--- !u!65 &140723385
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132965688}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.71, y: 2.67, z: 7.09}
+  m_Center: {x: -2.89, y: 1.32, z: 0}
 --- !u!1001 &150342338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3165,6 +3186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collectingProducts: {fileID: 725233021}
+  _cashRegister: {fileID: 140723384}
 --- !u!114 &725233019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7992,7 +8014,7 @@ MonoBehaviour:
   - {fileID: -6136985691133890919, guid: 480cb945727f51a4ab750f14d2b7e015, type: 3}
   _spawnPoint: {fileID: 110739545}
   _dellayBetweenSpawn: 2
-  _maxCustomersCount: 5
+  _maxCustomersCount: 3
   _pathCreator: {fileID: 716647740}
   _productBarSpawner: {fileID: 380523001}
 --- !u!4 &1964831552 stripped
@@ -8639,6 +8661,10 @@ PrefabInstance:
       value: CashRegister
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 730c1f4bd64978342925860944733ad1, type: 3}
+      propertyPath: m_TagString
+      value: CashRegister
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 730c1f4bd64978342925860944733ad1, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -8660,6 +8686,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 730c1f4bd64978342925860944733ad1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 140723384}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 730c1f4bd64978342925860944733ad1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 140723385}
     - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: 730c1f4bd64978342925860944733ad1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 454446172}

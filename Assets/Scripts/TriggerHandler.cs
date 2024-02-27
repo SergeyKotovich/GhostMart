@@ -5,6 +5,7 @@ using UnityEngine;
 public class TriggerHandler : MonoBehaviour
 {
     [SerializeField] private CollectingProducts _collectingProducts;
+    [SerializeField] private CashRegister _cashRegister;
     private IWorker _player;
 
     private void Awake()
@@ -25,7 +26,19 @@ public class TriggerHandler : MonoBehaviour
             var stand = other.gameObject.GetComponent<Stand>();
             HandleStandInteraction(stand);
         }
-              
+        
+        if (other.gameObject.CompareTag(GlobalConstants.CASH_REGISTER))
+        {
+            _cashRegister.Open();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag(GlobalConstants.CASH_REGISTER))
+        {
+            _cashRegister.CLose();
+        }
     }
 
     private void TakeProductFromFactory(IFactory productFactory)
@@ -38,7 +51,6 @@ public class TriggerHandler : MonoBehaviour
         var product = productFactory.GetProduct();
         _player.PickUpProduct(product);
         _collectingProducts.SetPosition(product);
-        
     }
 
     private void HandleStandInteraction(Stand stand)

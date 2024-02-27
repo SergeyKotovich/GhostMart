@@ -58,6 +58,7 @@ namespace Customer
                 shoppingList[currentPathIndex].CurrentCount++;
                 _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex]);
                 _basket.ProductsCount++;
+                //_customer.Basket.AddProductInBasket(product);
                 Destroy(product.gameObject);
             }
 

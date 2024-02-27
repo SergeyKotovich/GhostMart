@@ -6,22 +6,21 @@ namespace Customer
 {
     public class MovingToTargetState : MonoBehaviour, IState
     {
-        [SerializeField] private NavMeshAgent _navMeshAgent;
-        [SerializeField] private Animator _animator;
-        
         private ICustomer _customer;
         private StateMachine _stateMachine;
         private bool _isMoving;
         private TypeProduct _currentTargetType;
+        private bool _isActive;
 
         private void Awake()
         {
             _customer = GetComponent<ICustomer>();
         }
 
-        void Update()
+        private void Update()
         {
-            if (_navMeshAgent.remainingDistance < 1f && !_navMeshAgent.pathPending)
+            if (!_isActive) return;
+            if (_customer.IsAtTargetPoint())
             {
                 if (_currentTargetType == TypeProduct.CashRegister)
                 {
@@ -41,6 +40,7 @@ namespace Customer
         public void OnEnter()
         {
             MoveToNextPoint();
+            _isActive = true;
         }
         private void MoveToNextPoint()
         {
@@ -56,17 +56,15 @@ namespace Customer
             
             if (currentPathIndex < shoppingList.Count)
             {
-                _navMeshAgent.SetDestination(shoppingList[currentPathIndex].Position);
+                var destination = shoppingList[currentPathIndex].Position;
+                _customer.SetDestination(destination);
                 
                 _isMoving = true;
-                _animator.SetBool("IsMoving", _isMoving);
                 _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex]);
-                
             }
             else
             {
-                _navMeshAgent.isStopped = true;
-                _animator.SetBool("IsMoving", false);
+                _customer.StopMoving();
             }
         }
 
@@ -75,30 +73,26 @@ namespace Customer
             var currentPathIndex = _customer.CurrentPathIndex;
             var cashRegister = (CashRegister)_customer.ShoppingList[currentPathIndex].StopPoint;
 
-            var destination = cashRegister.GetFreePosition();
-            _navMeshAgent.SetDestination(destination);
+            var destination = cashRegister.GetFreePosition(_customer);
+            _customer.SetDestination(destination);
 
             _isMoving = true;
-            _animator.SetBool("IsMoving", _isMoving);
             _customer._productBarView.UpdateProductBar(cashRegister.StandIcon);
         }
-
-        private void StopMoving()
-        {
-            _isMoving = false;
-            _animator.SetBool("IsMoving", _isMoving);
-        }
+        
         
         private void EnterGettingProductsState()
         {
             _stateMachine.Enter<GettingProductsState>();
-            StopMoving();
+            _isActive = false;
+            _customer.StopMoving();
         }
         
         private void EnterAtCashRegisterState()
         {
             _stateMachine.Enter<AtCashRegisterState>();
-            StopMoving();
+            _isActive = false;
+            _customer.StopMoving();
         }
 
     }

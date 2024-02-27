@@ -1166,6 +1166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952358374e16466ca13437e58e7730fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <MovementController>k__BackingField:
+    _navMeshAgent: {fileID: -8704929061124113632}
+    _animator: {fileID: 3058300351411599583}
 --- !u!195 &-8704929061124113632
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1200,8 +1203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddd6d6205a7c4ab58be9da809845ef7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _navMeshAgent: {fileID: -8704929061124113632}
-  _animator: {fileID: 3058300351411599583}
 --- !u!114 &-5677377103892613486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1250,8 +1251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd422b2f79dd49ceb8fbcb96c68fee37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _navMeshAgent: {fileID: -8704929061124113632}
-  _animator: {fileID: 3058300351411599583}
 --- !u!1 &3058300351418878843
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using Interfaces;
+using NUnit.Framework;
 using UnityEngine;
 
 public class CashRegister : MonoBehaviour, IInteractable
@@ -13,12 +15,16 @@ public class CashRegister : MonoBehaviour, IInteractable
     private bool _isBusy;
     public Vector3 LastBusyPositionInLine { get; private set; }
 
+    private List<ICustomer> _customersInLine = new();
+
     private void Awake()
     {
         LastBusyPositionInLine = PointForCustomers.position;
+        IsAvailable = false;
     }
-    public Vector3 GetFreePosition()
+    public Vector3 GetFreePosition(ICustomer customer)
     {
+        _customersInLine.Add(customer);
         if (!_isBusy)
         {
             _isBusy = true;
@@ -27,17 +33,35 @@ public class CashRegister : MonoBehaviour, IInteractable
         return LastBusyPositionInLine += ShiftForNextPosition;
     }
 
-    public void OnCustomerLeft()
+    public void OnCustomerLeft(ICustomer customer)
     {
-        if (LastBusyPositionInLine == PointForCustomers.position)
-        {
-            _isBusy = false;
-            LineChanged?.Invoke();
-            Debug.Log("customerLeft");
-            return;
-        }
-        
-        LineChanged?.Invoke();
+        _customersInLine.Remove(customer);
+        _isBusy = false;
+        Debug.Log("customerLeft");
+        Debug.Log("LastBusyPositionInLine before " + LastBusyPositionInLine);
         LastBusyPositionInLine -= ShiftForNextPosition;
+        Debug.Log("LastBusyPositionInLine after " + LastBusyPositionInLine);
+        MoveCustomersForward();
+    }
+
+    private void MoveCustomersForward()
+    {
+        foreach (var customer in _customersInLine)
+        {
+            var destination = customer.PositionInLine - ShiftForNextPosition;
+            customer.SetDestination(destination);
+        }
+    }
+
+    public void Open()
+    {
+        IsAvailable = true;
+        Debug.Log("CashRegister IsAvailable" + IsAvailable);
+    }
+
+    public void CLose()
+    {
+        IsAvailable = false;
+        Debug.Log("CashRegister IsAvailable" + IsAvailable);
     }
 }

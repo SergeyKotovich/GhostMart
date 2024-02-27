@@ -8,14 +8,14 @@ namespace Customer
 {
     public class AtCashRegisterState : MonoBehaviour, IState
     {
-        [SerializeField] private NavMeshAgent _navMeshAgent;
-        [SerializeField] private Animator _animator;
         private CashRegister _cashRegister;
         
         private ICustomer _customer;
         private StateMachine _stateMachine;
         private bool _isMoving;
         private bool _isLeft;
+        private Vector3 _currentPosition;
+        private bool _isActive;
 
         private void Awake()
         {
@@ -24,21 +24,14 @@ namespace Customer
         
         void Update()
         {
-            //if (_cashRegister == null)
-            //{
-            //    return;
-            //}
-            //if (Vector3.Distance(transform.position, _cashRegister.PointForCustomers.position) < 0.5)
-            //{
-            //    StartCoroutine(Timer());
-            //}
-        }
-
-        private IEnumerator Timer()
-        {
-            yield return new WaitForSeconds(5);
-            _cashRegister.OnCustomerLeft();
-            _isLeft = true;
+            if (_cashRegister == null || !_isActive)
+            {
+                return;
+            }
+            if (_cashRegister.IsAvailable)
+            {
+                EnterPayingProductsState();
+            }
         }
         
         public void Initialize(StateMachine stateMachine)
@@ -49,42 +42,24 @@ namespace Customer
         public void OnEnter()
         {
             _cashRegister = (CashRegister)_customer.ShoppingList[_customer.CurrentPathIndex].StopPoint;
-            _cashRegister.LineChanged += TryGoForward;
-            StopMoving();
-        }
-        
-      
-        private void StopMoving()
-        {
-            _isMoving = false;
-            _animator.SetBool("IsMoving", _isMoving);
-        }
-
-        private void TryGoForward()
-        {
-            var lastBusyPosition = _cashRegister.LastBusyPositionInLine;
-            
-            float distance = Vector3.Distance(transform.position, lastBusyPosition);
-            if (distance > 0.5)
-            {
-                Debug.Log("еще двлеко");
-                return;
-            }
-            
-            Debug.Log("try go forward");
-            var destination = _cashRegister.GetFreePosition();
-            _navMeshAgent.SetDestination(destination);
-
-            _isMoving = true;
-            _animator.SetBool("IsMoving", _isMoving);
+            _isActive = true;
+            EnterPayingProductsState();
         }
 
         private void EnterPayingProductsState()
         {
-            _stateMachine.Enter<PayingProductsState>();
-            StopMoving();
-        }
+            Debug.Log("customer position = " + _customer.PositionInLine);
+            Debug.Log("paying position = " + _cashRegister.PointForCustomers.position);
+            Debug.Log("transform id = " + transform.GetInstanceID());
+            
+            if (_customer.PositionInLine == _cashRegister.PointForCustomers.position)
+            {
+               // _stateMachine.Enter<PayingProductsState>();
+               _isActive = false;
 
-       
+                _cashRegister.OnCustomerLeft(_customer);
+                _customer.SetDestination(new Vector3(5,5,5));
+            }
+        }
     }
 }
