@@ -4,7 +4,7 @@ using Interfaces;
 using UnityEngine;
 
 [RequireComponent(typeof(ProductFactory))]
-public class ProductSpawner : MonoBehaviour
+public class ProductSpawner : MonoBehaviour , ISpawner
 {
     [SerializeField] private float _delayBetweenSpawnObjects ;
     [SerializeField] private ProductConfig productConfig;
@@ -25,7 +25,7 @@ public class ProductSpawner : MonoBehaviour
         ProductSpawn();
     }
 
-    private void ProductSpawn()
+    public void ProductSpawn()
     {
         if (_productFactory.ProductCounter>=_maxCountSpawnedProduct)
         {

@@ -6,7 +6,6 @@ namespace Interfaces
     {
         public int ProductCounter { get; }
         
-        
         public void OnAvailableProductsUpdated(Product availableProduct);
         public Product GetProduct();
         public bool HasSpawnedProduct();

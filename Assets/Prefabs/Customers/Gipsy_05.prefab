@@ -1143,7 +1143,7 @@ GameObject:
   - component: {fileID: -8528572574999166629}
   - component: {fileID: 3833154597403988335}
   - component: {fileID: 7177330670418978053}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gipsy_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 8785995636837287783}
   - component: {fileID: 4295984086726699533}
   - component: {fileID: 4921596569754025856}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shity_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
