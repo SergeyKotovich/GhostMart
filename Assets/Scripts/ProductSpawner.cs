@@ -4,14 +4,16 @@ using Interfaces;
 using UnityEngine;
 
 [RequireComponent(typeof(ProductFactory))]
-public class ProductSpawner : MonoBehaviour 
+public class ProductSpawner : MonoBehaviour
 {
+    [SerializeField] private TypeProduct _typeProduct;
+    [SerializeField] private StorageProductsForInteraction _storageProductsForInteraction;
     [SerializeField] private ProductConfig productConfig;
     [SerializeField] private Transform[] _allPositionsForSpawn;
     [SerializeField] private Product _productPrefab;
-
-    [NonSerialized] private int _maxCountSpawnedProduct  = 3 ; // уточнить момент про этот атрибут, без него падает ошибка в редакторе
-    [NonSerialized] private float _delayBetweenSpawnObjects = 2 ;
+    [SerializeField] private int _maxCountSpawnedProduct  = 3 ; 
+    [SerializeField] private float _delayBetweenSpawnObjects = 2 ;
+    
     private float _currentTime;
     private IFactory _productFactory;
 
