@@ -8,41 +8,36 @@ public class MoneySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _objectToSpawn; // Префаб
     [SerializeField] private Grid _grid; // Ссылка на Grid
+    [SerializeField] private MoneySpawnerConfig _moneySpawnerConfig;
 
-    [SerializeField] private int _width=5; // Ширина сетки (количество ячеек по горизонтали) 5
-    [SerializeField] private int _height=5; // Высота сетки (количество ячеек по вертикали) 5
-
-    [SerializeField] private List<Vector3> _gridPoints = new List<Vector3>(); // Список точек сетки грида
-    [SerializeField] private int _counterObjects = 0; // Колличество заспавненных объектов
-    [SerializeField] private int _maxObject; // Максимальное колличество объектов которое можно спавнить
-
-    [SerializeField] private int _moneyStep = 100; // Пороговое значение денег для спавна нового объекта(Шаг начисления)
-    [SerializeField] private int _getMoney = 0; // Текущее количество денег на которое совершена покупка покупателей
-    [SerializeField] private int _previousMoney = 0; // Предыдущее количество денег в кассе
-    [SerializeField] private int _row=0;
-    [SerializeField] private int _maxRow = 5;
-    [SerializeField] private float _newYposition = 0.2f; // Новая позиция спавна грида
-
-    private List<GameObject> _allMoneyObjects = new();
+    private List<Vector3> _gridPoints = new(); // Список точек сетки грида
+    private int _counterObjects = 0; // Колличество заспавненных объектов
+    private MoneyKeeper _moneyKeeper;
+    
+    private int _maxObject; // Максимальное колличество объектов которое можно спавнить
+    private int _row;
+    
+    private readonly List<GameObject> _allSpawnedMoney = new();
 
     private void Start()
     {
         SpawnPoints();
+        _moneyKeeper = new MoneyKeeper();
     }
 
     private void Update()
     {
         // Проверяем, превышено ли пороговое значение денег для спавна нового объекта
-        if (_getMoney >= _previousMoney + _moneyStep)
+        if (_moneyKeeper.CurrentMoneyAmount >= _moneyKeeper.PreviousMoneyValue + _moneySpawnerConfig.MoneyStep)
         {
             // Спавним новый объект
             SpawnObject();
 
             // Обновляем предыдущее значение денег
-            _previousMoney += _moneyStep;
+            _moneyKeeper.PreviousMoneyValue += _moneySpawnerConfig.MoneyStep;
         }
 
-        if (_counterObjects == _maxObject && _row<_maxRow)
+        if (_counterObjects == _maxObject && _row<_moneySpawnerConfig.MaxRow)
         {
             _counterObjects = 0;
             _maxObject = 0;
@@ -54,20 +49,25 @@ public class MoneySpawner : MonoBehaviour
 
     public int GetMoney()
     {
-        var currentAmount = _getMoney;
-        _getMoney = 0;
-        _previousMoney = 0;
+        var currentAmount = _moneyKeeper.GetMoney();
+        _moneyKeeper.ResetMoney();
+        
         _counterObjects = 0;
         RemoveMoneyFromTable();
-        _allMoneyObjects.Clear();
+        _allSpawnedMoney.Clear();
         return currentAmount;
+    }
+    
+    public void AddMoney(int amount)
+    {
+        _moneyKeeper.AddMoney(amount);
     }
 
     private void RemoveMoneyFromTable()
     {
-        if (_allMoneyObjects.Count == 0) return;
+        if (_allSpawnedMoney.Count == 0) return;
 
-        foreach (var moneyObject in _allMoneyObjects)
+        foreach (var moneyObject in _allSpawnedMoney)
         {
             moneyObject.transform.DOScale(Vector3.zero, 1).OnComplete(() => Destroy(moneyObject));
         }
@@ -83,9 +83,9 @@ public class MoneySpawner : MonoBehaviour
 
         int index = 0;
 
-        for (int x = 0; x < _width; x++)
+        for (int x = 0; x < _moneySpawnerConfig.Width; x++)
         {
-            for (int y = 0; y < _height; y++)
+            for (int y = 0; y < _moneySpawnerConfig.Height; y++)
             {
                 // Получаем позицию сетки в мировых координатах
                 Vector3Int gridPosition = new Vector3Int(x, 0, y);
@@ -115,21 +115,17 @@ public class MoneySpawner : MonoBehaviour
 
             Vector3 point = _gridPoints[_counterObjects];
             // Создаем объект на вычисленной позиции
-            _allMoneyObjects.Add(Instantiate(_objectToSpawn, point, prefabRotation));
+            _allSpawnedMoney.Add(Instantiate(_objectToSpawn, point, prefabRotation));
             _counterObjects++;
         }
     }
 
     // Пример метода, который вызывается при получении денег
-    public void AddMoney(int amount)
-    {
-        _getMoney += amount;
-    }
 
     private void ChangePositionSpawner()
     {
         Vector3 newPosition = transform.position; // Создаем копию текущей позиции
-        newPosition.y += _newYposition; // Изменяем Y координату на 0.1f
+        newPosition.y += _moneySpawnerConfig.NewYPosition; // Изменяем Y координату на 0.1f
 
         transform.position = newPosition; // Присваиваем новую позицию
     }

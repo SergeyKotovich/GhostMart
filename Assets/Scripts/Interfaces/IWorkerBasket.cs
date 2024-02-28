@@ -10,5 +10,8 @@ namespace Interfaces
         public int CurrentCountProduct { get; }
         public bool IsFull();
         public bool IsEmpty();
+        
+        public Product GetProduct();
+
     }
 }

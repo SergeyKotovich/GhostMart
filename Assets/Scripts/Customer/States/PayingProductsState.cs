@@ -8,6 +8,8 @@ namespace Customer
     {
         private StateMachine _stateMachine;
         private ICustomer _customer;
+        
+        //TODO: must be interface
         private CashRegister _cashRegister;
 
         private void Awake()

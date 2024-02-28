@@ -12,8 +12,6 @@ namespace Customer
         
         private ICustomer _customer;
         private StateMachine _stateMachine;
-        private bool _isMoving;
-        private bool _isLeft;
         private Vector3 _currentPosition;
         private bool _isActive;
 
@@ -56,9 +54,6 @@ namespace Customer
             {
                _stateMachine.Enter<PayingProductsState>();
                _isActive = false;
-
-               // _cashRegister.OnCustomerLeft(_customer);
-               // _customer.SetDestination(new Vector3(8,0,60));
             }
         }
     }

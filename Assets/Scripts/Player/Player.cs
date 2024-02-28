@@ -1,17 +1,19 @@
 using System;
 using Interfaces;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour, IWorker
 {
-    [SerializeField] private Wallet _wallet;
     public IWorkerBasket Basket { get; private set; }
     public bool CanPickUp => !Basket.IsFull();
     public bool HasProducts => !Basket.IsEmpty();
+    private Wallet _wallet;
     
   private void Awake()
   {
       Basket = GetComponent<IWorkerBasket>();
+      _wallet = new Wallet();
   }
 
   public void PickUpProduct(Product product)

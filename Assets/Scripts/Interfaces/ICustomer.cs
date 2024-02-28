@@ -11,8 +11,9 @@ namespace Interfaces
         public int CurrentPathIndex { get; set; }
         public ProductBarView _productBarView { get; }
         public List<ListItem> ShoppingList { get; }
-        public IBasket Basket { get; }
+        public ICustomerBasket Basket { get; }
         public Vector3 PositionInLine { get; }
+        public int ProductsCountInBasket { get; }
         
         public void SetDestination(Vector3 destination);
 
@@ -20,5 +21,8 @@ namespace Interfaces
 
         public bool IsAtTargetPoint();
 
+        public void AddProductInBasket(Product product);
+
+        public void ResetCurrentProductCountInBasket();
     }
 }

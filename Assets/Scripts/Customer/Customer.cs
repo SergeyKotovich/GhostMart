@@ -12,9 +12,10 @@ namespace Customer
         [field:SerializeField]
         public MovementController MovementController { get; private set; }
         public int CurrentPathIndex { get; set; }
-        public IBasket Basket { get; private set; }
+        public ICustomerBasket Basket { get; private set; }
         private bool _isMoving;
-        
+
+        public int ProductsCountInBasket => Basket.GetProductsCount();
         public ProductBarView _productBarView { get; private set; }
         public List<ListItem> ShoppingList { get; } = new();
         public Vector3 PositionInLine { get; private set; }
@@ -57,5 +58,16 @@ namespace Customer
         {
             return MovementController.IsAtTargetPoint();
         }
+
+        public void AddProductInBasket(Product product)
+        {
+            Basket.AddProductInBasket(product);
+        }
+
+        public void ResetCurrentProductCountInBasket()
+        {
+            Basket.ResetCurrentProductCount();
+        }
+
     }
 }

@@ -5,22 +5,23 @@ using UnityEngine;
 
 namespace Customer
 {
-    public class CustomerBasket : IBasket
+    public class CustomerBasket : ICustomerBasket
     {
-        public int ProductsCount { get; private set; }
-        private List<Product> _boughtProducts = new();
+        private int ProductsCount { get; set; }
+        public List<Product> BoughtProducts { get; } = new();
 
         public void AddProductInBasket(Product product)
         {
-            _boughtProducts.Add(product);
+            BoughtProducts.Add(product);
             ProductsCount++;
         }
         
-        public Product GetProduct()
+
+        public int GetProductsCount()
         {
-            return null;
+            return BoughtProducts.Count;
         }
-        
+
         public void ResetCurrentProductCount()
         {
             ProductsCount = 0;
@@ -30,7 +31,7 @@ namespace Customer
         {
             var amount = 0;
             
-            foreach (var boughtProduct in _boughtProducts)
+            foreach (var boughtProduct in BoughtProducts)
             {
                 amount += boughtProduct.Price;
             }

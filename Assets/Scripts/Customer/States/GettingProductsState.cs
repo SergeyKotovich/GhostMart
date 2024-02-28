@@ -10,9 +10,7 @@ namespace Customer
     public class GettingProductsState : MonoBehaviour, IState
     {
         private ICustomer _customer;
-        
         private StateMachine _stateMachine;
-        private CustomerBasket _basket;
         private bool _isTakingProducts;
 
         private void Awake()
@@ -36,7 +34,6 @@ namespace Customer
         public void OnEnter()
         {
            _isTakingProducts = true;
-           _basket = (CustomerBasket)_customer.Basket;
         }
         
         private void TakeProducts()
@@ -55,17 +52,17 @@ namespace Customer
             if (productsOnStandCount > 0)
             {
                 var product = stand.GetAvailableProduct();
-                _basket.AddProductInBasket(product);
+                _customer.AddProductInBasket(product);
+                
                 shoppingList[currentPathIndex].CurrentCount++;
                 _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex]);
                 product.transform.DOScale(Vector3.zero, 0.2f);
-                //Destroy(product.gameObject);
             }
 
-            if (_basket.ProductsCount == shoppingList[currentPathIndex].MaxCount)
+            if (_customer.ProductsCountInBasket >= shoppingList[currentPathIndex].MaxCount)
             {
                 _customer.CurrentPathIndex++;
-                _basket.ResetCurrentProductCount();
+                _customer.ResetCurrentProductCountInBasket();
                 _isTakingProducts = false;
 
                 EnterMovingToTargetState();

@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class CashRegister : MonoBehaviour, IInteractable
 {
-    public event Action LineChanged;
     [field:SerializeField] public Sprite StandIcon {get; private set; }
     [field:SerializeField] public Transform PointForCustomers { get; private set; }
     [field:SerializeField] public TypeProduct Type { get; private set; }
