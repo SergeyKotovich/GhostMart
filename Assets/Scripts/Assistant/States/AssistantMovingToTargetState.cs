@@ -66,7 +66,7 @@ public class AssistantMovingToTargetState : MonoBehaviour, IState
         {
             _isProductFactory = true;
         }
-        if (other.CompareTag(GlobalConstants.STAND))
+        if (other.CompareTag(GlobalConstants.STAND_TAG))
         {
             _isStand = true;
         }

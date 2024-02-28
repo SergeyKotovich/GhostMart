@@ -4,14 +4,14 @@ using Interfaces;
 using UnityEngine;
 
 [RequireComponent(typeof(ProductFactory))]
-public class ProductSpawner : MonoBehaviour , ISpawner
+public class ProductSpawner : MonoBehaviour 
 {
-    [SerializeField] private float _delayBetweenSpawnObjects ;
     [SerializeField] private ProductConfig productConfig;
-    [SerializeField] private Transform[] _allPositionsForProduct;
+    [SerializeField] private Transform[] _allPositionsForSpawn;
     [SerializeField] private Product _productPrefab;
-    
-    private readonly int _maxCountSpawnedProduct = 3;
+
+    [NonSerialized] private int _maxCountSpawnedProduct  = 3 ; // уточнить момент про этот атрибут, без него падает ошибка в редакторе
+    [NonSerialized] private float _delayBetweenSpawnObjects = 2 ;
     private float _currentTime;
     private IFactory _productFactory;
 
@@ -25,7 +25,7 @@ public class ProductSpawner : MonoBehaviour , ISpawner
         ProductSpawn();
     }
 
-    public void ProductSpawn()
+    protected virtual void ProductSpawn()
     {
         if (_productFactory.ProductCounter>=_maxCountSpawnedProduct)
         {
@@ -38,7 +38,7 @@ public class ProductSpawner : MonoBehaviour , ISpawner
         if (_currentTime>=_delayBetweenSpawnObjects)
         {
             var currentIndexPoint = _productFactory.ProductCounter;
-            var product = Instantiate(_productPrefab, _allPositionsForProduct[currentIndexPoint]);
+            var product = Instantiate(_productPrefab, _allPositionsForSpawn[currentIndexPoint]);
             
             product.transform.DOScale(productConfig.ScaleProductAfterSpawn, productConfig.SizeChangeTime).
                 OnComplete (() => _productFactory.OnAvailableProductsUpdated(product));

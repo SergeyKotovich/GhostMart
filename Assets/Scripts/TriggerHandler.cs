@@ -20,12 +20,31 @@ public class TriggerHandler : MonoBehaviour
             TakeProductFromFactory(productFactory);
         }
         
-        if (other.gameObject.CompareTag(GlobalConstants.STAND))
+        if (other.gameObject.CompareTag(GlobalConstants.STAND_TAG))
         {
             var stand = other.gameObject.GetComponent<Stand>();
             HandleStandInteraction(stand);
         }
+
+        if (other.CompareTag(GlobalConstants.STORAGE_PRODUCTS_FOR_INERACTION_TAG))
+        {
+            
+            var storageProductsForInteraction = other.GetComponent<StorageProductsForInteraction>();
+
+            SetProductsForInteraction(storageProductsForInteraction);
+        }
               
+    }
+
+    private void SetProductsForInteraction(StorageProductsForInteraction storageProductsForInteraction)
+    {
+        if (!_player.HasProducts || storageProductsForInteraction.IsFoolStorage())
+        {
+            return;
+        }
+
+        var product = _player.Basket.GetProduct();
+        storageProductsForInteraction.AddProductForInteraction(product);
     }
 
     private void TakeProductFromFactory(IFactory productFactory)

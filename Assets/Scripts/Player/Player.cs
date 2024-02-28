@@ -22,5 +22,9 @@ public class Player : MonoBehaviour, IWorker
   {
       return Basket.GetProduct();
   }
-  
+
+  public void UpdateCountProduct()
+  {
+      
+  }
 }
