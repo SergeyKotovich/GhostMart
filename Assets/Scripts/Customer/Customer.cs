@@ -12,10 +12,9 @@ namespace Customer
         [field:SerializeField]
         public MovementController MovementController { get; private set; }
         public int CurrentPathIndex { get; set; }
-        public IBasket Basket { get; }
+        public IBasket Basket { get; private set; }
         private bool _isMoving;
         
-
         public ProductBarView _productBarView { get; private set; }
         public List<ListItem> ShoppingList { get; } = new();
         public Vector3 PositionInLine { get; private set; }
@@ -32,6 +31,7 @@ namespace Customer
             }
 
             _productBarView = productBarView;
+            Basket = new CustomerBasket();
         }
 
         public void SetDestination(Vector3 destination)

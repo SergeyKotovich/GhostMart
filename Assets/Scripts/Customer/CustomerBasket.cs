@@ -7,25 +7,35 @@ namespace Customer
 {
     public class CustomerBasket : IBasket
     {
-        public int ProductsCount;
+        public int ProductsCount { get; private set; }
         private List<Product> _boughtProducts = new();
-        public event Action<int> CountProductsChanged;
-        public int MaxCountProduct { get; }
-        public int CurrentCountProduct { get; set; }
-        
+
         public void AddProductInBasket(Product product)
         {
             _boughtProducts.Add(product);
+            ProductsCount++;
         }
         
         public Product GetProduct()
         {
             return null;
         }
-
-        public bool IsFull()
+        
+        public void ResetCurrentProductCount()
         {
-            return false;
+            ProductsCount = 0;
+        }
+
+        public int GetTotalProductPrice()
+        {
+            var amount = 0;
+            
+            foreach (var boughtProduct in _boughtProducts)
+            {
+                amount += boughtProduct.Price;
+            }
+
+            return amount;
         }
     }
 }

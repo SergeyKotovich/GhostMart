@@ -11,7 +11,7 @@ public class Wallet : MonoBehaviour
         MoneyBonus.MoneyAdd += AddMoney;
     }
 
-    private void AddMoney(int value)
+    public void AddMoney(int value)
     {
         var moneyInWallet = Convert.ToInt32(_money.text);
         var money = moneyInWallet + value;

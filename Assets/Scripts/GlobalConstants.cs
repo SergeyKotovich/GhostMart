@@ -6,4 +6,5 @@ public static class GlobalConstants
     public static string BANANA_TAG = "Banana";
     public static string STAND = "Stand";
     public static string CASH_REGISTER = "CashRegister";
+    public static string MONEY_KEEPER = "MoneyKeeper";
 }

@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using Interfaces;
 using UnityEngine;
 
@@ -30,12 +31,12 @@ namespace Customer
         public void Initialize(StateMachine stateMachine)
         {
             _stateMachine = stateMachine;
-            _basket = new CustomerBasket();
         }
 
         public void OnEnter()
         {
            _isTakingProducts = true;
+           _basket = (CustomerBasket)_customer.Basket;
         }
         
         private void TakeProducts()
@@ -57,15 +58,14 @@ namespace Customer
                 _basket.AddProductInBasket(product);
                 shoppingList[currentPathIndex].CurrentCount++;
                 _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex]);
-                _basket.ProductsCount++;
-                //_customer.Basket.AddProductInBasket(product);
-                Destroy(product.gameObject);
+                product.transform.DOScale(Vector3.zero, 0.2f);
+                //Destroy(product.gameObject);
             }
 
             if (_basket.ProductsCount == shoppingList[currentPathIndex].MaxCount)
             {
                 _customer.CurrentPathIndex++;
-                _basket.ProductsCount = 0;
+                _basket.ResetCurrentProductCount();
                 _isTakingProducts = false;
 
                 EnterMovingToTargetState();

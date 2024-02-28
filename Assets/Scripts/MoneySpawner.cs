@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -21,6 +22,8 @@ public class MoneySpawner : MonoBehaviour
     [SerializeField] private int _row=0;
     [SerializeField] private int _maxRow = 5;
     [SerializeField] private float _newYposition = 0.2f; // Новая позиция спавна грида
+
+    private List<GameObject> _allMoneyObjects = new();
 
     private void Start()
     {
@@ -46,6 +49,27 @@ public class MoneySpawner : MonoBehaviour
             ClearPointToSpawn();
             ChangePositionSpawner();
             SpawnPoints();
+        }
+    }
+
+    public int GetMoney()
+    {
+        var currentAmount = _getMoney;
+        _getMoney = 0;
+        _previousMoney = 0;
+        _counterObjects = 0;
+        RemoveMoneyFromTable();
+        _allMoneyObjects.Clear();
+        return currentAmount;
+    }
+
+    private void RemoveMoneyFromTable()
+    {
+        if (_allMoneyObjects.Count == 0) return;
+
+        foreach (var moneyObject in _allMoneyObjects)
+        {
+            moneyObject.transform.DOScale(Vector3.zero, 1).OnComplete(() => Destroy(moneyObject));
         }
     }
 
@@ -91,7 +115,7 @@ public class MoneySpawner : MonoBehaviour
 
             Vector3 point = _gridPoints[_counterObjects];
             // Создаем объект на вычисленной позиции
-            Instantiate(_objectToSpawn, point, prefabRotation);
+            _allMoneyObjects.Add(Instantiate(_objectToSpawn, point, prefabRotation));
             _counterObjects++;
         }
     }

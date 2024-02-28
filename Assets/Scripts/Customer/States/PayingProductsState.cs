@@ -8,6 +8,7 @@ namespace Customer
     {
         private StateMachine _stateMachine;
         private ICustomer _customer;
+        private CashRegister _cashRegister;
 
         private void Awake()
         {
@@ -22,19 +23,20 @@ namespace Customer
         public void OnEnter()
         {
             StartCoroutine(Timer());
+            _cashRegister = (CashRegister)_customer.ShoppingList[_customer.CurrentPathIndex].StopPoint;
         }
 
         private IEnumerator Timer()
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(2);
+            var basket = (CustomerBasket)_customer.Basket;
+            _cashRegister.SellProducts(basket.GetTotalProductPrice());
             GoToExit();
         }
 
         private void GoToExit()
         {
-            var cashRegister = (CashRegister)_customer.ShoppingList[_customer.CurrentPathIndex].StopPoint;
-
-            cashRegister.OnCustomerLeft(_customer);
+            _cashRegister.OnCustomerLeft(_customer);
             _customer.SetDestination(new Vector3(8,0,60));
         }
     }

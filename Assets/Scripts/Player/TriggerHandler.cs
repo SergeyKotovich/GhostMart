@@ -31,6 +31,13 @@ public class TriggerHandler : MonoBehaviour
         {
             _cashRegister.Open();
         }
+        
+        if (other.gameObject.CompareTag(GlobalConstants.MONEY_KEEPER))
+        {
+            var moneySpawner = other.GetComponent<MoneySpawner>();
+            var player = (Player)_player;
+            player.AddMoney(moneySpawner.GetMoney());
+        }
     }
 
     private void OnTriggerExit(Collider other)
