@@ -1,4 +1,5 @@
 using System.Collections;
+using Events;
 using Interfaces;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ namespace Customer
 {
     public class PayingProductsState : MonoBehaviour, IState
     {
+        [SerializeField] private CustomersController _customersController;
         private StateMachine _stateMachine;
         private ICustomer _customer;
         
@@ -38,7 +40,9 @@ namespace Customer
 
         private void GoToExit()
         {
+            EventStreams.Global.Publish(new CustomerLeftEvent());
             _cashRegister.OnCustomerLeft(_customer);
+            
             _customer.SetDestination(new Vector3(8,0,60));
         }
     }

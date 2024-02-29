@@ -5,15 +5,11 @@ using UnityEngine;
 
 public class MoneyBonus : MonoBehaviour
 {
-    public static event Action<int> MoneyAdd; // все не правильно =) нужно убрать static
+    [SerializeField] private Player _player;
     private void OnTriggerEnter(Collider other)
     {
-        MoneyAdd?.Invoke(10);
+        _player.AddMoney(10);
         Destroy(gameObject);
     }
-
-    public void AddMoney()
-    {
-        
-    }
+    
 }

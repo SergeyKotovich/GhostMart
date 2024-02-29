@@ -1,26 +1,26 @@
 using System;
+using Events;
 using TMPro;
 using UnityEngine;
 
 public class MoneyView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _money;
-    
+    private IDisposable _subscription;
+
     private void Start()
     {
-        MoneyBonus.MoneyAdd += AddMoney;
+        _subscription = EventStreams.Global.Subscribe<MoneyChangedEvent>(UpdateMoneyView);
     }
 
-    public void AddMoney(int value)
+    private void UpdateMoneyView(MoneyChangedEvent moneyChangedEvent)
     {
-        var moneyInWallet = Convert.ToInt32(_money.text);
-        var money = moneyInWallet + value;
-        _money.text = money.ToString();
+        _money.text = moneyChangedEvent.Money.ToString();
     }
     
     private void OnDestroy()
     {
-        MoneyBonus.MoneyAdd -= AddMoney;
+        _subscription.Dispose();
     }
     
 }

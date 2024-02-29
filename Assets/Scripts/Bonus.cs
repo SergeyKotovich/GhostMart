@@ -9,8 +9,6 @@ public class Bonus : MonoBehaviour
     
     private List<GameObject> _listAllProductsInHands;
     private int _productCounter;
-    
-
     public void GetBonus()
     {
         for (int i = _listAllProductsInHands.Count - 1; i >= 0; i--)
