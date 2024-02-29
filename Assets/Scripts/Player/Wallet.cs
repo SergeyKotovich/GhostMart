@@ -14,7 +14,6 @@ public class Wallet
         Debug.Log("money value = " + Money);
         //TODO: event to ui Money Were changed Update MoneyView using tier
     }
-
     public void AddMoney(int amount)
     {
         Money += amount;

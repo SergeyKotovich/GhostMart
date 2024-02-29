@@ -10,20 +10,20 @@ namespace Customer
         [SerializeField] private Customer[] _customersPrefabs;
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private float _dellayBetweenSpawn;
-        [SerializeField] private int _maxCustomersCount;
         [SerializeField] private PathCreator _pathCreator;
         [SerializeField] private ProductBarSpawner _productBarSpawner;
-        private int _currentCustomersCount;
+        [SerializeField] private CustomersController _customerController;
         private List<Customer> _currentCustomers = new();
-
-        private void Awake()
+        
+        public void StartSpawn(int maxCustomersCount)
         {
-            StartCoroutine(SpawnCustomers());
+            StartCoroutine(SpawnCustomers(maxCustomersCount));
         }
-
-        private IEnumerator SpawnCustomers()
+        
+        private IEnumerator SpawnCustomers(int maxCustomersCount)
         {
-            while (_currentCustomersCount < _maxCustomersCount)
+            var currentCustomersCount = 0;
+            while (currentCustomersCount < maxCustomersCount)
             {
                 var randomIndex = Random.Range(0, _customersPrefabs.Length);
                 var customer = Instantiate(_customersPrefabs[randomIndex]);
@@ -36,7 +36,8 @@ namespace Customer
                 customer.transform.position = _spawnPoint.position;
                 _currentCustomers.Add(customer);
 
-                _currentCustomersCount++;
+                currentCustomersCount++;
+                _customerController.OnCustomerSpawned();
                 yield return new WaitForSeconds(_dellayBetweenSpawn);
             }
 

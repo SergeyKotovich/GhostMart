@@ -1302,6 +1302,7 @@ MonoBehaviour:
   <Type>k__BackingField: 2
   <ShiftForNextPosition>k__BackingField: {x: 2, y: 0, z: 2}
   _moneySpawner: {fileID: 1036693577}
+  _customersController: {fileID: 1142095440}
 --- !u!65 &140723385
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9637,6 +9638,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 09426c88872f279448944225f799a7b8, type: 3}
   m_PrefabInstance: {fileID: 1112034741}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1142095439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1142095441}
+  - component: {fileID: 1142095440}
+  m_Layer: 0
+  m_Name: CustomersController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1142095440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142095439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3986d6f3aeb649c1b9d162b51cc3fbde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxCustomersCountInMart: 3
+  _customersSpawner: {fileID: 1959648318}
+--- !u!4 &1142095441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142095439}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 209, y: 984, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1171130685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14811,9 +14858,9 @@ MonoBehaviour:
   - {fileID: -6136985691133890919, guid: 480cb945727f51a4ab750f14d2b7e015, type: 3}
   _spawnPoint: {fileID: 110739545}
   _dellayBetweenSpawn: 2
-  _maxCustomersCount: 5
   _pathCreator: {fileID: 716647740}
   _productBarSpawner: {fileID: 380523001}
+  _customerController: {fileID: 1142095440}
 --- !u!4 &1964831552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5383868674341980625, guid: 480f78703999dc34bac3baecb360676b, type: 3}
@@ -16669,3 +16716,4 @@ SceneRoots:
   - {fileID: 1039292049}
   - {fileID: 915658007}
   - {fileID: 298958669}
+  - {fileID: 1142095441}

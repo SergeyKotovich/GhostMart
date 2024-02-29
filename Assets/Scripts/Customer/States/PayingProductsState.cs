@@ -6,6 +6,7 @@ namespace Customer
 {
     public class PayingProductsState : MonoBehaviour, IState
     {
+        [SerializeField] private CustomersController _customersController;
         private StateMachine _stateMachine;
         private ICustomer _customer;
         
@@ -38,7 +39,10 @@ namespace Customer
 
         private void GoToExit()
         {
+            //TODO: replace by using tire (Publish - CustomerLeft)
             _cashRegister.OnCustomerLeft(_customer);
+            //_customersController.OnCustomerLeft();
+            
             _customer.SetDestination(new Vector3(8,0,60));
         }
     }
