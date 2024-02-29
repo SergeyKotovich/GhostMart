@@ -1,3 +1,4 @@
+using Events;
 using UnityEngine;
 
 public class Wallet
@@ -11,13 +12,11 @@ public class Wallet
     public void SpendMoney(int amount)
     {
         Money -= amount;
-        Debug.Log("money value = " + Money);
-        //TODO: event to ui Money Were changed Update MoneyView using tier
+        EventStreams.Global.Publish(new MoneyChangedEvent(Money));
     }
     public void AddMoney(int amount)
     {
         Money += amount;
-        Debug.Log("money value = " + Money);
-        //TODO: event to ui Money Were changed Update MoneyView using tier
+        EventStreams.Global.Publish(new MoneyChangedEvent(Money));
     }
 }

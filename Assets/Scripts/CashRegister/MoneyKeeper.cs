@@ -1,3 +1,5 @@
+using Events;
+
 public class MoneyKeeper
 {
     public int CurrentMoneyAmount { get; private set; }

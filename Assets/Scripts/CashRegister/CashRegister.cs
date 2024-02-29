@@ -13,8 +13,7 @@ public class CashRegister : MonoBehaviour, IInteractable
     [field:SerializeField] public TypeProduct Type { get; private set; }
     [field:SerializeField] public Vector3 ShiftForNextPosition { get; private set; }
     [SerializeField] private MoneySpawner _moneySpawner;
-    [SerializeField] private CustomersController _customersController;
-
+    
     public bool IsAvailable { get; private set; }
     private bool _isBusy;
     public Vector3 LastBusyPositionInLine { get; private set; }
@@ -45,7 +44,6 @@ public class CashRegister : MonoBehaviour, IInteractable
         Debug.Log("LastBusyPositionInLine before " + LastBusyPositionInLine);
         LastBusyPositionInLine -= ShiftForNextPosition;
         Debug.Log("LastBusyPositionInLine after " + LastBusyPositionInLine);
-        _customersController.OnCustomerLeft();
         MoveCustomersForward();
     }
 

@@ -1,4 +1,5 @@
 using System.Collections;
+using Events;
 using Interfaces;
 using UnityEngine;
 
@@ -39,9 +40,8 @@ namespace Customer
 
         private void GoToExit()
         {
-            //TODO: replace by using tire (Publish - CustomerLeft)
+            EventStreams.Global.Publish(new CustomerLeftEvent());
             _cashRegister.OnCustomerLeft(_customer);
-            //_customersController.OnCustomerLeft();
             
             _customer.SetDestination(new Vector3(8,0,60));
         }
