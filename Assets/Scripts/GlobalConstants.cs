@@ -8,4 +8,5 @@ public static class GlobalConstants
     public static string STORAGE_PRODUCTS_FOR_INERACTION_TAG = "StorageProductsForInteraction";
     public static string CASH_REGISTER = "CashRegister";
     public static string MONEY_KEEPER = "MoneyKeeper";
+    public static string PLAYER_TAG = "Player";
 }

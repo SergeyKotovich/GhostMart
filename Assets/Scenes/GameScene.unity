@@ -12174,7 +12174,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2538208172927381571, guid: 5a9667695bf000243b1cc3a22006ecaa, type: 3}
       propertyPath: m_Name
-      value: Waste Can (5)
+      value: Recycle
       objectReference: {fileID: 0}
     - target: {fileID: 2538208172927381571, guid: 5a9667695bf000243b1cc3a22006ecaa, type: 3}
       propertyPath: m_TagString

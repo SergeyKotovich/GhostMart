@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Interfaces;
 
 public interface IWorker
@@ -9,4 +10,5 @@ public interface IWorker
     public  void PickUpProduct(Product product);
 
     public Product GetProduct();
+    public List<Product> GetAllProducts();
 }

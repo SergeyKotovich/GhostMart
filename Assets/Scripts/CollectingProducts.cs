@@ -60,7 +60,7 @@ public class CollectingProducts : MonoBehaviour
     //        _recycle.Recycling(_listAllProductsInHands);
     //        _listAllProductsInHands.Clear();
     //    }
-
+//
     // if (other.gameObject.CompareTag("Bonus"))
     // {
     //     var bonusObject = _spawnerBonus.GetComponent<SpawnerBonus>();
