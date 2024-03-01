@@ -9,7 +9,7 @@ namespace Customer
         private ICustomer _customer;
         private StateMachine _stateMachine;
         private bool _isMoving;
-        private TypeProduct _currentTargetType;
+        private TypeInteractablePoints _currentTargetType;
         private bool _isActive;
 
         private void Awake()
@@ -22,7 +22,7 @@ namespace Customer
             if (!_isActive) return;
             if (_customer.IsAtTargetPoint())
             {
-                if (_currentTargetType == TypeProduct.CashRegister)
+                if (_currentTargetType == TypeInteractablePoints.CashRegister)
                 {
                     EnterAtCashRegisterState();
                 }
@@ -46,9 +46,9 @@ namespace Customer
         {
             var shoppingList = _customer.ShoppingList;
             var currentPathIndex = _customer.CurrentPathIndex;
-            _currentTargetType = shoppingList[currentPathIndex].StopPoint.Type;
+            _currentTargetType = shoppingList[currentPathIndex].StopPoint.TypeInteractablePoint;
 
-            if (shoppingList[currentPathIndex].StopPoint.Type == TypeProduct.CashRegister)
+            if (shoppingList[currentPathIndex].StopPoint.TypeInteractablePoint == TypeInteractablePoints.CashRegister)
             {
                 MoveToCashRegister();
                 return;

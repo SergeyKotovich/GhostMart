@@ -65,7 +65,7 @@ public class TriggerHandler : MonoBehaviour
         if (!stand.IsAnyFreePlace() || !_player.HasProducts) return;
         
         var product = _player.GetProduct();
-        if (stand.Type != product.Type)
+        if (stand.TypeProduct != product.Type)
         {
             _player.PickUpProduct(product);
             return;

@@ -10,7 +10,9 @@ using UnityEngine;
         [SerializeField] private Grid _grid;
         [field:SerializeField] public Sprite StandIcon {get; private set; }
         [field:SerializeField] public Transform PointForCustomers { get; private set; }
-        [field:SerializeField] public TypeProduct Type { get; private set; }
+        [field:SerializeField] public TypeProduct TypeProduct { get; private set; }
+
+        [field:SerializeField] public TypeInteractablePoints TypeInteractablePoint { get; private set; }
         public bool IsAvailable { get; private set; }
         public List<StandCell> StandCells { get; } = new();
 

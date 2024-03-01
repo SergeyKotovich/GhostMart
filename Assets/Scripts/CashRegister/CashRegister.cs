@@ -10,7 +10,7 @@ public class CashRegister : MonoBehaviour, IInteractable
 {
     [field:SerializeField] public Sprite StandIcon {get; private set; }
     [field:SerializeField] public Transform PointForCustomers { get; private set; }
-    [field:SerializeField] public TypeProduct Type { get; private set; }
+    [field:SerializeField] public TypeInteractablePoints TypeInteractablePoint { get; private set; }
     [field:SerializeField] public Vector3 ShiftForNextPosition { get; private set; }
     [SerializeField] private MoneySpawner _moneySpawner;
     
