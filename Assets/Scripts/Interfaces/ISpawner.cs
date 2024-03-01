@@ -1,4 +1,5 @@
 public interface ISpawner
 {
-     void ProductSpawn();
+     
+     void SpawnProduct();
 }

@@ -3,7 +3,7 @@ using Interfaces;
 using JetBrains.Annotations;
 using UnityEngine;
 
-[RequireComponent(typeof(ProductSpawner))]
+//[RequireComponent(typeof(ProductSpawner))]
 
 public class ProductFactory : MonoBehaviour, IFactory
 {

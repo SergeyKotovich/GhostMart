@@ -15,6 +15,7 @@ TagManager:
   - ProductFactory
   - CashRegister
   - MoneyKeeper
+  - StorageProductsForInteraction
   layers:
   - Default
   - TransparentFX

@@ -27,6 +27,12 @@ namespace Customer
             ProductsCount = 0;
         }
 
+        public Product GetSuitableProduct(TypeProduct typeProduct)
+        {
+            return null;
+        }
+
+        
         public int GetTotalProductPrice()
         {
             var amount = 0;

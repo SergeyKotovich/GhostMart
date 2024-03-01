@@ -20,8 +20,8 @@ public class TriggerHandler : MonoBehaviour
             var productFactory = other.GetComponent<IFactory>();
             TakeProductFromFactory(productFactory);
         }
-        
-        if (other.gameObject.CompareTag(GlobalConstants.STAND))
+
+        if (other.gameObject.CompareTag(GlobalConstants.STAND_TAG))
         {
             var stand = other.gameObject.GetComponent<Stand>();
             HandleStandInteraction(stand);

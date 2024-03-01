@@ -13,5 +13,6 @@ namespace Interfaces
         
         public Product GetProduct();
 
+        public bool HasSuitableProduct(TypeProduct typeProduct);
     }
 }
