@@ -10,5 +10,6 @@ namespace Interfaces
         public int CurrentCountProduct { get; }
         public bool IsFull();
         public bool IsEmpty();
+        public bool HasSuitableProduct(TypeProduct typeProduct);
     }
 }

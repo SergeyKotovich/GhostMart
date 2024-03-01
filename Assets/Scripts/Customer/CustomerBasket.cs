@@ -23,6 +23,11 @@ namespace Customer
             return null;
         }
 
+        public Product GetSuitableProduct(TypeProduct typeProduct)
+        {
+            return null;
+        }
+
         public bool IsFull()
         {
             return false;
