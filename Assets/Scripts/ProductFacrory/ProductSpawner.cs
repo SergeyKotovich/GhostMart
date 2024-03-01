@@ -3,8 +3,8 @@ using DG.Tweening;
 using Interfaces;
 using UnityEngine;
 
-//[RequireComponent(typeof(ProductFactory))]
-public class ProductSpawner : MonoBehaviour, ISpawner
+
+public class ProductSpawner : MonoBehaviour , ISpawner
 {
     [SerializeField] private ProductConfig _productConfig;
     [SerializeField] private Transform[] _allPositionsForSpawn;
@@ -54,5 +54,4 @@ public class ProductSpawner : MonoBehaviour, ISpawner
         _countSpawnedProducts = (_countSpawnedProducts+1)%_productConfig.MaxCountSpawnedProduct;
         _currentTime = default;
     }
-    
 }

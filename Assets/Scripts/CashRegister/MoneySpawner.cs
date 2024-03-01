@@ -6,6 +6,7 @@ using UnityEngine.Serialization;
 
 public class MoneySpawner : MonoBehaviour
 {
+    
     [SerializeField] private GameObject _objectToSpawn; // Префаб
     [SerializeField] private Grid _grid; // Ссылка на Grid
     [SerializeField] private MoneySpawnerConfig _moneySpawnerConfig;

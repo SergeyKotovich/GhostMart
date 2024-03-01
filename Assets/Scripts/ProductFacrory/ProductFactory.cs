@@ -3,10 +3,11 @@ using Interfaces;
 using JetBrains.Annotations;
 using UnityEngine;
 
-//[RequireComponent(typeof(ProductSpawner))]
+
 
 public class ProductFactory : MonoBehaviour, IFactory
 {
+    
    private Stack<Product> _allAvailableProducts = new();
    public int ProductCounter { get; private set; }
 

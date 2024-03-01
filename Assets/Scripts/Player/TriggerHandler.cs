@@ -7,7 +7,7 @@ public class TriggerHandler : MonoBehaviour
     [SerializeField] private CollectingProducts _collectingProducts;
     [SerializeField] private CashRegister _cashRegister;
     private IWorker _player;
-
+    
     private void Awake()
     {
         _player = GetComponent<IWorker>();
