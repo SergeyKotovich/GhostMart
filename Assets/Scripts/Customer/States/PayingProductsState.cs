@@ -7,7 +7,6 @@ namespace Customer
 {
     public class PayingProductsState : MonoBehaviour, IState
     {
-        [SerializeField] private CustomersController _customersController;
         private StateMachine _stateMachine;
         private ICustomer _customer;
         

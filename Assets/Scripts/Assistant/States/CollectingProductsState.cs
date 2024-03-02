@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using Interfaces;
 using UnityEngine;
 
-public class CollectingProductsState : MonoBehaviour , IState
+public class CollectingProductsState : MonoBehaviour , IPayLoadedState<IFactory>
 {
     [SerializeField] private CollectingProducts _collectingProducts;
-    [SerializeField] private ProductFactory _productFactory;
+   // [SerializeField] private ProductFactory _productFactory;
     
     private IWorker _assistant;
     private StateMachine _stateMachine;
     private bool _canPickUp;
+    private IFactory _productFactory;
 
     private void Awake()
     {
@@ -21,11 +22,11 @@ public class CollectingProductsState : MonoBehaviour , IState
     {
         _stateMachine = stateMachine;
     }
-
-    public void OnEnter()
-    {
-        _canPickUp = true;
-    }
+    
+  // public void OnEnter()
+  // {
+  //     _canPickUp = true;
+  // }
 
     private void Update()
     {
@@ -54,4 +55,9 @@ public class CollectingProductsState : MonoBehaviour , IState
         _assistant.PickUpProduct(product);
     }
 
+    public void OnEnter(IFactory payload)
+    {
+        _canPickUp = true;
+        _productFactory = payload;
+    }
 }

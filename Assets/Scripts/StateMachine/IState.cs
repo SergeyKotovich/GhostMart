@@ -1,4 +1,6 @@
-public interface IState
+using Interfaces;
+
+public interface IState : IInitializable
 {
     public void Initialize(StateMachine stateMachine);
 

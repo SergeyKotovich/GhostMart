@@ -43,23 +43,7 @@ public class CollectingProducts : MonoBehaviour
     {
         _character.Basket.CountProductsChanged -= UpdateCountProductsInBasket;
     }
-    // public GameObject TryGetProduct()
-    // {
-    //     if (_listAllProductsInHands.Count == 0) return null;
-
-    //     var product = _listAllProductsInHands[^1];
-    //     _listAllProductsInHands.Remove(product);
-    //     
-    //     return product;
-    // }
-
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Recycle"))
-    //    {
-    //        _recycle.Recycling(_listAllProductsInHands);
-    //        _listAllProductsInHands.Clear();
-    //    }
+    
 //
     // if (other.gameObject.CompareTag("Bonus"))
     // {

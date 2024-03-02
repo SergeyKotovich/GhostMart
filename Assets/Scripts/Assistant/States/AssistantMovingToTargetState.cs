@@ -15,7 +15,8 @@ public class AssistantMovingToTargetState : MonoBehaviour, IState
     private bool _isStand;
     private int _currentIndex;
     private readonly int IsMoving = Animator.StringToHash("IsMoving");
-
+    private IFactory _productFactory;
+    
     public void Initialize(StateMachine stateMachine)
     {
         _stateMachine = stateMachine;
@@ -52,7 +53,7 @@ public class AssistantMovingToTargetState : MonoBehaviour, IState
         if (_isProductFactory)
         {
             _animator.SetBool(IsMoving, false);
-            _stateMachine.Enter<CollectingProductsState>();
+            _stateMachine.Enter<CollectingProductsState,IFactory>(_productFactory);
         }
 
         if (!_isStand) return;
@@ -65,6 +66,7 @@ public class AssistantMovingToTargetState : MonoBehaviour, IState
         if (other.CompareTag(GlobalConstants.PRODUCT_FACTORY_TAG))
         {
             _isProductFactory = true;
+            _productFactory = other.GetComponent<IFactory>();
         }
         if (other.CompareTag(GlobalConstants.STAND_TAG))
         {
