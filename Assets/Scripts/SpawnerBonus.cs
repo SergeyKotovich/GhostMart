@@ -72,6 +72,6 @@ public class SpawnerBonus : MonoBehaviour
 
     private void OnDestroy()
     {
-        _currentBonus.BonusFlewToTarget -= StartSpawning;
+        //_currentBonus.BonusFlewToTarget -= StartSpawning;
     }
 }

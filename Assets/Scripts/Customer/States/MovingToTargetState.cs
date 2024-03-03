@@ -8,7 +8,6 @@ namespace Customer
     {
         private ICustomer _customer;
         private StateMachine _stateMachine;
-        private bool _isMoving;
         private TypeInteractablePoints _currentTargetType;
         private bool _isActive;
 
@@ -59,7 +58,6 @@ namespace Customer
                 var destination = shoppingList[currentPathIndex].Position;
                 _customer.SetDestination(destination);
                 
-                _isMoving = true;
                 _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex]);
             }
             else
@@ -76,7 +74,6 @@ namespace Customer
             var destination = cashRegister.Queue.GetFreePosition(_customer);
             _customer.SetDestination(destination);
 
-            _isMoving = true;
             _customer._productBarView.UpdateProductBar(cashRegister.StandIcon);
         }
         

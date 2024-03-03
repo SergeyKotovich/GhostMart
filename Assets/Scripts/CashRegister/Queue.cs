@@ -11,6 +11,7 @@ public class Queue
     private Transform _firstPositionInQueue;
     private Vector3 _lastBusyPositionInQueue;
     private readonly List<ICustomer> _customersInLine = new();
+    private bool _isBusy;
 
     public void Initialize(Transform pointForCustomers)
     {
@@ -21,9 +22,9 @@ public class Queue
     {
         _customersInLine.Add(customer);
         
-        if (_firstPositionInQueue.position == _lastBusyPositionInQueue)
+        if (_firstPositionInQueue.position == _lastBusyPositionInQueue && !_isBusy)
         {
-            _lastBusyPositionInQueue += ShiftForNextPosition;
+            _isBusy = true;
             return _firstPositionInQueue.position;
         }
         return _lastBusyPositionInQueue += ShiftForNextPosition;
@@ -33,12 +34,10 @@ public class Queue
         _customersInLine.Remove(customer);
         if (_lastBusyPositionInQueue == _firstPositionInQueue.position)
         {
+            _isBusy = false;
             return;
         }
-        Debug.Log("customerLeft");
-        Debug.Log("LastBusyPositionInLine before " + _lastBusyPositionInQueue);
         _lastBusyPositionInQueue -= ShiftForNextPosition;
-        Debug.Log("LastBusyPositionInLine after " + _lastBusyPositionInQueue);
         MoveCustomersForward();
     }
 

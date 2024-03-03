@@ -9788,7 +9788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3986d6f3aeb649c1b9d162b51cc3fbde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxCustomersCountInMart: 1
+  _maxCustomersCountInMart: 3
   _customersSpawner: {fileID: 1959648318}
 --- !u!4 &1142095441
 Transform:

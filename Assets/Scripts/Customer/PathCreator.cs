@@ -12,7 +12,6 @@ namespace Customer
         
         public  List<IInteractable> GetRandomPath()
         {
-
             List<IInteractable> availableStands = new List<IInteractable>();
 
             for (int i = 0; i < _stands.Length; i++)
