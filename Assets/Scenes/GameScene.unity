@@ -559,7 +559,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &52967032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,11 +572,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec0507a25109874fb9657e4b313d460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectToSpawn: {fileID: 6788538757290762323, guid: ad4137f595ec8e2449cacca9df7d3735, type: 3}
+  _objectToSpawn: {fileID: 4751035211348280327, guid: ad4137f595ec8e2449cacca9df7d3735, type: 3}
   _targetPosition: {x: -4.3465695, y: 0, z: -48.478725}
-  _minSpawnTime: 5
-  _maxSpawnTime: 15
-  _speed: 5
+  _minSpawnTime: 1
+  _maxSpawnTime: 1
+  _speed: 10
 --- !u!4 &52967033
 Transform:
   m_ObjectHideFlags: 0
@@ -1231,7 +1231,6 @@ MonoBehaviour:
   <PointForCustomers>k__BackingField: {fileID: 1754302663}
   <TypeInteractablePoint>k__BackingField: 0
   <Queue>k__BackingField:
-    <PointForCustomers>k__BackingField: {fileID: 1754302663}
     <ShiftForNextPosition>k__BackingField: {x: 2, y: 0, z: 2}
   _moneySpawner: {fileID: 1036693577}
 --- !u!65 &140723385
