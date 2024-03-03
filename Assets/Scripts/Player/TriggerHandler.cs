@@ -38,6 +38,12 @@ public class TriggerHandler : MonoBehaviour
             var player = (Player)_player;
             player.AddMoney(moneySpawner.GetMoney());
         }
+
+        if (other.gameObject.CompareTag("Bonus"))
+        {
+            var bonus = other.GetComponent<Bonus>();
+            bonus.GetBonus(_player.Basket.GetSuitableProduct(TypeProduct.Corn));
+        }
     }
 
     private void OnTriggerExit(Collider other)

@@ -43,16 +43,7 @@ public class CollectingProducts : MonoBehaviour
     {
         _character.Basket.CountProductsChanged -= UpdateCountProductsInBasket;
     }
-    
-//
-    // if (other.gameObject.CompareTag("Bonus"))
-    // {
-    //     var bonusObject = _spawnerBonus.GetComponent<SpawnerBonus>();
-    //     var bonus = bonusObject.GetBonusObject();
-    //     var getBonus = bonus.GetComponent<Bonus>();
-    //     getBonus.GetProductList(_listAllProductsInHands);
-    //     getBonus.GetBonus();
-    // }
+  
 }
 
 

@@ -47,9 +47,7 @@ namespace Customer
         private void EnterPayingProductsState()
         {
             Debug.Log("customer position = " + _customer.PositionInLine);
-            Debug.Log("paying position = " + _cashRegister.PointForCustomers.position);
             Debug.Log("transform id = " + transform.GetInstanceID());
-            
             if (_customer.PositionInLine == _cashRegister.PointForCustomers.position && _cashRegister.IsAvailable)
             {
                _stateMachine.Enter<PayingProductsState>();

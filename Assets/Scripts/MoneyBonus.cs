@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class MoneyBonus : MonoBehaviour
 {
-    [SerializeField] private Player _player;
     private void OnTriggerEnter(Collider other)
     {
-        _player.AddMoney(10);
-        Destroy(gameObject);
+        if (other.CompareTag(GlobalConstants.PLAYER_TAG))
+        {
+            var player = other.GetComponent<Player>();
+            player.AddMoney(10);
+            Destroy(gameObject);
+        }
     }
     
 }
