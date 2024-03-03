@@ -40,7 +40,7 @@ namespace Customer
         private void GoToExit()
         {
             EventStreams.Global.Publish(new CustomerLeftEvent());
-            _cashRegister.OnCustomerLeft(_customer);
+            _cashRegister.Queue.OnCustomerLeft(_customer);
             
             _customer.SetDestination(new Vector3(8,0,60));
         }

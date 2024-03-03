@@ -1,80 +1,35 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Customer;
 using Interfaces;
-using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CashRegister : MonoBehaviour, IInteractable
 {
     [field:SerializeField] public Sprite StandIcon {get; private set; }
     [field:SerializeField] public Transform PointForCustomers { get; private set; }
     [field:SerializeField] public TypeInteractablePoints TypeInteractablePoint { get; private set; }
-    [field:SerializeField] public Vector3 ShiftForNextPosition { get; private set; }
-    [SerializeField] private MoneySpawner _moneySpawner;
-    
-    public bool IsAvailable { get; private set; }
-    private bool _isBusy;
-    public Vector3 LastBusyPositionInLine { get; private set; }
+    [field:SerializeField] public Queue Queue { get; private set; }
 
-    private List<ICustomer> _customersInLine = new();
+    [SerializeField] private MoneySpawner _moneySpawner;
+    public bool IsAvailable { get; private set; }
 
     private void Awake()
     {
-        LastBusyPositionInLine = PointForCustomers.position;
-        IsAvailable = false;
-    }
-    public Vector3 GetFreePosition(ICustomer customer)
-    {
-        _customersInLine.Add(customer);
-        if (!_isBusy)
-        {
-            _isBusy = true;
-            return PointForCustomers.position;
-        }
-        return LastBusyPositionInLine += ShiftForNextPosition;
-    }
-
-    public void OnCustomerLeft(ICustomer customer)
-    {
-        _customersInLine.Remove(customer);
-        _isBusy = false;
-        Debug.Log("customerLeft");
-        Debug.Log("LastBusyPositionInLine before " + LastBusyPositionInLine);
-        LastBusyPositionInLine -= ShiftForNextPosition;
-        Debug.Log("LastBusyPositionInLine after " + LastBusyPositionInLine);
-        MoveCustomersForward();
-    }
-
-    private void MoveCustomersForward()
-    {
-        foreach (var customer in _customersInLine)
-        {
-            var destination = customer.PositionInLine - ShiftForNextPosition;
-            customer.SetDestination(destination);
-        }
+        Queue.Initialize(PointForCustomers);
     }
 
     public void Open()
     {
         IsAvailable = true;
-        Debug.Log("CashRegister IsAvailable" + IsAvailable);
     }
 
     public void CLose()
     {
         IsAvailable = false;
-        Debug.Log("CashRegister IsAvailable" + IsAvailable);
     }
 
     public void SellProducts(int amount)
     {
         _moneySpawner.AddMoney(amount);
-    }
-
-    public int GetMoney()
-    {
-        return _moneySpawner.GetMoney();
     }
 }

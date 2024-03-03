@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17699346, g: 0.22156177, b: 0.30383733, a: 1}
+  m_IndirectSpecularColor: {r: 0.17699274, g: 0.22156087, b: 0.30383563, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1230,7 +1230,9 @@ MonoBehaviour:
   <StandIcon>k__BackingField: {fileID: 21300000, guid: 7d85e2c4a7be64bbba722a62ba265722, type: 3}
   <PointForCustomers>k__BackingField: {fileID: 1754302663}
   <TypeInteractablePoint>k__BackingField: 0
-  <ShiftForNextPosition>k__BackingField: {x: 2, y: 0, z: 2}
+  <Queue>k__BackingField:
+    <PointForCustomers>k__BackingField: {fileID: 1754302663}
+    <ShiftForNextPosition>k__BackingField: {x: 2, y: 0, z: 2}
   _moneySpawner: {fileID: 1036693577}
 --- !u!65 &140723385
 BoxCollider:

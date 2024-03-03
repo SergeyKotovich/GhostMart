@@ -73,7 +73,7 @@ namespace Customer
             var currentPathIndex = _customer.CurrentPathIndex;
             var cashRegister = (CashRegister)_customer.ShoppingList[currentPathIndex].StopPoint;
 
-            var destination = cashRegister.GetFreePosition(_customer);
+            var destination = cashRegister.Queue.GetFreePosition(_customer);
             _customer.SetDestination(destination);
 
             _isMoving = true;

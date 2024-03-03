@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Interfaces;
 using UnityEngine;
@@ -14,7 +13,6 @@ namespace Customer
         public int CurrentPathIndex { get; set; }
         public ICustomerBasket Basket { get; private set; }
         private bool _isMoving;
-
         public int ProductsCountInBasket => Basket.GetProductsCount();
         public ProductBarView _productBarView { get; private set; }
         public List<ListItem> ShoppingList { get; } = new();
