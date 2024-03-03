@@ -574,9 +574,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _objectToSpawn: {fileID: 4751035211348280327, guid: ad4137f595ec8e2449cacca9df7d3735, type: 3}
   _targetPosition: {x: -4.3465695, y: 0, z: -48.478725}
-  _minSpawnTime: 1
-  _maxSpawnTime: 1
-  _speed: 10
+  _minSpawnTime: 30
+  _maxSpawnTime: 120
+  _speed: 5
 --- !u!4 &52967033
 Transform:
   m_ObjectHideFlags: 0
@@ -5662,7 +5662,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
