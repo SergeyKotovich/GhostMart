@@ -9,4 +9,5 @@ public static class GlobalConstants
     public static string CASH_REGISTER = "CashRegister";
     public static string MONEY_KEEPER = "MoneyKeeper";
     public static string PLAYER_TAG = "Player";
+    public static string ASSISTANT_TAG = "Assistant";
 }

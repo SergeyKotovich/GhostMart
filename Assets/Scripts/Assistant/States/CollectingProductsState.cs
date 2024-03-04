@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
 using Interfaces;
 using UnityEngine;
 
 public class CollectingProductsState : MonoBehaviour , IPayLoadedState<IFactory>
 {
     [SerializeField] private CollectingProducts _collectingProducts;
-   // [SerializeField] private ProductFactory _productFactory;
     
     private IWorker _assistant;
     private StateMachine _stateMachine;
@@ -23,11 +20,6 @@ public class CollectingProductsState : MonoBehaviour , IPayLoadedState<IFactory>
         _stateMachine = stateMachine;
     }
     
-  // public void OnEnter()
-  // {
-  //     _canPickUp = true;
-  // }
-
     private void Update()
     {
         if (_canPickUp)
@@ -51,8 +43,8 @@ public class CollectingProductsState : MonoBehaviour , IPayLoadedState<IFactory>
         }
         
         var product = _productFactory.GetProduct();
-        _collectingProducts.SetPosition(product);
         _assistant.PickUpProduct(product);
+        _collectingProducts.SetPosition(product);
     }
 
     public void OnEnter(IFactory payload)

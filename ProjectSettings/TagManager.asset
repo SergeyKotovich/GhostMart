@@ -16,6 +16,7 @@ TagManager:
   - CashRegister
   - MoneyKeeper
   - StorageProductsForInteraction
+  - Assistant
   layers:
   - Default
   - TransparentFX

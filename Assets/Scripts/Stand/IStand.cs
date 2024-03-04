@@ -8,4 +8,6 @@ public interface IStand
 
     public int GetProductsCount();
     public Product GetAvailableProduct();
+    public void SetProductOnStand(Product product);
+    public bool IsFull();
 }

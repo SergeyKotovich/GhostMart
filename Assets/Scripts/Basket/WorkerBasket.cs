@@ -14,7 +14,6 @@ public class WorkerBasket : MonoBehaviour, IWorkerBasket
     private readonly List<Product> _allProducts = new();
     public void AddProductInBasket(Product product)
     {
-        //_allProducts.Push(product);
         _allProducts.Add(product);
         CountProductsChanged?.Invoke(CurrentCountProduct);
         CurrentCountProduct++;
@@ -33,7 +32,6 @@ public class WorkerBasket : MonoBehaviour, IWorkerBasket
         CurrentCountProduct--;
         return product;
         
-        // var product = _allProducts.Pop();
     }
     public Product GetSuitableProduct(TypeProduct typeProduct)
     {
@@ -52,8 +50,6 @@ public class WorkerBasket : MonoBehaviour, IWorkerBasket
                 return product;
             }
         }
-       
-        // var product = _allProducts.Pop();
         return null;
     }
 
