@@ -579,8 +579,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _objectToSpawn: {fileID: 4751035211348280327, guid: ad4137f595ec8e2449cacca9df7d3735, type: 3}
   _targetPosition: {x: -4.3465695, y: 0, z: -48.478725}
-  _minSpawnTime: 30
-  _maxSpawnTime: 120
+  _minSpawnTime: 1
+  _maxSpawnTime: 3
   _speed: 5
   _productBarSpawner: {fileID: 380523001}
 --- !u!4 &52967033
@@ -2877,6 +2877,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340279987}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 524782826}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &375533944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8894,10 +8903,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7107108863402732460, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 353131725}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
 --- !u!1001 &1040863760
 PrefabInstance:
