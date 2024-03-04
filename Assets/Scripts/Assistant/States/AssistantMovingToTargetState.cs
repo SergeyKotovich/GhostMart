@@ -16,7 +16,8 @@ public class AssistantMovingToTargetState : MonoBehaviour, IState
     private int _currentIndex;
     private readonly int IsMoving = Animator.StringToHash("IsMoving");
     private IFactory _productFactory;
-    
+    private IStand _stand;
+
     public void Initialize(StateMachine stateMachine)
     {
         _stateMachine = stateMachine;
@@ -56,9 +57,12 @@ public class AssistantMovingToTargetState : MonoBehaviour, IState
             _stateMachine.Enter<CollectingProductsState,IFactory>(_productFactory);
         }
 
-        if (!_isStand) return;
-        _animator.SetBool(IsMoving, false);
-        _stateMachine.Enter<ProductStandState>();
+        if (_isStand)
+        {
+            _animator.SetBool(IsMoving, false);
+            _stateMachine.Enter<ProductStandState, IStand>(_stand);
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -71,6 +75,7 @@ public class AssistantMovingToTargetState : MonoBehaviour, IState
         if (other.CompareTag(GlobalConstants.STAND_TAG))
         {
             _isStand = true;
+            _stand = other.GetComponent<IStand>();
         }
     }
 }

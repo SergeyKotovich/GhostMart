@@ -2,30 +2,41 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class ProductStandState : MonoBehaviour, IState
+public class ProductStandState : MonoBehaviour, IPayLoadedState<IStand>
 {
     private IWorker _assistant;
-    [SerializeField] private Stand _stand;
+   // [SerializeField] private Stand _stand;
     private StateMachine _stateMachine;
+    private IStand _stand;
 
     private void Awake()
     {
         _assistant = GetComponent<IWorker>();
     }
 
+    public void OnEnter(IStand payload)
+    {
+        _stand = payload;
+        if (!_assistant.Basket.IsEmpty())
+        {
+            if (_stand.IsFull())
+            {
+                _stateMachine.Enter<RecyclingProductsState>();
+            }
+            else
+            {
+                SetProductOnStand();
+            }
+            
+        }
+        
+    }
+
     public void Initialize(StateMachine stateMachine)
     {
         _stateMachine = stateMachine;
     }
-
-    public void OnEnter()
-    {
-        if (!_assistant.Basket.IsEmpty())
-        {
-            SetProductOnStand();
-        }
-    }
-
+    
     private void SetProductOnStand()
     {
         while (!_assistant.Basket.IsEmpty())
@@ -38,7 +49,5 @@ public class ProductStandState : MonoBehaviour, IState
         {
             _stateMachine.Enter<AssistantMovingToTargetState>();
         }
-        
     }
-    
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using Interfaces;
 using JetBrains.Annotations;
@@ -44,6 +45,11 @@ using UnityEngine;
                     return;
                 }
             }
+        }
+
+        public bool IsFull()
+        {
+            return StandCells.All(standCell => standCell.Product != null);
         }
 
         [CanBeNull]

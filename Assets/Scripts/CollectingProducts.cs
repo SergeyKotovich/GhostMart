@@ -5,14 +5,12 @@ using UnityEngine;
 
 public class CollectingProducts : MonoBehaviour
 {
-    private IWorker _character;
     [SerializeField] private Transform[] _allPositionsInBasket;
-
-    [SerializeField] private Recycle _recycle;
-
     //[SerializeField] private GameObject _spawnerBonus;
     [SerializeField] private ProductConfig _productConfig;
 
+    private IWorker _character;
+    private int _currentIndexPositionInBasket;
     private void Awake()
     {
         _character = GetComponent<IWorker>();
@@ -22,9 +20,6 @@ public class CollectingProducts : MonoBehaviour
     {
         _character.Basket.CountProductsChanged += UpdateCountProductsInBasket;
     }
-
-    private int _currentIndexPositionInBasket;
-
     
     public void SetPosition(Product product)
     {

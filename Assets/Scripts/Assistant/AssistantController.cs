@@ -6,10 +6,11 @@ public class AssistantController : MonoBehaviour
     {
         var stateMachine = new StateMachine
         (
-           GetComponent<AssistantWaitingState>(),
-           GetComponent<AssistantMovingToTargetState>(),
-           GetComponent<CollectingProductsState>(),
-           GetComponent<ProductStandState>()
+            GetComponent<AssistantWaitingState>(),
+            GetComponent<AssistantMovingToTargetState>(),
+            GetComponent<CollectingProductsState>(),
+            GetComponent<ProductStandState>(),
+            GetComponent<RecyclingProductsState>()
         );
             
         stateMachine.Initialize();
