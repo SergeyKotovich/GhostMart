@@ -8,6 +8,8 @@ public class Bonus : MonoBehaviour
     public event Action BonusFlewToTarget;
     [SerializeField] private GameObject _gameObjectPrefab;
     [SerializeField] private int _maxMoney=3;
+    [field: SerializeField] public BonusMovement BonusMovement { get; private set; }
+    [SerializeField] private Collider _collider;
 
     private int _productCounter;
     private bool _gotEnoughProducts;
@@ -19,21 +21,22 @@ public class Bonus : MonoBehaviour
         {
             return;
         }
-        
-        product.transform.SetParent(transform);
-        product.transform.DOLocalMove(new Vector3(0, 0, 0), 0.5f);
-        product.transform.DOScale(new Vector3(0, 0, 0), 0.5f);
 
-        Destroy(product, 2f);
-        _productCounter++;
+        if (product != null)
+        {
+            product.transform.SetParent(transform);
+            product.transform.DOLocalMove(new Vector3(0, 0, 0), 0.5f);
+            product.transform.DOScale(new Vector3(0, 0, 0), 0.5f);
+
+            Destroy(product, 2f);
+            _productCounter++;
+        }
 
         if (_productCounter >= 2)
         {
-            gameObject.GetComponent<Collider>().isTrigger = false;
+            SwitcherStateTrigger(false);
             _gotEnoughProducts = true;
             
-            var animator = GetComponent<Animator>();
-
             var prefabRotation = _gameObjectPrefab.transform.rotation;
 
             var shift = 0;
@@ -46,14 +49,19 @@ public class Bonus : MonoBehaviour
                 
                 shift++;
             }
-            animator.Play("Fly");
-            transform.DOMove(new Vector3(-4.26000023f, 22.3799992f, -110.699997f), 15f);
-
+            
+            BonusMovement.MoveToTarget(new Vector3(-4.26000023f, 22.3799992f, -110.699997f));
             BonusFlewToTarget?.Invoke();
             Destroy(gameObject, 16);
             
             _productCounter = 0;
         }
+    }
+
+    public void SwitcherStateTrigger(bool state)
+    {
+        _collider.isTrigger = state;
+
     }
     
 }

@@ -11,9 +11,11 @@ public class SpawnerBonus : MonoBehaviour
     [SerializeField] private float _minSpawnTime = 30f;
     [SerializeField] private float _maxSpawnTime = 120f;
     [SerializeField] private float _speed;
+    [SerializeField] private ProductBarSpawner _productBarSpawner;
 
     private Bonus _currentBonus;
-    
+    private ProductBarView _productBar;
+
     private void Start()
     {
         StartCoroutine(SpawnObject());
@@ -30,48 +32,29 @@ public class SpawnerBonus : MonoBehaviour
 
         var spawnedObject = Instantiate(_objectToSpawn, transform.position, Quaternion.identity);
         InitializeBonus(spawnedObject);
+        _currentBonus.BonusMovement.MoveToTarget(new Vector3(-4.34656954f,0f,-48.4787254f));
 
         var newRotation = Quaternion.Euler(0f, 180f, 0f);
         spawnedObject.transform.rotation = newRotation;
         
         spawnedObject.transform.SetParent(transform);
 
-        // движения объекта к целевой позиции
-        StartCoroutine(MoveToObject(spawnedObject));
-
         // Ожидание, пока объект достигнет позиции
         yield return new WaitUntil(() => (spawnedObject.transform.position - _targetPosition).sqrMagnitude < 0.01f);
+        
+        _currentBonus.SwitcherStateTrigger(true);
+        
+        _productBar = _productBarSpawner.GetProductBar(spawnedObject.gameObject);
 
-        // Включение анимации
-        Animator objectAnimator = spawnedObject.GetComponent<Animator>();
-        if (objectAnimator != null)
-        {
-            objectAnimator.Play("Eat");
-        }
     }
 
-    IEnumerator MoveToObject(Bonus obj)
-    {
-        Vector3 startPosition = obj.transform.position;
-        float travelLength = Vector3.Distance(startPosition, _targetPosition);
-
-        float startTime = Time.time;
-
-        while (obj.transform.position != _targetPosition)
-        {
-            float distCovered = (Time.time - startTime) * _speed;
-            float fractionOfTravel = distCovered / travelLength;
-            obj.transform.position = Vector3.Lerp(startPosition, _targetPosition, fractionOfTravel);
-            yield return null;
-        }
-    }
     private void StartSpawning()
     {
         StartCoroutine(SpawnObject());
-    }
-
-    private void OnDestroy()
-    {
-        //_currentBonus.BonusFlewToTarget -= StartSpawning;
+        if (_productBar != null)
+        {
+            _currentBonus.BonusFlewToTarget -= StartSpawning;
+            Destroy(_productBar.gameObject);
+        }
     }
 }
