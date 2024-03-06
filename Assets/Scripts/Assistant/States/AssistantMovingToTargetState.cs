@@ -7,14 +7,13 @@ public class AssistantMovingToTargetState : MonoBehaviour, IState
 {
     [SerializeField] private NavMeshAgent _navMeshAgent;
     [SerializeField] private Animator _animator;
-    [SerializeField] private List<Transform> _pointPath;
-
+    [SerializeField] private TargetPositionController _targetPositionController;
+    
+    private readonly int IsMoving = Animator.StringToHash("IsMoving");
     private bool _isMoving;
     private StateMachine _stateMachine;
     private bool _isProductFactory;
     private bool _isStand;
-    private int _currentIndex;
-    private readonly int IsMoving = Animator.StringToHash("IsMoving");
     private IFactory _productFactory;
     private IStand _stand;
 
@@ -35,15 +34,9 @@ public class AssistantMovingToTargetState : MonoBehaviour, IState
     {
         _isMoving = true;
         _animator.SetBool(IsMoving, _isMoving);
-        _navMeshAgent.SetDestination(_pointPath[_currentIndex].position);
-
-        SetNextPoint();
+        _navMeshAgent.SetDestination(_targetPositionController.SetPosition());
     }
-
-    private void SetNextPoint()
-    {
-        _currentIndex = (_currentIndex + 1) % _pointPath.Count;
-    }
+    
     public void OnEnter()
     {
         MoveToPoint();

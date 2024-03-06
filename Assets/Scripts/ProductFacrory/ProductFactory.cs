@@ -19,8 +19,13 @@ public class ProductFactory : MonoBehaviour, IFactory
 
     public Product GetProduct()
     {
-        ProductCounter--;
-        return _allAvailableProducts.Pop();
+        if (_allAvailableProducts.Count!=0)
+        {
+            ProductCounter--;
+            return _allAvailableProducts.Pop();
+        }
+
+        return null;
     }
 
     public bool HasSpawnedProduct()

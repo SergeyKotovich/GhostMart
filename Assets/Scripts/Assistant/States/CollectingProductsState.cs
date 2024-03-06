@@ -32,19 +32,23 @@ public class CollectingProductsState : MonoBehaviour , IPayLoadedState<IFactory>
     {
         if (!_productFactory.HasSpawnedProduct())
         {
+            _canPickUp = false;
+            _stateMachine.Enter<AssistantMovingToTargetState>();
             return;
         }
-        
         if (_assistant.Basket.IsFull())
         {
             _canPickUp = false;
             _stateMachine.Enter<AssistantMovingToTargetState>();
             return;
         }
-        
-        var product = _productFactory.GetProduct();
-        _assistant.PickUpProduct(product);
-        _collectingProducts.SetPosition(product);
+
+        if (_productFactory.HasSpawnedProduct())
+        {
+            var product = _productFactory.GetProduct();
+            _assistant.PickUpProduct(product);
+            _collectingProducts.SetPosition(product);
+        }
     }
 
     public void OnEnter(IFactory payload)

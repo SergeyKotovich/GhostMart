@@ -17,6 +17,7 @@ TagManager:
   - MoneyKeeper
   - StorageProductsForInteraction
   - Assistant
+  - Egg
   layers:
   - Default
   - TransparentFX

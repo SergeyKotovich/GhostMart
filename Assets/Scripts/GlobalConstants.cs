@@ -4,6 +4,7 @@ public static class GlobalConstants
     public static string PRODUCT_FACTORY_TAG = "ProductFactory";
     public static string CORN_TAG = "Corn";
     public static string BANANA_TAG = "Banana";
+    public static string EGG_TAG = "Egg";
     public static string STAND_TAG = "Stand";
     public static string STORAGE_PRODUCTS_FOR_INERACTION_TAG = "StorageProductsForInteraction";
     public static string CASH_REGISTER = "CashRegister";

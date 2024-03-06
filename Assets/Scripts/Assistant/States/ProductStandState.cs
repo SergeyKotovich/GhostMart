@@ -5,7 +5,6 @@ using UnityEngine.Serialization;
 public class ProductStandState : MonoBehaviour, IPayLoadedState<IStand>
 {
     private IWorker _assistant;
-   // [SerializeField] private Stand _stand;
     private StateMachine _stateMachine;
     private IStand _stand;
 
@@ -26,6 +25,7 @@ public class ProductStandState : MonoBehaviour, IPayLoadedState<IStand>
             else
             {
                 SetProductOnStand();
+                //нужно проверить, есть ли у фабрики яиц продукты
             }
             
         }
@@ -47,6 +47,7 @@ public class ProductStandState : MonoBehaviour, IPayLoadedState<IStand>
 
         if (_assistant.Basket.IsEmpty())
         {
+            
             _stateMachine.Enter<AssistantMovingToTargetState>();
         }
     }
