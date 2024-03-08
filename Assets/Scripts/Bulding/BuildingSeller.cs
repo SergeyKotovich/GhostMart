@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class BuildingSeller : MonoBehaviour
 {
-    [SerializeField] Wallet _wallet;
+    [SerializeField] Player _player;
     [SerializeField] int _price;
     [SerializeField] UnityEvent _buyCompleted;
     [SerializeField] private BuildingManager _buildingManager;
@@ -16,9 +16,10 @@ public class BuildingSeller : MonoBehaviour
     
     public void Buy()
     {
-        if (_wallet.HasEnoughMoney(_price))
+        var wallet = _player.Wallet;
+        if (wallet.HasEnoughMoney(_price))
         {
-            _wallet.SpendMoney(_price);
+            wallet.SpendMoney(_price);
             _buyCompleted.Invoke();
             _buildingManager.BuildingCompleted();
             gameObject.SetActive(false);

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Interfaces;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour, IWorker
@@ -9,16 +10,17 @@ public class Player : MonoBehaviour, IWorker
     public NavMeshAgent NavMeshAgent { get; private set; }
     [field:SerializeField]
     public WorkerTypes Type { get; private set; }
+    [field:SerializeField]
+    public Wallet Wallet { get; private set; }
     public AbilitiesController AbilitiesController { get; private set; }
     public IWorkerBasket Basket { get; private set; }
     public bool CanPickUp => !Basket.IsFull();
     public bool HasProducts => !Basket.IsEmpty();
-    private Wallet _wallet;
+   
     
   private void Awake()
   {
       Basket = GetComponent<IWorkerBasket>();
-      _wallet = new Wallet();
       AbilitiesController = new AbilitiesController(Basket, this);
   }
 
@@ -45,7 +47,7 @@ public class Player : MonoBehaviour, IWorker
   }
   public void AddMoney(int amount)
   {
-      _wallet.AddMoney(amount);
+      Wallet.AddMoney(amount);
   }
   
   public void IncreaseSpeed()

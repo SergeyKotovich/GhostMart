@@ -5,29 +5,27 @@ using UnityEngine;
 public class Wallet : MonoBehaviour
 {
     [SerializeField] private int _initialMoney = 50;
-    [SerializeField] private TextMeshProUGUI _money;
-    public int Money { get; private set; }
+    private int _money;
 
     private void Awake()
     {
-        Money = _initialMoney;
-        _money.text = Money.ToString();
+        _money = _initialMoney;
+        EventStreams.Global.Publish(new MoneyChangedEvent(_money));
     }
 
     public bool HasEnoughMoney(int amount)
     {
-        return Money >= amount;
+        return _money >= amount;
     }
 
     public void SpendMoney(int amount)
     {
-        Money -= amount;
-        _money.text = Money.ToString();
-        EventStreams.Global.Publish(new MoneyChangedEvent(Money));
+        _money -= amount;
+        EventStreams.Global.Publish(new MoneyChangedEvent(_money));
     }
     public void AddMoney(int amount)
     {
-        Money += amount;
-        EventStreams.Global.Publish(new MoneyChangedEvent(Money));
+        _money += amount;
+        EventStreams.Global.Publish(new MoneyChangedEvent(_money));
     }
 }
