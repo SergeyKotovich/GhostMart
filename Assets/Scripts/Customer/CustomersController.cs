@@ -11,11 +11,10 @@ namespace Customer
         private int _currentCustomersCountInMart;
         private IDisposable _subscription;
 
-        private void Awake()
+        public void Initialize()
         {
             _customersSpawner.StartSpawn(_maxCustomersCountInMart);
             _subscription = EventStreams.Global.Subscribe<CustomerLeftEvent>(OnCustomerLeft);
-
         }
 
         public void IncreaseMaxCustomersCount(int value)
@@ -23,7 +22,11 @@ namespace Customer
             _maxCustomersCountInMart += value;
         }
 
-        public void OnCustomerLeft(CustomerLeftEvent customerLeftEvent)
+        public void OnCustomerSpawned()
+        {
+            _currentCustomersCountInMart++;
+        }
+        private void OnCustomerLeft(CustomerLeftEvent customerLeftEvent)
         {
             _currentCustomersCountInMart--;
             if (_currentCustomersCountInMart == 0)
@@ -31,11 +34,7 @@ namespace Customer
                 _customersSpawner.StartSpawn(_maxCustomersCountInMart);
             }
         }
-        public void OnCustomerSpawned()
-        {
-            _currentCustomersCountInMart++;
-        }
-        
+
         private void OnDestroy()
         {
             _subscription.Dispose();

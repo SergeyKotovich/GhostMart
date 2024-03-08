@@ -3386,7 +3386,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Assistant
 
-    <size=0.6> 10 gold </size>'
+    <size=0.6> 50 gold </size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -4896,6 +4896,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4680757731159730826, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
   m_PrefabInstance: {fileID: 440404477}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &443889265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 443889267}
+  - component: {fileID: 443889266}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &443889266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443889265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce7d257cd474ae7ab5e1e559c3ac5e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buildingManager: {fileID: 590098841}
+  _customersController: {fileID: 1142095440}
+--- !u!4 &443889267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443889265}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -30.146152, y: 0.17592132, z: -6.132806}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &449614537
 GameObject:
   m_ObjectHideFlags: 0
@@ -8031,7 +8077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f0eab5e9d34b11ad519e66b818a05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialMoney: 200
+  _initialMoney: 30
 --- !u!1001 &726357396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13633,7 +13679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1142095440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15773,7 +15819,7 @@ GameObject:
   - component: {fileID: 1392694348}
   m_Layer: 0
   m_Name: BananaStand
-  m_TagString: Untagged
+  m_TagString: Banana
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15796,18 +15842,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1936917544}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1142095439}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -19784,7 +19818,7 @@ GameObject:
   - component: {fileID: 1748539420}
   m_Layer: 0
   m_Name: CornStand
-  m_TagString: Untagged
+  m_TagString: Banana
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23828,3 +23862,4 @@ SceneRoots:
   - {fileID: 1392694351}
   - {fileID: 1748539423}
   - {fileID: 1954567034}
+  - {fileID: 443889267}

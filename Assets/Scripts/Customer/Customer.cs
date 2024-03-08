@@ -37,6 +37,7 @@ namespace Customer
         {
             MovementController.SetDestination(destination);
             PositionInLine = destination;
+            _productBarView.gameObject.SetActive(true);
         }
         
         private void Update()

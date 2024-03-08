@@ -40,8 +40,7 @@ namespace Customer
                 _customerController.OnCustomerSpawned();
                 yield return new WaitForSeconds(_dellayBetweenSpawn);
             }
-
-            //TODO: нужен ли здесь yield return null; если да то для чего
+            
             yield return null;
         }
     }
