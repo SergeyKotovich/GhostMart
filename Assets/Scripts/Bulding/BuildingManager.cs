@@ -8,6 +8,9 @@ using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
 {
+    // buildings это масссив зеленых рамок, которые при включении включают нужное здание (настроенно через инспектор)
+    // не сильно удобно, хотел через шину пробросить ассистента которого здесь якобы построили
+    // а его здесь и нет, здесь есть только рамка в которой его покупаешь
     [SerializeField] private List<GameObject> buildings;
     [SerializeField] private GameObject hintCanvas;
     [SerializeField] private TextMeshProUGUI hintText;
@@ -34,6 +37,7 @@ public class BuildingManager : MonoBehaviour
         {
             EventStreams.Global.Publish(new MartOpenedEvent());
         }
+        
         hintText.text = "Супер ты молодец!";
         yield return new WaitForSeconds(delayBeforeNextHint);
 

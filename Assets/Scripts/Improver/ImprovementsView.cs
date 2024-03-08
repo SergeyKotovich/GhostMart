@@ -10,6 +10,7 @@ public class ImprovementsView : MonoBehaviour
     private void Start()
     {
         EventStreams.Global.Subscribe<WorkerUpgradedEvent>(UpdateView);
+        EventStreams.Global.Subscribe<NewAssistantWasBoughtEvent>(SetImproveButtonInteractable);
     }
 
     private void UpdateView(WorkerUpgradedEvent workerUpgradedEvent)
@@ -20,6 +21,17 @@ public class ImprovementsView : MonoBehaviour
             {
                 WorkerImprovementLabels[i].Label.text =
                     "Can pick up " + workerUpgradedEvent.MaxCountPlacesInBasket + " items";
+            }
+        }
+    }
+
+    private void SetImproveButtonInteractable(NewAssistantWasBoughtEvent newAssistantWasBoughtEvent)
+    {
+        for (int i = 0; i < WorkerImprovementLabels.Length; i++)
+        {
+            if (WorkerImprovementLabels[i].WorkerType == newAssistantWasBoughtEvent.Assistant.Type)
+            {
+                WorkerImprovementLabels[i].ImproveButton.interactable = true;
             }
         }
     }
