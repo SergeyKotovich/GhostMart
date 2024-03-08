@@ -8,7 +8,7 @@ public class MoneyView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _money;
     private IDisposable _subscription;
 
-    private void Start()
+    private void Awake()
     {
         _subscription = EventStreams.Global.Subscribe<MoneyChangedEvent>(UpdateMoneyView);
     }

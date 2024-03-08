@@ -1,3 +1,4 @@
+using System;
 using Events;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,10 @@ public class Wallet : MonoBehaviour
     private void Awake()
     {
         _money = _initialMoney;
+    }
+
+    private void Start()
+    {
         EventStreams.Global.Publish(new MoneyChangedEvent(_money));
     }
 
