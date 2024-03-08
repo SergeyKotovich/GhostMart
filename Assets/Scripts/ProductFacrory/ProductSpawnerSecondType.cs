@@ -11,6 +11,7 @@ public class ProductSpawnerSecondType : MonoBehaviour, ISpawner
     [SerializeField] private Product _productPrefab;
     [SerializeField] private StorageProductsForInteraction _storageProductsForInteraction;
     
+    
     private IFactory _productFactory;
     private int _countSpawnedProducts;
     private float _currentTime;

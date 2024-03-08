@@ -20,7 +20,7 @@ namespace Customer
             _customer = GetComponent<ICustomer>();
         }
         
-        void Update()
+        private void Update()
         {
             if (_cashRegister == null || !_isActive)
             {

@@ -20,9 +20,4 @@ public class AbilitiesController
          EventStreams.Global.Publish<WorkerUpgradedEvent>(new WorkerUpgradedEvent(_basket.MaxCountProduct, _worker.Type));
     }
 
-    public void ImproveWorkerSpeed()
-    {
-        _worker.IncreaseSpeed();
-    }
-
 }
