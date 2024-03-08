@@ -12,6 +12,8 @@ using UnityEngine;
         [field:SerializeField] public Sprite StandIcon {get; private set; }
         [field:SerializeField] public Transform PointForCustomers { get; private set; }
         [field:SerializeField] public TypeProduct TypeProduct { get; private set; }
+        
+        [field:SerializeField] public Transform PointForAssistant { get; private set; }
 
         [field:SerializeField] public TypeInteractablePoints TypeInteractablePoint { get; private set; }
         public bool IsAvailable { get; private set; }
