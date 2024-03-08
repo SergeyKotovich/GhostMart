@@ -14,5 +14,7 @@ namespace Interfaces
         public Product GetProduct();
 
         public bool HasSuitableProduct(TypeProduct typeProduct);
+        
+        public void IncreaseMaxCountProduct();
     }
 }

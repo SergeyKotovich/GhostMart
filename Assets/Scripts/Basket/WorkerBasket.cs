@@ -67,4 +67,10 @@ public class WorkerBasket : MonoBehaviour, IWorkerBasket
     {
         return _allProducts.Any(product => product.Type == typeProduct);
     }
+
+    public void IncreaseMaxCountProduct()
+    {
+        MaxCountProduct++;
+        Debug.Log("max count items in basket = " + MaxCountProduct);
+    }
 }
