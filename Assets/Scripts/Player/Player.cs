@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using Interfaces;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour, IWorker
 {
