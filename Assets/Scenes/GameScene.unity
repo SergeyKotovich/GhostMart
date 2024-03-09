@@ -8077,7 +8077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f0eab5e9d34b11ad519e66b818a05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialMoney: 30
+  _initialMoney: 100
 --- !u!1001 &726357396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14620,8 +14620,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorkerImprovementLabels:
   - <Label>k__BackingField: {fileID: 1378998002}
+    <ImproveButton>k__BackingField: {fileID: 0}
     <WorkerType>k__BackingField: 0
   - <Label>k__BackingField: {fileID: 215684520}
+    <ImproveButton>k__BackingField: {fileID: 0}
     <WorkerType>k__BackingField: 1
 --- !u!1001 &1258216989
 PrefabInstance:

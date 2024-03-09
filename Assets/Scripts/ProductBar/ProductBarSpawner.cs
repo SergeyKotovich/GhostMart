@@ -8,7 +8,6 @@ public class ProductBarSpawner : MonoBehaviour
     public ProductBarView GetProductBar(GameObject character)
     {
         var productBarView = Instantiate(_productBarPrefab, _canvas.transform);
-        productBarView.gameObject.SetActive(false);
         
         var uIElementPositionController = productBarView.GetComponent<UIElementPositionController>();
         uIElementPositionController.Initialize(character.transform);
