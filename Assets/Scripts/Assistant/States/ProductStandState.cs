@@ -1,9 +1,10 @@
-using System;
+using Interfaces;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class ProductStandState : MonoBehaviour, IPayLoadedState<IStand>
 {
+    [SerializeField] private ProductFactory _eggFactory;
+    
     private IWorker _assistant;
     private StateMachine _stateMachine;
     private IStand _stand;
@@ -16,20 +17,24 @@ public class ProductStandState : MonoBehaviour, IPayLoadedState<IStand>
     public void OnEnter(IStand payload)
     {
         _stand = payload;
-        if (!_assistant.Basket.IsEmpty())
+        if (_assistant.Basket.IsEmpty())
         {
-            if (_stand.IsFull())
-            {
-                _stateMachine.Enter<RecyclingProductsState>();
-            }
-            else
-            {
-                SetProductOnStand();
-                //нужно проверить, есть ли у фабрики яиц продукты
-            }
-            
+            return;
         }
-        
+        if (_stand.IsFull())
+        {
+            _stateMachine.Enter<RecyclingProductsState>();
+        }
+        else
+        {
+            SetProductOnStand();
+            //нужно проверить, есть ли у фабрики яиц продукты
+            if (_eggFactory.HasSpawnedProduct())
+            {
+                _stateMachine.Enter<AssistantMovingToTargetState>();
+            }
+        }
+
     }
 
     public void Initialize(StateMachine stateMachine)
@@ -47,7 +52,6 @@ public class ProductStandState : MonoBehaviour, IPayLoadedState<IStand>
 
         if (_assistant.Basket.IsEmpty())
         {
-            
             _stateMachine.Enter<AssistantMovingToTargetState>();
         }
     }
