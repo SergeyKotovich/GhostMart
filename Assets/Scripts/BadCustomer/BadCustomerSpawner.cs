@@ -27,7 +27,8 @@ namespace BadCustomer
 
         private IEnumerator SpawnObject()
         {
-            yield return new WaitForSeconds(Random.Range(_minSpawnTime, _maxSpawnTime));
+            //yield return new WaitForSeconds(Random.Range(_minSpawnTime, _maxSpawnTime));
+            yield return new WaitForSeconds(1);
 
             _badCustomer.gameObject.SetActive(true);
             _badCustomer.StateMachineStartMoving();
