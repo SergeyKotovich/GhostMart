@@ -7902,7 +7902,7 @@ MonoBehaviour:
   - {fileID: 661071623}
   - {fileID: 1936917546}
   _cashRegister: {fileID: 140723384}
-  _exitTransform: {fileID: 811757662}
+  _exitPoint: {fileID: 811757663}
 --- !u!4 &716647741
 Transform:
   m_ObjectHideFlags: 0
@@ -9433,6 +9433,10 @@ PrefabInstance:
       value: BananaPlant
       objectReference: {fileID: 0}
     - target: {fileID: 7346488073879044386, guid: 7ddfa3a1d18174043aab251be6df3a0e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346488073879044386, guid: 7ddfa3a1d18174043aab251be6df3a0e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -9564,7 +9568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b7e85ee009ba4d469228f89e43c195a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StandIcon>k__BackingField: {fileID: 0}
+  <StandIcon>k__BackingField: {fileID: 21300000, guid: 2018f7e69f2c0489fb0a7f701c78e9c8, type: 3}
   <TypeInteractablePoint>k__BackingField: 1
   <PointForCustomers>k__BackingField: {fileID: 811757662}
 --- !u!1001 &816431358

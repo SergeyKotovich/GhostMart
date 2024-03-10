@@ -25,24 +25,20 @@ namespace Customer
 
         public void OnEnter()
         {
-            StartCoroutine(Timer());
+            StartCoroutine(PayForProducts());
             _cashRegister = (CashRegister)_customer.ShoppingList[_customer.CurrentPathIndex].StopPoint;
         }
 
-        private IEnumerator Timer()
+        private IEnumerator PayForProducts()
         {
             yield return new WaitForSeconds(2);
             var basket = (CustomerBasket)_customer.Basket;
             _cashRegister.SellProducts(basket.GetTotalProductPrice());
-            GoToExit();
-        }
-
-        private void GoToExit()
-        {
+            
+            _customer.CurrentPathIndex++;
             EventStreams.Global.Publish(new CustomerLeftEvent());
             _cashRegister.Queue.OnCustomerLeft(_customer);
-            
-            _customer.SetDestination(new Vector3(8,0,60));
+            _stateMachine.Enter<MovingToTargetState>();
         }
     }
 }

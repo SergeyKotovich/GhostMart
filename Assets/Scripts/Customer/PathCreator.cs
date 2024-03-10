@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Interfaces;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Customer
 {
@@ -8,7 +9,7 @@ namespace Customer
     {
         [SerializeField] private Stand[] _stands;
         [SerializeField] private CashRegister _cashRegister;
-        [SerializeField] private Transform _exitTransform;
+        [SerializeField] private ExitPoint _exitPoint;
         
         public  List<IInteractable> GetRandomPath()
         {
@@ -40,6 +41,7 @@ namespace Customer
             }
             
             path.Add(_cashRegister);
+            path.Add(_exitPoint);
             
             return path;
         }
