@@ -8,4 +8,7 @@ public interface IStand
 
     public int GetProductsCount();
     public Product GetAvailableProduct();
+
+    public bool IsEmpty();
+    
 }

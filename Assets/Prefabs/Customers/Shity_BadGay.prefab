@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 7107108863412213764}
   - component: {fileID: 25472819831621130}
   - component: {fileID: -5188951159229671611}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Shity_BadGay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
