@@ -30,7 +30,8 @@ namespace Assistant
             }
             else
             {
-                SetProductOnStand();
+                
+               SetProductOnStand();
                 //нужно проверить, есть ли у фабрики яиц продукты
                 if (_eggFactory.HasSpawnedProduct())
                 {
@@ -50,7 +51,11 @@ namespace Assistant
             while (!_assistant.Basket.IsEmpty())
             {
                 var product = _assistant.Basket.GetProduct();
-                _stand.SetProductOnStand(product);
+                if (_stand.TypeProduct != product.Type)
+                {
+                    _assistant.PickUpProduct(product);
+                    return;
+                }
             }
 
             if (_assistant.Basket.IsEmpty())

@@ -3992,7 +3992,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 5, z: 4}
+  m_Size: {x: 3.15, y: 5, z: 2.86}
   m_Center: {x: -0.34729344, y: 2.7100756, z: -0.45656818}
 --- !u!114 &498588927
 MonoBehaviour:
@@ -8648,7 +8648,7 @@ PrefabInstance:
     - target: {fileID: 4561771836852230907, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
       propertyPath: _nextPointController
       value: 
-      objectReference: {fileID: 2018856640}
+      objectReference: {fileID: 2018856632}
     - target: {fileID: 4561771836852230907, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
       propertyPath: _pointPath.Array.size
       value: 5
@@ -8738,7 +8738,7 @@ PrefabInstance:
       addedObject: {fileID: 2018856631}
     - targetCorrespondingSourceObject: {fileID: 3051554750943624728, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2018856640}
+      addedObject: {fileID: 2018856632}
   m_SourcePrefab: {fileID: 100100000, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
 --- !u!1001 &1010936886
 PrefabInstance:
@@ -16235,7 +16235,7 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 1641982777}
   _animator: {fileID: 1641982779}
   _pointForAssistant: {fileID: 340279988}
---- !u!114 &2018856640
+--- !u!114 &2018856632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16244,7 +16244,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 50418314}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45dc39e7c3e7405ead58fe8efe178590, type: 3}
+  m_Script: {fileID: 11500000, guid: 30b2708415d04097aff6ce43bc1342af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _standController: {fileID: 476809660}

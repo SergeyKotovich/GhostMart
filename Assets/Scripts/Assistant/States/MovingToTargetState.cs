@@ -9,7 +9,6 @@ namespace Assistant
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private Animator _animator;
-        [SerializeField] private List<Transform> _pointPath;
         [SerializeField] private NextPointController _nextPointController;
 
         private readonly int IsMoving = Animator.StringToHash("IsMoving");
@@ -19,9 +18,9 @@ namespace Assistant
         private bool _isStand;
         private IFactory _productFactory;
         private IStand _stand;
-        private int _currentIndex;
+        private Vector3 _currentPoint;
         private FactoryStand _factoryStand;
-        private Stand _currentStand;
+        private IInteractable _currentStand;
 
 
         public void Initialize(StateMachine stateMachine)
@@ -33,6 +32,7 @@ namespace Assistant
         {
             if (!(_navMeshAgent.remainingDistance < 0.1f)) return;
             EnterNextState();
+            
             _isStand = false;
             _isProductFactory = false;
         }
@@ -43,26 +43,21 @@ namespace Assistant
             _animator.SetBool(IsMoving, _isMoving);
             _navMeshAgent.SetDestination(currentPoint);
         }
-
-        private void GetNextPoint()
-        {
-            _factoryStand = _nextPointController.GetRandomNextPoint();
-            var currentPoint = _factoryStand.ProductFactory.gameObject.transform.position;
-            if (_currentStand != null)
-            {
-                currentPoint = _currentStand.PointForCustomers.position;
-                _currentStand = null;
-                MoveToPoint(currentPoint);
-                return;
-            }
-            MoveToPoint(currentPoint);
-            _currentStand = _factoryStand.Stand;
-        }
-
-
+        
         public void OnEnter()
         {
-            GetNextPoint();
+        //  var factoryStand = _nextPointController.GetRandomNextPoint();
+        //  var currentPoint = Vector3.zero;
+        //  if (_currentStand==null)
+        //  {
+        //      _currentStand = factoryStand.Stand;
+        //      currentPoint = factoryStand.ProductFactory.gameObject.transform.position;
+        //      MoveToPoint(currentPoint);
+        //      return;
+        //  }
+        //  currentPoint = _currentStand.PointForCustomers.position;
+        //  _currentStand = null;
+        //  MoveToPoint(currentPoint);
         }
 
         private void EnterNextState()

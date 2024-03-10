@@ -9,7 +9,6 @@ namespace Assistant
             var stateMachine = new StateMachine
             (
                 GetComponent<MovingToTargetState>(),
-                GetComponent<MovingToTargetState>(),
                 GetComponent<CollectingProductsState>(),
                 GetComponent<ProductStandState>(),
                 GetComponent<RecyclingProductsState>()
