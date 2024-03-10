@@ -10,4 +10,7 @@ public interface IStand
     public Product GetAvailableProduct();
     public void SetProductOnStand(Product product);
     public bool IsFull();
+
+    public bool IsEmpty();
+    
 }
