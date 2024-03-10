@@ -3,15 +3,13 @@ using Interfaces;
 using JetBrains.Annotations;
 using UnityEngine;
 
-
-
 public class ProductFactory : MonoBehaviour, IFactory
 {
-    
-   private Stack<Product> _allAvailableProducts = new();
-   public int ProductCounter { get; private set; }
+    [field:SerializeField] public int Id { get; private set; }
+    private Stack<Product> _allAvailableProducts = new();
+    public int ProductCounter { get; private set; }
 
-   public void OnAvailableProductsUpdated(Product availableProduct)
+    public void OnAvailableProductsUpdated(Product availableProduct)
     {
         _allAvailableProducts.Push(availableProduct);
         ProductCounter++;

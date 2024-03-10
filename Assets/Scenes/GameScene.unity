@@ -1102,6 +1102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc8b8deffe22fe4eb9343d4faea11c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Id>k__BackingField: 0
 --- !u!1 &126153683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,11 +1472,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86191fde91ab4368b6ef3b76af7a2dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grid: {fileID: 0}
+  Id: 0
   <StandIcon>k__BackingField: {fileID: 0}
   <PointForCustomers>k__BackingField: {fileID: 0}
   <TypeProduct>k__BackingField: 0
   <TypeInteractablePoint>k__BackingField: 0
+  _grid: {fileID: 0}
 --- !u!4 &161536506
 Transform:
   m_ObjectHideFlags: 0
@@ -3579,6 +3581,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 424508, guid: 4106696a93ada1946984a959b5f7d02f, type: 3}
   m_PrefabInstance: {fileID: 474958960}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &476809659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 476809661}
+  - component: {fileID: 476809660}
+  m_Layer: 5
+  m_Name: StandController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &476809660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476809659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06913409e3be455c8ecade524036f4a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _factoryStands:
+  - <ProductFactory>k__BackingField: {fileID: 498588928}
+    <Stand>k__BackingField: {fileID: 1936917546}
+  - <ProductFactory>k__BackingField: {fileID: 118633957}
+    <Stand>k__BackingField: {fileID: 661071623}
+--- !u!224 &476809661
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476809659}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 960, y: 540}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &485980530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3969,6 +4024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc8b8deffe22fe4eb9343d4faea11c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Id>k__BackingField: 0
 --- !u!1 &500256489
 GameObject:
   m_ObjectHideFlags: 0
@@ -5224,11 +5280,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86191fde91ab4368b6ef3b76af7a2dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grid: {fileID: 838981199}
+  Id: 0
   <StandIcon>k__BackingField: {fileID: 21300000, guid: 72d3440469d5f41c7978974f46e41b2a, type: 3}
   <PointForCustomers>k__BackingField: {fileID: 1905349333}
   <TypeProduct>k__BackingField: 1
   <TypeInteractablePoint>k__BackingField: 2
+  _grid: {fileID: 838981199}
 --- !u!65 &661071624
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6848,11 +6905,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86191fde91ab4368b6ef3b76af7a2dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grid: {fileID: 1973572068}
+  Id: 0
   <StandIcon>k__BackingField: {fileID: 21300108, guid: 37607ec1aab56e349af84a980f685a4b, type: 3}
   <PointForCustomers>k__BackingField: {fileID: 979282407}
   <TypeProduct>k__BackingField: 2
   <TypeInteractablePoint>k__BackingField: 2
+  _grid: {fileID: 1973572068}
 --- !u!1 &832555845
 GameObject:
   m_ObjectHideFlags: 0
@@ -8588,6 +8646,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1641982777}
     - target: {fileID: 4561771836852230907, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
+      propertyPath: _nextPointController
+      value: 
+      objectReference: {fileID: 2018856640}
+    - target: {fileID: 4561771836852230907, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
       propertyPath: _pointPath.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -8674,6 +8736,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3051554750943624728, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2018856631}
+    - targetCorrespondingSourceObject: {fileID: 3051554750943624728, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2018856640}
   m_SourcePrefab: {fileID: 100100000, guid: df992de3ebd0d1b448054f8afd5b19b7, type: 3}
 --- !u!1001 &1010936886
 PrefabInstance:
@@ -13948,6 +14013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc8b8deffe22fe4eb9343d4faea11c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Id>k__BackingField: 0
 --- !u!114 &1713277473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15020,11 +15086,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86191fde91ab4368b6ef3b76af7a2dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grid: {fileID: 1457058251}
+  Id: 0
   <StandIcon>k__BackingField: {fileID: 21300000, guid: 12e9c8f6c7db64e9a8920229f1267912, type: 3}
   <PointForCustomers>k__BackingField: {fileID: 1526526784}
   <TypeProduct>k__BackingField: 0
   <TypeInteractablePoint>k__BackingField: 2
+  _grid: {fileID: 1457058251}
 --- !u!1001 &1951759899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15388,7 +15455,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1959648317
 Transform:
   m_ObjectHideFlags: 0
@@ -16168,6 +16235,19 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 1641982777}
   _animator: {fileID: 1641982779}
   _pointForAssistant: {fileID: 340279988}
+--- !u!114 &2018856640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50418314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45dc39e7c3e7405ead58fe8efe178590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _standController: {fileID: 476809660}
 --- !u!1001 &2027432325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17388,6 +17468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc8b8deffe22fe4eb9343d4faea11c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Id>k__BackingField: 0
 --- !u!65 &9125917261472165239
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17438,5 +17519,6 @@ SceneRoots:
   - {fileID: 6652664816524389556}
   - {fileID: 1039292049}
   - {fileID: 915658007}
+  - {fileID: 476809661}
   - {fileID: 298958669}
   - {fileID: 1142095441}

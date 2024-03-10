@@ -1,58 +1,62 @@
 using Interfaces;
 using UnityEngine;
 
-public class ProductStandState : MonoBehaviour, IPayLoadedState<IStand>
+namespace Assistant
 {
-    [SerializeField] private ProductFactory _eggFactory;
-    
-    private IWorker _assistant;
-    private StateMachine _stateMachine;
-    private IStand _stand;
-
-    private void Awake()
+    public class ProductStandState : MonoBehaviour, IPayLoadedState<IStand>
     {
-        _assistant = GetComponent<IWorker>();
-    }
+        [SerializeField] private ProductFactory _eggFactory;
 
-    public void OnEnter(IStand payload)
-    {
-        _stand = payload;
-        if (_assistant.Basket.IsEmpty())
+        private IWorker _assistant;
+        private StateMachine _stateMachine;
+        private IStand _stand;
+
+        private void Awake()
         {
-            return;
+            _assistant = GetComponent<IWorker>();
         }
-        if (_stand.IsFull())
+
+        public void OnEnter(IStand payload)
         {
-            _stateMachine.Enter<RecyclingProductsState>();
-        }
-        else
-        {
-            SetProductOnStand();
-            //нужно проверить, есть ли у фабрики яиц продукты
-            if (_eggFactory.HasSpawnedProduct())
+            _stand = payload;
+            if (_assistant.Basket.IsEmpty())
             {
-                _stateMachine.Enter<AssistantMovingToTargetState>();
+                return;
             }
+
+            if (_stand.IsFull())
+            {
+                _stateMachine.Enter<RecyclingProductsState>();
+            }
+            else
+            {
+                SetProductOnStand();
+                //нужно проверить, есть ли у фабрики яиц продукты
+                if (_eggFactory.HasSpawnedProduct())
+                {
+                    _stateMachine.Enter<MovingToTargetState>();
+                }
+            }
+
         }
 
-    }
-
-    public void Initialize(StateMachine stateMachine)
-    {
-        _stateMachine = stateMachine;
-    }
-    
-    private void SetProductOnStand()
-    {
-        while (!_assistant.Basket.IsEmpty())
+        public void Initialize(StateMachine stateMachine)
         {
-            var product = _assistant.Basket.GetProduct();
-            _stand.SetProductOnStand(product);
+            _stateMachine = stateMachine;
         }
 
-        if (_assistant.Basket.IsEmpty())
+        private void SetProductOnStand()
         {
-            _stateMachine.Enter<AssistantMovingToTargetState>();
+            while (!_assistant.Basket.IsEmpty())
+            {
+                var product = _assistant.Basket.GetProduct();
+                _stand.SetProductOnStand(product);
+            }
+
+            if (_assistant.Basket.IsEmpty())
+            {
+                _stateMachine.Enter<MovingToTargetState>();
+            }
         }
     }
 }

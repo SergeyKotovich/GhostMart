@@ -4,34 +4,37 @@ using Interfaces;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Assistant : MonoBehaviour, IWorker
+namespace Assistant
 {
-    public IWorkerBasket Basket { get; private set; } 
-
-    private void Awake()
+    public class Assistant : MonoBehaviour, IWorker
     {
-        Basket = GetComponent<IWorkerBasket>();
-    }
+        public IWorkerBasket Basket { get; private set; }
 
-    public void PickUpProduct(Product product)
-    {
-        Basket.AddProductInBasket(product);
-    }
-
-    public Product GetProduct()
-    {
-        return Basket.GetProduct();
-    }
-
-    public List<Product> GetAllProducts()
-    {
-        List<Product> allProducts = new List<Product>();
-        var productsCount = Basket.CurrentCountProduct;
-        for (int i = 0; i < productsCount; i++)
+        private void Awake()
         {
-            allProducts.Add(Basket.GetProduct());
+            Basket = GetComponent<IWorkerBasket>();
         }
 
-        return allProducts;
+        public void PickUpProduct(Product product)
+        {
+            Basket.AddProductInBasket(product);
+        }
+
+        public Product GetProduct()
+        {
+            return Basket.GetProduct();
+        }
+
+        public List<Product> GetAllProducts()
+        {
+            List<Product> allProducts = new List<Product>();
+            var productsCount = Basket.CurrentCountProduct;
+            for (int i = 0; i < productsCount; i++)
+            {
+                allProducts.Add(Basket.GetProduct());
+            }
+
+            return allProducts;
+        }
     }
 }

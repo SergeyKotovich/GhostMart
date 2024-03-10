@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class AssistantWaitingState : MonoBehaviour , IState
+namespace Assistant
 {
-    private StateMachine _stateMachine;
-
-    public void Initialize(StateMachine stateMachine)
+    public class AssistantWaitingState : MonoBehaviour, IState
     {
-        _stateMachine = stateMachine;
-    }
+        private StateMachine _stateMachine;
 
-    public void OnEnter()
-    {
-        
+        public void Initialize(StateMachine stateMachine)
+        {
+            _stateMachine = stateMachine;
+        }
+
+        public void OnEnter()
+        {
+
+        }
+
     }
-    
 }
