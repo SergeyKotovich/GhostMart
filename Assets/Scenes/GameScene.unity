@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17699274, g: 0.22156087, b: 0.30383563, a: 1}
+  m_IndirectSpecularColor: {r: 0.17699346, g: 0.22156177, b: 0.30383733, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17331,7 +17331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1242567020887893328, guid: 3c35271488801e743ae2f0ebdb48e43c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.96
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 1242567020887893328, guid: 3c35271488801e743ae2f0ebdb48e43c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17542,6 +17542,8 @@ MonoBehaviour:
   _pointPath:
   - {fileID: 498588921}
   - {fileID: 1613090081}
+  - {fileID: 118633953}
+  - {fileID: 1905349333}
 --- !u!114 &1503025441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17565,7 +17567,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1503025432}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -18076,7 +18078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1536662860
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -27,9 +27,7 @@ public class ProductStandState : MonoBehaviour, IPayLoadedState<IStand>
             {
                 SetProductOnStand();
             }
-            
         }
-        
     }
 
     public void Initialize(StateMachine stateMachine)
@@ -41,6 +39,11 @@ public class ProductStandState : MonoBehaviour, IPayLoadedState<IStand>
     {
         while (!_assistant.Basket.IsEmpty())
         {
+            if (_stand.IsFull())
+            {
+                _stateMachine.Enter<RecyclingProductsState>();
+                break;
+            }
             var product = _assistant.Basket.GetProduct();
             _stand.SetProductOnStand(product);
         }

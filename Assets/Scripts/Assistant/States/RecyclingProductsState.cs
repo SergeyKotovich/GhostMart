@@ -29,5 +29,6 @@ public class RecyclingProductsState : MonoBehaviour, IState
     private void OnProductsAreRecycled(ProductsAreRecycledEvent productsAreRecycledEvent)
     {
         _stateMachine.Enter<AssistantMovingToTargetState>();
+        _subscription.Dispose();
     }
 }

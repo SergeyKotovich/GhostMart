@@ -25,10 +25,14 @@ public class AssistantMovingToTargetState : MonoBehaviour, IState
 
     private void Update()
     {
-        if (!(_navMeshAgent.remainingDistance < 0.1f)) return;
-        EnterNextState();
-        _isStand = false;
-        _isProductFactory = false;
+        Debug.Log(_navMeshAgent.remainingDistance);
+        if (_navMeshAgent.remainingDistance < 0.1f )
+        {
+            EnterNextState();
+            _isStand = false;
+            _isProductFactory = false;
+        }
+        
     }
 
     private void MoveToPoint()

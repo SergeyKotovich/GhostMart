@@ -114,7 +114,7 @@ using UnityEngine;
 
     public bool IsFull()
     {
-        return StandCells.All(standCell => standCell.Product != null);
+        return StandCells.All(standCell => !standCell.IsAvailable);
     }
 
     public bool IsEmpty()
