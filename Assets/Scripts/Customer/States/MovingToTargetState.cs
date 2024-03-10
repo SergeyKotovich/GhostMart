@@ -25,9 +25,13 @@ namespace Customer
                 {
                     EnterAtCashRegisterState();
                 }
-                else
+                else if (_currentTargetType == TypeInteractablePoints.Stand)
                 {
                     EnterGettingProductsState();
+                }
+                else
+                {
+                    _isActive = false;
                 }
             }
         }
@@ -57,7 +61,11 @@ namespace Customer
             {
                 var destination = shoppingList[currentPathIndex].Position;
                 _customer.SetDestination(destination);
-                
+                if (shoppingList[currentPathIndex].StopPoint.TypeInteractablePoint == TypeInteractablePoints.Exit)
+                {
+                    _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex].StopPoint.StandIcon);
+                    return;
+                }
                 _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex]);
             }
             else
@@ -73,10 +81,8 @@ namespace Customer
 
             var destination = cashRegister.Queue.GetFreePosition(_customer);
             _customer.SetDestination(destination);
-
             _customer._productBarView.UpdateProductBar(cashRegister.StandIcon);
         }
-        
         
         private void EnterGettingProductsState()
         {
