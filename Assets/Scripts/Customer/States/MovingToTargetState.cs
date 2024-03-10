@@ -61,6 +61,14 @@ namespace Customer
             {
                 var destination = shoppingList[currentPathIndex].Position;
                 _customer.SetDestination(destination);
+                
+               // var stand = (IStand)shoppingList[currentPathIndex].StopPoint;
+               // 
+               // if (stand.TypeProduct == TypeProduct.Egg)
+               // {
+               //     Debug.Log("egg destination = " + destination);
+               //     Debug.Log("is at target" + _customer.IsAtTargetPoint());
+               // }
                 if (shoppingList[currentPathIndex].StopPoint.TypeInteractablePoint == TypeInteractablePoints.Exit)
                 {
                     _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex].StopPoint.StandIcon);

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5188951159229671611, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
+      propertyPath: m_Radius
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: -4380453647660900665, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -136,6 +140,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _productBarSpawner: {fileID: 0}
+  <_collider>k__BackingField: {fileID: 0}
 --- !u!114 &1633892754210506968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 6202816535076470045}
+  _badCustomer: {fileID: 0}
 --- !u!114 &4798596224275337375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +170,7 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 236568124983505500}
   _animator: {fileID: 6202816535076470045}
   _badCustomer: {fileID: 2825895833122674986}
+  _exit: {fileID: 0}
 --- !u!114 &8860097415837563262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +183,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb69a40225acc7e4898174948e116226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _navMeshAgent: {fileID: 236568124983505500}
-  _exitTransform: {fileID: 0}
   _animator: {fileID: 6202816535076470045}
+  _badCustomer: {fileID: 0}

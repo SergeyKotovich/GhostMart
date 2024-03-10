@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17699346, g: 0.22156177, b: 0.30383733, a: 1}
+  m_IndirectSpecularColor: {r: 0.17699274, g: 0.22156087, b: 0.30383563, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1408,8 +1408,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112227444}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1111, z: -0.0352}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.015699975, y: 0.082700565, z: -0.10249999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7901,6 +7901,7 @@ MonoBehaviour:
   _stands:
   - {fileID: 661071623}
   - {fileID: 1936917546}
+  - {fileID: 1500612647482931310}
   _cashRegister: {fileID: 140723384}
   _exitPoint: {fileID: 811757663}
 --- !u!4 &716647741
@@ -21147,7 +21148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1727366717470652235, guid: e856617a2d4344d3b88f02a1a3c0b6d4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1727366717470652235, guid: e856617a2d4344d3b88f02a1a3c0b6d4, type: 3}
       propertyPath: m_TagString
@@ -23494,7 +23495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _grid: {fileID: 1973572068}
-  <StandIcon>k__BackingField: {fileID: 21300000, guid: 0d1495fe02db5dc4caf76b18f763f314, type: 3}
+  <StandIcon>k__BackingField: {fileID: 21300000, guid: d6f07d1f111f44110a1f1e189519cb9c, type: 3}
   <PointForCustomers>k__BackingField: {fileID: 112227445}
   <TypeProduct>k__BackingField: 2
   <TypeInteractablePoint>k__BackingField: 2
