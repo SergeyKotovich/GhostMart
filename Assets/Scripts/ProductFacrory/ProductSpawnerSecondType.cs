@@ -31,8 +31,8 @@ public class ProductSpawnerSecondType : MonoBehaviour, ISpawner
         SpawnProduct();
 
     }
-    
-    private bool CanNotSpawn()
+
+    public bool CanNotSpawn()
     {
         if (_productFactory.ProductCounter >= _productConfig.MaxCountSpawnedProduct)
         {

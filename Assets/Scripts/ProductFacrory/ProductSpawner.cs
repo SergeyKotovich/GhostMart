@@ -29,7 +29,7 @@ public class ProductSpawner : MonoBehaviour , ISpawner
         
     }
 
-    private bool CanNotSpawn()
+    public bool CanNotSpawn()
     {
         if (_productFactory.ProductCounter >= _productConfig.MaxCountSpawnedProduct)
         {
