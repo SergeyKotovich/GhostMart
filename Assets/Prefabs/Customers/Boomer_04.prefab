@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: -8974729882842268652}
   - component: {fileID: 8844479977284379099}
   - component: {fileID: 3524403487932835152}
+  - component: {fileID: 2811506991954478728}
   m_Layer: 3
   m_Name: Boomer_04
   m_TagString: Untagged
@@ -298,9 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952358374e16466ca13437e58e7730fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MovementController>k__BackingField:
-    _navMeshAgent: {fileID: 2035465631136602712}
-    _animator: {fileID: 2104005420582192463}
+  <MovementController>k__BackingField: {fileID: 2811506991954478728}
   _navMeshAgent: {fileID: 2035465631136602712}
 --- !u!195 &2035465631136602712
 NavMeshAgent:
@@ -384,6 +383,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd422b2f79dd49ceb8fbcb96c68fee37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2811506991954478728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104005420591691407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d58e105666464e8a47109010e04ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _navMeshAgent: {fileID: 2035465631136602712}
+  _animator: {fileID: 2104005420582192463}
 --- !u!1 &2104005420591691409
 GameObject:
   m_ObjectHideFlags: 0

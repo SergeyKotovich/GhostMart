@@ -18,14 +18,14 @@ public class InteractablePopup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.TryGetComponent(out Player _)) return;
+        if (!other.TryGetComponent(out Player.Player _)) return;
         _lookAtConstraint.enabled = true;
         ShowSlowly(_canvas.transform, Vector3.one, 0.5f, null);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.TryGetComponent(out Player _)) return;
+        if (!other.TryGetComponent(out Player.Player _)) return;
         _lookAtConstraint.enabled = false;
         DisappearSlowly(_canvas.transform);
     }

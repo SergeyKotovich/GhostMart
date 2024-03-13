@@ -950,6 +950,7 @@ GameObject:
   - component: {fileID: 638930473751411235}
   - component: {fileID: 7868832387295083226}
   - component: {fileID: 8944382588287684092}
+  - component: {fileID: -981928019084576618}
   m_Layer: 3
   m_Name: Skeleton_01
   m_TagString: Untagged
@@ -1035,9 +1036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952358374e16466ca13437e58e7730fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MovementController>k__BackingField:
-    _navMeshAgent: {fileID: 3845791618477769437}
-    _animator: {fileID: 441305821183171448}
+  <MovementController>k__BackingField: {fileID: -981928019084576618}
   _navMeshAgent: {fileID: 3845791618477769437}
 --- !u!195 &3845791618477769437
 NavMeshAgent:
@@ -1121,6 +1120,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd422b2f79dd49ceb8fbcb96c68fee37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-981928019084576618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441305821175752912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d58e105666464e8a47109010e04ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _navMeshAgent: {fileID: 3845791618477769437}
+  _animator: {fileID: 441305821183171448}
 --- !u!1 &441305821175752916
 GameObject:
   m_ObjectHideFlags: 0

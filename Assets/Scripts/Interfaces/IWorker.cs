@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 public interface IWorker
 {
-    public NavMeshAgent NavMeshAgent { get; }
     public IWorkerBasket Basket { get; } 
     public AbilitiesController AbilitiesController { get; }
     public WorkerTypes Type { get; }
@@ -17,5 +16,4 @@ public interface IWorker
     public Product GetProduct();
     public List<Product> GetAllProducts();
     
-    public void IncreaseSpeed();
 }

@@ -9,7 +9,7 @@ public class MoneyBonus : MonoBehaviour
     {
         if (other.CompareTag(GlobalConstants.PLAYER_TAG))
         {
-            var player = other.GetComponent<Player>();
+            var player = other.GetComponent<Player.Player>();
             player.AddMoney(10);
             Destroy(gameObject);
         }

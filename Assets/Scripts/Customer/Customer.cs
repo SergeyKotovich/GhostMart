@@ -9,7 +9,7 @@ namespace Customer
     public class Customer : MonoBehaviour, ICustomer
     {
         [field:SerializeField]
-        public MovementController MovementController { get; private set; }
+        public MovementController.MovementController MovementController { get; private set; }
         public int CurrentPathIndex { get; set; }
         public ICustomerBasket Basket { get; private set; }
         private bool _isMoving;

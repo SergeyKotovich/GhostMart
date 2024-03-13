@@ -2,55 +2,71 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class ProductStandState : MonoBehaviour, IPayLoadedState<IStand>
+namespace Assistant
 {
-    private IWorker _assistant;
-   // [SerializeField] private Stand _stand;
-    private StateMachine _stateMachine;
-    private IStand _stand;
-
-    private void Awake()
+    public class ProductStandState : MonoBehaviour, IPayLoadedState<IStand>
     {
-        _assistant = GetComponent<IWorker>();
-    }
+        private IWorker _assistant;
+        private StateMachine _stateMachine;
+        private IStand _stand;
+        private int _transitionsToProductStandStateCount;
 
-    public void OnEnter(IStand payload)
-    {
-        _stand = payload;
-        if (!_assistant.Basket.IsEmpty())
+        private void Awake()
         {
-            if (_stand.IsFull())
-            {
-                _stateMachine.Enter<RecyclingProductsState>();
-            }
-            else
-            {
-                SetProductOnStand();
-            }
-        }
-    }
-
-    public void Initialize(StateMachine stateMachine)
-    {
-        _stateMachine = stateMachine;
-    }
-    
-    private void SetProductOnStand()
-    {
-        while (!_assistant.Basket.IsEmpty())
-        {
-            if (_stand.IsFull())
-            {
-                _stateMachine.Enter<RecyclingProductsState>();
-                break;
-            }
-            var product = _assistant.Basket.GetProduct();
-            _stand.SetProductOnStand(product);
+            _assistant = GetComponent<IWorker>();
         }
 
-        if (_assistant.Basket.IsEmpty())
+        public void OnEnter(IStand payload)
         {
-            _stateMachine.Enter<AssistantMovingToTargetState>();
+            _stand = payload;
+            if (!_assistant.Basket.IsEmpty())
+            {
+                if (_stand.IsFull())
+                {
+                    EventStreams.Global.Publish(new StandIsFoolEvent());
+                    _stateMachine.Enter<MovingToTargetState>();
+                }
+                else
+                {
+                    SetProductOnStand();
+                }
+            }
         }
+
+        public void Initialize(StateMachine stateMachine)
+        {
+            _stateMachine = stateMachine;
+        }
+
+        private void SetProductOnStand()
+        {
+            while (!_assistant.Basket.IsEmpty())
+            {
+                if (_stand.IsFull())
+                {
+                    EventStreams.Global.Publish(new StandIsFoolEvent());
+                    _stateMachine.Enter<MovingToTargetState>();
+                    break;
+                }
+
+                var product = _assistant.Basket.GetProduct();
+                _stand.SetProductOnStand(product);
+            }
+
+            if (_assistant.Basket.IsEmpty())
+            {
+                if (_transitionsToProductStandStateCount>=0)
+                {
+                    var assistant = (ISleepable)_assistant;
+                    assistant.SetSleepingState(true);
+                    _transitionsToProductStandStateCount = 0;
+                    _stateMachine.Enter<MovingToTargetState>();
+                    return;
+                }
+                _transitionsToProductStandStateCount++;
+                _stateMachine.Enter<MovingToTargetState>();
+            }
+        }
+       
     }
 }
