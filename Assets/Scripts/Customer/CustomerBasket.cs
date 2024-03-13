@@ -7,7 +7,7 @@ namespace Customer
 {
     public class CustomerBasket : ICustomerBasket
     {
-        private int ProductsCount { get; set; }
+        public int ProductsCount { get; set; }
         public List<Product> BoughtProducts { get; } = new();
 
         public void AddProductInBasket(Product product)

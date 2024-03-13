@@ -12,8 +12,7 @@ namespace Customer
         public MovementController.MovementController MovementController { get; private set; }
         public int CurrentPathIndex { get; set; }
         public ICustomerBasket Basket { get; private set; }
-        private bool _isMoving;
-        public int ProductsCountInBasket => Basket.GetProductsCount();
+        public int ProductsCountInBasket => Basket.ProductsCount;
         public ProductBarView _productBarView { get; private set; }
         public List<ListItem> ShoppingList { get; } = new();
         public Vector3 PositionInLine { get; private set; }

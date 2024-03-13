@@ -6,6 +6,7 @@ namespace Interfaces
     {
         public List<Product> BoughtProducts { get; }
 
+        public int ProductsCount { get; }
         public void ResetCurrentProductCount();
         public int GetProductsCount();
 
