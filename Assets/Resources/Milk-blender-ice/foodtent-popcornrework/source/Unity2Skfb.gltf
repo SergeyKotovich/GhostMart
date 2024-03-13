@@ -1,0 +1,189 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 1920,
+      "type": "VEC3",
+      "max": [
+        0.8682861328125,
+        1.3986625671386719,
+        0.86827850341796875
+      ],
+      "min": [
+        -0.8682861328125,
+        -1.3986625671386719,
+        -0.86827850341796875
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1920,
+      "type": "VEC3",
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.9999997615814209,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1920,
+      "type": "VEC4",
+      "max": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.37887269258499146,
+        -0.39429351687431335,
+        -0.40444523096084595,
+        -1.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 1920,
+      "type": "VEC2",
+      "max": [
+        0.4007415771484375,
+        0.49236252903938293
+      ],
+      "min": [
+        0.06829833984375,
+        0.304868221282959
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5125,
+      "count": 2544,
+      "type": "SCALAR",
+      "max": [
+        1919.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "UnityGLTF (2019.3.3f1)",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "Unity2Skfb.bin",
+      "byteLength": 102336
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 23040
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 23040,
+      "byteLength": 23040
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 46080,
+      "byteLength": 30720
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 76800,
+      "byteLength": 15360
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 92160,
+      "byteLength": 10176
+    }
+  ],
+  "images": [
+    {
+      "uri": "20692_21784_PolygonCity_Texture_01_A.jpg",
+      "name": "21784_PolygonCity_Texture_01_A"
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.5
+      },
+      "emissiveFactor": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "name": "PolygonCity_Mat_01_A 1"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0
+        }
+      ],
+      "name": "SM_Prop_LargeSign_Popcorn_02"
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "name": "SM_Prop_LargeSign_Popcorn_02"
+    }
+  ],
+  "samplers": [
+    {
+      "minFilter": 9729
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Unity2Skfb"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "21784_PolygonCity_Texture_01_A"
+    }
+  ]
+}
