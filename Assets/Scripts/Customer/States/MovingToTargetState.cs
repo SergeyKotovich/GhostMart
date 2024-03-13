@@ -10,7 +10,7 @@ namespace Customer
         private StateMachine _stateMachine;
         private TypeInteractablePoints _currentTargetType;
         private bool _isActive;
-
+        
         private void Awake()
         {
             _customer = GetComponent<ICustomer>();
@@ -45,6 +45,12 @@ namespace Customer
             MoveToNextPoint();
             _isActive = true;
         }
+
+        public void OnExit()
+        {
+            
+        }
+
         private void MoveToNextPoint()
         {
             var shoppingList = _customer.ShoppingList;

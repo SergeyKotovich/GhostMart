@@ -1220,6 +1220,7 @@ GameObject:
   - component: {fileID: -6998099103573984917}
   - component: {fileID: -8665152666566973538}
   - component: {fileID: -4018873855151525611}
+  - component: {fileID: 5479235568464769545}
   m_Layer: 3
   m_Name: Fish_04
   m_TagString: Untagged
@@ -1305,9 +1306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952358374e16466ca13437e58e7730fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MovementController>k__BackingField:
-    _navMeshAgent: {fileID: -2919448635829222576}
-    _animator: {fileID: 5242057947430571291}
+  <MovementController>k__BackingField: {fileID: 5479235568464769545}
   _navMeshAgent: {fileID: -2919448635829222576}
 --- !u!195 &-2919448635829222576
 NavMeshAgent:
@@ -1391,6 +1390,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd422b2f79dd49ceb8fbcb96c68fee37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5479235568464769545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5242057947421195993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d58e105666464e8a47109010e04ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _navMeshAgent: {fileID: -2919448635829222576}
+  _animator: {fileID: 5242057947430571291}
 --- !u!1 &5242057947421195995
 GameObject:
   m_ObjectHideFlags: 0

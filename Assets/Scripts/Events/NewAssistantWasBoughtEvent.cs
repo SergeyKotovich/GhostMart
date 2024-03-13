@@ -4,9 +4,9 @@ namespace Events
 {
     public class NewAssistantWasBoughtEvent : EventBase
     {
-        public Assistant Assistant { get; }
+        public Assistant.Assistant Assistant { get; }
 
-        public NewAssistantWasBoughtEvent(Assistant assistant)
+        public NewAssistantWasBoughtEvent(Assistant.Assistant assistant)
         {
             Assistant = assistant;
         }

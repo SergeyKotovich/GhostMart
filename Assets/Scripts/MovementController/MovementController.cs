@@ -2,10 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Customer
+namespace MovementController
 {
-    [Serializable]
-    public class MovementController
+    public class MovementController : MonoBehaviour
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private Animator _animator;
@@ -20,6 +19,7 @@ namespace Customer
         {
             return _navMeshAgent.remainingDistance < 1f;
         }
+
         public void StopMoving()
         {
             _animator.SetBool("IsMoving", false);

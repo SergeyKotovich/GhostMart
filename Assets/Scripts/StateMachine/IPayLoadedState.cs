@@ -1,4 +1,4 @@
-public interface IPayLoadedState<T> : IInitializable
+public interface IPayLoadedState<TPayload> : IInitializable
 {
-    void OnEnter(T payload);
+    void OnEnter(TPayload payload);
 }

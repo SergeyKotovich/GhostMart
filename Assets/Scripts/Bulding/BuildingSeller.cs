@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class BuildingSeller : MonoBehaviour
 {
-    [SerializeField] Player _player;
+    [SerializeField] Player.Player _player;
     [SerializeField] int _price;
     [SerializeField] UnityEvent _buyCompleted;
     [SerializeField] private BuildingManager _buildingManager;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WorkersImprover : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    [SerializeField] private Player.Player _player;
     public void ImproveBasket(GameObject player)
     {
         var wallet = _player.Wallet;

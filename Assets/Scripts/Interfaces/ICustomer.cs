@@ -7,7 +7,7 @@ namespace Interfaces
 {
     public interface ICustomer
     {
-        public Customer.MovementController MovementController { get; }
+        public MovementController.MovementController MovementController { get; }
         public int CurrentPathIndex { get; set; }
         public ProductBarView _productBarView { get; }
         public List<ListItem> ShoppingList { get; }

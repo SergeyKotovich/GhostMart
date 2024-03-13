@@ -1143,6 +1143,7 @@ GameObject:
   - component: {fileID: -8528572574999166629}
   - component: {fileID: 3833154597403988335}
   - component: {fileID: 7177330670418978053}
+  - component: {fileID: 534209162358844489}
   m_Layer: 3
   m_Name: Gipsy_05
   m_TagString: Untagged
@@ -1228,9 +1229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952358374e16466ca13437e58e7730fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MovementController>k__BackingField:
-    _navMeshAgent: {fileID: -7145455614118589663}
-    _animator: {fileID: 4331970496185495103}
+  <MovementController>k__BackingField: {fileID: 534209162358844489}
   _navMeshAgent: {fileID: -7145455614118589663}
 --- !u!195 &-7145455614118589663
 NavMeshAgent:
@@ -1314,6 +1313,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd422b2f79dd49ceb8fbcb96c68fee37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &534209162358844489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331970496175971835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d58e105666464e8a47109010e04ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _navMeshAgent: {fileID: -7145455614118589663}
+  _animator: {fileID: 4331970496185495103}
 --- !u!1 &4331970496175971839
 GameObject:
   m_ObjectHideFlags: 0
