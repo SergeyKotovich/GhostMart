@@ -19,6 +19,7 @@ namespace BadCustomer
             _stand = stand;
             DropProduct();
             _badCustomer._collider.isTrigger = true;
+            _trigger = false;
         }
 
         public void Initialize(StateMachine stateMachine)
@@ -33,7 +34,7 @@ namespace BadCustomer
             {
                 var product = _stand.GetAvailableProduct();
 
-                if (product != null)
+                if (product != null && !_trigger)
                 {
                     var xRandomPoint = Random.Range(-4.0f, -7.9f);
                     var zRandomPoint = Random.Range(-11.0f, -14.9f);

@@ -37,8 +37,16 @@ namespace BadCustomer
 
         public Stand GetRandomStand()
         {
-            var randomIndex = Random.Range(0, _stands.Length);
-            return _stands[randomIndex];
+            List<Stand> availableStands = new();
+            for (var i = 0; i < _stands.Length; i++)
+            {
+                if (_stands[i].IsAvailable)
+                {
+                    availableStands.Add(_stands[i]);
+                }
+            }
+            var randomIndex = Random.Range(0, availableStands.Count);
+            return availableStands[randomIndex];
         }
 
       

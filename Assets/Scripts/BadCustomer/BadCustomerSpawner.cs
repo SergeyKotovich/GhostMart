@@ -10,9 +10,6 @@ namespace BadCustomer
     public class BadCustomerSpawner : MonoBehaviour
     {
         [SerializeField] private BadCustomer _badCustomer;
-
-        //private BadCustomer _badCustomer;
-
         [SerializeField] private float _minSpawnTime = 30f;
         [SerializeField] private float _maxSpawnTime = 120f;
 
@@ -21,15 +18,17 @@ namespace BadCustomer
 
         private void Start()
         {
-            StartCoroutine(SpawnObject());
             _subscribers.Add(EventStreams.Global.Subscribe<CameToExitEvent>(StartSpawn));
         }
 
+        public void Initialize()
+        {
+            StartCoroutine(SpawnObject());
+            
+        }
         private IEnumerator SpawnObject()
         {
-            //yield return new WaitForSeconds(Random.Range(_minSpawnTime, _maxSpawnTime));
-            yield return new WaitForSeconds(1);
-
+            yield return new WaitForSeconds(Random.Range(_minSpawnTime, _maxSpawnTime));
             _badCustomer.gameObject.SetActive(true);
             _badCustomer.StateMachineStartMoving();
         }

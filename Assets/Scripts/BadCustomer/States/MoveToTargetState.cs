@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 
 namespace BadCustomer
 {
@@ -36,15 +32,17 @@ namespace BadCustomer
                 if (_cameToTarget)
                 {
                     OnCameToTarget();
+                    _cameToTarget = false;
                 }
             }
+            
         }
 
         public void OnEnter()
         {
             if (_badCustomer._isMovingToExit)
             {
-                _currentPoint = (IInteractable)_exit;
+                _currentPoint = _exit;
                 MoveToTarget(_currentPoint.PointForCustomers.position);
             }
             else
@@ -78,6 +76,7 @@ namespace BadCustomer
             if (_currentPoint.TypeInteractablePoint == TypeInteractablePoints.Exit)
             {
                 EventStreams.Global.Publish(new CameToExitEvent());
+                return;
             }
 
             if (_currentPoint.TypeInteractablePoint == TypeInteractablePoints.Stand)

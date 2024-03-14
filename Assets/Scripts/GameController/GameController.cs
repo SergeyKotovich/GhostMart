@@ -1,4 +1,5 @@
 using System;
+using BadCustomer;
 using Customer;
 using Events;
 using SimpleEventBus.Disposables;
@@ -10,6 +11,7 @@ namespace GameController
     {
         [SerializeField] private BuildingManager _buildingManager;
         [SerializeField] private CustomersController _customersController;
+        [SerializeField] private BadCustomerSpawner _badCustomerSpawner;
 
         private CompositeDisposable _subscribers = new();
         private void Awake()
@@ -26,6 +28,7 @@ namespace GameController
         private void OnMartOpened(MartOpenedEvent martOpenedEvent)
         {
             _customersController.Initialize();
+            _badCustomerSpawner.Initialize();
         }
 
         private void OnDestroy()
