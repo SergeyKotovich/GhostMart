@@ -82,7 +82,7 @@ namespace Assistant
 
             if (_isStand)
             {
-                _stateMachine.Enter<ProductStandState, IStand>(_stand);
+                _stateMachine.Enter<ProductStandState, IStorageable>(_stand);
             }
 
         }

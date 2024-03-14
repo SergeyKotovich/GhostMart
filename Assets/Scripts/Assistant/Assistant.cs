@@ -7,12 +7,14 @@ namespace Assistant
     public class Assistant : MonoBehaviour, IWorker,ISleepable,IMovable,IRecyclable
     {
         [field: SerializeField] public WorkerTypes Type { get; private set; }
-        [field: SerializeField]
-        public CollectingProducts CollectingProducts { get; private set; }
+        [field: SerializeField] public CollectingProducts CollectingProducts { get; private set; }
         public MovementController.MovementController MovementController { get; private set; }
         public AbilitiesController AbilitiesController { get; private set; }
         public IWorkerBasket Basket { get; private set; }
         public bool IsSleeping { get; private set; }
+        public bool ISRecycling { get; private set; }
+        public Collider Collider { get; private set; }
+        
 
         private void Awake()
         {
@@ -47,7 +49,7 @@ namespace Assistant
         {
             IsSleeping = value;
         }
-
+        
         public void SetRecyclingState(bool value)
         {
             ISRecycling = value;
