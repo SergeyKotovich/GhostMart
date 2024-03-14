@@ -24,7 +24,8 @@ namespace Assistant
             {
                 if (_stand.IsFull())
                 {
-                    EventStreams.Global.Publish(new StandIsFoolEvent());
+                    var assistant = (IRecyclable)_assistant;
+                    assistant.SetRecyclingState(true);;
                     _stateMachine.Enter<MovingToTargetState>();
                 }
                 else
@@ -45,9 +46,10 @@ namespace Assistant
             {
                 if (_stand.IsFull())
                 {
-                    EventStreams.Global.Publish(new StandIsFoolEvent());
+                    var assistant = (IRecyclable)_assistant;
+                    assistant.SetRecyclingState(true);
                     _stateMachine.Enter<MovingToTargetState>();
-                    break;
+                    return;
                 }
 
                 var product = _assistant.Basket.GetProduct();

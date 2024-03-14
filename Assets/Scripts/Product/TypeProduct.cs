@@ -2,5 +2,7 @@ public enum TypeProduct
 {
     Banana,
     Corn,
-    Egg
+    Egg,
+    Milk,
+    PopCorn
 }

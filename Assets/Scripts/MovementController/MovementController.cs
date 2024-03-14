@@ -8,17 +8,12 @@ namespace MovementController
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private Animator _animator;
-        private static readonly int IsMoving = Animator.StringToHash("IsMoving");
-
-        private void Update()
-        {
-            _animator.SetBool(IsMoving, !IsAtTargetPoint());
-        }
+        private static readonly int _isMoving = Animator.StringToHash("IsMoving");
 
         public void SetDestination(Vector3 destination)
         {
             _navMeshAgent.SetDestination(destination);
-            _animator.SetBool(IsMoving, true);
+            _animator.SetBool(_isMoving, true);
         }
 
         public bool IsAtTargetPoint()

@@ -40,7 +40,6 @@ namespace Assistant
                 {
                     eye.transform.DOScale(new Vector3(1, 1, 1), 1);
                 }
-                
                 _assistant.SetSleepingState(false);
                 _assistant.Collider.isTrigger = false;
                 _stateMachine.Enter<MovingToTargetState>();

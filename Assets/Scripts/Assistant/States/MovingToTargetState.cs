@@ -15,14 +15,12 @@ namespace Assistant
 
         private bool _isProductFactory;
         private bool _isStand;
-        private bool _isRecyclingState;
         
         private StateMachine _stateMachine;
         private int _currentIndex;
         private IFactory _productFactory;
         private IStorageable _stand;
         private IMovable _assistant;
-        private CompositeDisposable _subscriptions = new();
 
         private void Awake()
         {
@@ -32,7 +30,6 @@ namespace Assistant
         public void Initialize(StateMachine stateMachine)
         {
             _stateMachine = stateMachine;
-            _subscriptions.Add(EventStreams.Global.Subscribe<StandIsFoolEvent>(OnEnterRecyclingState));
         }
 
         private void Update()
@@ -42,13 +39,13 @@ namespace Assistant
                 EnterNextState();
                 _isStand = false;
                 _isProductFactory = false;
-                _isRecyclingState = false;
             }
         }
 
         private void MoveToPoint()
         {
-            if (_isRecyclingState)
+            var recyclableAssistant = (IRecyclable)_assistant;
+            if (recyclableAssistant.ISRecycling)
             {
                 _assistant.MovementController.SetDestination(_pointForRecycling.position);
                 _stateMachine.Enter<RecyclingProductsState>();
@@ -75,23 +72,17 @@ namespace Assistant
         {
             MoveToPoint();
         }
-        private void OnEnterRecyclingState(StandIsFoolEvent standIsFoolEvent)
-        {
-            _isRecyclingState = true;
-            _subscriptions.Dispose();
-        }
+       
         private void EnterNextState()
         {
             if (_isProductFactory)
             {
-               // _assistant.MovementController.StopMoving();
                 _stateMachine.Enter<CollectingProductsState, IFactory>(_productFactory);
             }
 
             if (_isStand)
             {
-                //_assistant.MovementController.StopMoving();
-                _stateMachine.Enter<ProductStandState, IStorageable>(_stand);
+                _stateMachine.Enter<ProductStandState, IStand>(_stand);
             }
 
         }
@@ -109,11 +100,6 @@ namespace Assistant
                 _isStand = true;
                 _stand = other.GetComponent<IStorageable>();
             }
-        }
-
-        private void OnDestroy()
-        {
-            _subscriptions.Dispose();
         }
     }
 }

@@ -1,13 +1,10 @@
-using System;
 using System.Collections.Generic;
 using Interfaces;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace Assistant
 {
-    public class Assistant : MonoBehaviour, IWorker,ISleepable,IMovable
+    public class Assistant : MonoBehaviour, IWorker,ISleepable,IMovable,IRecyclable
     {
         [field: SerializeField] public WorkerTypes Type { get; private set; }
         [field: SerializeField]
@@ -16,7 +13,6 @@ namespace Assistant
         public AbilitiesController AbilitiesController { get; private set; }
         public IWorkerBasket Basket { get; private set; }
         public bool IsSleeping { get; private set; }
-        public Collider Collider { get; private set; }
 
         private void Awake()
         {
@@ -50,6 +46,11 @@ namespace Assistant
         public void SetSleepingState(bool value)
         {
             IsSleeping = value;
+        }
+
+        public void SetRecyclingState(bool value)
+        {
+            ISRecycling = value;
         }
         
     }

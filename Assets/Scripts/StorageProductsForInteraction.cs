@@ -33,6 +33,7 @@ public class StorageProductsForInteraction : MonoBehaviour, IStorageable
         var indexPosition = _currentCountProductsForInteraction;
         product.transform.SetParent(_allPositionProductsForInteraction[indexPosition]);
         product.transform.DOMove(_allPositionProductsForInteraction[indexPosition].position, 1);
+        product.transform.DORotate(_allPositionProductsForInteraction[indexPosition].position, 1);
         _currentCountProductsForInteraction++;
     }
     public void DestroyProduct()
