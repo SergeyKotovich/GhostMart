@@ -24,10 +24,10 @@ namespace Assistant
         
         public void OnEnter()
         {
-            
             foreach (var eye in _eyes)
             {
-                eye.transform.DOScale(new Vector3(1, 1, -0.2f), 6);
+                eye.transform.DOScale(new Vector3(1, 1, -0.2f), 3);
+                
             }
         }
         

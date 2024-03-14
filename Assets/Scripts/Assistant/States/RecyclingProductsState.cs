@@ -8,6 +8,12 @@ namespace Assistant
     {
         private StateMachine _stateMachine;
         private IDisposable _subscription;
+        private IRecyclable _assistant;
+
+        private void Awake()
+        {
+            _assistant = GetComponent<IRecyclable>();
+        }
 
         public void Initialize(StateMachine stateMachine)
         {
@@ -21,6 +27,7 @@ namespace Assistant
         
         private void OnProductsAreRecycled(ProductsAreRecycledEvent productsAreRecycledEvent)
         {
+            _assistant.SetRecyclingState(false);
             _stateMachine.Enter<MovingToTargetState>();
             _subscription.Dispose();
         }
