@@ -1230,7 +1230,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MovementController>k__BackingField: {fileID: 534209162358844489}
-  _navMeshAgent: {fileID: -7145455614118589663}
 --- !u!195 &-7145455614118589663
 NavMeshAgent:
   m_ObjectHideFlags: 0

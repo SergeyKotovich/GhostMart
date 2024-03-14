@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class StorageTriggerHandler : MonoBehaviour
 {
-    [SerializeField] private StorageProductsForInteraction _storageProductsForInteraction;
+    private IStorageable _storageProductsForInteraction;
+
+    private void Awake()
+    {
+        _storageProductsForInteraction = GetComponent<IStorageable>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player"))
+        if (!other.CompareTag(GlobalConstants.PLAYER_TAG))
         {
             return;
         }
@@ -18,19 +24,19 @@ public class StorageTriggerHandler : MonoBehaviour
         {
             return;
         }
-        if (_storageProductsForInteraction.IsFoolStorage())
+        if (_storageProductsForInteraction.IsFull())
         {
             return;
         }
 
-        while (!_storageProductsForInteraction.IsFoolStorage() || !worker.Basket.HasSuitableProduct(typeProduct))
+        while (!_storageProductsForInteraction.IsFull() || !worker.Basket.HasSuitableProduct(typeProduct))
         {
             var product =  worker.Basket.GetSuitableProduct(typeProduct);
             if (product==null)
             {
                 return;
             }
-            _storageProductsForInteraction.AddProductForInteraction(product);
+            _storageProductsForInteraction.AddProduct(product);
         }
        
 

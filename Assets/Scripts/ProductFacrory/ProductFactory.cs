@@ -1,14 +1,12 @@
+using System;
 using System.Collections.Generic;
 using Interfaces;
-using JetBrains.Annotations;
 using UnityEngine;
-
-
 
 public class ProductFactory : MonoBehaviour, IFactory
 {
-    
-   private Stack<Product> _allAvailableProducts = new();
+    [SerializeField] private Player.Player _player;
+    private Stack<Product> _allAvailableProducts = new();
    public int ProductCounter { get; private set; }
 
    public void OnAvailableProductsUpdated(Product availableProduct)
@@ -28,4 +26,18 @@ public class ProductFactory : MonoBehaviour, IFactory
         return _allAvailableProducts.Count > 0;
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag(GlobalConstants.PLAYER_TAG))
+        {
+            if (_allAvailableProducts.Count <= 0 || !_player.CanPickUp)
+            {
+                return;
+            }
+            var product = GetProduct();
+            _player.PickUpProduct(product);
+            _player.CollectingProducts.SetPosition(product);
+            
+        }
+    }
 }

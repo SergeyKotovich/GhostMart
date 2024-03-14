@@ -11,6 +11,8 @@ namespace Player
         [field: SerializeField] public NavMeshAgent NavMeshAgent { get; private set; }
         [field: SerializeField] public WorkerTypes Type { get; private set; }
         [field: SerializeField] public Wallet Wallet { get; private set; }
+        [field: SerializeField]
+        public CollectingProducts CollectingProducts { get; private set; }
         public AbilitiesController AbilitiesController { get; private set; }
         public IWorkerBasket Basket { get; private set; }
         public bool CanPickUp => !Basket.IsFull();

@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using Interfaces;
 using UnityEngine;
 
-public class StorageProductsForInteraction : MonoBehaviour
+public class StorageProductsForInteraction : MonoBehaviour, IStorageable
 {
     [field:SerializeField] public TypeProduct TypeProduct { get; private set; }
         
@@ -22,7 +23,7 @@ public class StorageProductsForInteraction : MonoBehaviour
 
         return false;
     }
-    public void AddProductForInteraction(Product product)
+    public void AddProduct(Product product)
     {
         if (_currentCountProductsForInteraction==_maxCountProductForInteraction)
         {
@@ -42,7 +43,7 @@ public class StorageProductsForInteraction : MonoBehaviour
 
     }
 
-    public bool IsFoolStorage()
+    public bool IsFull()
     {
         if (_productsForInteraction.Count == _maxCountProductForInteraction)
         {

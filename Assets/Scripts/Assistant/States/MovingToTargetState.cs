@@ -20,7 +20,7 @@ namespace Assistant
         private StateMachine _stateMachine;
         private int _currentIndex;
         private IFactory _productFactory;
-        private IStand _stand;
+        private IStorageable _stand;
         private IMovable _assistant;
         private CompositeDisposable _subscriptions = new();
 
@@ -84,14 +84,14 @@ namespace Assistant
         {
             if (_isProductFactory)
             {
-                _assistant.MovementController.StopMoving();
+               // _assistant.MovementController.StopMoving();
                 _stateMachine.Enter<CollectingProductsState, IFactory>(_productFactory);
             }
 
             if (_isStand)
             {
-                _assistant.MovementController.StopMoving();
-                _stateMachine.Enter<ProductStandState, IStand>(_stand);
+                //_assistant.MovementController.StopMoving();
+                _stateMachine.Enter<ProductStandState, IStorageable>(_stand);
             }
 
         }
@@ -107,7 +107,7 @@ namespace Assistant
             if (other.CompareTag(GlobalConstants.STAND_TAG))
             {
                 _isStand = true;
-                _stand = other.GetComponent<IStand>();
+                _stand = other.GetComponent<IStorageable>();
             }
         }
 

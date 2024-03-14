@@ -52,7 +52,7 @@ namespace Customer
             if (productsOnStandCount > 0)
             {
                 var product = stand.GetAvailableProduct();
-                _customer.AddProductInBasket(product);
+                _customer.Basket.AddProductInBasket(product);
                 
                 shoppingList[currentPathIndex].CurrentCount++;
                 _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex]);
@@ -62,7 +62,7 @@ namespace Customer
             if (_customer.ProductsCountInBasket >= shoppingList[currentPathIndex].MaxCount)
             {
                 _customer.CurrentPathIndex++;
-                _customer.ResetCurrentProductCountInBasket();
+                _customer.Basket.ResetCurrentProductCount();
                 _isTakingProducts = false;
 
                 EnterMovingToTargetState();

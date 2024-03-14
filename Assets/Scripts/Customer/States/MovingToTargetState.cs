@@ -10,6 +10,7 @@ namespace Customer
         private StateMachine _stateMachine;
         private TypeInteractablePoints _currentTargetType;
         private bool _isActive;
+        private bool _isInQueue;
         
         private void Awake()
         {
@@ -19,7 +20,7 @@ namespace Customer
         private void Update()
         {
             if (!_isActive) return;
-            if (_customer.IsAtTargetPoint())
+            if (_customer.MovementController.IsAtTargetPoint())
             {
                 if (_currentTargetType == TypeInteractablePoints.CashRegister)
                 {
@@ -46,11 +47,6 @@ namespace Customer
             _isActive = true;
         }
 
-        public void OnExit()
-        {
-            
-        }
-
         private void MoveToNextPoint()
         {
             var shoppingList = _customer.ShoppingList;
@@ -66,25 +62,15 @@ namespace Customer
             if (currentPathIndex < shoppingList.Count)
             {
                 var destination = shoppingList[currentPathIndex].Position;
-                _customer.SetDestination(destination);
-                
-               // var stand = (IStand)shoppingList[currentPathIndex].StopPoint;
-               // 
-               // if (stand.TypeProduct == TypeProduct.Egg)
-               // {
-               //     Debug.Log("egg destination = " + destination);
-               //     Debug.Log("is at target" + _customer.IsAtTargetPoint());
-               // }
+                _customer.MovementController.SetDestination(destination);
+                _customer.SetPositionInLine(destination);
+
                 if (shoppingList[currentPathIndex].StopPoint.TypeInteractablePoint == TypeInteractablePoints.Exit)
                 {
                     _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex].StopPoint.StandIcon);
                     return;
                 }
                 _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex]);
-            }
-            else
-            {
-                _customer.StopMoving();
             }
         }
 
@@ -94,22 +80,25 @@ namespace Customer
             var cashRegister = (CashRegister)_customer.ShoppingList[currentPathIndex].StopPoint;
 
             var destination = cashRegister.Queue.GetFreePosition(_customer);
-            _customer.SetDestination(destination);
+            _customer.MovementController.SetDestination(destination);
+            _customer.SetPositionInLine(destination);
+
             _customer._productBarView.UpdateProductBar(cashRegister.StandIcon);
+            _isInQueue = true;
         }
         
         private void EnterGettingProductsState()
         {
+           // _customer.MovementController.StopMoving();
             _stateMachine.Enter<GettingProductsState>();
             _isActive = false;
-            _customer.StopMoving();
         }
         
         private void EnterAtCashRegisterState()
         {
+           // _customer.MovementController.StopMoving();
             _stateMachine.Enter<AtCashRegisterState>();
             _isActive = false;
-            _customer.StopMoving();
         }
 
     }

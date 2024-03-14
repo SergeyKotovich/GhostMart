@@ -14,15 +14,8 @@ namespace Interfaces
         public ICustomerBasket Basket { get; }
         public Vector3 PositionInLine { get; }
         public int ProductsCountInBasket { get; }
-        
-        public void SetDestination(Vector3 destination);
 
-        public void StopMoving();
+        public void SetPositionInLine(Vector3 position);
 
-        public bool IsAtTargetPoint();
-
-        public void AddProductInBasket(Product product);
-
-        public void ResetCurrentProductCountInBasket();
     }
 }

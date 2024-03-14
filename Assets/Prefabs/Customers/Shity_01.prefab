@@ -407,10 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952358374e16466ca13437e58e7730fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MovementController>k__BackingField:
-    _navMeshAgent: {fileID: -5188951159229671611}
-    _animator: {fileID: 7107108863412213764}
-  _navMeshAgent: {fileID: -5188951159229671611}
+  <MovementController>k__BackingField: {fileID: 0}
 --- !u!195 &-5188951159229671611
 NavMeshAgent:
   m_ObjectHideFlags: 0

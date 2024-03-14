@@ -27,7 +27,8 @@ namespace Assistant
             
             foreach (var eye in _eyes)
             {
-                eye.transform.DOScale(new Vector3(1, 1, -0.2f), 6);
+                eye.transform.DOScale(new Vector3(1, 1, -0.2f), 4)
+                    .OnComplete(() => _assistant.Collider.isTrigger = true);
             }
         }
         
@@ -39,7 +40,9 @@ namespace Assistant
                 {
                     eye.transform.DOScale(new Vector3(1, 1, 1), 1);
                 }
+                
                 _assistant.SetSleepingState(false);
+                _assistant.Collider.isTrigger = false;
                 _stateMachine.Enter<MovingToTargetState>();
             }
         }

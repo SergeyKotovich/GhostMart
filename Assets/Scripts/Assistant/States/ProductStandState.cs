@@ -1,14 +1,15 @@
 using System;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Assistant
 {
-    public class ProductStandState : MonoBehaviour, IPayLoadedState<IStand>
+    public class ProductStandState : MonoBehaviour, IPayLoadedState<IStorageable>
     {
         private IWorker _assistant;
         private StateMachine _stateMachine;
-        private IStand _stand;
+        private IStorageable _stand;
         private int _transitionsToProductStandStateCount;
 
         private void Awake()
@@ -16,7 +17,7 @@ namespace Assistant
             _assistant = GetComponent<IWorker>();
         }
 
-        public void OnEnter(IStand payload)
+        public void OnEnter(IStorageable payload)
         {
             _stand = payload;
             if (!_assistant.Basket.IsEmpty())
@@ -50,12 +51,12 @@ namespace Assistant
                 }
 
                 var product = _assistant.Basket.GetProduct();
-                _stand.SetProductOnStand(product);
+                _stand.AddProduct(product);
             }
 
             if (_assistant.Basket.IsEmpty())
             {
-                if (_transitionsToProductStandStateCount>=0)
+                if (_transitionsToProductStandStateCount>= 20)
                 {
                     var assistant = (ISleepable)_assistant;
                     assistant.SetSleepingState(true);

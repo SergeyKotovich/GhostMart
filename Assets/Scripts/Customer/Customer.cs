@@ -16,8 +16,7 @@ namespace Customer
         public ProductBarView _productBarView { get; private set; }
         public List<ListItem> ShoppingList { get; } = new();
         public Vector3 PositionInLine { get; private set; }
-        [SerializeField]
-        private NavMeshAgent _navMeshAgent;
+
 
         public void Initialize(List<IInteractable> path, ProductBarView productBarView)
         {
@@ -32,39 +31,10 @@ namespace Customer
             Basket = new CustomerBasket();
         }
 
-        public void SetDestination(Vector3 destination)
+        public void SetPositionInLine(Vector3 position)
         {
-            MovementController.SetDestination(destination);
-            PositionInLine = destination;
+            PositionInLine = position;
         }
         
-        private void Update()
-        {
-            if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance && !_navMeshAgent.pathPending)
-            {
-                StopMoving();
-            }
-        }
-
-        public void StopMoving()
-        {
-            MovementController.StopMoving();
-        }
-        
-        public bool IsAtTargetPoint()
-        {
-            return MovementController.IsAtTargetPoint();
-        }
-
-        public void AddProductInBasket(Product product)
-        {
-            Basket.AddProductInBasket(product);
-        }
-
-        public void ResetCurrentProductCountInBasket()
-        {
-            Basket.ResetCurrentProductCount();
-        }
-
     }
 }

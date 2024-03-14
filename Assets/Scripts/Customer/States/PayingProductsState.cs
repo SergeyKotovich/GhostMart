@@ -33,7 +33,7 @@ namespace Customer
         {
             yield return new WaitForSeconds(2);
             var basket = (CustomerBasket)_customer.Basket;
-            _cashRegister.SellProducts(basket.GetTotalProductPrice());
+            _cashRegister.SellProducts(basket.BoughtProducts);
             
             _customer.CurrentPathIndex++;
             EventStreams.Global.Publish(new CustomerLeftEvent());

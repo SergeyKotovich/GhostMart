@@ -6,14 +6,13 @@ using Interfaces;
 using JetBrains.Annotations;
 using UnityEngine;
 
- public class Stand : MonoBehaviour, IInteractable, IStand
+ public class Stand : MonoBehaviour, IInteractable, IStand, IStorageable
     {
-        [SerializeField] private Grid _grid;
-        [field:SerializeField] public Sprite StandIcon {get; private set; }
-        [field:SerializeField] public Transform PointForCustomers { get; private set; }
-        [field:SerializeField] public TypeProduct TypeProduct { get; private set; }
-
-    [field: SerializeField] public TypeInteractablePoints TypeInteractablePoint { get; private set; }
+     [SerializeField] private Grid _grid;
+     [field:SerializeField] public Sprite StandIcon {get; private set; }
+     [field:SerializeField] public Transform PointForCustomers { get; private set; }
+     [field:SerializeField] public TypeProduct TypeProduct { get; private set; }
+     [field: SerializeField] public TypeInteractablePoints TypeInteractablePoint { get; private set; }
     public bool IsAvailable { get; private set; }
     public List<StandCell> StandCells { get; } = new();
 
@@ -25,8 +24,7 @@ using UnityEngine;
         FillAvailablePositions();
         IsAvailable = true;
     }
-
-    public void SetProductOnStand(Product product)
+    public void AddProduct(Product product)
     {
         for (int i = 0; i < StandCells.Count; i++)
         {
@@ -60,20 +58,7 @@ using UnityEngine;
             return null;
         }
 
-    public bool IsAnyFreePlace()
-    {
-        for (int i = 0; i < StandCells.Count; i++)
-        {
-            if (StandCells[i].IsAvailable)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public int GetProductsCount()
+        public int GetProductsCount()
     {
         var counter = 0;
         if (StandCells.Count == 0) return 0;
@@ -91,12 +76,11 @@ using UnityEngine;
 
     private void FillAvailablePositions()
     {
-        var index = 0;
         if (_grid == null)
         {
             return;
         }
-
+        
         for (int x = 0; x < _width; x++)
         {
             for (int y = 0; y < _height; y++)
@@ -106,8 +90,6 @@ using UnityEngine;
 
                 StandCell newCell = new StandCell(worldCenterPosition);
                 StandCells.Add(newCell);
-
-                index++;
             }
         }
     }
@@ -119,7 +101,6 @@ using UnityEngine;
 
     public bool IsEmpty()
     {
-        //return StandCells.All(standCell => standCell.Product == null);
         foreach (var standCell in StandCells)
         {
             if (!standCell.IsAvailable)

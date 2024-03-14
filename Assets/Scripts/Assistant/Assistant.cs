@@ -10,20 +10,21 @@ namespace Assistant
     public class Assistant : MonoBehaviour, IWorker,ISleepable,IMovable
     {
         [field: SerializeField] public WorkerTypes Type { get; private set; }
+        [field: SerializeField]
+        public CollectingProducts CollectingProducts { get; private set; }
         public MovementController.MovementController MovementController { get; private set; }
         public AbilitiesController AbilitiesController { get; private set; }
         public IWorkerBasket Basket { get; private set; }
         public bool IsSleeping { get; private set; }
+        public Collider Collider { get; private set; }
 
-       
-        
         private void Awake()
         {
             MovementController = GetComponent<MovementController.MovementController>();
             Basket = GetComponent<IWorkerBasket>();
             AbilitiesController = new AbilitiesController(Basket, this);
+            Collider = GetComponent<Collider>();
         }
-
         public void PickUpProduct(Product product)
         {
             Basket.AddProductInBasket(product);

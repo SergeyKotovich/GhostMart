@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Interfaces;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -17,19 +19,30 @@ public class CashRegister : MonoBehaviour, IInteractable
     {
         Queue.Initialize(PointForCustomers);
     }
-
-    public void Open()
+    
+    public async UniTask SellProducts(List<Product> products)
     {
-        IsAvailable = true;
+        foreach (var product in products)
+        {
+            _moneySpawner.AddMoney(product.Price);
+            await UniTask.Delay(100);
+        }
+        
     }
 
-    public void CLose()
+    private void OnTriggerEnter(Collider other)
     {
-        IsAvailable = false;
+        if (other.CompareTag(GlobalConstants.PLAYER_TAG))
+        {
+            IsAvailable = true;
+        }
     }
 
-    public void SellProducts(int amount)
+    private void OnTriggerExit(Collider other)
     {
-        _moneySpawner.AddMoney(amount);
+        if (other.CompareTag(GlobalConstants.PLAYER_TAG))
+        {
+            IsAvailable = false;
+        }
     }
 }

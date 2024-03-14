@@ -7,7 +7,7 @@ namespace Customer
 {
     public class CustomerBasket : ICustomerBasket
     {
-        public int ProductsCount { get; set; }
+        public int ProductsCount { get; private set; }
         public List<Product> BoughtProducts { get; } = new();
 
         public void AddProductInBasket(Product product)
@@ -27,11 +27,11 @@ namespace Customer
             ProductsCount = 0;
         }
 
+        //TODO: remove
         public Product GetSuitableProduct(TypeProduct typeProduct)
         {
             return null;
         }
-
         
         public int GetTotalProductPrice()
         {
