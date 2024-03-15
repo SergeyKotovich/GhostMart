@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 using Interfaces;
 using UnityEngine;
 
@@ -29,16 +30,22 @@ public class StorageTriggerHandler : MonoBehaviour
             return;
         }
 
+        AddProducts(worker, typeProduct);
+       
+
+    }
+
+    private async UniTask AddProducts(IWorker worker, TypeProduct typeProduct)
+    {
         while (!_storageProductsForInteraction.IsFull() || !worker.Basket.HasSuitableProduct(typeProduct))
         {
-            var product =  worker.Basket.GetSuitableProduct(typeProduct);
-            if (product==null)
+            var product = worker.Basket.GetSuitableProduct(typeProduct);
+            if (product == null)
             {
                 return;
             }
             _storageProductsForInteraction.AddProduct(product);
+            await UniTask.Delay(100);
         }
-       
-
     }
 }

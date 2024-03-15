@@ -32,18 +32,21 @@ namespace BadCustomer
         {
             while (true)
             {
-                var product = _stand.GetAvailableProduct();
-
-                if (product != null && !_trigger)
+                if (!_trigger)
                 {
-                    var xRandomPoint = Random.Range(-4.0f, -7.9f);
-                    var zRandomPoint = Random.Range(-11.0f, -14.9f);
+                    var product = _stand.GetAvailableProduct();
 
-                    _animator.Play("Shity_attack");
-                    await UniTask.Delay(1000);
+                    if (product != null)
+                    {
+                        var xRandomPoint = Random.Range(-4.0f, -7.9f);
+                        var zRandomPoint = Random.Range(-11.0f, -14.9f);
 
-                    product.transform.DOLocalMove(new Vector3(xRandomPoint, 0.1f, zRandomPoint), 0.3f);
-                    await UniTask.Delay(4000);
+                        _animator.Play("Shity_attack");
+                        await UniTask.Delay(1000);
+
+                        product.transform.DOLocalMove(new Vector3(xRandomPoint, 0.1f, zRandomPoint), 0.3f);
+                        await UniTask.Delay(4000);
+                    }
                 }
 
                 if (_stand.IsEmpty() || _trigger)

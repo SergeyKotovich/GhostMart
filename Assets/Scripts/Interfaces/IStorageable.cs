@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+
 namespace Interfaces
 {
     public interface IStorageable
@@ -6,5 +8,6 @@ namespace Interfaces
         public bool IsFull();
 
         public void AddProduct(Product product);
+
     }
 }

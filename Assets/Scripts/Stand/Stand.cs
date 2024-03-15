@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Interfaces;
 using JetBrains.Annotations;
@@ -33,17 +34,18 @@ public class Stand : MonoBehaviour, IInteractable, IStand, IStorageable
             {
                 product.transform.DOLocalMove(StandCells[i].CellPositionInWorld, 0.6f);
                 product.transform.SetParent(null);
-                product.transform.DOPunchScale(new Vector3(4, 4, 2), 0.2f);
-
+                
                 Vector3 rotationEuler = new Vector3(0f, -80f, -90f);
                 Quaternion rotationQuaternion = Quaternion.Euler(rotationEuler);
-
+                
                 product.transform.rotation = rotationQuaternion;
-
+                
                 StandCells[i].SetProductInCell(product);
+                
                 return;
             }
         }
+        
     }
     public Product GetAvailableProduct()
     {
@@ -53,6 +55,7 @@ public class Stand : MonoBehaviour, IInteractable, IStand, IStorageable
             {
                 return StandCells[i].GetProductFromCell();
             }
+            
         }
         return null;
     }
