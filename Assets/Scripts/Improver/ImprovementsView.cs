@@ -1,38 +1,34 @@
 using System;
 using Events;
+using Improver;
 using TMPro;
 using UnityEngine;
 
 public class ImprovementsView : MonoBehaviour
 {
-    [SerializeField] private WorkerImprovementLabel[] WorkerImprovementLabels;
-
+    [SerializeField] private AbilityLabel[] _abilityLabels;
     private void Start()
     {
         EventStreams.Global.Subscribe<WorkerUpgradedEvent>(UpdateView);
-        EventStreams.Global.Subscribe<NewAssistantWasBoughtEvent>(SetImproveButtonInteractable);
+        //EventStreams.Global.Subscribe<NewAssistantWasBoughtEvent>(SetImproveButtonInteractable);
     }
 
     private void UpdateView(WorkerUpgradedEvent workerUpgradedEvent)
     {
-        for (int i = 0; i < WorkerImprovementLabels.Length; i++)
+        for (int i = 0; i < _abilityLabels.Length; i++)
         {
-            if (WorkerImprovementLabels[i].WorkerType == workerUpgradedEvent.WorkerType)
+            if (_abilityLabels[i].WorkerType == workerUpgradedEvent.WorkerType)
             {
-                WorkerImprovementLabels[i].Label.text =
-                    "Can pick up " + workerUpgradedEvent.MaxCountPlacesInBasket + " items";
+                var assistantLabel = _abilityLabels[i];
+                for (int j = 0; j < assistantLabel.AbilityTypes.Length; j++)
+                {
+                    if (assistantLabel.AbilityTypes[j] == workerUpgradedEvent.AbilityType)
+                    {
+                        assistantLabel.TextLabel[j].text = "Lv. " + workerUpgradedEvent.CurrentLevel;
+                    }
+                }
             }
         }
     }
-
-    private void SetImproveButtonInteractable(NewAssistantWasBoughtEvent newAssistantWasBoughtEvent)
-    {
-        for (int i = 0; i < WorkerImprovementLabels.Length; i++)
-        {
-            if (WorkerImprovementLabels[i].WorkerType == newAssistantWasBoughtEvent.Assistant.Type)
-            {
-                WorkerImprovementLabels[i].ImproveButton.interactable = true;
-            }
-        }
-    }
+    
 }
