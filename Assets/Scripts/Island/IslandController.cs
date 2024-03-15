@@ -1,22 +1,37 @@
+using System;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Island
 {
-    public class IslandScaler : MonoBehaviour
+    public class IslandController : MonoBehaviour
     {
-        [SerializeField] private Vector3 _scaleShift;
-        private Transform _currentIsland;
-        public void IncreaseScale(Transform transform)
+        [SerializeField] private IslandControllerConfig _islandControllerConfig;
+        private Vector3 _defaultScale;
+
+        private void Awake()
         {
-            _currentIsland = transform;
-            transform.DOScale(_currentIsland.localScale + _scaleShift, 0.5f);
+            _defaultScale = transform.localScale;
         }
 
-        public void DecreaseScale()
+        private void OnTriggerEnter(Collider other)
         {
-            if (_currentIsland == null) return;
-            transform.DOScale(_currentIsland.localScale + _scaleShift, 0.5f);
+            if (other.CompareTag(GlobalConstants.PLAYER_TAG))
+            {
+                var percentIncrease = _islandControllerConfig.PercentageIncrease / 100;
+                var scaleShift = new Vector3(_defaultScale.x * percentIncrease, _defaultScale.y * percentIncrease, _defaultScale.z);
+                
+                transform.DOScale(_defaultScale + scaleShift, _islandControllerConfig.Duration);
+            }
+        }
+        
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag(GlobalConstants.PLAYER_TAG))
+            {
+                transform.DOScale(_defaultScale, _islandControllerConfig.Duration);
+            }
         }
     }
 }
