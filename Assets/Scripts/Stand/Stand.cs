@@ -31,7 +31,7 @@ public class Stand : MonoBehaviour, IInteractable, IStand, IStorageable
         {
             if (StandCells[i].IsAvailable)
             {
-                product.transform.position = StandCells[i].CellPositionInWorld;
+                product.transform.DOLocalMove(StandCells[i].CellPositionInWorld, 0.6f);
                 product.transform.SetParent(null);
                 product.transform.DOPunchScale(new Vector3(4, 4, 2), 0.2f);
 

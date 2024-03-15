@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17699274, g: 0.22156087, b: 0.30383563, a: 1}
+  m_IndirectSpecularColor: {r: 0.17699346, g: 0.22156177, b: 0.30383733, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -25896,7 +25896,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 1
-  <CollectingProducts>k__BackingField: {fileID: 0}
+  <CollectingProducts>k__BackingField: {fileID: 1503025434}
+  <MaxRepeatCount>k__BackingField: 5
 --- !u!195 &1503025442
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -26399,9 +26400,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926e6a566d3fedf479c8ec5aa15da923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementController: {fileID: 0}
-  _pointForCashRegister: {fileID: 0}
-  _navMeshAgent: {fileID: 0}
+  _movementController: {fileID: 1527538083}
+  _pointForCashRegister: {fileID: 368475539}
+  _navMeshAgent: {fileID: 1527538084}
 --- !u!1 &1529513049
 GameObject:
   m_ObjectHideFlags: 0
@@ -28159,7 +28160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8317167724332709524, guid: e2d99527e778e404e99fe21b738b2159, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.49
+      value: 7.75
       objectReference: {fileID: 0}
     - target: {fileID: 8317167724332709524, guid: e2d99527e778e404e99fe21b738b2159, type: 3}
       propertyPath: m_LocalPosition.y
