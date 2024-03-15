@@ -6,5 +6,6 @@ namespace Interfaces
         public bool IsFull();
 
         public void AddProduct(Product product);
+        
     }
 }

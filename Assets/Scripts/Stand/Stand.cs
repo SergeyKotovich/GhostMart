@@ -17,8 +17,8 @@ public class Stand : MonoBehaviour, IInteractable, IStand, IStorageable
     
     [SerializeField] private Grid _grid;
 
-    private int _width = 4;
-    private int _height = 5;
+    [SerializeField] private int _width = 4; 
+    [SerializeField] private int _height = 5;
 
     private void Awake()
     {
@@ -31,10 +31,9 @@ public class Stand : MonoBehaviour, IInteractable, IStand, IStorageable
         {
             if (StandCells[i].IsAvailable)
             {
-                product.transform.position = StandCells[i].CellPositionInWorld;
+                product.transform.DOLocalMove(StandCells[i].CellPositionInWorld, 0.6f);
                 product.transform.SetParent(null);
-                product.transform.DOPunchScale(new Vector3(4, 4, 2), 0.2f);
-
+                
                 Vector3 rotationEuler = new Vector3(0f, -80f, -90f);
                 Quaternion rotationQuaternion = Quaternion.Euler(rotationEuler);
 

@@ -21,10 +21,13 @@ namespace Assistant
         private IFactory _productFactory;
         private IStorageable _stand;
         private IMovable _assistant;
+        private CompositeDisposable _subscribers;
 
         private void Awake()
         {
             _assistant = GetComponent<IMovable>();
+            _subscribers.Add(EventStreams.Global.Subscribe<StorageIsFull>(EnterToRecycling));
+            _subscribers.Add(EventStreams.Global.Subscribe<BasketIsEmpty>(EnterNextPoint));
         }
 
         public void Initialize(StateMachine stateMachine)
@@ -87,6 +90,11 @@ namespace Assistant
 
         }
 
+        private void EnterNextPoint(BasketIsEmpty basketIsEmpty)
+        {
+            MoveToPoint();
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag(GlobalConstants.PRODUCT_FACTORY_TAG))
@@ -100,6 +108,41 @@ namespace Assistant
                 _isStand = true;
                 _stand = other.GetComponent<IStorageable>();
             }
+            
+
+          // if (other.CompareTag(GlobalConstants.STORAGE_PRODUCTS_FOR_INERACTION_TAG))
+          // {
+             // var storage = other.GetComponent<IStorageable>();
+             // var worker = (IWorker)_assistant;
+             // while (!storage.IsFull()||!worker.Basket.IsEmpty())
+             // {
+             //    var product = worker.Basket.GetProduct();
+             //     storage.AddProduct(product);
+             // }
+
+             // if (storage.IsFull())
+             // {
+             //     _assistant.MovementController.SetDestination(_pointForRecycling.position);
+             //     _stateMachine.Enter<RecyclingProductsState>();
+             // }
+
+             // if (worker.Basket.IsEmpty())
+             // {
+             //     MoveToPoint();
+             // }
+         //   }
+            
+        }
+
+        private void EnterToRecycling(StorageIsFull storageIsFull)
+        {
+            _assistant.MovementController.SetDestination(_pointForRecycling.position);
+            _stateMachine.Enter<RecyclingProductsState>();
+        }
+
+        private void OnDestroy()
+        {
+            _subscribers.Dispose();
         }
     }
 }
