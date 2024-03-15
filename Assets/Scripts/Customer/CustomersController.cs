@@ -37,7 +37,7 @@ namespace Customer
 
         private void OnDestroy()
         {
-            _subscription.Dispose();
+            _subscription?.Dispose();
         }
     }
 }
