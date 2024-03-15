@@ -10,7 +10,7 @@ namespace Assistant
         private IWorker _assistant;
         private StateMachine _stateMachine;
         private IStorageable _stand;
-        private int _transitionsToProductStandStateCount;
+        private int _repeatCounter;
 
         private void Awake()
         {
@@ -58,15 +58,15 @@ namespace Assistant
 
             if (_assistant.Basket.IsEmpty())
             {
-                if (_transitionsToProductStandStateCount>= 20)
+                var assistant = (ISleepable)_assistant; 
+                if (_repeatCounter>= assistant.MaxRepeatCount)
                 {
-                    var assistant = (ISleepable)_assistant;
                     assistant.SetSleepingState(true);
-                    _transitionsToProductStandStateCount = 0;
+                    _repeatCounter = 0;
                     _stateMachine.Enter<MovingToTargetState>();
                     return;
                 }
-                _transitionsToProductStandStateCount++;
+                _repeatCounter++;
                 _stateMachine.Enter<MovingToTargetState>();
             }
         }

@@ -8,6 +8,7 @@ namespace Assistant
     {
         [field: SerializeField] public WorkerTypes Type { get; private set; }
         [field: SerializeField] public CollectingProducts CollectingProducts { get; private set; }
+        [field: SerializeField] public int MaxRepeatCount { get; private set; }
         public MovementController.MovementController MovementController { get; private set; }
         public AbilitiesController AbilitiesController { get; private set; }
         public IWorkerBasket Basket { get; private set; }
@@ -15,7 +16,6 @@ namespace Assistant
         public bool ISRecycling { get; private set; }
         public Collider Collider { get; private set; }
         
-
         private void Awake()
         {
             MovementController = GetComponent<MovementController.MovementController>();
@@ -53,6 +53,11 @@ namespace Assistant
         public void SetRecyclingState(bool value)
         {
             ISRecycling = value;
+        }
+
+        public void ImproveRepetitionCount(int value)
+        {
+            MaxRepeatCount += value;
         }
         
     }

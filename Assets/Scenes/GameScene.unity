@@ -25776,7 +25776,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 1
-  <CollectingProducts>k__BackingField: {fileID: 0}
+  <CollectingProducts>k__BackingField: {fileID: 1503025434}
+  <MaxRepeatCount>k__BackingField: 5
 --- !u!195 &1503025442
 NavMeshAgent:
   m_ObjectHideFlags: 0
