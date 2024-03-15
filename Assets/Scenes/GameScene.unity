@@ -6355,7 +6355,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'EggFarm
+  m_text: 'EggsStand
 
     <size=0.6> 10 gold </size>'
   m_isRightToLeft: 0
@@ -23462,7 +23462,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'EggFarm
+  m_text: 'EggsFactory
 
     <size=0.6> 10 gold </size>'
   m_isRightToLeft: 0
