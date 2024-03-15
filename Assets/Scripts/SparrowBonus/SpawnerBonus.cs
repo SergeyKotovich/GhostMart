@@ -7,14 +7,13 @@ using Random = UnityEngine.Random;
 public class SpawnerBonus : MonoBehaviour
 {
     [SerializeField] private Bonus _objectToSpawn;
-    [SerializeField] private Vector3 _targetPosition; // Vector3(-4.34656954,0,-48.4787254)
-    [SerializeField] private float _minSpawnTime = 30f;
-    [SerializeField] private float _maxSpawnTime = 120f;
-    [SerializeField] private float _speed;
+    [SerializeField] private Vector3 _targetPosition;
+    [SerializeField] private float _minSpawnTime;
+    [SerializeField] private float _maxSpawnTime;
     [SerializeField] private ProductBarSpawner _productBarSpawner;
 
     private Bonus _currentBonus;
-    private ProductBarView _productBar;
+    private ProductBarView _productBarView;
 
     private void Start()
     {
@@ -25,12 +24,15 @@ public class SpawnerBonus : MonoBehaviour
     {
         _currentBonus = bonus;
         _currentBonus.BonusFlewToTarget += StartSpawning;
+        _currentBonus.Initialize(_productBarView);
     }
     IEnumerator SpawnObject()
     {
-        yield return new WaitForSeconds(Random.Range(_minSpawnTime, _maxSpawnTime));
+        yield return new WaitForSeconds(Random.Range(1, 1));
 
         var spawnedObject = Instantiate(_objectToSpawn, transform.position, Quaternion.identity);
+        _productBarView = _productBarSpawner.GetProductBar(spawnedObject.gameObject);
+
         InitializeBonus(spawnedObject);
         _currentBonus.BonusMovement.MoveToTarget(new Vector3(-4.34656954f,0f,-48.4787254f));
 
@@ -39,22 +41,18 @@ public class SpawnerBonus : MonoBehaviour
         
         spawnedObject.transform.SetParent(transform);
 
-        // Ожидание, пока объект достигнет позиции
         yield return new WaitUntil(() => (spawnedObject.transform.position - _targetPosition).sqrMagnitude < 0.01f);
         
         _currentBonus.SwitcherStateTrigger(true);
-        
-        _productBar = _productBarSpawner.GetProductBar(spawnedObject.gameObject);
-
     }
 
     private void StartSpawning()
     {
         StartCoroutine(SpawnObject());
-        if (_productBar != null)
+        if (_productBarView != null)
         {
             _currentBonus.BonusFlewToTarget -= StartSpawning;
-            Destroy(_productBar.gameObject);
+            Destroy(_productBarView.gameObject);
         }
     }
 }

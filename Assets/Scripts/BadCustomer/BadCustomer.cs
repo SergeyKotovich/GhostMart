@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Customer;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -13,6 +14,7 @@ namespace BadCustomer
     public class BadCustomer : MonoBehaviour
     {
         [SerializeField] private Stand[] _stands;
+        [SerializeField] private StandSecondType[] _standsSecondType;
 
         [SerializeField] private ProductBarSpawner _productBarSpawner; // Тут надо добавить тучку со смайликом.
         [field: SerializeField] public Collider _collider { get; private set; }
@@ -35,9 +37,9 @@ namespace BadCustomer
         }
 
 
-        public Stand GetRandomStand()
+        public IInteractable GetRandomStand()
         {
-            List<Stand> availableStands = new();
+            List<IInteractable> availableStands = new();
             for (var i = 0; i < _stands.Length; i++)
             {
                 if (_stands[i].IsAvailable)
@@ -45,6 +47,15 @@ namespace BadCustomer
                     availableStands.Add(_stands[i]);
                 }
             }
+
+            for (int i = 0; i < _standsSecondType.Length; i++)
+            {
+                if (_standsSecondType[i].IsAvailable)
+                {
+                    availableStands.Add(_standsSecondType[i]);
+                }
+            }
+            
             var randomIndex = Random.Range(0, availableStands.Count);
             return availableStands[randomIndex];
         }

@@ -13,6 +13,4 @@ public class BonusMovement : MonoBehaviour
       _animator.Play("Fly");
         transform.DOMove(target,_duration).OnComplete(() => _animator.Play("Eat"));
     }
-    //new Vector3(-4.26000023f, 22.3799992f, -110.699997f), 15f улет
-    //Vector3(-4.34656954,0,-48.4787254) прилет
 }

@@ -19,6 +19,5 @@ namespace Player
                 bonus.GetBonus(_player.Basket.GetSuitableProduct(TypeProduct.Corn));
             }
         }
-
     }
 }

@@ -19,4 +19,10 @@ public class ProductBarView : MonoBehaviour
         _productCount.text = "";
         _productIcon.sprite = icon;
     }
+    
+    public void UpdateProductBar(Sprite icon, int productsCount, int maxProductsCount)
+    {
+        _productCount.text = productsCount + "/" + maxProductsCount;
+        _productIcon.sprite = icon;
+    }
 }

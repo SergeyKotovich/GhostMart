@@ -567,10 +567,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b761156fc8983644a89e3a365dbe2737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameObjectPrefab: {fileID: 5410974633553944853, guid: 518eb4318b5a8dd42a9f3cee4632df40, type: 3}
-  _maxMoney: 3
   <BonusMovement>k__BackingField: {fileID: 4720692036984325482}
+  _gameObjectPrefab: {fileID: 5410974633553944853, guid: 518eb4318b5a8dd42a9f3cee4632df40, type: 3}
   _collider: {fileID: 8753827666571000790}
+  _sparrowBonusConfig: {fileID: 11400000, guid: 7e51f41d8579f4f59805eb88e43aca93, type: 2}
 --- !u!136 &6788538757290762320
 CapsuleCollider:
   m_ObjectHideFlags: 0
