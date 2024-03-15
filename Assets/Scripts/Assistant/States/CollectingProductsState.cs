@@ -46,7 +46,7 @@ namespace Assistant
 
             var product = _productFactory.GetProduct();
             _assistant.PickUpProduct(product);
-            _collectingProducts.SetPosition(product);
+            _collectingProducts.TryToSetPosition(product);
         }
 
         public void OnEnter(IFactory payload)

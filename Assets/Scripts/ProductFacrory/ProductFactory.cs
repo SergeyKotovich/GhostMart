@@ -36,7 +36,7 @@ public class ProductFactory : MonoBehaviour, IFactory
             }
             var product = GetProduct();
             _player.PickUpProduct(product);
-            _player.CollectingProducts.SetPosition(product);
+            _player.CollectingProducts.TryToSetPosition(product);
             
         }
     }

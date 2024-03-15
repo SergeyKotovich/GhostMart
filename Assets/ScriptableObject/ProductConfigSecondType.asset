@@ -15,7 +15,7 @@ MonoBehaviour:
   <ScaleProductAfterSpawn>k__BackingField: {x: 5, y: 5, z: 5}
   <SizeChangeTime>k__BackingField: 0.5
   PositionProductInBasket: {x: 0, y: 0, z: 0}
-  RotationProductInBasket: {x: 0, y: 0, z: 0}
-  ScaleProductInbasket: {x: 0, y: 0, z: 0}
+  RotationProductInBasket: {x: -90, y: 0, z: 0}
+  ScaleProductInbasket: {x: 0.017, y: 0.017, z: 0.017}
   <MaxCountSpawnedProduct>k__BackingField: 4
-  <_delayBetweenSpawnObjects>k__BackingField: 1
+  <_delayBetweenSpawnObjects>k__BackingField: 5
