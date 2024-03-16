@@ -15,7 +15,7 @@ public class MoveToCashRegister : MonoBehaviour
     void Start()
     {
         Move();
-       // SetOffObject();
+        SetOffObject();
     }
 
     private async UniTask Move()
