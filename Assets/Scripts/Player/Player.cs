@@ -35,7 +35,7 @@ namespace Player
         {
             if (Basket.IsFull())return;
             
-            productWasPicked.Product.Collider.enabled = false;
+            productWasPicked.Product.OnProductWasPickedUp();
             Basket.AddProductInBasket(productWasPicked.Product);
             CollectingProducts.TryToSetPosition(productWasPicked.Product);
         }

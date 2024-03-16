@@ -8,6 +8,7 @@ namespace Customer
     public class PathCreator : MonoBehaviour
     {
         [SerializeField] private Stand[] _stands;
+        [SerializeField] private StandSecondType[] _secondTypesStands;
         [SerializeField] private CashRegister _cashRegister;
         [SerializeField] private ExitPoint _exitPoint;
         
@@ -20,6 +21,14 @@ namespace Customer
                 if (_stands[i].IsAvailable)
                 {
                     availableStands.Add(_stands[i]);
+                }
+            }
+            
+            for (int i = 0; i < _secondTypesStands.Length; i++)
+            {
+                if (_secondTypesStands[i].IsAvailable)
+                {
+                    availableStands.Add(_secondTypesStands[i]);
                 }
             }
 

@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Price>k__BackingField: 2
   <Type>k__BackingField: 3
-  <Collider>k__BackingField: {fileID: 1360313393702661535}
+  _collider: {fileID: 1360313393702661535}
 --- !u!65 &1360313393702661535
 BoxCollider:
   m_ObjectHideFlags: 0
