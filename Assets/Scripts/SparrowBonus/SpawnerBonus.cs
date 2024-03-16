@@ -19,7 +19,6 @@ public class SpawnerBonus : MonoBehaviour
     {
         StartCoroutine(SpawnObject());
     }
-
     private void InitializeBonus(Bonus bonus)
     {
         _currentBonus = bonus;
@@ -28,7 +27,7 @@ public class SpawnerBonus : MonoBehaviour
     }
     IEnumerator SpawnObject()
     {
-        yield return new WaitForSeconds(Random.Range(1, 1));
+        yield return new WaitForSeconds(Random.Range(_minSpawnTime, _maxSpawnTime));
 
         var spawnedObject = Instantiate(_objectToSpawn, transform.position, Quaternion.identity);
         _productBarView = _productBarSpawner.GetProductBar(spawnedObject.gameObject);

@@ -61,7 +61,6 @@ public class Bonus : MonoBehaviour
             BonusMovement.MoveToTarget(new Vector3(-4.26000023f, 22.3799992f, -110.699997f));
             BonusFlewToTarget?.Invoke();
             Destroy(gameObject, 16);
-            
             _productCounter = 0;
         }
     }
