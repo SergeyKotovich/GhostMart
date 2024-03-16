@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17699274, g: 0.22156087, b: 0.30383563, a: 1}
+  m_IndirectSpecularColor: {r: 0.17699346, g: 0.22156177, b: 0.30383733, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4090,6 +4090,7 @@ Transform:
   - {fileID: 1540563504}
   - {fileID: 1674714556}
   - {fileID: 844170520}
+  - {fileID: 1521110615}
   - {fileID: 121122138}
   - {fileID: 1307491061}
   - {fileID: 1543357022}
@@ -5440,7 +5441,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Banana Stand
 
-    <size=0.6> 10 gold </size>'
+    <size=0.6 >20 gold </size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -6156,7 +6157,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Assistant
 
-    <size=0.6> 50 gold </size>'
+    <size=0.6> 30 gold </size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -6324,7 +6325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _building: {fileID: 118633950}
   _wallet: {fileID: 725233024}
-  _price: 10
+  _price: 15
   _messageBox: {fileID: 1572673397}
 --- !u!135 &297194324
 SphereCollider:
@@ -6375,8 +6376,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2050645647}
   - {fileID: 848649490}
+  - {fileID: 2050645647}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 25, z: 0}
 --- !u!1 &298958665
@@ -7318,7 +7319,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'EggsStand
 
-    <size=0.6> 10 gold </size>'
+    <size=0.6> 40 gold </size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -8837,7 +8838,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Assistant Cash Register
 
-    <size=0.6> 50 gold </size>'
+    <size=0.6> 40 gold </size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -10661,7 +10662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _building: {fileID: 1045661504}
   _wallet: {fileID: 725233024}
-  _price: 20
+  _price: 50
   _messageBox: {fileID: 1572673397}
 --- !u!135 &559806772
 SphereCollider:
@@ -10712,8 +10713,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 989221342}
   - {fileID: 1092028885}
+  - {fileID: 989221342}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 20.883, z: 0}
 --- !u!1 &564055939
@@ -11114,8 +11115,8 @@ MonoBehaviour:
   - {fileID: 1532595247}
   - {fileID: 738634530}
   - {fileID: 1209470498}
-  _hintCanvas: {fileID: 396702305}
-  _hintText: {fileID: 993101379}
+  _hintCanvas: {fileID: 1068747264}
+  _hintText: {fileID: 914927772}
   _delayBeforeNextHint: 2
   _pointerController: {fileID: 1774248890}
 --- !u!4 &590098842
@@ -12792,7 +12793,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Bananas
 
-    <size=0.6> 10 gold </size>'
+    <size=0.6> 5 gold </size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -13157,7 +13158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _building: {fileID: 498588917}
   _wallet: {fileID: 725233024}
-  _price: 10
+  _price: 5
   _messageBox: {fileID: 1572673397}
 --- !u!135 &711562275
 SphereCollider:
@@ -13687,7 +13688,7 @@ MonoBehaviour:
   <Wallet>k__BackingField: {fileID: 725233024}
   <CollectingProducts>k__BackingField: {fileID: 725233021}
   <AbilitiesController>k__BackingField:
-    _abilitiesConfig: {fileID: 11400000, guid: 25b2ab86223de4b1ba85f226ae3daaf2, type: 2}
+    _abilitiesConfig: {fileID: 0}
 --- !u!114 &725233020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14172,7 +14173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _building: {fileID: 1190623474}
   _wallet: {fileID: 725233024}
-  _price: 50
+  _price: 110
   _messageBox: {fileID: 1572673397}
 --- !u!135 &738634531
 SphereCollider:
@@ -14223,8 +14224,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 209603394}
   - {fileID: 225920639}
+  - {fileID: 209603394}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &740093696
@@ -14423,7 +14424,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Corn
 
-    <size=0.6> 10 gold </size>'
+    <size=0.6> 15 gold </size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -15417,7 +15418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _building: {fileID: 1527538078}
   _wallet: {fileID: 725233024}
-  _price: 50
+  _price: 40
   _messageBox: {fileID: 1572673397}
 --- !u!135 &788374648
 SphereCollider:
@@ -15468,8 +15469,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1468328887}
   - {fileID: 287729678}
+  - {fileID: 1468328887}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &789262558
@@ -16618,7 +16619,7 @@ PrefabInstance:
     - target: {fileID: 6800834107520164560, guid: d9ec40c6c3696634aa9f8e08face2a9a, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 505af4afed95b0f4b9968a3ea62751db, type: 2}
+      objectReference: {fileID: 9100000, guid: e73e2591b56634761b03722ee59b9863, type: 2}
     - target: {fileID: 6800834107527450952, guid: d9ec40c6c3696634aa9f8e08face2a9a, type: 3}
       propertyPath: m_Name
       value: Chicken1_Legacy
@@ -22822,8 +22823,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2035553968}
   - {fileID: 358068482}
+  - {fileID: 2035553968}
   m_Father: {fileID: 1131100334}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -24934,7 +24935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _building: {fileID: 278823067}
   _wallet: {fileID: 725233024}
-  _price: 50
+  _price: 150
   _messageBox: {fileID: 1572673397}
 --- !u!135 &1209470499
 SphereCollider:
@@ -24985,8 +24986,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1468814450}
   - {fileID: 553705649}
+  - {fileID: 1468814450}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1210704224
@@ -25681,17 +25682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ad73a2e3a548b5b20536024fb0287d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _abilityLabels:
-  - <TextLabel>k__BackingField:
-    - {fileID: 1833460012}
-    <AbilityTypes>k__BackingField: 02000000
-    <WorkerType>k__BackingField: 0
-  - <TextLabel>k__BackingField:
-    - {fileID: 222193052}
-    - {fileID: 643969450}
-    - {fileID: 1380380349}
-    <AbilityTypes>k__BackingField: 020000000000000001000000
-    <WorkerType>k__BackingField: 1
+  _abilityLabels: []
 --- !u!1001 &1258216989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27521,7 +27512,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Assistant Cash Register
 
-    <size=0.6> 50 gold </size>'
+    <size=0.6> 110 gold </size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -27778,7 +27769,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'EggsFactory
 
-    <size=0.6> 10 gold </size>'
+    <size=0.6> 50 gold </size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -27888,7 +27879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _building: {fileID: 1936917544}
   _wallet: {fileID: 725233024}
-  _price: 10
+  _price: 20
   _messageBox: {fileID: 1572673397}
 --- !u!135 &1392694349
 SphereCollider:
@@ -28758,7 +28749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _building: {fileID: 1761596193}
   _wallet: {fileID: 725233024}
-  _price: 20
+  _price: 40
   _messageBox: {fileID: 1572673397}
 --- !u!135 &1432553971
 SphereCollider:
@@ -28809,8 +28800,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1131100334}
   - {fileID: 246286384}
+  - {fileID: 1131100334}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 20.883, z: 0}
 --- !u!1 &1440947091
@@ -30195,7 +30186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1906619905735868394, guid: 3c35271488801e743ae2f0ebdb48e43c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1906619905735868394, guid: 3c35271488801e743ae2f0ebdb48e43c, type: 3}
       propertyPath: m_TagString
@@ -30438,7 +30429,7 @@ MonoBehaviour:
   <CollectingProducts>k__BackingField: {fileID: 1503025434}
   <MaxRepeatCount>k__BackingField: 5
   <AbilitiesController>k__BackingField:
-    _abilitiesConfig: {fileID: 11400000, guid: 25b2ab86223de4b1ba85f226ae3daaf2, type: 2}
+    _abilitiesConfig: {fileID: 0}
 --- !u!195 &1503025442
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -30818,6 +30809,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519936475}
   m_CullTransparentMesh: 1
+--- !u!4 &1521110615 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 242939826226096602, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
+  m_PrefabInstance: {fileID: 1943387594}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1524327211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31169,7 +31165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _building: {fileID: 1970895395}
   _wallet: {fileID: 725233024}
-  _price: 50
+  _price: 70
   _messageBox: {fileID: 1572673397}
 --- !u!135 &1532595248
 SphereCollider:
@@ -31220,8 +31216,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1131662990}
   - {fileID: 626404519}
+  - {fileID: 1131662990}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1533083175
@@ -33568,7 +33564,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Assistant Cash Register
 
-    <size=0.6> 50 gold </size>'
+    <size=0.6> 70 gold </size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -35078,7 +35074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _building: {fileID: 661071621}
   _wallet: {fileID: 725233024}
-  _price: 10
+  _price: 15
   _messageBox: {fileID: 1572673397}
 --- !u!135 &1748539421
 SphereCollider:
@@ -36621,7 +36617,7 @@ PrefabInstance:
     - target: {fileID: 745527003877588359, guid: 54895779d4dba5046ad2563f88ad17b1, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 505af4afed95b0f4b9968a3ea62751db, type: 2}
+      objectReference: {fileID: 9100000, guid: e73e2591b56634761b03722ee59b9863, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -38396,6 +38392,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b893338d4f463d8436680a08ddd668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1943387594
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 182413620}
+    m_Modifications:
+    - target: {fileID: 242939826226096602, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 242939826226096602, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 242939826226096602, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 242939826226096602, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 242939826226096602, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14.882442
+      objectReference: {fileID: 0}
+    - target: {fileID: 242939826226096602, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 242939826226096602, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 242939826226096602, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 242939826226096602, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 242939826226096602, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 242939826226096602, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 242939826226096602, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 242939826226096602, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 242939826226096602, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 582311049776083808, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
+      propertyPath: m_Name
+      value: Furniture_02 (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf53323f590366f43b4564f7d3d614d7, type: 3}
 --- !u!1 &1944864263
 GameObject:
   m_ObjectHideFlags: 0
@@ -39008,7 +39077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _building: {fileID: 1503025432}
   _wallet: {fileID: 725233024}
-  _price: 50
+  _price: 30
   _messageBox: {fileID: 1572673397}
 --- !u!135 &1954567032
 SphereCollider:
@@ -40239,7 +40308,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'CornStand
 
-    <size=0.6> 10 gold </size>'
+    <size=0.6> 15 gold </size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -42227,7 +42296,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Assistant Cash Register
 
-    <size=0.6> 50 gold </size>'
+    <size=0.6> 150 gold </size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
