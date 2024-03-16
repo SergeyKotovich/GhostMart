@@ -44,19 +44,20 @@ namespace BadCustomer
                         _animator.Play("Shity_attack");
                         await UniTask.Delay(1000);
 
-                    product.transform.DOLocalMove(new Vector3(xRandomPoint, 0.1f, zRandomPoint), 0.3f).
-                        OnComplete(() => product.Collider.enabled = true);
-                    await UniTask.Delay(4000);
-                }
+                        product.transform.DOLocalMove(new Vector3(xRandomPoint, 0.1f, zRandomPoint), 0.3f)
+                            .OnComplete(() => product.Collider.enabled = true);
+                        await UniTask.Delay(4000);
+                    }
 
-                if (_stand.IsEmpty() || _trigger)
-                {
-                    _stateMachine.Enter<WaitingState, IStand>(_stand);
-                    break;
+                    if (_stand.IsEmpty() || _trigger)
+                    {
+                        _stateMachine.Enter<WaitingState, IStand>(_stand);
+                        break;
+                    }
                 }
             }
         }
-
+        
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag(GlobalConstants.PLAYER_TAG))

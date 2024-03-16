@@ -1245,11 +1245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec0507a25109874fb9657e4b313d460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectToSpawn: {fileID: 4751035211348280327, guid: ad4137f595ec8e2449cacca9df7d3735, type: 3}
-  _targetPosition: {x: -4.3465695, y: 0, z: -48.478725}
-  _minSpawnTime: 30
-  _maxSpawnTime: 120
-  _productBarSpawner: {fileID: 380523001}
 --- !u!4 &52967033
 Transform:
   m_ObjectHideFlags: 0
@@ -6259,9 +6254,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5690c5fd7cf6f4ca27fab6225b4d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stands: []
-  _standsSecondType:
-  - {fileID: 87340869}
+  _stands:
+  - {fileID: 1936917546}
+  _standsSecondType: []
   _productBarSpawner: {fileID: 380523001}
   <_collider>k__BackingField: {fileID: 353131727}
 --- !u!195 &353131726 stripped

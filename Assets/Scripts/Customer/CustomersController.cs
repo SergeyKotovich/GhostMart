@@ -35,9 +35,9 @@ namespace Customer
             }
         }
 
-        private void OnDestroy()
-        {
-            _subscription.Dispose();
-        }
+       // private void OnDestroy()
+       // {
+       //     _subscription.Dispose();
+       // }
     }
 }
