@@ -2,5 +2,6 @@ public enum TypeInteractablePoints
 {
     CashRegister,
     Exit,
-    Stand
+    Stand,
+    StorageForProducts
 }

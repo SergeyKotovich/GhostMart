@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class StorageTriggerHandler : MonoBehaviour
 {
+    [SerializeField] private TypeInteractablePoints _typeInteractablePoints;
     private IStorageable _storageProductsForInteraction;
+    private int _delayBetweenAddProducts = 100;
+    
 
     private void Awake()
     {
@@ -30,12 +33,18 @@ public class StorageTriggerHandler : MonoBehaviour
             return;
         }
 
-        AddProducts(worker, typeProduct);
-       
-
+        if (_typeInteractablePoints == TypeInteractablePoints.Stand)
+        {
+            AddProducts(worker, typeProduct, _delayBetweenAddProducts);
+        }
+        else
+        {
+            AddProducts(worker, typeProduct, 0);
+        }
+        
     }
 
-    private async UniTask AddProducts(IWorker worker, TypeProduct typeProduct)
+    private async UniTask AddProducts(IWorker worker, TypeProduct typeProduct, int delayBetweenAddProducts )
     {
         while (!_storageProductsForInteraction.IsFull() || !worker.Basket.HasSuitableProduct(typeProduct))
         {
@@ -44,8 +53,9 @@ public class StorageTriggerHandler : MonoBehaviour
             {
                 return;
             }
+
             _storageProductsForInteraction.AddProduct(product);
-            await UniTask.Delay(100);
+            await UniTask.Delay(delayBetweenAddProducts);
         }
     }
 }

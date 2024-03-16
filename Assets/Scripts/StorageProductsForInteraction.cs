@@ -10,10 +10,11 @@ public class StorageProductsForInteraction : MonoBehaviour, IStorageable
         
     [SerializeField] private Transform[] _allPositionProductsForInteraction;
     
-    private Stack<Product> _productsForInteraction = new();
+    private Queue<Product> _productsForInteraction = new();
     private readonly int _maxCountProductForInteraction = 4;
     private int _currentCountProductsForInteraction;
-    
+    private int _indexPosition;
+
     public bool HasProductsForInteraction()
     {
         if (_productsForInteraction.Count!=0)
@@ -25,23 +26,28 @@ public class StorageProductsForInteraction : MonoBehaviour, IStorageable
     }
     public void AddProduct(Product product)
     {
-        if (_currentCountProductsForInteraction==_maxCountProductForInteraction)
+        if (_currentCountProductsForInteraction!=_maxCountProductForInteraction)
         {
-            return;
+            _productsForInteraction.Enqueue(product);
+            product.transform.SetParent(_allPositionProductsForInteraction[_indexPosition]);
+            product.transform.DOMove(_allPositionProductsForInteraction[_indexPosition].position, 1);
+            product.transform.DORotate(_allPositionProductsForInteraction[_indexPosition].position, 1);
+            _indexPosition = (_indexPosition + 1) % _maxCountProductForInteraction;
+            _currentCountProductsForInteraction++;
         }
-        _productsForInteraction.Push(product);
-        var indexPosition = _currentCountProductsForInteraction;
-        product.transform.SetParent(_allPositionProductsForInteraction[indexPosition]);
-        product.transform.DOMove(_allPositionProductsForInteraction[indexPosition].position, 1);
-        product.transform.DORotate(_allPositionProductsForInteraction[indexPosition].position, 1);
-        _currentCountProductsForInteraction++;
+       
     }
     public void DestroyProduct()
     {
-        var product =  _productsForInteraction.Pop();
-        product.transform.DOScale(0, 0.1f).SetDelay(5).OnComplete(() => Destroy(product.gameObject));
-        _currentCountProductsForInteraction--;
+        var product =  _productsForInteraction.Dequeue();
+        product.transform.DOScale(0, 0.1f)
+            .SetDelay(5).OnComplete(() => Destroy(product.gameObject))
+            .OnComplete(LessenCurrentCountProductsForInteraction);
+    }
 
+    private void LessenCurrentCountProductsForInteraction()
+    {
+        _currentCountProductsForInteraction--;
     }
 
     public bool IsFull()
