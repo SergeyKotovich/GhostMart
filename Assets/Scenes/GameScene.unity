@@ -1590,11 +1590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec0507a25109874fb9657e4b313d460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectToSpawn: {fileID: 4751035211348280327, guid: ad4137f595ec8e2449cacca9df7d3735, type: 3}
-  _targetPosition: {x: 0, y: 0, z: 0}
-  _minSpawnTime: 1
-  _maxSpawnTime: 1
-  _productBarSpawner: {fileID: 380523001}
 --- !u!4 &52967033
 Transform:
   m_ObjectHideFlags: 0
@@ -35145,7 +35140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1750466616
 Transform:
   m_ObjectHideFlags: 0
