@@ -10,10 +10,12 @@ public class MoveToCashRegister : MonoBehaviour
     [SerializeField] private MovementController.MovementController _movementController;
     [SerializeField] private Transform _pointForCashRegister;
     [SerializeField] private NavMeshAgent _navMeshAgent;
+    [SerializeField] private GameObject _gameObject;
 
     void Start()
     {
         Move();
+        SetOffObject();
     }
 
     private async UniTask Move()
@@ -23,5 +25,10 @@ public class MoveToCashRegister : MonoBehaviour
         _movementController.enabled = true;
         _navMeshAgent.enabled = true;
         _movementController.SetDestination(_pointForCashRegister.transform.position);
+    }
+
+    private void SetOffObject()
+    {
+        _gameObject.SetActive(false);
     }
 }
