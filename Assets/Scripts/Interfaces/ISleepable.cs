@@ -6,4 +6,5 @@ public interface ISleepable
     public Collider Collider { get; }
     public int MaxRepeatCount { get; }
     public void SetSleepingState(bool value);
+    public void ImproveRepetitionCount(int value);
 }

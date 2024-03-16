@@ -2,19 +2,26 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using SparrowBonus;
 
 public class Bonus : MonoBehaviour
 {
     public event Action BonusFlewToTarget;
-    [SerializeField] private GameObject _gameObjectPrefab;
-    [SerializeField] private int _maxMoney=3;
     [field: SerializeField] public BonusMovement BonusMovement { get; private set; }
+    [SerializeField] private GameObject _gameObjectPrefab;
     [SerializeField] private Collider _collider;
+    [SerializeField] private SparrowBonusConfig _sparrowBonusConfig;
 
+    private ProductBarView _productBarView;
     private int _productCounter;
     private bool _gotEnoughProducts;
-    private Bonus _bonus;
-    
+
+    public void Initialize(ProductBarView productBarView)
+    {
+        _productBarView = productBarView;
+        _productBarView.UpdateProductBar
+            (_sparrowBonusConfig.TargetProductIcon, _productCounter, _sparrowBonusConfig.MaxProductsCount);
+    }
     public void GetBonus(Product product)
     {
         if (_gotEnoughProducts)
@@ -30,7 +37,8 @@ public class Bonus : MonoBehaviour
 
             Destroy(product, 2f);
             _productCounter++;
-        }
+            _productBarView.UpdateProductBar
+                (_sparrowBonusConfig.TargetProductIcon, _productCounter, _sparrowBonusConfig.MaxProductsCount);        }
 
         if (_productCounter >= 2)
         {
@@ -40,7 +48,7 @@ public class Bonus : MonoBehaviour
             var prefabRotation = _gameObjectPrefab.transform.rotation;
 
             var shift = 0;
-            for (int i = 0; i < _maxMoney; i++)
+            for (int i = 0; i < _sparrowBonusConfig.MaxMoneyReword; i++)
             {
                 var bonus = Instantiate(_gameObjectPrefab, transform.position, prefabRotation);
 
@@ -61,7 +69,6 @@ public class Bonus : MonoBehaviour
     public void SwitcherStateTrigger(bool state)
     {
         _collider.isTrigger = state;
-
     }
     
 }

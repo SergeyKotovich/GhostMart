@@ -1262,7 +1262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d58e105666464e8a47109010e04ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _navMeshAgent: {fileID: -8704929061124113632}
+  <NavMeshAgent>k__BackingField: {fileID: -8704929061124113632}
   _animator: {fileID: 3058300351411599583}
 --- !u!1 &3058300351418878843
 GameObject:

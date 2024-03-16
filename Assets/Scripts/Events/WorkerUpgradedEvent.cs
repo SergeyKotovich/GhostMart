@@ -1,3 +1,4 @@
+using Improver;
 using SimpleEventBus.Events;
 using TMPro;
 
@@ -5,13 +6,15 @@ namespace Events
 {
     public class WorkerUpgradedEvent : EventBase
     {
-        public int MaxCountPlacesInBasket { get; }
+        public int CurrentLevel { get; }
         public WorkerTypes WorkerType { get; }
+        public AbilityTypes AbilityType { get; }
 
-        public WorkerUpgradedEvent(int maxCountPlacesInBasket, WorkerTypes workerType)
+        public WorkerUpgradedEvent(int currentLevel, WorkerTypes workerType, AbilityTypes abilityType)
         {
-            MaxCountPlacesInBasket = maxCountPlacesInBasket;
+            CurrentLevel = currentLevel;
             WorkerType = workerType;
+            AbilityType = abilityType;
         }
     }
 }

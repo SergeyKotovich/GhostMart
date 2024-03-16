@@ -9,8 +9,9 @@ namespace Assistant
         [field: SerializeField] public WorkerTypes Type { get; private set; }
         [field: SerializeField] public CollectingProducts CollectingProducts { get; private set; }
         [field: SerializeField] public int MaxRepeatCount { get; private set; }
+        [field: SerializeField] public AbilitiesController AbilitiesController { get; private set; }
+
         public MovementController.MovementController MovementController { get; private set; }
-        public AbilitiesController AbilitiesController { get; private set; }
         public IWorkerBasket Basket { get; private set; }
         public bool IsSleeping { get; private set; }
         public bool ISRecycling { get; private set; }
@@ -20,7 +21,7 @@ namespace Assistant
         {
             MovementController = GetComponent<MovementController.MovementController>();
             Basket = GetComponent<IWorkerBasket>();
-            AbilitiesController = new AbilitiesController(Basket, this);
+            AbilitiesController.Initialize(Basket, this, MovementController.NavMeshAgent);
             Collider = GetComponent<Collider>();
         }
         public void PickUpProduct(Product product)

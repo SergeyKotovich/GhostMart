@@ -32,7 +32,7 @@ public class CashRegister : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(GlobalConstants.PLAYER_TAG)|| other.CompareTag(GlobalConstants.ASSISTANT_TAG))
+        if (other.CompareTag(GlobalConstants.PLAYER_TAG) || other.CompareTag(GlobalConstants.ASSISTANT_TAG))
         {
             IsAvailable = true;
         }
@@ -40,7 +40,7 @@ public class CashRegister : MonoBehaviour, IInteractable
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag(GlobalConstants.PLAYER_TAG))
+        if (other.CompareTag(GlobalConstants.PLAYER_TAG) || other.CompareTag(GlobalConstants.ASSISTANT_TAG))
         {
             IsAvailable = false;
         }

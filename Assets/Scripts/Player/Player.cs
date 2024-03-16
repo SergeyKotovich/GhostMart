@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using Events;
 using Interfaces;
+using SimpleEventBus.Events;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -7,13 +9,11 @@ using UnityEngine.Serialization;
 namespace Player
 {
     public class Player : MonoBehaviour, IWorker
-    {
-        [field: SerializeField] public NavMeshAgent NavMeshAgent { get; private set; }
+    { 
         [field: SerializeField] public WorkerTypes Type { get; private set; }
         [field: SerializeField] public Wallet Wallet { get; private set; }
-        [field: SerializeField]
-        public CollectingProducts CollectingProducts { get; private set; }
-        public AbilitiesController AbilitiesController { get; private set; }
+        [field: SerializeField] public CollectingProducts CollectingProducts { get; private set; }
+        [field: SerializeField] public AbilitiesController AbilitiesController { get; private set; }
         public IWorkerBasket Basket { get; private set; }
         public bool CanPickUp => !Basket.IsFull();
         public bool HasProducts => !Basket.IsEmpty();
@@ -22,12 +22,22 @@ namespace Player
         private void Awake()
         {
             Basket = GetComponent<IWorkerBasket>();
-            AbilitiesController = new AbilitiesController(Basket, this);
+            AbilitiesController.Initialize(Basket, this);
+            EventStreams.Global.Subscribe<ProductWasPickedUp>(TryPickUpProduct);
         }
 
         public void PickUpProduct(Product product)
         {
             Basket.AddProductInBasket(product);
+        }
+
+        public void TryPickUpProduct(ProductWasPickedUp productWasPicked)
+        {
+            if (Basket.IsFull())return;
+            
+            productWasPicked.Product.Collider.enabled = false;
+            Basket.AddProductInBasket(productWasPicked.Product);
+            CollectingProducts.TryToSetPosition(productWasPicked.Product);
         }
 
         public Product GetProduct()
@@ -50,11 +60,6 @@ namespace Player
         public void AddMoney(int amount)
         {
             Wallet.AddMoney(amount);
-        }
-
-        public void IncreaseSpeed()
-        {
-            NavMeshAgent.speed++;
         }
     }
 }
