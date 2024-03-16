@@ -30,30 +30,27 @@ namespace BadCustomer
 
         private async UniTask DropProduct()
         {
-            while (true)
+            while (!_trigger)
             {
-                if (!_trigger)
+                var product = _stand.GetAvailableProduct();
+                if (product != null)
                 {
-                    var product = _stand.GetAvailableProduct();
+                    var xRandomPoint = Random.Range(-4.0f, -7.9f);
+                    var zRandomPoint = Random.Range(-11.0f, -14.9f);
 
-                    if (product != null)
-                    {
-                        var xRandomPoint = Random.Range(-4.0f, -7.9f);
-                        var zRandomPoint = Random.Range(-11.0f, -14.9f);
+                    _animator.Play("Shity_attack");
+                    await UniTask.Delay(1000);
 
-                        _animator.Play("Shity_attack");
-                        await UniTask.Delay(1000);
+                    product.transform.DOLocalMove(new Vector3(xRandomPoint, 0.1f, zRandomPoint), 0.3f)
+                        .OnComplete(() => product.Collider.enabled = true);
+                    await UniTask.Delay(4000);
+                }
 
-                        product.transform.DOLocalMove(new Vector3(xRandomPoint, 0.1f, zRandomPoint), 0.3f)
-                            .OnComplete(() => product.Collider.enabled = true);
-                        await UniTask.Delay(4000);
-                    }
-
-                    if (_stand.IsEmpty() || _trigger)
-                    {
-                        _stateMachine.Enter<WaitingState, IStand>(_stand);
-                        break;
-                    }
+                if (_stand.IsEmpty() || _trigger)
+                {
+                    _stateMachine.Enter<WaitingState, IStand>(_stand);
+                    Debug.Log("break");
+                    break;
                 }
             }
         }
