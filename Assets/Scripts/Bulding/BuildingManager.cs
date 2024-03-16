@@ -1,48 +1,60 @@
-using System.Collections;
 using System.Collections.Generic;
-using Customer;
+using Cysharp.Threading.Tasks;
 using Events;
 using Pointer;
-using SimpleEventBus.Events;
 using TMPro;
 using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
 {
 
-    [SerializeField] private List<GameObject> buildings;
-    [SerializeField] private GameObject hintCanvas;
-    [SerializeField] private TextMeshProUGUI hintText;
-    [SerializeField] private float delayBeforeNextHint = 2f;
+    [SerializeField] private List<BuildingPlaceHolder> _buildingPlaceHolders;
+    [SerializeField] private GameObject _hintCanvas;
+    [SerializeField] private TextMeshProUGUI _hintText;
+    [SerializeField] private float _delayBeforeNextHint = 2f;
     [SerializeField] private PointerController _pointerController;
     public void StartBuilding()
-    {
-        //buildings[0].SetActive(true);
-        //buildings.RemoveAt(0);
+    { 
+        ShowNextPlaceHolder();
     }
-    public void BuildingCompleted()
+
+    private async void OnBuildingCompleted(BuildingPlaceHolder buildingPlaceHolder)
     {
-        if (buildings.Count == 0)
-        {
-            hintCanvas.SetActive(false);
-            return;
-        }
-        
-        if (buildings[0].CompareTag(GlobalConstants.BANANA_TAG))
+        if (_buildingPlaceHolders[0].CompareTag(GlobalConstants.BANANA_TAG))
         {
             EventStreams.Global.Publish(new MartOpenedEvent());
         }
+        _buildingPlaceHolders.Remove(buildingPlaceHolder);
         
-        buildings.RemoveAt(0);
-        StartCoroutine(ShowDelayedHint(buildings[0]));
-        _pointerController.SetNewTarget(buildings[0].transform);
+        ShowHintGoodJob();
+        await UniTask.Delay((int)(_delayBeforeNextHint * 1000));
+        
+        if (_buildingPlaceHolders.Count > 0) 
+        {
+            ShowHintWithNextBuilding(_buildingPlaceHolders[0]);
+            await _pointerController.SetNewTarget(_buildingPlaceHolders[0].transform);
+        }
+        ShowNextPlaceHolder();
     }
-    private IEnumerator ShowDelayedHint(GameObject building)
-    {
-        hintText.text = "Супер ты молодец!";
-        yield return new WaitForSeconds(delayBeforeNextHint);
 
-        building.SetActive(true);
-        hintText.text = $"Необходимо построить {building.name}";
+    private void ShowNextPlaceHolder()
+    {
+        if (_buildingPlaceHolders.Count == 0)
+        {
+            _hintCanvas.SetActive(false);
+            return;
+        }
+        _buildingPlaceHolders[0]?.Show(OnBuildingCompleted);
+    }
+    
+
+    private void ShowHintGoodJob()
+    {
+        _hintText.text = "Супер ты молодец!";
+    }
+
+    private void ShowHintWithNextBuilding(Object building)
+    {
+        _hintText.text = $"Необходимо построить {building.name}";
     }
 }
