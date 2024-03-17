@@ -55,6 +55,8 @@ namespace Customer
             if (shoppingList[_currentPathIndex].StopPoint.TypeInteractablePoint == TypeInteractablePoints.CashRegister)
             {
                 MoveToCashRegister();
+                _currentPathIndex++;
+                return;
             }
             
             if (_currentPathIndex < shoppingList.Count)
@@ -67,10 +69,9 @@ namespace Customer
                     //_customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex].StopPoint.StandIcon);
                     _customer.SetDestination(shoppingList[_currentPathIndex].StopPoint.PointForCustomers.position);
                 }
+                _currentPathIndex++;
                 // _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex]);
             }
-
-            _currentPathIndex++;
         }
 
         private void MoveToCashRegister()
