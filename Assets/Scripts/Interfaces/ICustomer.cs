@@ -7,15 +7,16 @@ namespace Interfaces
 {
     public interface ICustomer
     {
-        public MovementController.MovementController MovementController { get; }
-        public int CurrentPathIndex { get; set; }
-        public ProductBarView _productBarView { get; }
         public List<ListItem> ShoppingList { get; }
-        public ICustomerBasket Basket { get; }
         public Vector3 PositionInLine { get; }
-        public int ProductsCountInBasket { get; }
 
-        public void SetPositionInLine(Vector3 position);
+        public TypeInteractablePoints CurrentTargetType { get; }
+
+        public void SetDestination(Vector3 position);
+        public bool IsAtTargetPoint();
+        public void AddProductInBasket(Product product);
+        public List<Product> GetBoughtProducts();
+        public void SetCurrentTargetType(TypeInteractablePoints type);
 
     }
 }

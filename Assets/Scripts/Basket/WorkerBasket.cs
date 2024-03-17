@@ -12,7 +12,7 @@ public class WorkerBasket : MonoBehaviour, IWorkerBasket
     [field:SerializeField] public int MaxCountProduct { get; private set; }
     
     private readonly List<Product> _allProducts = new();
-    public void AddProductInBasket(Product product)
+    public void AddProduct(Product product)
     {
         _allProducts.Add(product);
         CountProductsChanged?.Invoke(CurrentCountProduct);

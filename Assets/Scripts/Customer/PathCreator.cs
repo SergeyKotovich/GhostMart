@@ -24,6 +24,7 @@ namespace Customer
                 }
             }
             
+            
             for (int i = 0; i < _secondTypesStands.Length; i++)
             {
                 if (_secondTypesStands[i].IsAvailable)

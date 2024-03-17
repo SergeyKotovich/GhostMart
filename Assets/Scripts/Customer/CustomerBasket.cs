@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using Interfaces;
 using UnityEngine;
 
@@ -10,12 +11,12 @@ namespace Customer
         public int ProductsCount { get; private set; }
         public List<Product> BoughtProducts { get; } = new();
 
-        public void AddProductInBasket(Product product)
+        public void AddProduct(Product product)
         {
             BoughtProducts.Add(product);
+            product.transform.DOScale(Vector3.zero, 0.2f);
             ProductsCount++;
         }
-        
 
         public int GetProductsCount()
         {
@@ -31,18 +32,6 @@ namespace Customer
         public Product GetSuitableProduct(TypeProduct typeProduct)
         {
             return null;
-        }
-        
-        public int GetTotalProductPrice()
-        {
-            var amount = 0;
-            
-            foreach (var boughtProduct in BoughtProducts)
-            {
-                amount += boughtProduct.Price;
-            }
-
-            return amount;
         }
     }
 }

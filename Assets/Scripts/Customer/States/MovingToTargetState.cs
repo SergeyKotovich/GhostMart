@@ -8,7 +8,7 @@ namespace Customer
     {
         private ICustomer _customer;
         private StateMachine _stateMachine;
-        private TypeInteractablePoints _currentTargetType;
+        private int _currentPathIndex;
         private bool _isActive;
         private bool _isInQueue;
         
@@ -20,13 +20,13 @@ namespace Customer
         private void Update()
         {
             if (!_isActive) return;
-            if (_customer.MovementController.IsAtTargetPoint())
+            if (_customer.IsAtTargetPoint())
             {
-                if (_currentTargetType == TypeInteractablePoints.CashRegister)
+                if (_customer.CurrentTargetType == TypeInteractablePoints.CashRegister)
                 {
                     EnterAtCashRegisterState();
                 }
-                else if (_currentTargetType == TypeInteractablePoints.Stand)
+                else if (_customer.CurrentTargetType == TypeInteractablePoints.Stand)
                 {
                     EnterGettingProductsState();
                 }
@@ -50,53 +50,48 @@ namespace Customer
         private void MoveToNextPoint()
         {
             var shoppingList = _customer.ShoppingList;
-            var currentPathIndex = _customer.CurrentPathIndex;
-            _currentTargetType = shoppingList[currentPathIndex].StopPoint.TypeInteractablePoint;
+            _customer.SetCurrentTargetType(shoppingList[_currentPathIndex].StopPoint.TypeInteractablePoint);
 
-            if (shoppingList[currentPathIndex].StopPoint.TypeInteractablePoint == TypeInteractablePoints.CashRegister)
+            if (shoppingList[_currentPathIndex].StopPoint.TypeInteractablePoint == TypeInteractablePoints.CashRegister)
             {
                 MoveToCashRegister();
-                return;
             }
             
-            if (currentPathIndex < shoppingList.Count)
+            if (_currentPathIndex < shoppingList.Count)
             {
-                var destination = shoppingList[currentPathIndex].Position;
-                _customer.MovementController.SetDestination(destination);
-                _customer.SetPositionInLine(destination);
+                var destination = shoppingList[_currentPathIndex].Position;
+                _customer.SetDestination(destination);
 
-                if (shoppingList[currentPathIndex].StopPoint.TypeInteractablePoint == TypeInteractablePoints.Exit)
+                if (shoppingList[_currentPathIndex].StopPoint.TypeInteractablePoint == TypeInteractablePoints.Exit)
                 {
-                    _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex].StopPoint.StandIcon);
-                    return;
+                    //_customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex].StopPoint.StandIcon);
+                    _customer.SetDestination(shoppingList[_currentPathIndex].StopPoint.PointForCustomers.position);
                 }
-                _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex]);
+                // _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex]);
             }
+
+            _currentPathIndex++;
         }
 
         private void MoveToCashRegister()
         {
-            var currentPathIndex = _customer.CurrentPathIndex;
-            var cashRegister = (CashRegister)_customer.ShoppingList[currentPathIndex].StopPoint;
+            var cashRegister = (CashRegister)_customer.ShoppingList[_currentPathIndex].StopPoint;
 
             var destination = cashRegister.Queue.GetFreePosition(_customer);
-            _customer.MovementController.SetDestination(destination);
-            _customer.SetPositionInLine(destination);
+            _customer.SetDestination(destination);
 
-            _customer._productBarView.UpdateProductBar(cashRegister.StandIcon);
+            //_customer._productBarView.UpdateProductBar(cashRegister.StandIcon);
             _isInQueue = true;
         }
         
         private void EnterGettingProductsState()
         {
-           // _customer.MovementController.StopMoving();
             _stateMachine.Enter<GettingProductsState>();
             _isActive = false;
         }
         
         private void EnterAtCashRegisterState()
         {
-           // _customer.MovementController.StopMoving();
             _stateMachine.Enter<AtCashRegisterState>();
             _isActive = false;
         }

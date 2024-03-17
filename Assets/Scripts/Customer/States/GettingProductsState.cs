@@ -12,6 +12,7 @@ namespace Customer
         private ICustomer _customer;
         private StateMachine _stateMachine;
         private bool _isTakingProducts;
+        private ListItem _currentListItem;
 
         private void Awake()
         {
@@ -34,35 +35,33 @@ namespace Customer
         public void OnEnter()
         {
            _isTakingProducts = true;
+           for (int i = 0; i < _customer.ShoppingList.Count; i++)
+           {
+               if (_customer.ShoppingList[i].StopPoint.TypeInteractablePoint == _customer.CurrentTargetType)
+               {
+                   _currentListItem = _customer.ShoppingList[i];
+               }
+           }
         }
         
         private void TakeProducts()
         {
-            var shoppingList = _customer.ShoppingList;
-            var currentPathIndex = _customer.CurrentPathIndex;
+            var stand = (IStand)_currentListItem.StopPoint;
             
-            if (shoppingList.Count == currentPathIndex)
-            {
-                return;
-            }
-            
-            var stand = (IStand)shoppingList[currentPathIndex].StopPoint;
             var productsOnStandCount = stand.GetProductsCount();
 
             if (productsOnStandCount > 0)
             {
                 var product = stand.GetAvailableProduct();
-                _customer.Basket.AddProductInBasket(product);
+                _customer.AddProductInBasket(product);
                 
-                shoppingList[currentPathIndex].CurrentCount++;
-                _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex]);
-                product.transform.DOScale(Vector3.zero, 0.2f);
+                _currentListItem.OnGotProduct();
+               // _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex]);
             }
 
-            if (_customer.ProductsCountInBasket >= shoppingList[currentPathIndex].MaxCount)
+            if (_currentListItem.CurrentCount >= _currentListItem.MaxCount)
             {
-                _customer.CurrentPathIndex++;
-                _customer.Basket.ResetCurrentProductCount();
+                //_customer.Basket.ResetCurrentProductCount();
                 _isTakingProducts = false;
 
                 EnterMovingToTargetState();

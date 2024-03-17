@@ -46,8 +46,7 @@ public class Queue
         foreach (var customer in _customersInLine)
         {
             var destination = customer.PositionInLine - ShiftForNextPosition;
-            customer.MovementController.SetDestination(destination);
-            customer.SetPositionInLine(destination);
+            customer.SetDestination(destination);
         }
     }
 }

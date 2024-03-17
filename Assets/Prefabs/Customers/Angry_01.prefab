@@ -395,7 +395,6 @@ GameObject:
   - component: {fileID: -8470074938218121595}
   - component: {fileID: 9181182194930819875}
   - component: {fileID: 6669607103980926429}
-  - component: {fileID: -2031318964580258735}
   - component: {fileID: -1621229458107140312}
   - component: {fileID: 9124299589506215590}
   - component: {fileID: -2816126146271999365}
@@ -484,7 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952358374e16466ca13437e58e7730fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MovementController>k__BackingField: {fileID: -2816126146271999365}
+  _movementController: {fileID: -2816126146271999365}
 --- !u!195 &-8470074938218121595
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -529,18 +528,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f590f365ca054cab8cbe66d0c1d624dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-2031318964580258735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3051554750943624728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0abe6cc1229d4035861197c6ceeaa8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &-1621229458107140312

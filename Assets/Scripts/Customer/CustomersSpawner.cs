@@ -19,7 +19,6 @@ namespace Customer
         {
             StartCoroutine(SpawnCustomers(maxCustomersCount));
         }
-        
         private IEnumerator SpawnCustomers(int maxCustomersCount)
         {
             var currentCustomersCount = 0;

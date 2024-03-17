@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public interface IBasket
     {
-        public void AddProductInBasket(Product product);
+        public void AddProduct(Product product);
         public Product GetSuitableProduct(TypeProduct typeProduct);
     }
 

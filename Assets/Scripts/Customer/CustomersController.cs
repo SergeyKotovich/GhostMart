@@ -16,7 +16,6 @@ namespace Customer
             _customersSpawner.StartSpawn(_maxCustomersCountInMart);
             _subscription = EventStreams.Global.Subscribe<CustomerLeftEvent>(OnCustomerLeft);
         }
-
         public void IncreaseMaxCustomersCount(int value)
         {
             _maxCustomersCountInMart += value;

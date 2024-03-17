@@ -26,7 +26,7 @@ namespace Assistant
         }
         public void PickUpProduct(Product product)
         {
-            Basket.AddProductInBasket(product);
+            Basket.AddProduct(product);
         }
 
         public Product GetProduct()

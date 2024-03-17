@@ -14,7 +14,6 @@ namespace Customer
         private StateMachine _stateMachine;
         private Vector3 _currentPosition;
         private bool _isActive;
-
         private void Awake()
         {
             _customer = GetComponent<ICustomer>();
@@ -39,7 +38,13 @@ namespace Customer
 
         public void OnEnter()
         {
-            _cashRegister = (CashRegister)_customer.ShoppingList[_customer.CurrentPathIndex].StopPoint;
+            for (int i = 0; i < _customer.ShoppingList.Count; i++)
+            {
+                if (_customer.ShoppingList[i].StopPoint.TypeInteractablePoint == TypeInteractablePoints.CashRegister)
+                {
+                    _cashRegister = (CashRegister)_customer.ShoppingList[i].StopPoint;
+                }
+            }
             _isActive = true;
             EnterPayingProductsState();
         }

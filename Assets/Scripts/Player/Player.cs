@@ -28,7 +28,7 @@ namespace Player
 
         public void PickUpProduct(Product product)
         {
-            Basket.AddProductInBasket(product);
+            Basket.AddProduct(product);
         }
 
         public void TryPickUpProduct(ProductWasPickedUp productWasPicked)
@@ -36,7 +36,7 @@ namespace Player
             if (Basket.IsFull())return;
             
             productWasPicked.Product.OnProductWasPickedUp();
-            Basket.AddProductInBasket(productWasPicked.Product);
+            Basket.AddProduct(productWasPicked.Product);
             CollectingProducts.TryToSetPosition(productWasPicked.Product);
         }
 

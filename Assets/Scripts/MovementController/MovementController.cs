@@ -14,7 +14,6 @@ namespace MovementController
         {
             _animator.SetBool(_isMoving, !IsAtTargetPoint());
         }
-
         public void SetDestination(Vector3 destination)
         {
             NavMeshAgent.SetDestination(destination);

@@ -26,16 +26,21 @@ namespace Customer
         public void OnEnter()
         {
             StartCoroutine(PayForProducts());
-            _cashRegister = (CashRegister)_customer.ShoppingList[_customer.CurrentPathIndex].StopPoint;
+            for (int i = 0; i < _customer.ShoppingList.Count; i++)
+            {
+                if (_customer.ShoppingList[i].StopPoint.TypeInteractablePoint == TypeInteractablePoints.CashRegister)
+                {
+                    _cashRegister = (CashRegister)_customer.ShoppingList[i].StopPoint;
+                }
+            }
         }
 
         private IEnumerator PayForProducts()
         {
             yield return new WaitForSeconds(2);
-            var basket = (CustomerBasket)_customer.Basket;
-            _cashRegister.SellProducts(basket.BoughtProducts);
             
-            _customer.CurrentPathIndex++;
+            _cashRegister.SellProducts(_customer.GetBoughtProducts());
+            
             EventStreams.Global.Publish(new CustomerLeftEvent());
             _cashRegister.Queue.OnCustomerLeft(_customer);
             _stateMachine.Enter<MovingToTargetState>();
