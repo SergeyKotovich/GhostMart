@@ -9,7 +9,6 @@ namespace Customer
     public class AtCashRegisterState : MonoBehaviour, IState
     {
         private CashRegister _cashRegister;
-        
         private ICustomer _customer;
         private StateMachine _stateMachine;
         private Vector3 _currentPosition;
@@ -38,11 +37,11 @@ namespace Customer
 
         public void OnEnter()
         {
-            for (int i = 0; i < _customer.ShoppingList.Count; i++)
+            for (int i = 0; i < _customer.OrdersList.Count; i++)
             {
-                if (_customer.ShoppingList[i].StopPoint.TypeInteractablePoint == TypeInteractablePoints.CashRegister)
+                if (_customer.OrdersList[i].Target.TypeInteractablePoint == TypeInteractablePoints.CashRegister)
                 {
-                    _cashRegister = (CashRegister)_customer.ShoppingList[i].StopPoint;
+                    _cashRegister = (CashRegister)_customer.OrdersList[i].Target;
                 }
             }
             _isActive = true;
@@ -53,7 +52,7 @@ namespace Customer
         {
             if (_customer.PositionInLine == _cashRegister.PointForCustomers.position && _cashRegister.IsAvailable)
             {
-               _stateMachine.Enter<PayingProductsState>();
+               _stateMachine.Enter<PayingProductsState, ICashRegister>(_cashRegister);
                _isActive = false;
             }
         }

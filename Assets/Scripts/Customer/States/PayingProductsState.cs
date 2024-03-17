@@ -1,18 +1,17 @@
 using System.Collections;
+using Cysharp.Threading.Tasks;
 using Events;
 using Interfaces;
 using UnityEngine;
 
 namespace Customer
 {
-    public class PayingProductsState : MonoBehaviour, IState
+    public class PayingProductsState : MonoBehaviour, IPayLoadedState<ICashRegister>
     {
+        [SerializeField] private int _delay;
         private StateMachine _stateMachine;
         private ICustomer _customer;
         
-        //TODO: must be interface
-        private CashRegister _cashRegister;
-
         private void Awake()
         {
             _customer = GetComponent<ICustomer>();
@@ -23,26 +22,17 @@ namespace Customer
             _stateMachine = stateMachine;
         }
 
-        public void OnEnter()
+        public void OnEnter(ICashRegister cashRegister)
         {
-            StartCoroutine(PayForProducts());
-            for (int i = 0; i < _customer.ShoppingList.Count; i++)
-            {
-                if (_customer.ShoppingList[i].StopPoint.TypeInteractablePoint == TypeInteractablePoints.CashRegister)
-                {
-                    _cashRegister = (CashRegister)_customer.ShoppingList[i].StopPoint;
-                }
-            }
+            PayForProducts(cashRegister);
         }
 
-        private IEnumerator PayForProducts()
+        private async  UniTask PayForProducts(ICashRegister cashRegister)
         {
-            yield return new WaitForSeconds(2);
+            await UniTask.Delay(_delay);
             
-            _cashRegister.SellProducts(_customer.GetBoughtProducts());
-            
-            EventStreams.Global.Publish(new CustomerLeftEvent());
-            _cashRegister.Queue.OnCustomerLeft(_customer);
+            cashRegister.SellProducts(_customer.GetBoughtProducts());
+            cashRegister.OnCustomerLeft(_customer);
             _stateMachine.Enter<MovingToTargetState>();
         }
     }

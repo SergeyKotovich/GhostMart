@@ -3,17 +3,19 @@ using UnityEngine;
 
 namespace Customer
 {
-    public class ListItem
+    public class CurrentOrder : IOrder
     {
         public Vector3 Position { get; }
-        public IInteractable StopPoint { get; }
+        public IInteractable Target { get; }
+        public Vector3 TargetPosition => Target.PointForCustomers.position;
+        public TypeInteractablePoints TargetType => Target.TypeInteractablePoint;
         public int MaxCount { get; }
         public int CurrentCount { get; private set; }
 
-        public ListItem(Vector3 position, IInteractable stopPoint, int count)
+        public CurrentOrder(Vector3 position, IInteractable target, int count)
         {
             Position = position;
-            StopPoint = stopPoint;
+            Target = target;
             MaxCount = count;
         }
 
@@ -21,5 +23,6 @@ namespace Customer
         {
             CurrentCount++;
         }
+
     }
 }

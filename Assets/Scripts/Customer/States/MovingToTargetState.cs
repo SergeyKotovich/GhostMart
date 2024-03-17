@@ -1,3 +1,4 @@
+using Events;
 using Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,10 +9,12 @@ namespace Customer
     {
         private ICustomer _customer;
         private StateMachine _stateMachine;
+
         private int _currentPathIndex;
         private bool _isActive;
         private bool _isInQueue;
-        
+        private IOrder _currentOrder;
+
         private void Awake()
         {
             _customer = GetComponent<ICustomer>();
@@ -22,14 +25,21 @@ namespace Customer
             if (!_isActive) return;
             if (_customer.IsAtTargetPoint())
             {
-                if (_customer.CurrentTargetType == TypeInteractablePoints.CashRegister)
+                if (_currentOrder.TargetType == TypeInteractablePoints.CashRegister)
                 {
                     EnterAtCashRegisterState();
                 }
-                else if (_customer.CurrentTargetType == TypeInteractablePoints.Stand)
+                else if (_currentOrder.TargetType == TypeInteractablePoints.Stand)
                 {
                     EnterGettingProductsState();
                 }
+                
+                else if (_currentOrder.TargetType == TypeInteractablePoints.Exit)
+                {
+                    EventStreams.Global.Publish(new CustomerLeftEvent());
+                    _isActive = false;
+                }
+                
                 else
                 {
                     _isActive = false;
@@ -49,45 +59,40 @@ namespace Customer
 
         private void MoveToNextPoint()
         {
-            var shoppingList = _customer.ShoppingList;
-            _customer.SetCurrentTargetType(shoppingList[_currentPathIndex].StopPoint.TypeInteractablePoint);
+            var orderList = _customer.OrdersList;
+            _currentOrder = orderList[_currentPathIndex];
+            EventStreams.Global.Publish(new OrderUpdatedEvent(_currentOrder, transform));
 
-            if (shoppingList[_currentPathIndex].StopPoint.TypeInteractablePoint == TypeInteractablePoints.CashRegister)
+            if (_currentOrder.TargetType == TypeInteractablePoints.CashRegister)
             {
                 MoveToCashRegister();
                 _currentPathIndex++;
                 return;
             }
             
-            if (_currentPathIndex < shoppingList.Count)
+            if (_currentPathIndex < orderList.Count)
             {
-                var destination = shoppingList[_currentPathIndex].Position;
+                var destination = _currentOrder.Position;
                 _customer.SetDestination(destination);
-
-                if (shoppingList[_currentPathIndex].StopPoint.TypeInteractablePoint == TypeInteractablePoints.Exit)
+                if (_currentOrder.TargetType == TypeInteractablePoints.Exit)
                 {
-                    //_customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex].StopPoint.StandIcon);
-                    _customer.SetDestination(shoppingList[_currentPathIndex].StopPoint.PointForCustomers.position);
+                    _customer.SetDestination(_currentOrder.TargetPosition);
                 }
                 _currentPathIndex++;
-                // _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex]);
             }
         }
 
         private void MoveToCashRegister()
         {
-            var cashRegister = (CashRegister)_customer.ShoppingList[_currentPathIndex].StopPoint;
-
-            var destination = cashRegister.Queue.GetFreePosition(_customer);
+            var cashRegister = (ICashRegister)_customer.OrdersList[_currentPathIndex].Target;
+            var destination = cashRegister.GetFreePosition(_customer);
             _customer.SetDestination(destination);
-
-            //_customer._productBarView.UpdateProductBar(cashRegister.StandIcon);
             _isInQueue = true;
         }
         
         private void EnterGettingProductsState()
         {
-            _stateMachine.Enter<GettingProductsState>();
+            _stateMachine.Enter<GettingProductsState, IOrder>(_currentOrder);
             _isActive = false;
         }
         

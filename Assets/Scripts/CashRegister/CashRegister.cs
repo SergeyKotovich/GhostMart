@@ -5,7 +5,7 @@ using Interfaces;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class CashRegister : MonoBehaviour, IInteractable
+public class CashRegister : MonoBehaviour, IInteractable, ICashRegister
 {
     [field:SerializeField] public Sprite StandIcon {get; private set; }
     [field:SerializeField] public Transform PointForCustomers { get; private set; }
@@ -30,6 +30,16 @@ public class CashRegister : MonoBehaviour, IInteractable
         
     }
 
+    public Vector3 GetFreePosition(ICustomer customer)
+    {
+        return Queue.GetFreePosition(customer);
+    }
+
+    public void OnCustomerLeft(ICustomer customer)
+    {
+        Queue.OnCustomerLeft(customer);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(GlobalConstants.PLAYER_TAG) || other.CompareTag(GlobalConstants.ASSISTANT_TAG))
@@ -45,4 +55,5 @@ public class CashRegister : MonoBehaviour, IInteractable
             IsAvailable = false;
         }
     }
+    
 }

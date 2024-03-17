@@ -22,7 +22,7 @@ namespace MovementController
 
         public bool IsAtTargetPoint()
         {
-            return NavMeshAgent.remainingDistance < 1f;
+            return NavMeshAgent.remainingDistance < 0.9f;
         }
 
         public void IncreaseSpeed()

@@ -7,6 +7,7 @@ using DG.Tweening;
 using Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace BadCustomer
@@ -16,7 +17,7 @@ namespace BadCustomer
         [SerializeField] private Stand[] _stands;
         [SerializeField] private StandSecondType[] _standsSecondType;
 
-        [SerializeField] private ProductBarSpawner _productBarSpawner; // Тут надо добавить тучку со смайликом.
+        [FormerlySerializedAs("_productBarSpawner")] [SerializeField] private OrderViewSpawner orderViewSpawner; // Тут надо добавить тучку со смайликом.
         [field: SerializeField] public Collider _collider { get; private set; }
 
         public bool _isMovingToExit{ get; private set; }

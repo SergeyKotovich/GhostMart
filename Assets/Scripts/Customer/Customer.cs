@@ -10,14 +10,10 @@ namespace Customer
     public class Customer : MonoBehaviour, ICustomer
     {
         [SerializeField] private MovementController.MovementController _movementController;
-        public List<ListItem> ShoppingList { get; } = new();
+        public List<IOrder> OrdersList { get; } = new();
         public Vector3 PositionInLine { get; private set; }
-        public TypeInteractablePoints CurrentTargetType { get; private set; }
-
         public int ProductsCountInBasket => _basket.ProductsCount;
-
         private ICustomerBasket _basket;
-        private ProductBarView _productBarView;
 
         private void Start()
         {
@@ -33,16 +29,15 @@ namespace Customer
             stateMachine.Enter<MovingToTargetState>();
         }
         
-        public void Initialize(List<IInteractable> path, ProductBarView productBarView)
+        public void Initialize(List<IInteractable> path, OrderView orderView)
         {
             foreach (var stand in path)
             {
                 var count = Random.Range(1, 5);
-                var stopPoint = new ListItem(stand.PointForCustomers.position, stand, count);
-                ShoppingList.Add(stopPoint);
+                var stopPoint = new CurrentOrder(stand.PointForCustomers.position, stand, count);
+                OrdersList.Add(stopPoint);
             }
-
-            _productBarView = productBarView;
+            
             _basket = new CustomerBasket();
         }
 
@@ -65,11 +60,6 @@ namespace Customer
         public List<Product> GetBoughtProducts()
         {
             return _basket.BoughtProducts;
-        }
-
-        public void SetCurrentTargetType(TypeInteractablePoints type)
-        {
-            CurrentTargetType = type;
         }
 
     }

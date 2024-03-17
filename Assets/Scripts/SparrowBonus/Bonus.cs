@@ -12,14 +12,14 @@ public class Bonus : MonoBehaviour
     [SerializeField] private Collider _collider;
     [SerializeField] private SparrowBonusConfig _sparrowBonusConfig;
 
-    private ProductBarView _productBarView;
+    private OrderView _orderView;
     private int _productCounter;
     private bool _gotEnoughProducts;
 
-    public void Initialize(ProductBarView productBarView)
+    public void Initialize(OrderView orderView)
     {
-        _productBarView = productBarView;
-        _productBarView.UpdateProductBar
+        _orderView = orderView;
+        _orderView.UpdateOrderView
             (_sparrowBonusConfig.TargetProductIcon, _productCounter, _sparrowBonusConfig.MaxProductsCount);
     }
     public void GetBonus(Product product)
@@ -37,7 +37,7 @@ public class Bonus : MonoBehaviour
 
             Destroy(product, 2f);
             _productCounter++;
-            _productBarView.UpdateProductBar
+            _orderView.UpdateOrderView
                 (_sparrowBonusConfig.TargetProductIcon, _productCounter, _sparrowBonusConfig.MaxProductsCount);        }
 
         if (_productCounter >= 2)

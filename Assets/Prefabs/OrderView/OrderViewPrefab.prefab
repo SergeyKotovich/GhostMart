@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 4945069259567399831}
   - component: {fileID: 8467487984754502008}
   m_Layer: 5
-  m_Name: ProductBar 1
+  m_Name: OrderViewPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

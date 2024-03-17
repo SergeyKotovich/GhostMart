@@ -103,7 +103,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 3
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.2
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -111,7 +111,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.06666667
     manualTileSize: 0
     tileSize: 256
     buildHeightMesh: 0
@@ -1594,7 +1594,7 @@ MonoBehaviour:
   _targetPosition: {x: 0, y: 0, z: 0}
   _minSpawnTime: 60
   _maxSpawnTime: 120
-  _productBarSpawner: {fileID: 380523001}
+  orderViewSpawner: {fileID: 380523001}
 --- !u!4 &52967033
 Transform:
   m_ObjectHideFlags: 0
@@ -7200,7 +7200,7 @@ MonoBehaviour:
   _stands:
   - {fileID: 1936917546}
   _standsSecondType: []
-  _productBarSpawner: {fileID: 380523001}
+  orderViewSpawner: {fileID: 380523001}
   <_collider>k__BackingField: {fileID: 353131727}
 --- !u!195 &353131726 stripped
 NavMeshAgent:
@@ -7507,7 +7507,7 @@ GameObject:
   - component: {fileID: 380523002}
   - component: {fileID: 380523001}
   m_Layer: 0
-  m_Name: ProductBarSpawner
+  m_Name: OrderViewSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7525,7 +7525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532dc9db1ce7469191eb21bf351b2a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _productBarPrefab: {fileID: 4945069259567399831, guid: b29973aba7e25af47910a5e354536aba, type: 3}
+  orderPrefab: {fileID: 4945069259567399831, guid: b29973aba7e25af47910a5e354536aba, type: 3}
   _canvas: {fileID: 1968964309}
 --- !u!4 &380523002
 Transform:
@@ -24426,7 +24426,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3986d6f3aeb649c1b9d162b51cc3fbde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxCustomersCountInMart: 1
+  _maxCustomersCountInMart: 3
+  _delay: 2
   _customersSpawner: {fileID: 1959648318}
 --- !u!4 &1142095441
 Transform:
@@ -38146,7 +38147,7 @@ Transform:
   m_GameObject: {fileID: 1905349332}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.876, y: 0, z: 1.789}
+  m_LocalPosition: {x: -1.905, y: 0, z: 1.985}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39837,10 +39838,8 @@ MonoBehaviour:
   - {fileID: 3253896743297894205, guid: f8669f1d7afaa3046b1492c2b3936580, type: 3}
   - {fileID: -6136985691133890919, guid: 480cb945727f51a4ab750f14d2b7e015, type: 3}
   _spawnPoint: {fileID: 110739545}
-  _dellayBetweenSpawn: 2
   _pathCreator: {fileID: 716647740}
-  _productBarSpawner: {fileID: 380523001}
-  _customerController: {fileID: 1142095440}
+  orderViewSpawner: {fileID: 380523001}
 --- !u!4 &1964831552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5383868674341980625, guid: 480f78703999dc34bac3baecb360676b, type: 3}
@@ -39859,7 +39858,7 @@ GameObject:
   - component: {fileID: 1968964308}
   - component: {fileID: 1968964307}
   m_Layer: 5
-  m_Name: ProductBarCanvas
+  m_Name: OrderViewCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

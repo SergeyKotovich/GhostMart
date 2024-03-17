@@ -2,17 +2,18 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using Events;
 using Interfaces;
 using UnityEngine;
 
 namespace Customer
 {
-    public class GettingProductsState : MonoBehaviour, IState
+    public class GettingProductsState : MonoBehaviour, IPayLoadedState<IOrder>
     {
         private ICustomer _customer;
         private StateMachine _stateMachine;
         private bool _isTakingProducts;
-        private ListItem _currentListItem;
+        private IOrder _order;
 
         private void Awake()
         {
@@ -26,46 +27,33 @@ namespace Customer
                 TakeProducts();
             }
         }
-
+        
         public void Initialize(StateMachine stateMachine)
         {
             _stateMachine = stateMachine;
         }
 
-        public void OnEnter()
+        public void OnEnter(IOrder order)
         {
            _isTakingProducts = true;
-           for (int i = 0; i < _customer.ShoppingList.Count; i++)
-           {
-               if (_customer.ShoppingList[i].StopPoint.TypeInteractablePoint == _customer.CurrentTargetType)
-               {
-                   _currentListItem = _customer.ShoppingList[i];
-               }
-           }
+           _order = order;
+
         }
         
         private void TakeProducts()
         {
-            var stand = (IStand)_currentListItem.StopPoint;
+            var stand = (IStand)_order.Target;
+            if (stand.IsEmpty())return;
             
-            var productsOnStandCount = stand.GetProductsCount();
-
-            if (productsOnStandCount > 0)
-            {
-                var product = stand.GetAvailableProduct();
-                _customer.AddProductInBasket(product);
+            var product = stand.GetAvailableProduct();
+            _customer.AddProductInBasket(product);
                 
-                _currentListItem.OnGotProduct();
-               // _customer._productBarView.UpdateProductBar(shoppingList[currentPathIndex]);
-            }
+            _order.OnGotProduct();
+            EventStreams.Global.Publish(new OrderUpdatedEvent(_order, transform));
 
-            if (_currentListItem.CurrentCount >= _currentListItem.MaxCount)
-            {
-                //_customer.Basket.ResetCurrentProductCount();
-                _isTakingProducts = false;
-
-                EnterMovingToTargetState();
-            }
+            if (!_order.IsCompleted) return;
+            _isTakingProducts = false;
+            EnterMovingToTargetState();
         }
         
         private void EnterMovingToTargetState()
