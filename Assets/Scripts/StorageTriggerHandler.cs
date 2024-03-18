@@ -8,7 +8,6 @@ public class StorageTriggerHandler : MonoBehaviour
     [SerializeField] private TypeInteractablePoints _typeInteractablePoints;
     private IStorageable _storageProductsForInteraction;
     private int _delayBetweenAddProducts = 100;
-    
 
     private void Awake()
     {

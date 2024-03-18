@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class ProductFactory : MonoBehaviour, IFactory
 {
+    public event Action CountSpawnedProductsDecreased; 
     [SerializeField] private Player.Player _player;
     private Stack<Product> _allAvailableProducts = new();
-   public int ProductCounter { get; private set; }
+   
 
    public void OnAvailableProductsUpdated(Product availableProduct)
     {
         _allAvailableProducts.Push(availableProduct);
-        ProductCounter++;
     }
 
     public Product GetProduct()
     {
-        ProductCounter--;
+        CountSpawnedProductsDecreased?.Invoke();
         return _allAvailableProducts.Pop();
     }
 

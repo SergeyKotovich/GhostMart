@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Interfaces;
 using UnityEngine;
@@ -10,7 +12,7 @@ public class StorageProductsForInteraction : MonoBehaviour, IStorageable
         
     [SerializeField] private Transform[] _allPositionProductsForInteraction;
     
-    private Queue<Product> _productsForInteraction = new();
+    private Stack<Product> _productsForInteraction = new();
     private readonly int _maxCountProductForInteraction = 4;
     private int _currentCountProductsForInteraction;
     private int _indexPosition;
@@ -28,31 +30,25 @@ public class StorageProductsForInteraction : MonoBehaviour, IStorageable
     {
         if (_currentCountProductsForInteraction!=_maxCountProductForInteraction)
         {
-            _productsForInteraction.Enqueue(product);
-            product.transform.SetParent(_allPositionProductsForInteraction[_indexPosition]);
-            product.transform.DOMove(_allPositionProductsForInteraction[_indexPosition].position, 1);
-            product.transform.DORotate(_allPositionProductsForInteraction[_indexPosition].position, 1);
-            _indexPosition = (_indexPosition + 1) % _maxCountProductForInteraction;
+            _productsForInteraction.Push(product);
+            product.transform.SetParent(_allPositionProductsForInteraction[_currentCountProductsForInteraction]);
+            product.transform.DOMove(_allPositionProductsForInteraction[_currentCountProductsForInteraction].position, 1);
+            product.transform.DORotate(_allPositionProductsForInteraction[_currentCountProductsForInteraction].position, 1);
             _currentCountProductsForInteraction++;
         }
        
     }
-    public void DestroyProduct()
+    public async UniTask DestroyProduct()
     {
-        var product =  _productsForInteraction.Dequeue();
-        product.transform.DOScale(0, 0.1f)
-            .SetDelay(5).OnComplete(() => Destroy(product.gameObject))
-            .OnComplete(LessenCurrentCountProductsForInteraction);
-    }
-
-    private void LessenCurrentCountProductsForInteraction()
-    {
+        await UniTask.Delay(5000);
+        var product =  _productsForInteraction.Pop();
+        product.transform.DOScale(0, 0.1f).OnComplete(() => Destroy(product.gameObject));
         _currentCountProductsForInteraction--;
     }
-
+    
     public bool IsFull()
     {
-        if (_productsForInteraction.Count == _maxCountProductForInteraction)
+        if (_currentCountProductsForInteraction == _maxCountProductForInteraction)
         {
             return true;
         }
