@@ -10,7 +10,7 @@ public class SpawnerBonus : MonoBehaviour
     [SerializeField] private Vector3 _targetPosition;
     [SerializeField] private float _minSpawnTime;
     [SerializeField] private float _maxSpawnTime;
-    [FormerlySerializedAs("_productBarSpawner")] [SerializeField] private OrderViewSpawner orderViewSpawner;
+    [SerializeField] private OrderViewSpawner orderViewSpawner;
 
     private Bonus _currentBonus;
     private OrderView _orderView;
