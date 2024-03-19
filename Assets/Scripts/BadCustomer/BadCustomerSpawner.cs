@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using SimpleEventBus.Disposables;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -10,34 +11,32 @@ namespace BadCustomer
     public class BadCustomerSpawner : MonoBehaviour
     {
         [SerializeField] private BadCustomer _badCustomer;
-        [SerializeField] private float _minSpawnTime = 30f;
-        [SerializeField] private float _maxSpawnTime = 120f;
-
-        private GameObject _instantiateGameObject;
-        private CompositeDisposable _subscribers = new();
+        [SerializeField] private int _minSpawnTime;
+        [SerializeField] private int _maxSpawnTime;
+        
+        private readonly CompositeDisposable _subscribers = new();
 
         private void Start()
         {
-            _subscribers.Add(EventStreams.Global.Subscribe<CameToExitEvent>(StartSpawn));
+            _subscribers.Add(EventStreams.Global.Subscribe<CameToExitEvent>(OnCameToExit));
         }
 
         public void Initialize()
         {
-            StartCoroutine(SpawnObject());
-            
+            Spawn();
         }
-        private IEnumerator SpawnObject()
+        private void OnCameToExit(CameToExitEvent cameToExitEvent)
         {
-            yield return new WaitForSeconds(Random.Range(_minSpawnTime, _maxSpawnTime));
-            _badCustomer.gameObject.SetActive(true);
-            _badCustomer.StateMachineStartMoving();
-        }
-
-        private void StartSpawn(CameToExitEvent cameToExitEvent)
-        {
-            _badCustomer.SwitcherMovingToExit();
             _badCustomer.gameObject.SetActive(false);
-            StartCoroutine(SpawnObject());
+            Spawn();
+        }
+        private async UniTask Spawn()
+        {
+            var randomDelay = Random.Range(_minSpawnTime, _maxSpawnTime);
+            await UniTask.Delay(randomDelay);
+            
+            _badCustomer.gameObject.SetActive(true);
+            _badCustomer.Reset();
         }
 
         private void OnDestroy()

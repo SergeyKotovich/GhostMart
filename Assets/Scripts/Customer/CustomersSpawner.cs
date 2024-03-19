@@ -11,7 +11,7 @@ namespace Customer
     {
         [SerializeField] private Customer[] _customersPrefabs;
         [SerializeField] private Transform _spawnPoint;
-        [SerializeField] private PathCreator _pathCreator;
+        [SerializeField] private PathCreator pathCreator;
         [SerializeField] private OrderViewSpawner orderViewSpawner;
         private List<Customer> _currentCustomers = new();
         
@@ -20,10 +20,10 @@ namespace Customer
             var randomIndex = Random.Range(0, _customersPrefabs.Length);
             var customer = Instantiate(_customersPrefabs[randomIndex]);
 
-            var path = _pathCreator.GetRandomPath();
-            var productBar = orderViewSpawner.GetProductBar(customer.gameObject);
+            var path = pathCreator.GetRandomPath();
+            orderViewSpawner.Spawn(customer.transform);
                 
-            customer.Initialize(path, productBar);
+            customer.Initialize(path);
                 
             customer.transform.position = _spawnPoint.position;
             _currentCustomers.Add(customer);

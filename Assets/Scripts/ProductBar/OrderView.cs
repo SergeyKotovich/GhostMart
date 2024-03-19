@@ -17,7 +17,7 @@ public class OrderView : MonoBehaviour
         EventStreams.Global.Subscribe<OrderUpdatedEvent>(OnOrderUpdated);
     }
 
-    public void Init(Transform transform)
+    public void Initialize(Transform transform)
     {
         _characterTransform = transform;
     }

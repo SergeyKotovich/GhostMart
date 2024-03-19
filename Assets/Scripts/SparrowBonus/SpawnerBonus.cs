@@ -30,7 +30,7 @@ public class SpawnerBonus : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(_minSpawnTime, _maxSpawnTime));
 
         var spawnedObject = Instantiate(_objectToSpawn, transform.position, Quaternion.identity);
-        _orderView = orderViewSpawner.GetProductBar(spawnedObject.gameObject);
+        orderViewSpawner.Spawn(spawnedObject.transform);
 
         InitializeBonus(spawnedObject);
         _currentBonus.BonusMovement.MoveToTarget(new Vector3(-4.34656954f,0f,-48.4787254f));

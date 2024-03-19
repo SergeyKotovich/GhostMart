@@ -11,8 +11,8 @@ namespace Customer
         [SerializeField] private StandSecondType[] _secondTypesStands;
         [SerializeField] private CashRegister _cashRegister;
         [SerializeField] private ExitPoint _exitPoint;
-        
-        public  List<IInteractable> GetRandomPath()
+
+        public List<IInteractable> GetRandomPath()
         {
             List<IInteractable> availableStands = new List<IInteractable>();
 

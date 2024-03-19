@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17699346, g: 0.22156177, b: 0.30383733, a: 1}
+  m_IndirectSpecularColor: {r: 0.17699274, g: 0.22156087, b: 0.30383563, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b893338d4f463d8436680a08ddd668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeInteractablePoints: 3
+  _typeInteractablePoints: 0
 --- !u!114 &4570828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7190,11 +7190,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5690c5fd7cf6f4ca27fab6225b4d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stands:
-  - {fileID: 1936917546}
-  _standsSecondType: []
-  orderViewSpawner: {fileID: 380523001}
   <_collider>k__BackingField: {fileID: 353131727}
+  _movementController: {fileID: 353131734}
+  _pathCreator: {fileID: 353131736}
 --- !u!195 &353131726 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: -5188951159229671611, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
@@ -7222,7 +7220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb69a40225acc7e4898174948e116226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 353131728}
   _badCustomer: {fileID: 353131725}
 --- !u!114 &353131731
 MonoBehaviour:
@@ -7236,10 +7233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91907915f46b024e8dc78ce961a0ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _navMeshAgent: {fileID: 353131726}
-  _animator: {fileID: 353131728}
   _badCustomer: {fileID: 353131725}
-  _exit: {fileID: 811757663}
 --- !u!114 &353131732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7254,6 +7248,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 353131728}
   _badCustomer: {fileID: 353131725}
+--- !u!114 &353131734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353131714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d58e105666464e8a47109010e04ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <NavMeshAgent>k__BackingField: {fileID: 353131726}
+  _animator: {fileID: 353131728}
+--- !u!114 &353131736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353131714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4efb43eab73f46df806c6bdec2c6fff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stands:
+  - {fileID: 1936917546}
+  _secondTypesStands: []
+  _exitPoint: {fileID: 811757663}
 --- !u!1 &358068481
 GameObject:
   m_ObjectHideFlags: 0
@@ -21468,6 +21492,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 25472819831621130, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4295984086726699533, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -21548,6 +21576,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7107108863402732460, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
       insertIndex: -1
       addedObject: {fileID: 353131730}
+    - targetCorrespondingSourceObject: {fileID: 7107108863402732460, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 353131734}
+    - targetCorrespondingSourceObject: {fileID: 7107108863402732460, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 353131736}
   m_SourcePrefab: {fileID: 100100000, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
 --- !u!1001 &1040863760
 PrefabInstance:
@@ -31944,8 +31978,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _badCustomer: {fileID: 353131725}
-  _minSpawnTime: 30
-  _maxSpawnTime: 120
+  _minSpawnTime: 1000
+  _maxSpawnTime: 5000
 --- !u!4 &1536662861
 Transform:
   m_ObjectHideFlags: 0
@@ -39822,7 +39856,7 @@ MonoBehaviour:
   - {fileID: 3253896743297894205, guid: f8669f1d7afaa3046b1492c2b3936580, type: 3}
   - {fileID: -6136985691133890919, guid: 480cb945727f51a4ab750f14d2b7e015, type: 3}
   _spawnPoint: {fileID: 110739545}
-  _pathCreator: {fileID: 716647740}
+  pathCreator: {fileID: 716647740}
   orderViewSpawner: {fileID: 380523001}
 --- !u!4 &1964831552 stripped
 Transform:

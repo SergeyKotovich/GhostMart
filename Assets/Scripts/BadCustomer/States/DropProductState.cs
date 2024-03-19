@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -9,25 +7,24 @@ namespace BadCustomer
     public class DropProductState : MonoBehaviour, IPayLoadedState<IStand>
     {
         [SerializeField] private Animator _animator;
-        [SerializeField] private BadCustomer _badCustomer;
         private StateMachine _stateMachine;
         private IStand _stand;
         private bool _trigger;
+        private bool _isActive;
 
         public void OnEnter(IStand stand)
         {
             _stand = stand;
-            DropProduct();
-            _badCustomer._collider.isTrigger = true;
             _trigger = false;
+            _isActive = true;
+            DropProduct();
         }
 
         public void Initialize(StateMachine stateMachine)
         {
             _stateMachine = stateMachine;
         }
-
-
+        
         private async UniTask DropProduct()
         {
             while (!_trigger)
@@ -45,21 +42,16 @@ namespace BadCustomer
                         .OnComplete(() => product.OnProductWasDropped());
                     await UniTask.Delay(4000);
                 }
-
-                if (_stand.IsEmpty() || _trigger)
-                {
-                    _stateMachine.Enter<WaitingState, IStand>(_stand);
-                    Debug.Log("break");
-                    break;
-                }
             }
         }
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(GlobalConstants.PLAYER_TAG))
+            if (other.CompareTag(GlobalConstants.PLAYER_TAG) && _isActive)
             {
                 _trigger = true;
+                _isActive = false;
+                _stateMachine.Enter<MoveToTargetState>();
             }
         }
     }

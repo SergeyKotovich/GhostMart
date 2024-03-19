@@ -29,7 +29,7 @@ namespace Customer
             stateMachine.Enter<MovingToTargetState>();
         }
         
-        public void Initialize(List<IInteractable> path, OrderView orderView)
+        public void Initialize(List<IInteractable> path)
         {
             foreach (var stand in path)
             {
