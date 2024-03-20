@@ -1,22 +1,21 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Interfaces;
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class Stand : MonoBehaviour, IInteractable, IStand, IStorageable
 {
-    [field:SerializeField] public Sprite StandIcon {get; private set; }
+    [field:SerializeField] public Sprite Icon {get; private set; }
     [field:SerializeField] public Transform PointForCustomers { get; private set; }
     [field:SerializeField] public TypeProduct TypeProduct { get; private set; }
-    [field: SerializeField] public TypeInteractablePoints TypeInteractablePoint { get; private set; }
+    [field: SerializeField] public InteractableTypes Type { get; private set; }
     public bool IsAvailable { get; private set; }
     public List<StandCell> StandCells { get; } = new();
     
     [SerializeField] private Grid _grid;
+    
+    [SerializeField] private Transform _dropPoint;
 
     private int _width = 4;
     private int _height = 5;
@@ -113,6 +112,11 @@ public class Stand : MonoBehaviour, IInteractable, IStand, IStorageable
         }
         
         return true;
+    }
+    
+    public Transform GetDropPoint()
+    {
+        return _dropPoint;
     }
     
 }

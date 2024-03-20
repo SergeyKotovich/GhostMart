@@ -29,12 +29,12 @@ namespace Customer
             stateMachine.Enter<MovingToTargetState>();
         }
         
-        public void Initialize(List<IInteractable> path, OrderView orderView)
+        public void Initialize(List<IInteractable> path)
         {
             foreach (var stand in path)
             {
                 var count = Random.Range(1, 5);
-                var stopPoint = new CurrentOrder(stand.PointForCustomers.position, stand, count);
+                var stopPoint = new CurrentOrder(stand, count);
                 OrdersList.Add(stopPoint);
             }
             

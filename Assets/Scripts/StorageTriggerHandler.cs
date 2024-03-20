@@ -2,10 +2,11 @@ using System;
 using Cysharp.Threading.Tasks;
 using Interfaces;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class StorageTriggerHandler : MonoBehaviour
 {
-    [SerializeField] private TypeInteractablePoints _typeInteractablePoints;
+    [FormerlySerializedAs("_typeInteractablePoints")] [SerializeField] private InteractableTypes interactableTypes;
     private IStorageable _storageProductsForInteraction;
     private int _delayBetweenAddProducts = 100;
 
@@ -32,7 +33,7 @@ public class StorageTriggerHandler : MonoBehaviour
             return;
         }
 
-        if (_typeInteractablePoints == TypeInteractablePoints.Stand)
+        if (interactableTypes == InteractableTypes.Stand)
         {
             AddProducts(worker, typeProduct, _delayBetweenAddProducts);
         }

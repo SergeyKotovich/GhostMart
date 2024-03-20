@@ -1,88 +1,64 @@
 using Interfaces;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace BadCustomer
 {
     public class MoveToTargetState : MonoBehaviour, IState
-
     {
-        [SerializeField] private NavMeshAgent _navMeshAgent;
-        [SerializeField] private Animator _animator;
-        [SerializeField] private BadCustomer _badCustomer;
-        [SerializeField] private ExitPoint _exit;
-
-        private bool _cameToTarget;
-        private IState _stateImplementation;
+        private IBadCustomer _badCustomer;
         private StateMachine _stateMachine;
-        private bool _isActive;
         private IInteractable _currentPoint;
+        private int _currentPathIndex;
+        private bool _isActive;
+
+        private void Awake()
+        {
+            _badCustomer = GetComponent<IBadCustomer>();
+        }
 
         private void Update()
         {
-            if (!_isActive)
-            {
-                return;
-            }
-
-            if (_navMeshAgent.remainingDistance <= 1f)
-            {
-                _animator.SetBool("IsMoving", false);
-                _cameToTarget = true;
-                if (_cameToTarget)
-                {
-                    OnCameToTarget();
-                    _cameToTarget = false;
-                }
-            }
+            if (!_isActive || !_badCustomer.IsAtTargetPoint())return;
             
+            OnCameToTarget();
         }
-
-        public void OnEnter()
-        {
-            if (_badCustomer._isMovingToExit)
-            {
-                _currentPoint = _exit;
-                MoveToTarget(_currentPoint.PointForCustomers.position);
-            }
-            else
-            {
-                _currentPoint = _badCustomer.GetRandomStand();
-                MoveToTarget(_currentPoint.PointForCustomers.position);
-            }
-        }
-
         public void Initialize(StateMachine stateMachine)
         {
             _stateMachine = stateMachine;
         }
-
-        private void MoveToTarget(Vector3 destination)
+        public void OnEnter()
         {
-            _navMeshAgent.SetDestination(destination);
-            _animator.SetBool("IsMoving", true);
             _isActive = true;
+            _currentPoint = _badCustomer.Path[_currentPathIndex];
+            MoveToTarget(_currentPoint.PointForCustomers);
         }
 
-        private void EnterDropProductState()
+        private void MoveToTarget(Transform destinationTransform)
         {
-            var curentPoint = (IStand)_currentPoint;
-            _stateMachine.Enter<DropProductState, IStand>(curentPoint);
-            _isActive = false;
+            _badCustomer.SetDestination(destinationTransform.position);
         }
-
         private void OnCameToTarget()
         {
-            if (_currentPoint.TypeInteractablePoint == TypeInteractablePoints.Exit)
+            if (_currentPoint.Type == InteractableTypes.Exit)
             {
+                _currentPathIndex = 0;
+                _isActive = false;
                 EventStreams.Global.Publish(new CameToExitEvent());
                 return;
             }
 
-            if (_currentPoint.TypeInteractablePoint == TypeInteractablePoints.Stand)
+            if (_currentPoint.Type == InteractableTypes.Stand)
             {
+                _currentPathIndex++;
+                _isActive = false;
                 EnterDropProductState();
             }
+        }
+        private void EnterDropProductState()
+        {
+            var currentStand = (IStand)_currentPoint;
+            _stateMachine.Enter<DropProductState, IStand>(currentStand);
+            _isActive = false;
         }
     }
 }

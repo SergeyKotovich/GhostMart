@@ -22,14 +22,14 @@ namespace MovementController
 
         public bool IsAtTargetPoint()
         {
-            return NavMeshAgent.remainingDistance < 0.9f;
+            if (NavMeshAgent.pathPending) return false;
+            return NavMeshAgent.remainingDistance < 1f;
         }
 
         public void IncreaseSpeed()
         {
             var currentSpeed = NavMeshAgent.speed;
             NavMeshAgent.speed = currentSpeed + 2;
-            Debug.Log("speed = " + NavMeshAgent.speed);
         }
         
     }

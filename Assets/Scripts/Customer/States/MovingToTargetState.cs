@@ -25,16 +25,16 @@ namespace Customer
             if (!_isActive) return;
             if (_customer.IsAtTargetPoint())
             {
-                if (_currentOrder.TargetType == TypeInteractablePoints.CashRegister)
+                if (_currentOrder.TargetType == InteractableTypes.CashRegister)
                 {
                     EnterAtCashRegisterState();
                 }
-                else if (_currentOrder.TargetType == TypeInteractablePoints.Stand)
+                else if (_currentOrder.TargetType == InteractableTypes.Stand)
                 {
                     EnterGettingProductsState();
                 }
                 
-                else if (_currentOrder.TargetType == TypeInteractablePoints.Exit)
+                else if (_currentOrder.TargetType == InteractableTypes.Exit)
                 {
                     EventStreams.Global.Publish(new CustomerLeftEvent());
                     _isActive = false;
@@ -63,7 +63,7 @@ namespace Customer
             _currentOrder = orderList[_currentPathIndex];
             EventStreams.Global.Publish(new OrderUpdatedEvent(_currentOrder, transform));
 
-            if (_currentOrder.TargetType == TypeInteractablePoints.CashRegister)
+            if (_currentOrder.TargetType == InteractableTypes.CashRegister)
             {
                 MoveToCashRegister();
                 _currentPathIndex++;
@@ -72,9 +72,9 @@ namespace Customer
             
             if (_currentPathIndex < orderList.Count)
             {
-                var destination = _currentOrder.Position;
+                var destination = _currentOrder.TargetPosition;
                 _customer.SetDestination(destination);
-                if (_currentOrder.TargetType == TypeInteractablePoints.Exit)
+                if (_currentOrder.TargetType == InteractableTypes.Exit)
                 {
                     _customer.SetDestination(_currentOrder.TargetPosition);
                 }

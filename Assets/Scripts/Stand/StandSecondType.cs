@@ -7,15 +7,17 @@ using UnityEngine;
 
 public class StandSecondType : MonoBehaviour, IStand, IInteractable , IStorageable
 {
-    [field:SerializeField] public Sprite StandIcon {get; private set; }
+    [field:SerializeField] public Sprite Icon {get; private set; }
     [field:SerializeField] public Transform PointForCustomers { get; private set; }
     
     [field:SerializeField] public TypeProduct TypeProduct { get; private set; }
-    [field: SerializeField] public TypeInteractablePoints TypeInteractablePoint { get; private set; }
+    [field: SerializeField] public InteractableTypes Type { get; private set; }
     public List<StandCell> StandCells { get; } = new();
     public bool IsAvailable { get; private set; }
     
     [SerializeField] private Grid _grid;
+    
+    [SerializeField] private Transform _dropPoint;
     
     private int _width = 3;
     private int _height = 3;
@@ -113,6 +115,11 @@ public class StandSecondType : MonoBehaviour, IStand, IInteractable , IStorageab
                 }
             }
         }
+    }
+    
+    public Transform GetDropPoint()
+    {
+        return _dropPoint;
     }
 
     
