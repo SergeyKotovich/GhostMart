@@ -7,8 +7,7 @@ namespace BadCustomer
     public class DropProductState : MonoBehaviour, IPayLoadedState<IStand>
     {
         [SerializeField] private Animator _animator;
-        [SerializeField] private BadCustomer _badCustomer;
-        [SerializeField] private float _moveRadius = 1.5f;
+        [SerializeField] private float _moveRadius;
         private StateMachine _stateMachine;
         private IStand _stand;
         private bool _didPlayerComeUp;
@@ -39,9 +38,6 @@ namespace BadCustomer
                 
                 if (product != null)
                 {
-                   // var xRandomPoint = Random.Range(-4.0f, -7.9f);
-                   // var zRandomPoint = Random.Range(-11.0f, -14.9f);
-
                     _animator.Play("Shity_attack");
                     await UniTask.Delay(1000);
 

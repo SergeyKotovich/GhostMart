@@ -1591,11 +1591,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec0507a25109874fb9657e4b313d460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectToSpawn: {fileID: 0}
-  _targetPosition: {x: 0, y: 0, z: 0}
-  _minSpawnTime: 0
-  _maxSpawnTime: 0
-  orderViewSpawner: {fileID: 0}
+  _bonusPrefab: {fileID: 4751035211348280327, guid: ad4137f595ec8e2449cacca9df7d3735, type: 3}
+  _minSpawnTime: 30000
+  _maxSpawnTime: 120000
+  orderViewSpawner: {fileID: 380523001}
+  _sparrowLandingPoint: {fileID: 264970415}
 --- !u!4 &52967033
 Transform:
   m_ObjectHideFlags: 0
@@ -7338,11 +7338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5690c5fd7cf6f4ca27fab6225b4d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stands:
-  - {fileID: 1936917546}
-  _standsSecondType: []
-  orderViewSpawner: {fileID: 380523001}
-  <_collider>k__BackingField: {fileID: 353131727}
+  _movementController: {fileID: 353131734}
+  _pathCreator: {fileID: 353131736}
 --- !u!195 &353131726 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: -5188951159229671611, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
@@ -7378,6 +7375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 353131728}
+  _moveRadius: 1.5
 --- !u!114 &353131734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7404,8 +7402,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4efb43eab73f46df806c6bdec2c6fff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 353131728}
-  _badCustomer: {fileID: 353131725}
+  _stands:
+  - {fileID: 1936917546}
+  _secondTypesStands: []
+  _exitPoint: {fileID: 811757663}
 --- !u!1 &358068481
 GameObject:
   m_ObjectHideFlags: 0
