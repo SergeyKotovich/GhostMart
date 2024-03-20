@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoneyStorage
 {
-    public int CurrentMoneyAmount { get; private set; }
+    private int CurrentMoneyAmount { get; set; }
 
     public void AddMoney(int amount)
     {

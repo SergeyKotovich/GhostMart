@@ -4,77 +4,78 @@ using UnityEngine;
 using DG.Tweening;
 using Events;
 using Interfaces;
-using SparrowBonus;
 
-public class Bonus : MonoBehaviour
+namespace SparrowBonus
 {
-    public event Action BonusFlewToTarget;
-    [field: SerializeField] public BonusMovement BonusMovement { get; private set; }
-    [SerializeField] private GameObject _moneyPrefab;
-    [SerializeField] private Collider _collider;
-    [SerializeField] private SparrowBonusConfig _sparrowBonusConfig;
-    
-    private IInteractable _landingPoint;
-    private CurrentOrder _currentOrder;
-    private bool _gotEnoughProducts;
-    
-    public void Initialize(IInteractable landingPoint)
+    public class Bonus : MonoBehaviour
     {
-        _landingPoint = landingPoint;
-        _currentOrder = new CurrentOrder(_landingPoint, 2);
-        EventStreams.Global.Publish(new OrderUpdatedEvent(_currentOrder, transform));
-    }
+        public event Action BonusFlewToExit;
+        [field: SerializeField] public BonusMovement BonusMovement { get; private set; }
+        [SerializeField] private MoneySpawner _moneySpawner;
+        [SerializeField] private SparrowBonusConfig _sparrowBonusConfig;
+        [SerializeField] private Collider _collider;
 
-    public void GetBonus(Product product)
-    {
-        if (_gotEnoughProducts)
+        private IInteractable _landingPoint;
+        private CurrentOrder _currentOrder;
+        private bool _isOrderCompleted;
+
+        public void Initialize(IInteractable landingPoint)
         {
-            return;
+            _landingPoint = landingPoint;
+            _currentOrder = new CurrentOrder(_landingPoint, _sparrowBonusConfig.MaxProductsCount);
         }
 
-        if (product != null)
+        public void GetBonus(Product product)
         {
-            product.transform.SetParent(transform);
-            product.transform.DOLocalMove(new Vector3(0, 0, 0), 0.5f);
-            product.transform.DOScale(new Vector3(0, 0, 0), 0.5f);
+            if (_isOrderCompleted) return;
+            TakeProduct(product);
 
-            Destroy(product, 2f);
-            
-            _currentOrder.OnGotProduct();
+            if (_currentOrder.CurrentCount < _currentOrder.MaxCount) return;
+            OnOrderCompleted();
+            FlyAway();
+        }
+
+        public void OnOrderUpdated()
+        {
             EventStreams.Global.Publish(new OrderUpdatedEvent(_currentOrder, transform));
         }
 
-        if (_currentOrder.CurrentCount >= _currentOrder.MaxCount)
+        private void FlyAway()
         {
-            SwitcherStateTrigger(false);
-            _gotEnoughProducts = true;
-            
-            var prefabRotation = _moneyPrefab.transform.rotation;
-
-            var shift = 0;
-            for (int i = 0; i < _sparrowBonusConfig.MaxMoneyReword; i++)
-            {
-                var bonus = Instantiate(_moneyPrefab, transform.position, prefabRotation);
-
-                var x = bonus.transform.position.x;
-                var z = bonus.transform.position.z;
-                bonus.transform.DOLocalMove(new Vector3(x+shift, 0, z-shift), 0.5f);
-                bonus.transform.DOScale(new Vector3(10, 10, 10), 0.5f);
-                
-                shift++;
-            }
-            
             EventStreams.Global.Publish(new CharacterDestroyedEvent(transform));
-            BonusMovement.MoveToTarget(new Vector3(-4.26000023f, 22.3799992f, -110.699997f));
-            BonusFlewToTarget?.Invoke();
-            Destroy(gameObject, 21);
-            _currentOrder.Reset();
+            BonusMovement.MoveToTarget(_sparrowBonusConfig.ExitPosition, OnMovementCompleted);
         }
-    }
 
-    public void SwitcherStateTrigger(bool state)
-    {
-        _collider.isTrigger = state;
+        private void OnMovementCompleted()
+        {
+            BonusFlewToExit?.Invoke();
+            Destroy(gameObject);
+        }
+
+        private void OnOrderCompleted()
+        {
+            _isOrderCompleted = true;
+            SetTriggerState(false);
+
+            _moneySpawner.Spawn();
+        }
+
+        private void TakeProduct(Product product)
+        {
+            if (product == null) return;
+
+            product.transform.SetParent(transform);
+            product.transform.DOLocalMove(Vector3.zero, _sparrowBonusConfig.AnimationDuration);
+            product.transform.DOScale(Vector3.zero, _sparrowBonusConfig.AnimationDuration).OnComplete(() => Destroy(product));
+
+            _currentOrder.OnGotProduct();
+            OnOrderUpdated();
+        }
+
+        public void SetTriggerState(bool value)
+        {
+            _collider.isTrigger = value;
+        }
+
     }
-    
 }

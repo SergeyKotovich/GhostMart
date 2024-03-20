@@ -1,53 +1,56 @@
 using System;
 using System.Collections;
+using Cysharp.Threading.Tasks;
 using SparrowBonus;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class SpawnerBonus : MonoBehaviour
 {
     [SerializeField] private Bonus _bonusPrefab;
-    [SerializeField] private float _minSpawnTime;
-    [SerializeField] private float _maxSpawnTime;
+    [SerializeField] private int _minSpawnTime;
+    [SerializeField] private int _maxSpawnTime;
     [SerializeField] private OrderViewSpawner orderViewSpawner;
     [SerializeField] private SparrowLandingPoint _sparrowLandingPoint;
 
     private Bonus _currentBonus;
-    private OrderView _orderView;
 
     private void Start()
     {
-        StartSpawning();
+        Spawn();
     }
-    private IEnumerator SpawnObject()
+    private async UniTask Spawn()
     {
-        yield return new WaitForSeconds(Random.Range(_minSpawnTime, _maxSpawnTime));
+        await UniTask.Delay(Random.Range(_minSpawnTime, _maxSpawnTime));
 
-        var bonus = Instantiate(_bonusPrefab, transform);
-        orderViewSpawner.Spawn(bonus.transform);
-        InitializeBonus(bonus);
+        _currentBonus = Instantiate(_bonusPrefab, transform);
+        InitializeBonus(_currentBonus);
         
         var targetPosition = _sparrowLandingPoint.PointForCustomers.position;
-        _currentBonus.BonusMovement.MoveToTarget(targetPosition);
-        yield return new WaitUntil(() => (bonus.transform.position - targetPosition).sqrMagnitude < 0.01f);
-        
-        _currentBonus.SwitcherStateTrigger(true);
+        _currentBonus.BonusMovement.MoveToTarget(targetPosition, OnMovementComplete);
     }
+
+    private void OnMovementComplete()
+    {
+        orderViewSpawner.Spawn(_currentBonus.transform);
+        _currentBonus.SetTriggerState(true);
+        _currentBonus.OnOrderUpdated();
+    }
+
     private void InitializeBonus(Bonus bonus)
     {
         _currentBonus = bonus;
         _currentBonus.Initialize(_sparrowLandingPoint);
-        _currentBonus.BonusFlewToTarget += StartSpawning;
+        _currentBonus.BonusFlewToExit += StartSpawning;
     }
 
     private void StartSpawning()
     {
-        StartCoroutine(SpawnObject());
-        if (_orderView != null)
-        {
-            _currentBonus.BonusFlewToTarget -= StartSpawning;
-            Destroy(_orderView.gameObject);
-        }
+        Spawn();
+    }
+
+    private void OnDestroy()
+    {
+        _currentBonus.BonusFlewToExit -= StartSpawning;
     }
 }

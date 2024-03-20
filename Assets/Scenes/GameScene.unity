@@ -1592,8 +1592,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bonusPrefab: {fileID: 4751035211348280327, guid: ad4137f595ec8e2449cacca9df7d3735, type: 3}
-  _minSpawnTime: 1
-  _maxSpawnTime: 1
+  _minSpawnTime: 30000
+  _maxSpawnTime: 120000
   orderViewSpawner: {fileID: 380523001}
   _sparrowLandingPoint: {fileID: 264970415}
 --- !u!4 &52967033

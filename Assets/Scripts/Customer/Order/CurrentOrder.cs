@@ -22,10 +22,5 @@ namespace Customer
             CurrentCount++;
         }
 
-        public void Reset()
-        {
-            CurrentCount = 0;
-        }
-
     }
 }

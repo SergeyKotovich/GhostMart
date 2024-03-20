@@ -13,6 +13,5 @@ namespace Customer
         public bool IsCompleted => CurrentCount == MaxCount;
 
         public void OnGotProduct();
-        public void Reset();
     }
 }
