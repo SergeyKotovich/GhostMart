@@ -17,6 +17,8 @@ public class StandSecondType : MonoBehaviour, IStand, IInteractable , IStorageab
     
     [SerializeField] private Grid _grid;
     
+    [SerializeField] private Transform _dropPoint;
+    
     private int _width = 3;
     private int _height = 3;
     private int _length = 2;
@@ -113,6 +115,11 @@ public class StandSecondType : MonoBehaviour, IStand, IInteractable , IStorageab
                 }
             }
         }
+    }
+    
+    public Transform GetDropPoint()
+    {
+        return _dropPoint;
     }
 
     
