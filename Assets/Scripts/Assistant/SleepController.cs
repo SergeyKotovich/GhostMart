@@ -11,13 +11,6 @@ namespace Assistant
         [SerializeField] private GameObject[] _eyes;
         [SerializeField] private PlayerConfig _playerConfig;
         
-        private Collider _collider;
-
-        private void Awake()
-        {
-            _collider = GetComponent<Collider>();
-        }
-        
         public void ImproveRepetitionCount(int value)
         {
             MaxRepeatCount += value;
@@ -27,7 +20,6 @@ namespace Assistant
             foreach (var eye in _eyes)
             {
                 eye.transform.DOScale(_playerConfig.EyeSizeInDream, _playerConfig.Duration);
-                // .OnComplete(() => _collider.isTrigger = true);
             }
         }
 
@@ -37,7 +29,6 @@ namespace Assistant
             {
                 eye.transform.DOScale(_playerConfig.EyeSizeInWakefulness, _playerConfig.Duration);
             }
-          //  _collider.isTrigger = false;
         }
     }
     

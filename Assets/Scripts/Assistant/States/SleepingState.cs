@@ -7,6 +7,8 @@ namespace Assistant
         private ISleepable _sleepController;
         private StateMachine _stateMachine;
 
+        private bool _isActive;
+
         private void Awake()
         {
             _sleepController = GetComponent<ISleepable>();
@@ -19,13 +21,15 @@ namespace Assistant
         
         public void OnEnter()
         {
+            _isActive = true;
             _sleepController.FellAsleep();
         }
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(GlobalConstants.PLAYER_TAG))
+            if (other.CompareTag(GlobalConstants.PLAYER_TAG) && _isActive)
             {
+                _isActive = false;
                 _sleepController.WakeUp();
                 _stateMachine.Enter<MovingToTargetState, TypeInteractablePoints>(TypeInteractablePoints.ProductFactory);
             }

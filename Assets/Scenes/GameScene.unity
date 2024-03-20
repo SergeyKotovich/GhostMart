@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b893338d4f463d8436680a08ddd668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeInteractablePoints: 3
+  _typeInteractablePoints: 0
 --- !u!114 &4570828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2235,10 +2235,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ccfe88c5124fb798763f8f74c6727f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StandIcon>k__BackingField: {fileID: 21300000, guid: 4770747f0226144d6acea163430d00c4, type: 3}
+  <StandIcon>k__BackingField: {fileID: 0}
   <PointForCustomers>k__BackingField: {fileID: 844525493}
   <TypeProduct>k__BackingField: 3
-  <TypeInteractablePoint>k__BackingField: 2
+  <TypeInteractablePoint>k__BackingField: 0
   _grid: {fileID: 87340867}
 --- !u!65 &87340870
 BoxCollider:
@@ -7190,21 +7190,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5690c5fd7cf6f4ca27fab6225b4d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stands:
-  - {fileID: 1936917546}
+  _stands: []
   _standsSecondType: []
-  orderViewSpawner: {fileID: 380523001}
-  <_collider>k__BackingField: {fileID: 353131727}
---- !u!195 &353131726 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: -5188951159229671611, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
-  m_PrefabInstance: {fileID: 1039292049}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &353131727 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 25472819831621130, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
-  m_PrefabInstance: {fileID: 1039292049}
-  m_PrefabAsset: {fileID: 0}
+  orderViewSpawner: {fileID: 0}
+  <_collider>k__BackingField: {fileID: 0}
 --- !u!95 &353131728 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7107108863412213764, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
@@ -7236,10 +7225,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91907915f46b024e8dc78ce961a0ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _navMeshAgent: {fileID: 353131726}
-  _animator: {fileID: 353131728}
-  _badCustomer: {fileID: 353131725}
-  _exit: {fileID: 811757663}
+  _navMeshAgent: {fileID: 0}
+  _animator: {fileID: 0}
+  _badCustomer: {fileID: 0}
+  _exit: {fileID: 0}
 --- !u!114 &353131732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7253,7 +7242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 353131728}
-  _badCustomer: {fileID: 353131725}
+  _badCustomer: {fileID: 0}
 --- !u!1 &358068481
 GameObject:
   m_ObjectHideFlags: 0
@@ -12486,10 +12475,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86191fde91ab4368b6ef3b76af7a2dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StandIcon>k__BackingField: {fileID: 21300000, guid: 72d3440469d5f41c7978974f46e41b2a, type: 3}
+  <StandIcon>k__BackingField: {fileID: 0}
   <PointForCustomers>k__BackingField: {fileID: 1905349333}
   <TypeProduct>k__BackingField: 1
-  <TypeInteractablePoint>k__BackingField: 2
+  <TypeInteractablePoint>k__BackingField: 0
   _grid: {fileID: 838981199}
 --- !u!65 &661071624
 BoxCollider:
@@ -13924,7 +13913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rootTransform: {fileID: 832555846}
   _shiftForNextProduct: {x: 0, y: 0.001, z: 0}
-  _productConfigFirstType: {fileID: 11400000, guid: c5a75f418e60f3345afbfe7f8cadba61, type: 2}
+  _productConfigFirstType: {fileID: 0}
   _productConfigSecondType: {fileID: 11400000, guid: b05a056b59b24f1418340e555bd3d572, type: 2}
 --- !u!4 &725233022 stripped
 Transform:
@@ -16279,8 +16268,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b7e85ee009ba4d469228f89e43c195a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StandIcon>k__BackingField: {fileID: 21300000, guid: 2018f7e69f2c0489fb0a7f701c78e9c8, type: 3}
-  <TypeInteractablePoint>k__BackingField: 1
+  <StandIcon>k__BackingField: {fileID: 0}
+  <TypeInteractablePoint>k__BackingField: 0
   <PointForCustomers>k__BackingField: {fileID: 811757662}
 --- !u!1 &814900307
 GameObject:
@@ -37472,10 +37461,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ccfe88c5124fb798763f8f74c6727f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StandIcon>k__BackingField: {fileID: 21300000, guid: ad1b89d3cad4149aa9f9fe84a6e3ef25, type: 3}
+  <StandIcon>k__BackingField: {fileID: 0}
   <PointForCustomers>k__BackingField: {fileID: 844525493}
   <TypeProduct>k__BackingField: 4
-  <TypeInteractablePoint>k__BackingField: 2
+  <TypeInteractablePoint>k__BackingField: 0
   _grid: {fileID: 1875658329}
 --- !u!156049354 &1875658329
 Grid:
@@ -39019,10 +39008,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86191fde91ab4368b6ef3b76af7a2dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StandIcon>k__BackingField: {fileID: 21300000, guid: 12e9c8f6c7db64e9a8920229f1267912, type: 3}
+  <StandIcon>k__BackingField: {fileID: 0}
   <PointForCustomers>k__BackingField: {fileID: 1526526784}
   <TypeProduct>k__BackingField: 0
-  <TypeInteractablePoint>k__BackingField: 2
+  <TypeInteractablePoint>k__BackingField: 0
   _grid: {fileID: 1457058251}
 --- !u!114 &1936917547
 MonoBehaviour:
@@ -39838,7 +39827,7 @@ MonoBehaviour:
   - {fileID: 3253896743297894205, guid: f8669f1d7afaa3046b1492c2b3936580, type: 3}
   - {fileID: -6136985691133890919, guid: 480cb945727f51a4ab750f14d2b7e015, type: 3}
   _spawnPoint: {fileID: 110739545}
-  _pathCreator: {fileID: 716647740}
+  _pathCreator: {fileID: 0}
   orderViewSpawner: {fileID: 380523001}
 --- !u!4 &1964831552 stripped
 Transform:
@@ -43783,10 +43772,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86191fde91ab4368b6ef3b76af7a2dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StandIcon>k__BackingField: {fileID: 21300000, guid: d6f07d1f111f44110a1f1e189519cb9c, type: 3}
+  <StandIcon>k__BackingField: {fileID: 0}
   <PointForCustomers>k__BackingField: {fileID: 112227445}
   <TypeProduct>k__BackingField: 2
-  <TypeInteractablePoint>k__BackingField: 2
+  <TypeInteractablePoint>k__BackingField: 0
   _grid: {fileID: 1973572068}
 --- !u!65 &1500612647482931311
 BoxCollider:
