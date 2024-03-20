@@ -22,16 +22,16 @@ public class Recycle : MonoBehaviour
         if (other.CompareTag(GlobalConstants.PLAYER_TAG))
         {
             var worker = other.GetComponent<IWorker>();
-            var allProducts = worker.GetAllProducts();
-            Recycling(allProducts);
+            worker.GetAllProducts();
+          //  Recycling(allProducts);
         }
 
         if (other.CompareTag(GlobalConstants.ASSISTANT_TAG))
         {
-            var worker = other.GetComponent<IWorker>();
-            var allProducts = worker.GetAllProducts();
-            Recycling(allProducts);
-            EventStreams.Global.Publish(new ProductsAreRecycledEvent());
+          //  var worker = other.GetComponent<IWorker>();
+          //  var allProducts = worker.GetAllProducts();
+          //  Recycling(allProducts);
+          //  EventStreams.Global.Publish(new ProductsAreRecycledEvent());
         }
     }
 }

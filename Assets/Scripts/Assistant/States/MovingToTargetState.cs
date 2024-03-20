@@ -1,35 +1,38 @@
-using System;
 using System.Collections.Generic;
 using Interfaces;
-using SimpleEventBus.Disposables;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace Assistant
 {
-    public class MovingToTargetState : MonoBehaviour, IState
+    
+    public class MovingToTargetState : MonoBehaviour, IPayLoadedState<TypeInteractablePoints>
     {
         [SerializeField] private List<Transform> _pointPath;
         [SerializeField] private Transform _pointForRecycling;
         [SerializeField] private Transform _pointForSleeping;
-
-        private bool _isProductFactory;
-        private bool _isStand;
+        
+        private int _currentIndex;
         
         private StateMachine _stateMachine;
-        private int _currentIndex;
+        
         private IFactory _productFactory;
         private IStorageable _stand;
         private IMovable _assistant;
+        private TypeInteractablePoints _type;
 
         private void Awake()
         {
             _assistant = GetComponent<IMovable>();
         }
-
+        
         public void Initialize(StateMachine stateMachine)
         {
             _stateMachine = stateMachine;
+        }
+        public void OnEnter(TypeInteractablePoints payload)
+        {
+            _type = payload;
+            MoveToPoint();
         }
 
         private void Update()
@@ -37,67 +40,68 @@ namespace Assistant
             if (_assistant.MovementController.IsAtTargetPoint())
             {
                 EnterNextState();
-                _isStand = false;
-                _isProductFactory = false;
             }
         }
 
         private void MoveToPoint()
         {
-            var recyclableAssistant = (IRecyclable)_assistant;
-            if (recyclableAssistant.ISRecycling)
+            switch (_type)
             {
-                _assistant.MovementController.SetDestination(_pointForRecycling.position);
-                _stateMachine.Enter<RecyclingProductsState>();
-                return;
+                case TypeInteractablePoints.Stand:
+                    SetDestination(_pointPath[_currentIndex].position);
+                    SetNextPoint();
+                    return;
+                case TypeInteractablePoints.Recycling:
+                    SetDestination(_pointForRecycling.position);
+                    return;
+                case TypeInteractablePoints.SleepPoint:
+                    SetDestination(_pointForSleeping.position);
+                    return;
+                case TypeInteractablePoints.ProductFactory:
+                    SetDestination(_pointPath[_currentIndex].position);
+                    SetNextPoint();
+                    break;
             }
+        }
 
-            var sleepableAssistant = (ISleepable)_assistant;
-            if (sleepableAssistant.IsSleeping)
-            {
-                _assistant.MovementController.SetDestination(_pointForSleeping.position);
-                _stateMachine.Enter<SleepingState>();
-                return;
-            }
-            _assistant.MovementController.SetDestination(_pointPath[_currentIndex].position);
-            SetNextPoint();
+        private void SetDestination(Vector3 destination)
+        {
+            _assistant.MovementController.SetDestination(destination);
         }
 
         private void SetNextPoint()
         {
             _currentIndex = (_currentIndex + 1) % _pointPath.Count;
         }
-
-        public void OnEnter()
-        {
-            MoveToPoint();
-        }
-       
+        
         private void EnterNextState()
         {
-            if (_isProductFactory)
+            switch (_type)
             {
-                _stateMachine.Enter<CollectingProductsState, IFactory>(_productFactory);
+                case TypeInteractablePoints.ProductFactory:
+                    _stateMachine.Enter<CollectingProductsState, IFactory>(_productFactory);
+                    return;
+                case TypeInteractablePoints.Stand:
+                    _stateMachine.Enter<ProductStandState, IStorageable>(_stand);
+                    return;
+                case TypeInteractablePoints.Recycling:
+                    _stateMachine.Enter<RecyclingProductsState>();
+                    return;
+                case TypeInteractablePoints.SleepPoint:
+                    _stateMachine.Enter<SleepingState>();
+                    break;
             }
-
-            if (_isStand)
-            {
-                _stateMachine.Enter<ProductStandState, IStorageable>(_stand);
-            }
-
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag(GlobalConstants.PRODUCT_FACTORY_TAG))
             {
-                _isProductFactory = true;
                 _productFactory = other.GetComponent<IFactory>();
             }
 
             if (other.CompareTag(GlobalConstants.STAND_TAG))
             {
-                _isStand = true;
                 _stand = other.GetComponent<IStorageable>();
             }
         }

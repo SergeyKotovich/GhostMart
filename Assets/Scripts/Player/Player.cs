@@ -45,16 +45,16 @@ namespace Player
             return Basket.GetProduct();
         }
 
-        public List<Product> GetAllProducts()
+        public void GetAllProducts()
         {
-            List<Product> allProducts = new List<Product>();
-            var productsCount = Basket.CurrentCountProduct;
-            for (int i = 0; i < productsCount; i++)
-            {
-                allProducts.Add(Basket.GetProduct());
-            }
+           // List<Product> allProducts = new List<Product>();
+           // var productsCount = Basket.CurrentCountProduct;
+           // for (int i = 0; i < productsCount; i++)
+           // {
+           //     allProducts.Add(Basket.GetProduct());
+           // }
 
-            return allProducts;
+            Basket.GetAllProducts();
         }
 
         public void AddMoney(int amount)

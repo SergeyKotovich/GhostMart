@@ -5,7 +5,6 @@ public class ProductConfig : ScriptableObject
 {
   [field: SerializeField] public Vector3 ScaleProductAfterSpawn { get; private set; }
   [field: SerializeField] public float SizeChangeTime { get; private set; }
-  [field: SerializeField] public Vector3 PositionProductInBasket;
   [field: SerializeField] public Vector3 RotationProductInBasket;
   [field: SerializeField] public Vector3 ScaleProductInbasket;
   [field: SerializeField] public int MaxCountSpawnedProduct { get; private set; }

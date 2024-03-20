@@ -16,7 +16,7 @@ namespace Assistant
             );
 
             stateMachine.Initialize();
-            stateMachine.Enter<MovingToTargetState>();
+            stateMachine.Enter<MovingToTargetState, TypeInteractablePoints>(TypeInteractablePoints.ProductFactory);
         }
     }
 }

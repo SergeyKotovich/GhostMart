@@ -1,20 +1,26 @@
-using System;
 using Interfaces;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Assistant
 {
     public class ProductStandState : MonoBehaviour, IPayLoadedState<IStorageable>
     {
-        private IWorker _assistant;
         private StateMachine _stateMachine;
+        
+        private IWorker _assistant;
         private IStorageable _stand;
-        private int _repeatCounter;
+        private ISleepable _sleepController;
+
+        private int _countRepeatBeforeSleep;
 
         private void Awake()
         {
             _assistant = GetComponent<IWorker>();
+            _sleepController = GetComponent<ISleepable>();
+        }
+        public void Initialize(StateMachine stateMachine)
+        {
+            _stateMachine = stateMachine;
         }
 
         public void OnEnter(IStorageable payload)
@@ -24,9 +30,7 @@ namespace Assistant
             {
                 if (_stand.IsFull())
                 {
-                    var assistant = (IRecyclable)_assistant;
-                    assistant.SetRecyclingState(true);;
-                    _stateMachine.Enter<MovingToTargetState>();
+                    _stateMachine.Enter<MovingToTargetState,TypeInteractablePoints>(TypeInteractablePoints.Recycling);
                 }
                 else
                 {
@@ -34,21 +38,14 @@ namespace Assistant
                 }
             }
         }
-
-        public void Initialize(StateMachine stateMachine)
-        {
-            _stateMachine = stateMachine;
-        }
-
+        
         private void SetProductOnStand()
         {
             while (!_assistant.Basket.IsEmpty())
             {
                 if (_stand.IsFull())
                 {
-                    var assistant = (IRecyclable)_assistant;
-                    assistant.SetRecyclingState(true);
-                    _stateMachine.Enter<MovingToTargetState>();
+                    _stateMachine.Enter<MovingToTargetState,TypeInteractablePoints>(TypeInteractablePoints.Recycling);
                     return;
                 }
 
@@ -58,18 +55,15 @@ namespace Assistant
 
             if (_assistant.Basket.IsEmpty())
             {
-                var assistant = (ISleepable)_assistant; 
-                if (_repeatCounter>= assistant.MaxRepeatCount)
+                if (_countRepeatBeforeSleep >= _sleepController.MaxRepeatCount)
                 {
-                    assistant.SetSleepingState(true);
-                    _repeatCounter = 0;
-                    _stateMachine.Enter<MovingToTargetState>();
+                    _countRepeatBeforeSleep = 0;
+                    _stateMachine.Enter<MovingToTargetState, TypeInteractablePoints>(TypeInteractablePoints.SleepPoint);
                     return;
                 }
-                _repeatCounter++;
-                _stateMachine.Enter<MovingToTargetState>();
+                _countRepeatBeforeSleep++;
+                _stateMachine.Enter<MovingToTargetState, TypeInteractablePoints>(TypeInteractablePoints.ProductFactory);
             }
         }
-       
     }
 }

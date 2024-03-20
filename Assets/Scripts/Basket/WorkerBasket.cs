@@ -11,7 +11,7 @@ public class WorkerBasket : MonoBehaviour, IWorkerBasket
     public int CurrentCountProduct { get; private set; }
     [field:SerializeField] public int MaxCountProduct { get; private set; }
     
-    private readonly List<Product> _allProducts = new();
+    private List<Product> _allProducts = new();
     public void AddProduct(Product product)
     {
         _allProducts.Add(product);
@@ -53,6 +53,15 @@ public class WorkerBasket : MonoBehaviour, IWorkerBasket
         return null;
     }
 
+    public void GetAllProducts()
+    {
+        for (var i = 0; i < _allProducts.Count; i++)
+        {
+            Destroy(_allProducts[i].gameObject);
+        }
+        _allProducts.Clear();
+        
+    }
     public bool IsFull()
     {
         return CurrentCountProduct == MaxCountProduct;

@@ -7,8 +7,8 @@ using UnityEngine.Serialization;
 public class CollectingProducts : MonoBehaviour
 {
     [SerializeField] private Transform _rootTransform;
-    [SerializeField] private Vector3 _shiftForNextProduct;
-    [SerializeField] private ProductConfig _productConfigfirstType;
+    [SerializeField] private Vector3 _shiftForNextProduct; 
+    [SerializeField] private ProductConfig _productConfigFirstType;
     [SerializeField] private ProductConfig _productConfigSecondType;
 
     private IWorker _character;
@@ -33,7 +33,7 @@ public class CollectingProducts : MonoBehaviour
 
         if (product.Type == TypeProduct.Banana || product.Type == TypeProduct.Corn || product.Type == TypeProduct.Egg)
         {
-            SetPosition(product, currentPosition, _productConfigfirstType);
+            SetPosition(product, currentPosition, _productConfigFirstType);
         }
         else
         {

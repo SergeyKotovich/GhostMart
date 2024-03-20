@@ -3,5 +3,8 @@ public enum TypeInteractablePoints
     CashRegister,
     Exit,
     Stand,
-    StorageForProducts
+    StorageForProducts,
+    Recycling,
+    SleepPoint,
+    ProductFactory
 }
