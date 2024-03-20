@@ -48,9 +48,4 @@ public class SpawnerBonus : MonoBehaviour
     {
         Spawn();
     }
-
-    private void OnDestroy()
-    {
-        _currentBonus.BonusFlewToExit -= StartSpawning;
-    }
 }

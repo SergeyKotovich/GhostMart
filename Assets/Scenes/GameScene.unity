@@ -32003,6 +32003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _badCustomer: {fileID: 353131725}
+  _orderViewSpawner: {fileID: 380523001}
   _minSpawnTime: 1000
   _maxSpawnTime: 5000
 --- !u!4 &1536662861

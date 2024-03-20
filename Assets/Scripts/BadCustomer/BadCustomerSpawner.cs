@@ -11,6 +11,7 @@ namespace BadCustomer
     public class BadCustomerSpawner : MonoBehaviour
     {
         [SerializeField] private BadCustomer _badCustomer;
+        [SerializeField] private OrderViewSpawner _orderViewSpawner;
         [SerializeField] private int _minSpawnTime;
         [SerializeField] private int _maxSpawnTime;
         
@@ -24,6 +25,7 @@ namespace BadCustomer
         public void Initialize()
         {
             Spawn();
+            _orderViewSpawner.Spawn(_badCustomer.transform);
         }
         private void OnCameToExit(CameToExitEvent cameToExitEvent)
         {
