@@ -34,7 +34,7 @@ namespace Customer
             foreach (var stand in path)
             {
                 var count = Random.Range(1, 5);
-                var stopPoint = new CurrentOrder(stand.PointForCustomers.position, stand, count);
+                var stopPoint = new CurrentOrder(stand, count);
                 OrdersList.Add(stopPoint);
             }
             

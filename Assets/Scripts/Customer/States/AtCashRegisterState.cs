@@ -39,7 +39,7 @@ namespace Customer
         {
             for (int i = 0; i < _customer.OrdersList.Count; i++)
             {
-                if (_customer.OrdersList[i].Target.TypeInteractablePoint == TypeInteractablePoints.CashRegister)
+                if (_customer.OrdersList[i].Target.Type == InteractableTypes.CashRegister)
                 {
                     _cashRegister = (CashRegister)_customer.OrdersList[i].Target;
                 }

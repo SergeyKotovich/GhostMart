@@ -2,6 +2,7 @@
 using System;
 using Customer;
 using Events;
+using SimpleEventBus.Disposables;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,10 +12,12 @@ public class OrderView : MonoBehaviour
     [SerializeField] private Image _productIcon;
     [SerializeField] private TextMeshProUGUI _productCount;
     private Transform _characterTransform;
+    private readonly CompositeDisposable _subscriptions = new();
 
     private void Awake()
     {
-        EventStreams.Global.Subscribe<OrderUpdatedEvent>(OnOrderUpdated);
+        _subscriptions.Add(EventStreams.Global.Subscribe<OrderUpdatedEvent>(OnOrderUpdated));
+        _subscriptions.Add(EventStreams.Global.Subscribe<CharacterDestroyedEvent>(OnCharacterDestroyed));
     }
 
     public void Initialize(Transform transform)
@@ -24,18 +27,15 @@ public class OrderView : MonoBehaviour
 
     private void OnOrderUpdated(OrderUpdatedEvent orderUpdatedEvent)
     {
-        if (orderUpdatedEvent.Transform != _characterTransform)return;
+        if (orderUpdatedEvent.Transform != _characterTransform) return;
         var listItem = orderUpdatedEvent.CurrentOrder;
         
-        switch (listItem.Target.TypeInteractablePoint)
+        switch (listItem.Target.Type)
         {
-            case TypeInteractablePoints.CashRegister:
-                UpdateOrderView(listItem.Target.StandIcon);
+            case InteractableTypes.CashRegister or InteractableTypes.Exit:
+                UpdateOrderView(listItem.Target.Icon);
                 break;
-            case TypeInteractablePoints.Exit:
-                UpdateOrderView(listItem.Target.StandIcon);
-                break;
-            case TypeInteractablePoints.Stand:
+            case InteractableTypes.Stand:
                 UpdateOrderView(listItem);
                 break;
             default:
@@ -45,7 +45,7 @@ public class OrderView : MonoBehaviour
 
     private void UpdateOrderView(IOrder currentOrder)
     {
-        _productIcon.sprite = currentOrder.Target.StandIcon;
+        _productIcon.sprite = currentOrder.Target.Icon;
         _productCount.text = currentOrder.CurrentCount + "/" + currentOrder.MaxCount;
     }
     private void UpdateOrderView(Sprite icon)
@@ -54,9 +54,19 @@ public class OrderView : MonoBehaviour
         _productIcon.sprite = icon;
     }
     
-    public void UpdateOrderView(Sprite icon, int productsCount, int maxProductsCount)
+    private void UpdateOrderView(Sprite icon, int productsCount, int maxProductsCount)
     {
         _productCount.text = productsCount + "/" + maxProductsCount;
         _productIcon.sprite = icon;
+    }
+    private void OnCharacterDestroyed(CharacterDestroyedEvent characterDestroyedEvent)
+    {
+        if (characterDestroyedEvent.Transform != _characterTransform) return;
+        
+        Destroy(gameObject);
+    }
+    private void OnDestroy()
+    {
+        _subscriptions.Dispose();
     }
 }

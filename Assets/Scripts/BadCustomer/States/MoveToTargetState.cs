@@ -28,6 +28,7 @@ namespace BadCustomer
         }
         public void OnEnter()
         {
+            _isActive = true;
             _currentPoint = _badCustomer.Path[_currentPathIndex];
             MoveToTarget(_currentPoint.PointForCustomers);
         }
@@ -35,19 +36,10 @@ namespace BadCustomer
         private void MoveToTarget(Transform destinationTransform)
         {
             _badCustomer.SetDestination(destinationTransform.position);
-            _isActive = true;
         }
-
-        private void EnterDropProductState()
-        {
-            var currentStand = (IStand)_currentPoint;
-            _stateMachine.Enter<DropProductState, IStand>(currentStand);
-            _isActive = false;
-        }
-
         private void OnCameToTarget()
         {
-            if (_currentPoint.TypeInteractablePoint == TypeInteractablePoints.Exit)
+            if (_currentPoint.Type == InteractableTypes.Exit)
             {
                 _currentPathIndex = 0;
                 _isActive = false;
@@ -55,12 +47,18 @@ namespace BadCustomer
                 return;
             }
 
-            if (_currentPoint.TypeInteractablePoint == TypeInteractablePoints.Stand)
+            if (_currentPoint.Type == InteractableTypes.Stand)
             {
                 _currentPathIndex++;
                 _isActive = false;
                 EnterDropProductState();
             }
+        }
+        private void EnterDropProductState()
+        {
+            var currentStand = (IStand)_currentPoint;
+            _stateMachine.Enter<DropProductState, IStand>(currentStand);
+            _isActive = false;
         }
     }
 }

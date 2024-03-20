@@ -1,27 +1,30 @@
 using System;
-using System.Collections.Generic;
+using Customer;
 using UnityEngine;
 using DG.Tweening;
+using Events;
+using Interfaces;
 using SparrowBonus;
 
 public class Bonus : MonoBehaviour
 {
     public event Action BonusFlewToTarget;
     [field: SerializeField] public BonusMovement BonusMovement { get; private set; }
-    [SerializeField] private GameObject _gameObjectPrefab;
+    [SerializeField] private GameObject _moneyPrefab;
     [SerializeField] private Collider _collider;
     [SerializeField] private SparrowBonusConfig _sparrowBonusConfig;
-
-    private OrderView _orderView;
-    private int _productCounter;
+    
+    private IInteractable _landingPoint;
+    private CurrentOrder _currentOrder;
     private bool _gotEnoughProducts;
-
-    public void Initialize(OrderView orderView)
+    
+    public void Initialize(IInteractable landingPoint)
     {
-        _orderView = orderView;
-        _orderView.UpdateOrderView
-            (_sparrowBonusConfig.TargetProductIcon, _productCounter, _sparrowBonusConfig.MaxProductsCount);
+        _landingPoint = landingPoint;
+        _currentOrder = new CurrentOrder(_landingPoint, 2);
+        EventStreams.Global.Publish(new OrderUpdatedEvent(_currentOrder, transform));
     }
+
     public void GetBonus(Product product)
     {
         if (_gotEnoughProducts)
@@ -36,32 +39,36 @@ public class Bonus : MonoBehaviour
             product.transform.DOScale(new Vector3(0, 0, 0), 0.5f);
 
             Destroy(product, 2f);
-            _productCounter++;
-            _orderView.UpdateOrderView
-                (_sparrowBonusConfig.TargetProductIcon, _productCounter, _sparrowBonusConfig.MaxProductsCount);        }
+            
+            _currentOrder.OnGotProduct();
+            EventStreams.Global.Publish(new OrderUpdatedEvent(_currentOrder, transform));
+        }
 
-        if (_productCounter >= 2)
+        if (_currentOrder.CurrentCount >= _currentOrder.MaxCount)
         {
             SwitcherStateTrigger(false);
             _gotEnoughProducts = true;
             
-            var prefabRotation = _gameObjectPrefab.transform.rotation;
+            var prefabRotation = _moneyPrefab.transform.rotation;
 
             var shift = 0;
             for (int i = 0; i < _sparrowBonusConfig.MaxMoneyReword; i++)
             {
-                var bonus = Instantiate(_gameObjectPrefab, transform.position, prefabRotation);
+                var bonus = Instantiate(_moneyPrefab, transform.position, prefabRotation);
 
-                bonus.transform.DOLocalMove(new Vector3(-1+shift, 0, -50-shift), 0.5f);
+                var x = bonus.transform.position.x;
+                var z = bonus.transform.position.z;
+                bonus.transform.DOLocalMove(new Vector3(x+shift, 0, z-shift), 0.5f);
                 bonus.transform.DOScale(new Vector3(10, 10, 10), 0.5f);
                 
                 shift++;
             }
             
+            EventStreams.Global.Publish(new CharacterDestroyedEvent(transform));
             BonusMovement.MoveToTarget(new Vector3(-4.26000023f, 22.3799992f, -110.699997f));
             BonusFlewToTarget?.Invoke();
-            Destroy(gameObject, 16);
-            _productCounter = 0;
+            Destroy(gameObject, 21);
+            _currentOrder.Reset();
         }
     }
 

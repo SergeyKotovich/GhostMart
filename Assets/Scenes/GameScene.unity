@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b893338d4f463d8436680a08ddd668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeInteractablePoints: 0
+  interactableTypes: 0
 --- !u!114 &4570828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1578,7 +1578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &52967032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1591,11 +1591,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec0507a25109874fb9657e4b313d460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectToSpawn: {fileID: 0}
-  _targetPosition: {x: 0, y: 0, z: 0}
-  _minSpawnTime: 0
-  _maxSpawnTime: 0
-  orderViewSpawner: {fileID: 0}
+  _bonusPrefab: {fileID: 4751035211348280327, guid: ad4137f595ec8e2449cacca9df7d3735, type: 3}
+  _minSpawnTime: 1
+  _maxSpawnTime: 1
+  orderViewSpawner: {fileID: 380523001}
+  _sparrowLandingPoint: {fileID: 264970415}
 --- !u!4 &52967033
 Transform:
   m_ObjectHideFlags: 0
@@ -2222,7 +2222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b893338d4f463d8436680a08ddd668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeInteractablePoints: 0
+  interactableTypes: 3
 --- !u!114 &87340869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2235,10 +2235,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ccfe88c5124fb798763f8f74c6727f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StandIcon>k__BackingField: {fileID: 21300000, guid: 4770747f0226144d6acea163430d00c4, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 4770747f0226144d6acea163430d00c4, type: 3}
   <PointForCustomers>k__BackingField: {fileID: 844525493}
   <TypeProduct>k__BackingField: 3
-  <TypeInteractablePoint>k__BackingField: 2
+  <Type>k__BackingField: 2
   _grid: {fileID: 87340867}
 --- !u!65 &87340870
 BoxCollider:
@@ -5774,6 +5774,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4749940127516715229, guid: 748ca274b89873247873cee26d353629, type: 3}
   m_PrefabInstance: {fileID: 259390229}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &264970413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 264970414}
+  - component: {fileID: 264970415}
+  m_Layer: 0
+  m_Name: SparrowLandingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &264970414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264970413}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.4, y: 7.187, z: -45.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 449614538}
+  m_Father: {fileID: 420015164}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &264970415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264970413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f1fddd32d3940d7b85d698180eb7a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: 72d3440469d5f41c7978974f46e41b2a, type: 3}
+  <Type>k__BackingField: 2
+  <PointForCustomers>k__BackingField: {fileID: 264970414}
 --- !u!1 &267788526
 GameObject:
   m_ObjectHideFlags: 0
@@ -7190,7 +7238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5690c5fd7cf6f4ca27fab6225b4d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <_collider>k__BackingField: {fileID: 353131727}
   _movementController: {fileID: 353131734}
   _pathCreator: {fileID: 353131736}
 --- !u!195 &353131726 stripped
@@ -7198,29 +7245,11 @@ NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: -5188951159229671611, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
   m_PrefabInstance: {fileID: 1039292049}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &353131727 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 25472819831621130, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
-  m_PrefabInstance: {fileID: 1039292049}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &353131728 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7107108863412213764, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
   m_PrefabInstance: {fileID: 1039292049}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &353131730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353131714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb69a40225acc7e4898174948e116226, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _badCustomer: {fileID: 353131725}
 --- !u!114 &353131731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7233,7 +7262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91907915f46b024e8dc78ce961a0ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _badCustomer: {fileID: 353131725}
 --- !u!114 &353131732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7247,7 +7275,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 353131728}
-  _badCustomer: {fileID: 353131725}
 --- !u!114 &353131734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8039,6 +8066,7 @@ Transform:
   - {fileID: 1678612185}
   - {fileID: 278823072}
   - {fileID: 731922224}
+  - {fileID: 264970414}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &421399250
@@ -8546,12 +8574,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 449614537}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: -51}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.9561539, y: -0.10018253, z: -1.9704895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 264970414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &450916065
 GameObject:
@@ -12510,10 +12538,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86191fde91ab4368b6ef3b76af7a2dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StandIcon>k__BackingField: {fileID: 21300000, guid: 72d3440469d5f41c7978974f46e41b2a, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 72d3440469d5f41c7978974f46e41b2a, type: 3}
   <PointForCustomers>k__BackingField: {fileID: 1905349333}
   <TypeProduct>k__BackingField: 1
-  <TypeInteractablePoint>k__BackingField: 2
+  <Type>k__BackingField: 2
   _grid: {fileID: 838981199}
 --- !u!65 &661071624
 BoxCollider:
@@ -12548,7 +12576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b893338d4f463d8436680a08ddd668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeInteractablePoints: 0
+  interactableTypes: 3
 --- !u!1 &662765643
 GameObject:
   m_ObjectHideFlags: 0
@@ -16303,8 +16331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b7e85ee009ba4d469228f89e43c195a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StandIcon>k__BackingField: {fileID: 21300000, guid: 2018f7e69f2c0489fb0a7f701c78e9c8, type: 3}
-  <TypeInteractablePoint>k__BackingField: 1
+  <Icon>k__BackingField: {fileID: 21300000, guid: 2018f7e69f2c0489fb0a7f701c78e9c8, type: 3}
+  <Type>k__BackingField: 1
   <PointForCustomers>k__BackingField: {fileID: 811757662}
 --- !u!1 &814900307
 GameObject:
@@ -21575,9 +21603,6 @@ PrefabInstance:
       addedObject: {fileID: 353131731}
     - targetCorrespondingSourceObject: {fileID: 7107108863402732460, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 353131730}
-    - targetCorrespondingSourceObject: {fileID: 7107108863402732460, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 353131734}
     - targetCorrespondingSourceObject: {fileID: 7107108863402732460, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
       insertIndex: -1
@@ -25033,7 +25058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b893338d4f463d8436680a08ddd668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeInteractablePoints: 0
+  interactableTypes: 0
 --- !u!114 &1185369854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37477,7 +37502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b893338d4f463d8436680a08ddd668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeInteractablePoints: 0
+  interactableTypes: 3
 --- !u!114 &1875658328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37490,10 +37515,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ccfe88c5124fb798763f8f74c6727f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StandIcon>k__BackingField: {fileID: 21300000, guid: ad1b89d3cad4149aa9f9fe84a6e3ef25, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: ad1b89d3cad4149aa9f9fe84a6e3ef25, type: 3}
   <PointForCustomers>k__BackingField: {fileID: 844525493}
   <TypeProduct>k__BackingField: 4
-  <TypeInteractablePoint>k__BackingField: 2
+  <Type>k__BackingField: 2
   _grid: {fileID: 1875658329}
 --- !u!156049354 &1875658329
 Grid:
@@ -39037,10 +39062,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86191fde91ab4368b6ef3b76af7a2dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StandIcon>k__BackingField: {fileID: 21300000, guid: 12e9c8f6c7db64e9a8920229f1267912, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 12e9c8f6c7db64e9a8920229f1267912, type: 3}
   <PointForCustomers>k__BackingField: {fileID: 1526526784}
   <TypeProduct>k__BackingField: 0
-  <TypeInteractablePoint>k__BackingField: 2
+  <Type>k__BackingField: 2
   _grid: {fileID: 1457058251}
 --- !u!114 &1936917547
 MonoBehaviour:
@@ -39054,7 +39079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b893338d4f463d8436680a08ddd668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeInteractablePoints: 0
+  interactableTypes: 3
 --- !u!1 &1944864263
 GameObject:
   m_ObjectHideFlags: 0
@@ -40899,7 +40924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b893338d4f463d8436680a08ddd668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeInteractablePoints: 0
+  interactableTypes: 0
 --- !u!65 &2007650032
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43765,10 +43790,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86191fde91ab4368b6ef3b76af7a2dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StandIcon>k__BackingField: {fileID: 21300000, guid: d6f07d1f111f44110a1f1e189519cb9c, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: d6f07d1f111f44110a1f1e189519cb9c, type: 3}
   <PointForCustomers>k__BackingField: {fileID: 112227445}
   <TypeProduct>k__BackingField: 2
-  <TypeInteractablePoint>k__BackingField: 2
+  <Type>k__BackingField: 2
   _grid: {fileID: 1973572068}
 --- !u!65 &1500612647482931311
 BoxCollider:
@@ -43803,7 +43828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b893338d4f463d8436680a08ddd668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeInteractablePoints: 0
+  interactableTypes: 3
 --- !u!1001 &3492013169303767135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43880,6 +43905,10 @@ PrefabInstance:
       propertyPath: _moneySpawner
       value: 
       objectReference: {fileID: 1036693577}
+    - target: {fileID: 7472986432231082608, guid: 531fe91dea5d54de2bfcc0f089e3af38, type: 3}
+      propertyPath: <Icon>k__BackingField
+      value: 
+      objectReference: {fileID: 21300000, guid: 7d85e2c4a7be64bbba722a62ba265722, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -44257,7 +44286,6 @@ SceneRoots:
   - {fileID: 182413620}
   - {fileID: 420015164}
   - {fileID: 156875372}
-  - {fileID: 449614538}
   - {fileID: 716647741}
   - {fileID: 811757662}
   - {fileID: 314693690}

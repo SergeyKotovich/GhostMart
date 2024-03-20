@@ -5,16 +5,14 @@ namespace Customer
 {
     public class CurrentOrder : IOrder
     {
-        public Vector3 Position { get; }
         public IInteractable Target { get; }
         public Vector3 TargetPosition => Target.PointForCustomers.position;
-        public TypeInteractablePoints TargetType => Target.TypeInteractablePoint;
+        public InteractableTypes TargetType => Target.Type;
         public int MaxCount { get; }
         public int CurrentCount { get; private set; }
 
-        public CurrentOrder(Vector3 position, IInteractable target, int count)
+        public CurrentOrder(IInteractable target, int count)
         {
-            Position = position;
             Target = target;
             MaxCount = count;
         }
@@ -22,6 +20,11 @@ namespace Customer
         public void OnGotProduct()
         {
             CurrentCount++;
+        }
+
+        public void Reset()
+        {
+            CurrentCount = 0;
         }
 
     }

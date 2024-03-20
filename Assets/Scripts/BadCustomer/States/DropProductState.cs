@@ -9,13 +9,13 @@ namespace BadCustomer
         [SerializeField] private Animator _animator;
         private StateMachine _stateMachine;
         private IStand _stand;
-        private bool _trigger;
+        private bool _didPlayerComeUp;
         private bool _isActive;
 
         public void OnEnter(IStand stand)
         {
             _stand = stand;
-            _trigger = false;
+            _didPlayerComeUp = false;
             _isActive = true;
             DropProduct();
         }
@@ -27,7 +27,7 @@ namespace BadCustomer
         
         private async UniTask DropProduct()
         {
-            while (!_trigger)
+            while (!_didPlayerComeUp)
             {
                 var product = _stand.GetAvailableProduct();
                 if (product != null)
@@ -49,7 +49,7 @@ namespace BadCustomer
         {
             if (other.CompareTag(GlobalConstants.PLAYER_TAG) && _isActive)
             {
-                _trigger = true;
+                _didPlayerComeUp = true;
                 _isActive = false;
                 _stateMachine.Enter<MoveToTargetState>();
             }

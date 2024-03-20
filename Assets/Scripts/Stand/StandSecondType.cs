@@ -7,11 +7,11 @@ using UnityEngine;
 
 public class StandSecondType : MonoBehaviour, IStand, IInteractable , IStorageable
 {
-    [field:SerializeField] public Sprite StandIcon {get; private set; }
+    [field:SerializeField] public Sprite Icon {get; private set; }
     [field:SerializeField] public Transform PointForCustomers { get; private set; }
     
     [field:SerializeField] public TypeProduct TypeProduct { get; private set; }
-    [field: SerializeField] public TypeInteractablePoints TypeInteractablePoint { get; private set; }
+    [field: SerializeField] public InteractableTypes Type { get; private set; }
     public List<StandCell> StandCells { get; } = new();
     public bool IsAvailable { get; private set; }
     
