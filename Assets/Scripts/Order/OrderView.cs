@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class OrderView : MonoBehaviour
 {
+    
     [SerializeField] private Image _productIcon;
     [SerializeField] private TextMeshProUGUI _productCount;
     private Transform _characterTransform;
@@ -54,11 +55,6 @@ public class OrderView : MonoBehaviour
         _productIcon.sprite = icon;
     }
     
-    private void UpdateOrderView(Sprite icon, int productsCount, int maxProductsCount)
-    {
-        _productCount.text = productsCount + "/" + maxProductsCount;
-        _productIcon.sprite = icon;
-    }
     private void OnCharacterDestroyed(CharacterDestroyedEvent characterDestroyedEvent)
     {
         if (characterDestroyedEvent.Transform != _characterTransform) return;

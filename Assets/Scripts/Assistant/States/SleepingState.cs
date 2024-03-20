@@ -31,7 +31,7 @@ namespace Assistant
             {
                 _isActive = false;
                 _sleepController.WakeUp();
-                _stateMachine.Enter<MovingToTargetState, TypeInteractablePoints>(TypeInteractablePoints.ProductFactory);
+                _stateMachine.Enter<MovingToTargetState, InteractableTypes>(InteractableTypes.ProductFactory);
             }
         }
     }

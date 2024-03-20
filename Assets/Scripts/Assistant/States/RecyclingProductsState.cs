@@ -26,7 +26,7 @@ namespace Assistant
         
         private void OnProductsAreRecycled(ProductsAreRecycledEvent productsAreRecycledEvent)
         {
-            _stateMachine.Enter<MovingToTargetState, TypeInteractablePoints>(TypeInteractablePoints.ProductFactory);
+            _stateMachine.Enter<MovingToTargetState, InteractableTypes>(InteractableTypes.ProductFactory);
         }
 
         private void OnDestroy()

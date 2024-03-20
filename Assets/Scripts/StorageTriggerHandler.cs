@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 
 public class StorageTriggerHandler : MonoBehaviour
 {
-    [FormerlySerializedAs("_typeInteractablePoints")] [SerializeField] private InteractableTypes interactableTypes;
+    [SerializeField] private InteractableTypes interactableTypes;
     private IStorageable _storageProductsForInteraction;
     private int _delayBetweenAddProducts = 100;
 

@@ -161,8 +161,8 @@ GameObject:
   - component: {fileID: 8415750845901835846}
   - component: {fileID: 6390666756342240140}
   - component: {fileID: 6842398398269071559}
-  - component: {fileID: 4945069259567399831}
   - component: {fileID: 8467487984754502008}
+  - component: {fileID: 2721587834475179726}
   m_Layer: 5
   m_Name: OrderViewPrefab
   m_TagString: Untagged
@@ -230,20 +230,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4945069259567399831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8871403765942455646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e973d47e869948029680a13a625f9eb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _productIcon: {fileID: 1893618097293728757}
-  _productCount: {fileID: 3432256811910897894}
 --- !u!114 &8467487984754502008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,6 +244,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiElement: {fileID: 8415750845901835846}
   _ofset: {x: 0.21, y: 3.5, z: 0}
+--- !u!114 &2721587834475179726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8871403765942455646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e973d47e869948029680a13a625f9eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _productIcon: {fileID: 1893618097293728757}
+  _productCount: {fileID: 3432256811910897894}
 --- !u!1 &9002713493500039641
 GameObject:
   m_ObjectHideFlags: 0

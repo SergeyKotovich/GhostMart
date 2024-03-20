@@ -3,6 +3,7 @@ using UnityEngine.Serialization;
 
 public class OrderViewSpawner : MonoBehaviour
 {
+    
     [SerializeField] private OrderView orderPrefab;
     [SerializeField] private Canvas _canvas;
 

@@ -4,5 +4,8 @@ public enum InteractableTypes
     Exit,
     Stand,
     StorageForProducts,
-    SparrowLandingPoint
+    SparrowLandingPoint,
+    Recycling,
+    SleepPoint,
+    ProductFactory
 }

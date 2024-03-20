@@ -30,7 +30,7 @@ namespace Assistant
             {
                 if (_stand.IsFull())
                 {
-                    _stateMachine.Enter<MovingToTargetState,TypeInteractablePoints>(TypeInteractablePoints.Recycling);
+                    _stateMachine.Enter<MovingToTargetState,InteractableTypes>(InteractableTypes.Recycling);
                 }
                 else
                 {
@@ -45,7 +45,7 @@ namespace Assistant
             {
                 if (_stand.IsFull())
                 {
-                    _stateMachine.Enter<MovingToTargetState,TypeInteractablePoints>(TypeInteractablePoints.Recycling);
+                    _stateMachine.Enter<MovingToTargetState,InteractableTypes>(InteractableTypes.Recycling);
                     return;
                 }
 
@@ -58,11 +58,11 @@ namespace Assistant
                 if (_countRepeatBeforeSleep >= _sleepController.MaxRepeatCount)
                 {
                     _countRepeatBeforeSleep = 0;
-                    _stateMachine.Enter<MovingToTargetState, TypeInteractablePoints>(TypeInteractablePoints.SleepPoint);
+                    _stateMachine.Enter<MovingToTargetState, InteractableTypes>(InteractableTypes.SleepPoint);
                     return;
                 }
                 _countRepeatBeforeSleep++;
-                _stateMachine.Enter<MovingToTargetState, TypeInteractablePoints>(TypeInteractablePoints.ProductFactory);
+                _stateMachine.Enter<MovingToTargetState, InteractableTypes>(InteractableTypes.ProductFactory);
             }
         }
     }

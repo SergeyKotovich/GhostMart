@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Assistant
 {
     
-    public class MovingToTargetState : MonoBehaviour, IPayLoadedState<TypeInteractablePoints>
+    public class MovingToTargetState : MonoBehaviour, IPayLoadedState<InteractableTypes>
     {
         [SerializeField] private List<Transform> _pointPath;
         [SerializeField] private Transform _pointForRecycling;
@@ -18,7 +18,7 @@ namespace Assistant
         private IFactory _productFactory;
         private IStorageable _stand;
         private IMovable _assistant;
-        private TypeInteractablePoints _type;
+        private InteractableTypes _type;
 
         private void Awake()
         {
@@ -29,7 +29,7 @@ namespace Assistant
         {
             _stateMachine = stateMachine;
         }
-        public void OnEnter(TypeInteractablePoints payload)
+        public void OnEnter(InteractableTypes payload)
         {
             _type = payload;
             MoveToPoint();
@@ -47,17 +47,17 @@ namespace Assistant
         {
             switch (_type)
             {
-                case TypeInteractablePoints.Stand:
+                case InteractableTypes.Stand:
                     SetDestination(_pointPath[_currentIndex].position);
                     SetNextPoint();
                     return;
-                case TypeInteractablePoints.Recycling:
+                case InteractableTypes.Recycling:
                     SetDestination(_pointForRecycling.position);
                     return;
-                case TypeInteractablePoints.SleepPoint:
+                case InteractableTypes.SleepPoint:
                     SetDestination(_pointForSleeping.position);
                     return;
-                case TypeInteractablePoints.ProductFactory:
+                case InteractableTypes.ProductFactory:
                     SetDestination(_pointPath[_currentIndex].position);
                     SetNextPoint();
                     break;
@@ -78,16 +78,16 @@ namespace Assistant
         {
             switch (_type)
             {
-                case TypeInteractablePoints.ProductFactory:
+                case InteractableTypes.ProductFactory:
                     _stateMachine.Enter<CollectingProductsState, IFactory>(_productFactory);
                     return;
-                case TypeInteractablePoints.Stand:
+                case InteractableTypes.Stand:
                     _stateMachine.Enter<ProductStandState, IStorageable>(_stand);
                     return;
-                case TypeInteractablePoints.Recycling:
+                case InteractableTypes.Recycling:
                     _stateMachine.Enter<RecyclingProductsState>();
                     return;
-                case TypeInteractablePoints.SleepPoint:
+                case InteractableTypes.SleepPoint:
                     _stateMachine.Enter<SleepingState>();
                     break;
             }

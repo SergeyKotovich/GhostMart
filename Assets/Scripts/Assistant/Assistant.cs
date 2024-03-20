@@ -14,23 +14,23 @@ namespace Assistant
         
         private void Awake()
         {
-            MovementController = GetComponent<MovementController.MovementController>();
-            Basket = GetComponent<IWorkerBasket>();
-            AbilitiesController.Initialize(Basket, this, MovementController.NavMeshAgent);
+           MovementController = GetComponent<MovementController.MovementController>();
+           Basket = GetComponent<IWorkerBasket>();
+           AbilitiesController.Initialize(Basket, this, MovementController.NavMeshAgent);
         }
         private void Start() 
         {
             var stateMachine = new StateMachine
             (
-                GetComponent<SleepingState>(),
                 GetComponent<MovingToTargetState>(),
                 GetComponent<CollectingProductsState>(),
                 GetComponent<ProductStandState>(),
-                GetComponent<RecyclingProductsState>()
+                GetComponent<RecyclingProductsState>(),
+                GetComponent<SleepingState>()
             );
 
             stateMachine.Initialize();
-            stateMachine.Enter<MovingToTargetState, TypeInteractablePoints>(TypeInteractablePoints.ProductFactory);
+            stateMachine.Enter<MovingToTargetState, InteractableTypes>(InteractableTypes.ProductFactory);
         }
         public void PickUpProduct(Product product)
         {

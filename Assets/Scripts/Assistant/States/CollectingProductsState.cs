@@ -40,7 +40,7 @@ namespace Assistant
             if (_assistant.Basket.IsFull())
             {
                 _canPickUp = false;
-                _stateMachine.Enter<MovingToTargetState,TypeInteractablePoints>(TypeInteractablePoints.Stand);
+                _stateMachine.Enter<MovingToTargetState,InteractableTypes>(InteractableTypes.Stand);
                 return;
             }
 

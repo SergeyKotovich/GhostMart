@@ -28,7 +28,7 @@ namespace BadCustomer
         
         private async UniTask DropProduct()
         {
-            while (!_didPlayerComeUp)
+           // while (!_didPlayerComeUp)
             {
                 var product = _stand.GetAvailableProduct();
                 var dropPoint = _stand.GetDropPoint();

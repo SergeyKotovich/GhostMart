@@ -41,7 +41,7 @@ public class StandSecondType : MonoBehaviour, IStand, IInteractable , IStorageab
             {
                 product.transform.DOLocalMove(StandCells[i].CellPositionInWorld, 0.6f);
                 product.transform.SetParent(null);
-                product.transform.DOPunchScale(new Vector3(4, 4, 2), 0.2f);
+               // product.transform.DOPunchScale(new Vector3(4, 4, 2), 0.2f);
 
                 Vector3 rotationEuler = new Vector3(-90, 0, 0);
                 Quaternion rotationQuaternion = Quaternion.Euler(rotationEuler);
