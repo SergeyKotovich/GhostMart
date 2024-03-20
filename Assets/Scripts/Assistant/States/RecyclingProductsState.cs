@@ -8,7 +8,12 @@ namespace Assistant
     {
         private StateMachine _stateMachine;
         private IDisposable _subscription;
-        
+
+        private void Awake()
+        {
+            _subscription = EventStreams.Global.Subscribe<ProductsAreRecycledEvent>(OnProductsAreRecycled);
+        }
+
         public void Initialize(StateMachine stateMachine)
         {
             _stateMachine = stateMachine;
@@ -16,12 +21,16 @@ namespace Assistant
 
         public void OnEnter()
         {
-            _subscription = EventStreams.Global.Subscribe<ProductsAreRecycledEvent>(OnProductsAreRecycled);
+           
         }
         
         private void OnProductsAreRecycled(ProductsAreRecycledEvent productsAreRecycledEvent)
         {
             _stateMachine.Enter<MovingToTargetState, TypeInteractablePoints>(TypeInteractablePoints.ProductFactory);
+        }
+
+        private void OnDestroy()
+        {
             _subscription.Dispose();
         }
     }

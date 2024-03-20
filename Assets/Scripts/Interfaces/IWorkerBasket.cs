@@ -12,7 +12,7 @@ namespace Interfaces
         public bool IsEmpty();
         
         public Product GetProduct();
-        public void GetAllProducts();
+        public List<Product> GetAllProducts();
 
         public bool HasSuitableProduct(TypeProduct typeProduct);
         

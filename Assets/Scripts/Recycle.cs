@@ -6,32 +6,33 @@ using UnityEngine;
 public class Recycle : MonoBehaviour
 {
     private List<GameObject> _listAllProductsInHands;
+    private Vector3 _placeRecycling = new(-0.09f,0.9f,0.12f);
+    private const int _duration = 1;
 
     private void Recycling(List<Product> allProducts)
     {
         foreach (var product in allProducts)
         {
             product.transform.SetParent(transform);
-            product.transform.DOLocalMove(new Vector3(-0.0890000015f,0.921000004f,0.116999999f), 1f);
-            product.transform.DOScale(new Vector3(0, 0, 0), 1f).OnComplete(() =>Destroy(product,1f));
+            product.transform.DOLocalMove(_placeRecycling, _duration);
+            product.transform.DOScale(Vector3.zero, _duration)
+                .OnComplete(() => Destroy(product.gameObject));
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(GlobalConstants.PLAYER_TAG))
+        var worker = other.GetComponent<IWorker>();
+        var allProducts = worker.GetAllProducts();
+        if (allProducts==null)
         {
-            var worker = other.GetComponent<IWorker>();
-            worker.GetAllProducts();
-          //  Recycling(allProducts);
+            return;
         }
-
+        Recycling(allProducts);
+        
         if (other.CompareTag(GlobalConstants.ASSISTANT_TAG))
         {
-          //  var worker = other.GetComponent<IWorker>();
-          //  var allProducts = worker.GetAllProducts();
-          //  Recycling(allProducts);
-          //  EventStreams.Global.Publish(new ProductsAreRecycledEvent());
+            EventStreams.Global.Publish(new ProductsAreRecycledEvent());
         }
     }
 }

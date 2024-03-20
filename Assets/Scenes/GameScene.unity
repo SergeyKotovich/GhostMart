@@ -12513,7 +12513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b893338d4f463d8436680a08ddd668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeInteractablePoints: 0
+  _typeInteractablePoints: 2
 --- !u!1 &662765643
 GameObject:
   m_ObjectHideFlags: 0
@@ -13913,7 +13913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rootTransform: {fileID: 832555846}
   _shiftForNextProduct: {x: 0, y: 0.001, z: 0}
-  _productConfigFirstType: {fileID: 0}
+  _productConfigFirstType: {fileID: 11400000, guid: c5a75f418e60f3345afbfe7f8cadba61, type: 2}
   _productConfigSecondType: {fileID: 11400000, guid: b05a056b59b24f1418340e555bd3d572, type: 2}
 --- !u!4 &725233022 stripped
 Transform:

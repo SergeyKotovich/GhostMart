@@ -53,14 +53,22 @@ public class WorkerBasket : MonoBehaviour, IWorkerBasket
         return null;
     }
 
-    public void GetAllProducts()
+    public List<Product> GetAllProducts()
     {
+        if (_allProducts.Count == 0)
+        {
+            return null;
+        }
+
+        List<Product> allProducts = new List<Product>();
         for (var i = 0; i < _allProducts.Count; i++)
         {
-            Destroy(_allProducts[i].gameObject);
+            allProducts.Add(_allProducts[i]);
         }
-        _allProducts.Clear();
+        CurrentCountProduct = 0;
+       _allProducts.Clear();
         
+        return allProducts;
     }
     public bool IsFull()
     {

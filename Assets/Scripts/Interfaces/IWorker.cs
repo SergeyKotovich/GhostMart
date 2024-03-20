@@ -15,6 +15,6 @@ public interface IWorker
     public  void PickUpProduct(Product product);
 
     public Product GetProduct();
-    public void GetAllProducts();
+    public List<Product> GetAllProducts();
     
 }
