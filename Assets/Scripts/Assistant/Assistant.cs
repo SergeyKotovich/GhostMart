@@ -18,6 +18,20 @@ namespace Assistant
             Basket = GetComponent<IWorkerBasket>();
             AbilitiesController.Initialize(Basket, this, MovementController.NavMeshAgent);
         }
+        private void Start() 
+        {
+            var stateMachine = new StateMachine
+            (
+                GetComponent<SleepingState>(),
+                GetComponent<MovingToTargetState>(),
+                GetComponent<CollectingProductsState>(),
+                GetComponent<ProductStandState>(),
+                GetComponent<RecyclingProductsState>()
+            );
+
+            stateMachine.Initialize();
+            stateMachine.Enter<MovingToTargetState, TypeInteractablePoints>(TypeInteractablePoints.ProductFactory);
+        }
         public void PickUpProduct(Product product)
         {
             Basket.AddProduct(product);
