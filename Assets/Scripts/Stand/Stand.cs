@@ -14,6 +14,8 @@ public class Stand : MonoBehaviour, IInteractable, IStand, IStorageable
     public List<StandCell> StandCells { get; } = new();
     
     [SerializeField] private Grid _grid;
+    
+    [SerializeField] private Transform _dropPoint;
 
     private int _width = 4;
     private int _height = 5;
@@ -110,6 +112,11 @@ public class Stand : MonoBehaviour, IInteractable, IStand, IStorageable
         }
         
         return true;
+    }
+    
+    public Transform GetDropPoint()
+    {
+        return _dropPoint;
     }
     
 }

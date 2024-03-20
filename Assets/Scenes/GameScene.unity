@@ -1591,11 +1591,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec0507a25109874fb9657e4b313d460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bonusPrefab: {fileID: 4751035211348280327, guid: ad4137f595ec8e2449cacca9df7d3735, type: 3}
-  _minSpawnTime: 30000
-  _maxSpawnTime: 120000
-  orderViewSpawner: {fileID: 380523001}
-  _sparrowLandingPoint: {fileID: 264970415}
+  _objectToSpawn: {fileID: 0}
+  _targetPosition: {x: 0, y: 0, z: 0}
+  _minSpawnTime: 0
+  _maxSpawnTime: 0
+  orderViewSpawner: {fileID: 0}
 --- !u!4 &52967033
 Transform:
   m_ObjectHideFlags: 0
@@ -1944,6 +1944,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58695981}
   m_CullTransparentMesh: 1
+--- !u!1 &59856146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 59856147}
+  m_Layer: 0
+  m_Name: DropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &59856147
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59856146}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.70710677, y: -0, z: 0.000000014901161, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0.2665, z: -0.1054}
+  m_LocalScale: {x: 0.112097345, y: 0.112097345, z: 0.112097345}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1500612647482931307}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &63151806
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,6 +2271,7 @@ MonoBehaviour:
   <TypeProduct>k__BackingField: 3
   <Type>k__BackingField: 2
   _grid: {fileID: 87340867}
+  _dropPoint: {fileID: 145628628}
 --- !u!65 &87340870
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2906,6 +2938,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4433388430019206, guid: 4f9d36e206efd9c408c4487f1d8c65af, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2119518823}
+    - targetCorrespondingSourceObject: {fileID: 4433388430019206, guid: 4f9d36e206efd9c408c4487f1d8c65af, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2144820613}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f9d36e206efd9c408c4487f1d8c65af, type: 3}
 --- !u!1 &110739544
@@ -3189,6 +3224,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5979429957347870126, guid: 531fe91dea5d54de2bfcc0f089e3af38, type: 3}
   m_PrefabInstance: {fileID: 3492013169303767135}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &133138479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 133138480}
+  m_Layer: 0
+  m_Name: DropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &133138480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133138479}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.97810954, z: -0, w: -0.20809081}
+  m_LocalPosition: {x: -2, y: 0, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 661071622}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &135721313
 GameObject:
   m_ObjectHideFlags: 0
@@ -3338,6 +3404,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d107f70bd4164a9c9f305cecb14e06ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &145628627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 145628628}
+  m_Layer: 0
+  m_Name: DropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &145628628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145628627}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.01, y: 0, z: -4.67}
+  m_LocalScale: {x: 2, y: 1.4482259, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 731922224}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &156875369
 GameObject:
   m_ObjectHideFlags: 0
@@ -6654,6 +6751,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: e5c7ae3fce8c6bc4a98e6aa39ad2fd1d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 87340865}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: e5c7ae3fce8c6bc4a98e6aa39ad2fd1d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 145628628}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: e5c7ae3fce8c6bc4a98e6aa39ad2fd1d, type: 3}
       insertIndex: -1
@@ -7238,8 +7338,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5690c5fd7cf6f4ca27fab6225b4d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementController: {fileID: 353131734}
-  _pathCreator: {fileID: 353131736}
+  _stands:
+  - {fileID: 1936917546}
+  _standsSecondType: []
+  orderViewSpawner: {fileID: 380523001}
+  <_collider>k__BackingField: {fileID: 353131727}
 --- !u!195 &353131726 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: -5188951159229671611, guid: 1020ad76a96f13f42bde2ba9769b6056, type: 3}
@@ -7301,10 +7404,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4efb43eab73f46df806c6bdec2c6fff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stands:
-  - {fileID: 1936917546}
-  _secondTypesStands: []
-  _exitPoint: {fileID: 811757663}
+  _animator: {fileID: 353131728}
+  _badCustomer: {fileID: 353131725}
 --- !u!1 &358068481
 GameObject:
   m_ObjectHideFlags: 0
@@ -12543,6 +12644,7 @@ MonoBehaviour:
   <TypeProduct>k__BackingField: 1
   <Type>k__BackingField: 2
   _grid: {fileID: 838981199}
+  _dropPoint: {fileID: 133138480}
 --- !u!65 &661071624
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19342,6 +19444,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2068003578405711345, guid: e856617a2d4344d3b88f02a1a3c0b6d4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2080827399}
+    - targetCorrespondingSourceObject: {fileID: 2068003578405711345, guid: e856617a2d4344d3b88f02a1a3c0b6d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 133138480}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1727366717470652235, guid: e856617a2d4344d3b88f02a1a3c0b6d4, type: 3}
       insertIndex: -1
@@ -22226,6 +22331,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058734083}
   m_CullTransparentMesh: 1
+--- !u!1 &1060553812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1060553813}
+  m_Layer: 0
+  m_Name: DropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1060553813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060553812}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.98779655, z: -0, w: 0.15574974}
+  m_LocalPosition: {x: -2, y: 0, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1936917543}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1062680714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34453,8 +34589,8 @@ Transform:
   m_GameObject: {fileID: 1678612184}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.8189, y: 7.08, z: -54.4646}
-  m_LocalScale: {x: 15.974203, y: 1, z: 16.017548}
+  m_LocalPosition: {x: 9.482, y: 7.08, z: -30.2896}
+  m_LocalScale: {x: 17.045689, y: 1, z: 18.319616}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 420015164}
@@ -37521,6 +37657,7 @@ MonoBehaviour:
   <TypeProduct>k__BackingField: 4
   <Type>k__BackingField: 2
   _grid: {fileID: 1875658329}
+  _dropPoint: {fileID: 2144820613}
 --- !u!156049354 &1875658329
 Grid:
   m_ObjectHideFlags: 0
@@ -39009,6 +39146,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2068003578405711345, guid: e856617a2d4344d3b88f02a1a3c0b6d4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1613090081}
+    - targetCorrespondingSourceObject: {fileID: 2068003578405711345, guid: e856617a2d4344d3b88f02a1a3c0b6d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1060553813}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1727366717470652235, guid: e856617a2d4344d3b88f02a1a3c0b6d4, type: 3}
       insertIndex: -1
@@ -39068,6 +39208,7 @@ MonoBehaviour:
   <TypeProduct>k__BackingField: 0
   <Type>k__BackingField: 2
   _grid: {fileID: 1457058251}
+  _dropPoint: {fileID: 1060553813}
 --- !u!114 &1936917547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40086,7 +40227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1970895396
 Transform:
   m_ObjectHideFlags: 0
@@ -43546,6 +43687,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _islandControllerConfig: {fileID: 11400000, guid: 5b4a39d77370546678c593ebb9343c33, type: 2}
+--- !u!1 &2144820612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2144820613}
+  m_Layer: 0
+  m_Name: DropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2144820613
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144820612}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.08, y: 0, z: -1.415}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 77587602}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2145502688 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3578783842441146562, guid: 29c0775bda4f15a4c972a05239145e8a, type: 3}
@@ -43763,6 +43935,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 486375293270484444, guid: f2540c3a94e16fb4daf3080590f2778f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 19114921}
+    - targetCorrespondingSourceObject: {fileID: 486375293270484444, guid: f2540c3a94e16fb4daf3080590f2778f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 59856147}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6391524155424447645, guid: f2540c3a94e16fb4daf3080590f2778f, type: 3}
       insertIndex: -1
@@ -43796,6 +43971,7 @@ MonoBehaviour:
   <TypeProduct>k__BackingField: 2
   <Type>k__BackingField: 2
   _grid: {fileID: 1973572068}
+  _dropPoint: {fileID: 59856147}
 --- !u!65 &1500612647482931311
 BoxCollider:
   m_ObjectHideFlags: 0
