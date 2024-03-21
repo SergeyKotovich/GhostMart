@@ -110,7 +110,6 @@ public class Stand : MonoBehaviour, IInteractable, IStand, IStorageable
                 return false;
             }
         }
-        
         return true;
     }
     

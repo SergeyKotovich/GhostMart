@@ -30,9 +30,13 @@ namespace BadCustomer
         {
             while (!_didPlayerComeUp)
             {
+                if (_stand.IsEmpty())
+                {
+                    break;
+                }
                 var product = _stand.GetAvailableProduct();
                 var dropPoint = _stand.GetDropPoint();
-                // Генерируем случайную позицию в пределах радиуса
+                
                 Vector2 randomOffset = Random.insideUnitCircle * _moveRadius;
                 Vector3 randomPosition = new Vector3(randomOffset.x, 0.1f, randomOffset.y) + dropPoint.transform.position;
                 
