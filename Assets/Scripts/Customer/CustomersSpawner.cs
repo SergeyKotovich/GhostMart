@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Events;
 using Order;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -13,7 +14,6 @@ namespace Customer
         [SerializeField] private Customer[] _customersPrefabs;
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private PathCreator pathCreator;
-        [SerializeField] private OrderViewSpawner orderViewSpawner;
         private List<Customer> _currentCustomers = new();
         
         public void Spawn()
@@ -22,7 +22,8 @@ namespace Customer
             var customer = Instantiate(_customersPrefabs[randomIndex]);
 
             var path = pathCreator.GetRandomPath();
-            orderViewSpawner.Spawn(customer.transform);
+            EventStreams.Global.Publish(new CharacterWasSpawnedEvent(customer.transform));
+
                 
             customer.Initialize(path);
                 

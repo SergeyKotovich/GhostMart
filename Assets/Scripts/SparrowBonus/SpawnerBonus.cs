@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Cysharp.Threading.Tasks;
+using Events;
 using Order;
 using SparrowBonus;
 using UnityEngine;
@@ -11,7 +12,6 @@ public class SpawnerBonus : MonoBehaviour
     [SerializeField] private Bonus _bonusPrefab;
     [SerializeField] private int _minSpawnTime;
     [SerializeField] private int _maxSpawnTime;
-    [SerializeField] private OrderViewSpawner orderViewSpawner;
     [SerializeField] private SparrowLandingPoint _sparrowLandingPoint;
 
     private Bonus _currentBonus;
@@ -33,7 +33,8 @@ public class SpawnerBonus : MonoBehaviour
 
     private void OnMovementCompleted()
     {
-        orderViewSpawner.Spawn(_currentBonus.transform);
+        EventStreams.Global.Publish(new CharacterWasSpawnedEvent(_currentBonus.transform));
+
         _currentBonus.SetTriggerState(true);
         _currentBonus.OnOrderUpdated();
     }

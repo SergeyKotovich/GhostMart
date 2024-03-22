@@ -1,5 +1,6 @@
+using System;
+using Events;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Order
 {
@@ -8,14 +9,26 @@ namespace Order
 
         [SerializeField] private OrderView orderPrefab;
         [SerializeField] private Canvas _canvas;
+        private IDisposable _subscription;
 
-        public void Spawn(Transform characterTransform)
+        private void Awake()
         {
+            _subscription = EventStreams.Global.Subscribe<CharacterWasSpawnedEvent>(Spawn);
+        }
+
+        private void Spawn(CharacterWasSpawnedEvent characterWasSpawnedEvent)
+        {
+            var characterTransform = characterWasSpawnedEvent.Transform;
             var productBarView = Instantiate(orderPrefab, _canvas.transform);
 
             var uIElementPositionController = productBarView.GetComponent<UIElementPositionController>();
             uIElementPositionController.Initialize(characterTransform);
             productBarView.Initialize(characterTransform);
+        }
+
+        private void OnDestroy()
+        {
+            _subscription?.Dispose();
         }
     }
 }
