@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using Events;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -25,5 +26,6 @@ public class Product : MonoBehaviour
    public void OnProductWasDropped()
    {
       _collider.enabled = true;
+      transform.localScale = new Vector3(5.95100403f,5.87393045f,5.99999952f);
    }
 }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using Events;
 using Interfaces;
 using UnityEngine;
 
@@ -32,6 +33,7 @@ public class Stand : MonoBehaviour, IInteractable, IStand, IStorageable
             if (StandCells[i].IsAvailable)
             {
                 product.transform.DOLocalMove(StandCells[i].CellPositionInWorld, 0.6f);
+                product.transform.DOScale(new Vector3(5.95100403f,5.87393045f,5.99999952f), 0.1f);
                 product.transform.SetParent(null);
                 
                 Vector3 rotationEuler = new Vector3(0f, -80f, -90f);
@@ -40,7 +42,7 @@ public class Stand : MonoBehaviour, IInteractable, IStand, IStorageable
                 product.transform.rotation = rotationQuaternion;
                 
                 StandCells[i].SetProductInCell(product);
-                
+                EventStreams.Global.Publish(new ProductWasAddedToStandEvent());
                 return;
             }
         }

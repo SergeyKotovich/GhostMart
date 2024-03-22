@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac390474de047ca84cffd663380c46c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Price>k__BackingField: 1
+  <Price>k__BackingField: 2
   <Type>k__BackingField: 1
   _collider: {fileID: 3003045252864939684}
 --- !u!65 &3003045252864939684

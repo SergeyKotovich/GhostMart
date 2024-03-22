@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac390474de047ca84cffd663380c46c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Price>k__BackingField: 2
+  <Price>k__BackingField: 3
   <Type>k__BackingField: 4
   _collider: {fileID: 5571026816231006804}
 --- !u!65 &5571026816231006804

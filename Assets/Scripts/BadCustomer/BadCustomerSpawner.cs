@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Order;
 using SimpleEventBus.Disposables;
 using UnityEngine;
 using Random = UnityEngine.Random;

@@ -48,6 +48,7 @@ public class CollectingProducts : MonoBehaviour
         product.transform.SetParent(_rootTransform);
         product.transform.DOLocalMove(currentPosition, currenConfig.SizeChangeTime);
         product.transform.DOLocalRotate(currenConfig.RotationProductInBasket, currenConfig.SizeChangeTime);
+        
         product.transform.DOScale(currenConfig.ScaleProductInbasket, currenConfig.SizeChangeTime);
     }
 

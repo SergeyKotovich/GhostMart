@@ -1,7 +1,7 @@
 using Interfaces;
 using UnityEngine;
 
-namespace Customer
+namespace Order
 {
     public interface IOrder
     {

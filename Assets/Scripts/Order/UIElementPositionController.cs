@@ -1,31 +1,33 @@
 using UnityEngine;
 
-public class UIElementPositionController : MonoBehaviour
+namespace Order
 {
-    [SerializeField]
-    private RectTransform _uiElement;
-    [SerializeField]
-    private Vector3 _ofset;
-
-    private Transform _uiElementRoot;
-    private Camera _camera;
-
-    private void Awake()
+    public class UIElementPositionController : MonoBehaviour
     {
-        _camera = Camera.main;
-    }
+        [SerializeField] private RectTransform _uiElement;
+        [SerializeField] private Vector3 _ofset;
 
-    public void Initialize(Transform uiElementRoot)
-    {
-        _uiElementRoot = uiElementRoot;
-    }
-    private void Update()
-    {
-        var pointInScreenSpace = RectTransformUtility.WorldToScreenPoint(_camera, _uiElementRoot.position + _ofset);
+        private Transform _uiElementRoot;
+        private Camera _camera;
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            transform.parent as RectTransform, pointInScreenSpace, null, out var localPoint);
+        private void Awake()
+        {
+            _camera = Camera.main;
+        }
 
-        _uiElement.anchoredPosition = localPoint;
+        public void Initialize(Transform uiElementRoot)
+        {
+            _uiElementRoot = uiElementRoot;
+        }
+
+        private void Update()
+        {
+            var pointInScreenSpace = RectTransformUtility.WorldToScreenPoint(_camera, _uiElementRoot.position + _ofset);
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                transform.parent as RectTransform, pointInScreenSpace, null, out var localPoint);
+
+            _uiElement.anchoredPosition = localPoint;
+        }
     }
 }

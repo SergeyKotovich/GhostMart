@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Cysharp.Threading.Tasks;
+using Order;
 using SparrowBonus;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -15,7 +16,7 @@ public class SpawnerBonus : MonoBehaviour
 
     private Bonus _currentBonus;
 
-    private void Start()
+    private void Awake()
     {
         Spawn();
     }
@@ -27,10 +28,10 @@ public class SpawnerBonus : MonoBehaviour
         InitializeBonus(_currentBonus);
         
         var targetPosition = _sparrowLandingPoint.PointForCustomers.position;
-        _currentBonus.BonusMovement.MoveToTarget(targetPosition, OnMovementComplete);
+        _currentBonus.BonusMovement.MoveToTarget(targetPosition, OnMovementCompleted);
     }
 
-    private void OnMovementComplete()
+    private void OnMovementCompleted()
     {
         orderViewSpawner.Spawn(_currentBonus.transform);
         _currentBonus.SetTriggerState(true);

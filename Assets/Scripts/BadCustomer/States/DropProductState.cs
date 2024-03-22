@@ -1,5 +1,7 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Events;
+using SimpleEventBus.Events;
 using UnityEngine;
 
 namespace BadCustomer
@@ -12,6 +14,7 @@ namespace BadCustomer
         private IStand _stand;
         private bool _didPlayerComeUp;
         private bool _isActive;
+        private bool _isDropping;
 
         public void OnEnter(IStand stand)
         {
@@ -24,28 +27,40 @@ namespace BadCustomer
         public void Initialize(StateMachine stateMachine)
         {
             _stateMachine = stateMachine;
+            EventStreams.Global.Subscribe<ProductWasAddedToStandEvent>(OnProductWasAddedToStand);
         }
         
         private async UniTask DropProduct()
         {
-           // while (!_didPlayerComeUp)
+            while (!_didPlayerComeUp)
             {
+                if (_stand.IsEmpty()) break;
+                
                 var product = _stand.GetAvailableProduct();
                 var dropPoint = _stand.GetDropPoint();
-                // Генерируем случайную позицию в пределах радиуса
+                
                 Vector2 randomOffset = Random.insideUnitCircle * _moveRadius;
                 Vector3 randomPosition = new Vector3(randomOffset.x, 0.1f, randomOffset.y) + dropPoint.transform.position;
                 
                 if (product != null)
                 {
+                    _isDropping = true;
                     _animator.Play("Shity_attack");
                     await UniTask.Delay(1000);
 
                     product.transform.DOLocalMove(randomPosition, 0.3f)
                         .OnComplete(() => product.OnProductWasDropped());
+                    transform.rotation = Quaternion.Euler(0, 90, -90);
                     await UniTask.Delay(4000);
+                    _isDropping = false;
                 }
             }
+        }
+
+        private void OnProductWasAddedToStand(ProductWasAddedToStandEvent productWasAddedToStandEvent)
+        {
+            if (!_isActive || _isDropping) return;
+            DropProduct();
         }
         
         private void OnTriggerEnter(Collider other)
