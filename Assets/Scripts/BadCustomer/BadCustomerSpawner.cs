@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Events;
 using Order;
 using SimpleEventBus.Disposables;
 using UnityEngine;
@@ -12,7 +13,6 @@ namespace BadCustomer
     public class BadCustomerSpawner : MonoBehaviour
     {
         [SerializeField] private BadCustomer _badCustomer;
-        [SerializeField] private OrderViewSpawner _orderViewSpawner;
         [SerializeField] private int _minSpawnTime;
         [SerializeField] private int _maxSpawnTime;
         
@@ -26,7 +26,7 @@ namespace BadCustomer
         public void Initialize()
         {
             Spawn();
-            _orderViewSpawner.Spawn(_badCustomer.transform);
+            EventStreams.Global.Publish(new CharacterWasSpawnedEvent(_badCustomer.transform));
         }
         private void OnCameToExit(CameToExitEvent cameToExitEvent)
         {

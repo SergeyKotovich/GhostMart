@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77891102c13f4916ad5d76a3eed8a03a, type: 3}
+  m_Name: PointerConfig
+  m_EditorClassIdentifier: 
+  <OffsetY>k__BackingField: 4.5
+  <AnimationDelay>k__BackingField: 0.2
+  <DelayBeforeNextTarget>k__BackingField: 1500

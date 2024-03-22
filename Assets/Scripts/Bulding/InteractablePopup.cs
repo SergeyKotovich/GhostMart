@@ -32,8 +32,6 @@ public class InteractablePopup : MonoBehaviour
         if (!other.TryGetComponent(out Player.Player _)) return;
         _lookAtConstraint.enabled = false;
         DisappearSlowly(_canvas.transform);
-
-        _pointerController.ShowPointer();
     }
     
     private static void ShowSlowly(Transform transform, Vector3 targetScale, float duration, TweenCallback onComplete)
