@@ -17876,7 +17876,6 @@ GameObject:
   - component: {fileID: 1036693579}
   - component: {fileID: 1036693578}
   - component: {fileID: 1036693577}
-  - component: {fileID: 1036693581}
   m_Layer: 0
   m_Name: MoneySpawner
   m_TagString: MoneyKeeper
@@ -17941,27 +17940,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 140723383}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1036693581
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036693576}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.37, y: 1.79, z: 3.47}
-  m_Center: {x: -2.08, y: -0.94, z: 0.91}
 --- !u!1001 &1039292049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36324,7 +36302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5979429957347870126, guid: 531fe91dea5d54de2bfcc0f089e3af38, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6462915540783259412, guid: 531fe91dea5d54de2bfcc0f089e3af38, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36381,6 +36359,10 @@ PrefabInstance:
     - target: {fileID: 6888082412398120422, guid: 531fe91dea5d54de2bfcc0f089e3af38, type: 3}
       propertyPath: m_Center.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472986432231082608, guid: 531fe91dea5d54de2bfcc0f089e3af38, type: 3}
+      propertyPath: _delay
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7472986432231082608, guid: 531fe91dea5d54de2bfcc0f089e3af38, type: 3}
       propertyPath: _moneySpawner

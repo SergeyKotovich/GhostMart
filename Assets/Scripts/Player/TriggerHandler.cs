@@ -8,10 +8,12 @@ namespace Player
         [SerializeField] private Player _player;
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag(GlobalConstants.MONEY_KEEPER))
+            if (other.gameObject.CompareTag(GlobalConstants.CASH_REGISTER))
             {
-                var moneySpawner = other.GetComponent<MoneySpawner>();
-                _player.AddMoney(moneySpawner.GetMoney());
+                var cashRegister = other.GetComponent<ICashRegister>();
+                if (cashRegister == null) return;
+                
+                _player.AddMoney(cashRegister.GetMoney());
             }
 
             if (other.gameObject.CompareTag(GlobalConstants.BONUS_TAG))

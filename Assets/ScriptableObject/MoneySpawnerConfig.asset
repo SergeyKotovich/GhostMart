@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Width>k__BackingField: 5
   <Height>k__BackingField: 5
+  <Length>k__BackingField: 5
   <MoneyStep>k__BackingField: 1
   <MaxRow>k__BackingField: 5
   <NewYPosition>k__BackingField: 0.2
+  <AnimationDuration>k__BackingField: 1
