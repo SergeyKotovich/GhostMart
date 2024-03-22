@@ -46,6 +46,11 @@ namespace Assistant
         {
             return Basket.GetAllProducts();
         }
+
+        public bool IsAtDestination()
+        {
+          return  MovementController.IsAtTargetPoint();
+        }
     }
     
 }

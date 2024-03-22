@@ -37,7 +37,7 @@ namespace Assistant
 
         private void Update()
         {
-            if (_assistant.MovementController.IsAtTargetPoint())
+            if (_assistant.IsAtDestination())
             {
                 EnterNextState();
             }
