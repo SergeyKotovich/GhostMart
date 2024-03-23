@@ -13,7 +13,7 @@ public class AbilitiesController
     public int LoadabilityLevel { get; private set; }
     public int EnduranceLevel { get; private set; }
     public int SpeedLevel { get; private set; }
-    
+
     private IWorkerBasket _basket;
     private IWorker _worker;
     private NavMeshAgent _navMeshAgent;
@@ -27,14 +27,16 @@ public class AbilitiesController
         EnduranceLevel = _abilitiesConfig.DefaultAbilityLevel;
         SpeedLevel = _abilitiesConfig.DefaultAbilityLevel;
     }
+
     public void Initialize(IWorkerBasket basket, IWorker worker)
     {
         _basket = basket;
         _worker = worker;
-        LoadabilityLevel = 1;
-        EnduranceLevel = 1;
-        SpeedLevel = 1;
+        LoadabilityLevel = _abilitiesConfig.DefaultAbilityLevel;;
+        EnduranceLevel = _abilitiesConfig.DefaultAbilityLevel;;
+        SpeedLevel = _abilitiesConfig.DefaultAbilityLevel;;
     }
+
     public void ImproveLoadability()
     {
         LoadabilityLevel++;
@@ -47,7 +49,7 @@ public class AbilitiesController
     {
         SpeedLevel++;
         var currentSpeed = _navMeshAgent.speed;
-        _navMeshAgent.speed = currentSpeed + 1;
+        _navMeshAgent.speed = currentSpeed++;
         EventStreams.Global.Publish<WorkerUpgradedEvent>
             (new WorkerUpgradedEvent(SpeedLevel, _worker.Type, AbilityTypes.Speed));
     }
@@ -57,10 +59,8 @@ public class AbilitiesController
         EnduranceLevel++;
         var assistant = (ISleepable)_worker;
         assistant.ImproveRepetitionCount(_abilitiesConfig.ImprovingStep);
-        
+
         EventStreams.Global.Publish<WorkerUpgradedEvent>
             (new WorkerUpgradedEvent(EnduranceLevel, _worker.Type, AbilityTypes.Endurance));
     }
-    
-
 }

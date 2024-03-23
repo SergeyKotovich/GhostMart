@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788da057645141fcbf0e6095729e20b7, type: 3}
   m_Name: IslandControllerConfig
   m_EditorClassIdentifier: 
-  <PercentageIncrease>k__BackingField: 15
+  <PercentageIncrease>k__BackingField: 0.15
   <Duration>k__BackingField: 0.2

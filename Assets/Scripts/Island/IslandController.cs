@@ -19,7 +19,7 @@ namespace Island
         {
             if (other.CompareTag(GlobalConstants.PLAYER_TAG))
             {
-                var percentIncrease = _islandControllerConfig.PercentageIncrease / 100;
+                var percentIncrease = _islandControllerConfig.PercentageIncrease;
                 var scaleShift = new Vector3(_defaultScale.x * percentIncrease, _defaultScale.y * percentIncrease, _defaultScale.z);
                 
                 transform.DOScale(_defaultScale + scaleShift, _islandControllerConfig.Duration);

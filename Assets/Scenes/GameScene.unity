@@ -26505,6 +26505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 725233019}
+  _price: 320000006400000096000000c8000000
 --- !u!1001 &1492252482
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,10 +7,10 @@ using UnityEngine;
 public class ImprovementsView : MonoBehaviour
 {
     [SerializeField] private AbilityLabel[] _abilityLabels;
+
     private void Start()
     {
         EventStreams.Global.Subscribe<WorkerUpgradedEvent>(UpdateView);
-        //EventStreams.Global.Subscribe<NewAssistantWasBoughtEvent>(SetImproveButtonInteractable);
     }
 
     private void UpdateView(WorkerUpgradedEvent workerUpgradedEvent)
@@ -30,5 +30,4 @@ public class ImprovementsView : MonoBehaviour
             }
         }
     }
-    
 }
